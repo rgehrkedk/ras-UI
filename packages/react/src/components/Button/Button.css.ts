@@ -1,0 +1,197 @@
+/**
+ * Button component styles using vanilla-extract
+ */
+
+import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
+
+import { theme } from '../../styles/theme.css';
+
+// Note: Spinner animation moved to shared/Spinner component
+
+// Base button styles following React Aria Components patterns
+export const buttonBase = style({
+  // Reset browser defaults
+  border: 'none',
+  margin: 0,
+  padding: 0,
+  background: 'none',
+  
+  // Typography
+  fontFamily: theme.font.family.sans,
+  fontSize: theme.font.size.md,
+  fontWeight: theme.font.weight.medium,
+  lineHeight: 1.5,
+  
+  // Layout
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: theme.space['2'],
+  
+  // Interaction
+  cursor: 'pointer',
+  userSelect: 'none',
+  textDecoration: 'none',
+  
+  // Accessibility
+  outline: 'none',
+  
+  // Transitions
+  '@media': {
+    '(prefers-reduced-motion: no-preference)': {
+      transition: 'all 0.2s ease-in-out',
+    },
+  },
+  
+  // Focus styles
+  ':focus-visible': {
+    outline: `2px solid ${theme.color.border.focus}`,
+    outlineOffset: '2px',
+  },
+  
+  // Disabled state
+  ':disabled': {
+    cursor: 'not-allowed',
+    opacity: 0.5,
+  },
+  
+  // Pressed state (for React Aria)
+  selectors: {
+    '&[data-pressed="true"]': {
+      transform: 'scale(0.98)',
+    },
+  },
+});
+
+// Button recipe with variants
+export const button = recipe({
+  base: buttonBase,
+  
+  variants: {
+    variant: {
+      primary: {
+        backgroundColor: theme.color.components.button.primary.background,
+        color: theme.color.components.button.primary.text,
+        border: `1px solid ${theme.color.components.button.primary.border}`,
+        
+        ':hover': {
+          backgroundColor: theme.color.components.button.primary.backgroundHover,
+          transform: 'translateY(-1px)',
+          boxShadow: theme.elevation['2'],
+        },
+        
+        ':active': {
+          backgroundColor: theme.color.components.button.primary.backgroundActive,
+          transform: 'translateY(0)',
+          boxShadow: theme.elevation['1'],
+        },
+      },
+      
+      secondary: {
+        backgroundColor: theme.color.components.button.secondary.background,
+        color: theme.color.components.button.secondary.text,
+        border: `1px solid ${theme.color.components.button.secondary.border}`,
+        
+        ':hover': {
+          backgroundColor: theme.color.components.button.secondary.backgroundHover,
+          transform: 'translateY(-1px)',
+          boxShadow: theme.elevation['1'],
+        },
+        
+        ':active': {
+          backgroundColor: theme.color.components.button.secondary.backgroundActive,
+          transform: 'translateY(0)',
+        },
+      },
+      
+      ghost: {
+        backgroundColor: theme.color.components.button.ghost.background,
+        color: theme.color.components.button.ghost.text,
+        border: `1px solid ${theme.color.components.button.ghost.border}`,
+        
+        ':hover': {
+          backgroundColor: theme.color.components.button.ghost.backgroundHover,
+        },
+        
+        ':active': {
+          backgroundColor: theme.color.components.button.ghost.backgroundActive,
+        },
+      },
+      
+      danger: {
+        backgroundColor: theme.color.components.button.danger.background,
+        color: theme.color.components.button.danger.text,
+        border: `1px solid ${theme.color.components.button.danger.border}`,
+        
+        ':hover': {
+          backgroundColor: theme.color.components.button.danger.backgroundHover,
+          transform: 'translateY(-1px)',
+          boxShadow: theme.elevation['2'],
+        },
+        
+        ':active': {
+          backgroundColor: theme.color.components.button.danger.backgroundActive,
+          transform: 'translateY(0)',
+        },
+      },
+    },
+    
+    size: {
+      sm: {
+        padding: `${theme.space['2']} ${theme.space['3']}`,
+        fontSize: theme.font.size.sm,
+        minHeight: '32px',
+        borderRadius: theme.radius.sm,
+      },
+      
+      md: {
+        padding: `${theme.space['3']} ${theme.space['4']}`,
+        fontSize: theme.font.size.md,
+        minHeight: '40px',
+        borderRadius: theme.radius.md,
+      },
+      
+      lg: {
+        padding: `${theme.space['4']} ${theme.space['5']}`,
+        fontSize: theme.font.size.lg,
+        minHeight: '48px',
+        borderRadius: theme.radius.lg,
+      },
+    },
+    
+    fullWidth: {
+      true: {
+        width: '100%',
+      },
+    },
+  },
+  
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
+
+// Icon styles within button
+export const buttonIcon = style({
+  flexShrink: 0,
+  
+  // Size adjustments based on button size
+  selectors: {
+    [`${button.classNames.variants.size.sm} &`]: {
+      width: '16px',
+      height: '16px',
+    },
+    [`${button.classNames.variants.size.md} &`]: {
+      width: '18px',
+      height: '18px',
+    },
+    [`${button.classNames.variants.size.lg} &`]: {
+      width: '20px',
+      height: '20px',
+    },
+  },
+});
+
+// Note: Loading spinner styles moved to shared/Spinner component

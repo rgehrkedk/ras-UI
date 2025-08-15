@@ -1,0 +1,92 @@
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "light": { "value": "{color.base.brand.600}", "type": "color", "description": "Primary brand color for light theme" },
+        "dark": { "value": "{color.base.brand.400}", "type": "color", "description": "Primary brand color for dark theme" },
+        "hc-light": { "value": "{color.base.brand.800}", "type": "color", "description": "Primary brand color for high contrast light theme" },
+        "hc-dark": { "value": "{color.base.brand.200}", "type": "color", "description": "Primary brand color for high contrast dark theme" }
+      }
+    },
+    "semantic": {
+      "surface": {
+        "base": {
+          "light": { "value": "{color.base.white}", "type": "color", "description": "Base surface color - light theme" },
+          "dark": { "value": "{color.base.neutral.900}", "type": "color", "description": "Base surface color - dark theme" },
+          "hc-light": { "value": "{color.base.white}", "type": "color", "description": "Base surface color - high contrast light" },
+          "hc-dark": { "value": "{color.base.black}", "type": "color", "description": "Base surface color - high contrast dark" }
+        },
+        "raised": {
+          "light": { "value": "{color.base.neutral.50}", "type": "color", "description": "Raised surface color - light theme" },
+          "dark": { "value": "{color.base.neutral.800}", "type": "color", "description": "Raised surface color - dark theme" },
+          "hc-light": { "value": "{color.base.neutral.100}", "type": "color", "description": "Raised surface color - high contrast light" },
+          "hc-dark": { "value": "{color.base.neutral.900}", "type": "color", "description": "Raised surface color - high contrast dark" }
+        },
+        "float": {
+          "light": { "value": "{color.base.white}", "type": "color", "description": "Floating surface color - light theme" },
+          "dark": { "value": "{color.base.neutral.800}", "type": "color", "description": "Floating surface color - dark theme" },
+          "hc-light": { "value": "{color.base.white}", "type": "color", "description": "Floating surface color - high contrast light" },
+          "hc-dark": { "value": "{color.base.neutral.800}", "type": "color", "description": "Floating surface color - high contrast dark" }
+        }
+      },
+      "text": {
+        "primary": {
+          "light": { "value": "{color.base.neutral.900}", "type": "color", "description": "Primary text color - light theme" },
+          "dark": { "value": "{color.base.neutral.100}", "type": "color", "description": "Primary text color - dark theme" },
+          "hc-light": { "value": "{color.base.black}", "type": "color", "description": "Primary text color - high contrast light" },
+          "hc-dark": { "value": "{color.base.white}", "type": "color", "description": "Primary text color - high contrast dark" }
+        },
+        "secondary": {
+          "light": { "value": "{color.base.neutral.600}", "type": "color", "description": "Secondary text color - light theme" },
+          "dark": { "value": "{color.base.neutral.400}", "type": "color", "description": "Secondary text color - dark theme" },
+          "hc-light": { "value": "{color.base.neutral.700}", "type": "color", "description": "Secondary text color - high contrast light" },
+          "hc-dark": { "value": "{color.base.neutral.300}", "type": "color", "description": "Secondary text color - high contrast dark" }
+        },
+        "on-brand": {
+          "light": { "value": "{color.base.white}", "type": "color", "description": "Text on brand background - light theme" },
+          "dark": { "value": "{color.base.white}", "type": "color", "description": "Text on brand background - dark theme" },
+          "hc-light": { "value": "{color.base.white}", "type": "color", "description": "Text on brand background - high contrast light" },
+          "hc-dark": { "value": "{color.base.black}", "type": "color", "description": "Text on brand background - high contrast dark" }
+        }
+      },
+      "border": {
+        "default": {
+          "light": { "value": "{color.base.neutral.200}", "type": "color", "description": "Default border color - light theme" },
+          "dark": { "value": "{color.base.neutral.700}", "type": "color", "description": "Default border color - dark theme" },
+          "hc-light": { "value": "{color.base.neutral.400}", "type": "color", "description": "Default border color - high contrast light" },
+          "hc-dark": { "value": "{color.base.neutral.600}", "type": "color", "description": "Default border color - high contrast dark" }
+        },
+        "focus": {
+          "light": { "value": "{color.brand.primary.light}", "type": "color", "description": "Focus ring color - light theme" },
+          "dark": { "value": "{color.brand.primary.dark}", "type": "color", "description": "Focus ring color - dark theme" },
+          "hc-light": { "value": "{color.brand.primary.hc-light}", "type": "color", "description": "Focus ring color - high contrast light" },
+          "hc-dark": { "value": "{color.brand.primary.hc-dark}", "type": "color", "description": "Focus ring color - high contrast dark" }
+        }
+      },
+      "danger": {
+        "light": { "value": "{color.base.danger.600}", "type": "color", "description": "Danger/error color - light theme" },
+        "dark": { "value": "{color.base.danger.400}", "type": "color", "description": "Danger/error color - dark theme" },
+        "hc-light": { "value": "{color.base.danger.700}", "type": "color", "description": "Danger/error color - high contrast light" },
+        "hc-dark": { "value": "{color.base.danger.300}", "type": "color", "description": "Danger/error color - high contrast dark" }
+      },
+      "success": {
+        "light": { "value": "{color.base.success.600}", "type": "color", "description": "Success state color - light theme" },
+        "dark": { "value": "{color.base.success.400}", "type": "color", "description": "Success state color - dark theme" },
+        "hc-light": { "value": "{color.base.success.700}", "type": "color", "description": "Success state color - high contrast light" },
+        "hc-dark": { "value": "{color.base.success.300}", "type": "color", "description": "Success state color - high contrast dark" }
+      },
+      "warning": {
+        "light": { "value": "{color.base.warning.600}", "type": "color", "description": "Warning state color - light theme" },
+        "dark": { "value": "{color.base.warning.400}", "type": "color", "description": "Warning state color - dark theme" },
+        "hc-light": { "value": "{color.base.warning.700}", "type": "color", "description": "Warning state color - high contrast light" },
+        "hc-dark": { "value": "{color.base.warning.300}", "type": "color", "description": "Warning state color - high contrast dark" }
+      },
+      "overlay": {
+        "light": { "value": "rgba(0, 0, 0, 0.5)", "type": "color", "description": "Modal/dialog overlay - light theme" },
+        "dark": { "value": "rgba(0, 0, 0, 0.7)", "type": "color", "description": "Modal/dialog overlay - dark theme" },
+        "hc-light": { "value": "rgba(0, 0, 0, 0.8)", "type": "color", "description": "Modal/dialog overlay - high contrast light" },
+        "hc-dark": { "value": "rgba(0, 0, 0, 0.9)", "type": "color", "description": "Modal/dialog overlay - high contrast dark" }
+      }
+    }
+  }
+}

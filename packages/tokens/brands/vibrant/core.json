@@ -1,0 +1,160 @@
+{
+  "color": {
+    "base": {
+      "white": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Pure white"
+      },
+      "black": {
+        "value": "#000000",
+        "type": "color",
+        "description": "Pure black"
+      },
+      "neutral": {
+        "50": { "value": "#f9fafb", "type": "color" },
+        "100": { "value": "#f3f4f6", "type": "color" },
+        "200": { "value": "#e5e7eb", "type": "color" },
+        "300": { "value": "#d1d5db", "type": "color" },
+        "400": { "value": "#9ca3af", "type": "color" },
+        "500": { "value": "#6b7280", "type": "color" },
+        "600": { "value": "#4b5563", "type": "color" },
+        "700": { "value": "#374151", "type": "color" },
+        "800": { "value": "#1f2937", "type": "color" },
+        "900": { "value": "#111827", "type": "color" }
+      },
+      "brand": {
+        "50": { "value": "#faf5ff", "type": "color", "description": "Vibrant purple brand - lightest" },
+        "100": { "value": "#f3e8ff", "type": "color", "description": "Vibrant purple brand" },
+        "200": { "value": "#e9d5ff", "type": "color", "description": "Vibrant purple brand" },
+        "300": { "value": "#d8b4fe", "type": "color", "description": "Vibrant purple brand" },
+        "400": { "value": "#c084fc", "type": "color", "description": "Vibrant purple brand" },
+        "500": { "value": "#a855f7", "type": "color", "description": "Vibrant purple brand" },
+        "600": { "value": "#9333ea", "type": "color", "description": "Vibrant purple brand - primary" },
+        "700": { "value": "#7e22ce", "type": "color", "description": "Vibrant purple brand" },
+        "800": { "value": "#6b21a8", "type": "color", "description": "Vibrant purple brand" },
+        "900": { "value": "#581c87", "type": "color", "description": "Vibrant purple brand - darkest" }
+      },
+      "secondary": {
+        "50": { "value": "#fdf4ff", "type": "color", "description": "Vibrant pink secondary - lightest" },
+        "100": { "value": "#fae8ff", "type": "color", "description": "Vibrant pink secondary" },
+        "200": { "value": "#f5d0fe", "type": "color", "description": "Vibrant pink secondary" },
+        "300": { "value": "#f0abfc", "type": "color", "description": "Vibrant pink secondary" },
+        "400": { "value": "#e879f9", "type": "color", "description": "Vibrant pink secondary" },
+        "500": { "value": "#d946ef", "type": "color", "description": "Vibrant pink secondary" },
+        "600": { "value": "#c026d3", "type": "color", "description": "Vibrant pink secondary" },
+        "700": { "value": "#a21caf", "type": "color", "description": "Vibrant pink secondary" },
+        "800": { "value": "#86198f", "type": "color", "description": "Vibrant pink secondary" },
+        "900": { "value": "#701a75", "type": "color", "description": "Vibrant pink secondary - darkest" }
+      },
+      "accent": {
+        "50": { "value": "#fefce8", "type": "color", "description": "Bright yellow accent - lightest" },
+        "100": { "value": "#fef9c3", "type": "color", "description": "Bright yellow accent" },
+        "200": { "value": "#fef08a", "type": "color", "description": "Bright yellow accent" },
+        "300": { "value": "#fde047", "type": "color", "description": "Bright yellow accent" },
+        "400": { "value": "#facc15", "type": "color", "description": "Bright yellow accent" },
+        "500": { "value": "#eab308", "type": "color", "description": "Bright yellow accent" },
+        "600": { "value": "#ca8a04", "type": "color", "description": "Bright yellow accent" },
+        "700": { "value": "#a16207", "type": "color", "description": "Bright yellow accent" },
+        "800": { "value": "#854d0e", "type": "color", "description": "Bright yellow accent" },
+        "900": { "value": "#713f12", "type": "color", "description": "Bright yellow accent - darkest" }
+      },
+      "support": {
+        "50": { "value": "#f0fdf4", "type": "color", "description": "Support green - lightest" },
+        "100": { "value": "#dcfce7", "type": "color", "description": "Support green" },
+        "200": { "value": "#bbf7d0", "type": "color", "description": "Support green" },
+        "300": { "value": "#86efac", "type": "color", "description": "Support green" },
+        "400": { "value": "#4ade80", "type": "color", "description": "Support green" },
+        "500": { "value": "#22c55e", "type": "color", "description": "Support green" },
+        "600": { "value": "#16a34a", "type": "color", "description": "Support green" },
+        "700": { "value": "#15803d", "type": "color", "description": "Support green" },
+        "800": { "value": "#166534", "type": "color", "description": "Support green" },
+        "900": { "value": "#14532d", "type": "color", "description": "Support green - darkest" }
+      },
+      "success": {
+        "50": { "value": "#ecfdf5", "type": "color" },
+        "100": { "value": "#d1fae5", "type": "color" },
+        "200": { "value": "#a7f3d0", "type": "color" },
+        "300": { "value": "#6ee7b7", "type": "color" },
+        "400": { "value": "#34d399", "type": "color" },
+        "500": { "value": "#10b981", "type": "color" },
+        "600": { "value": "#059669", "type": "color" },
+        "700": { "value": "#047857", "type": "color" },
+        "800": { "value": "#065f46", "type": "color" },
+        "900": { "value": "#064e3b", "type": "color" }
+      },
+      "warning": {
+        "50": { "value": "#fffbeb", "type": "color" },
+        "100": { "value": "#fef3c7", "type": "color" },
+        "200": { "value": "#fde68a", "type": "color" },
+        "300": { "value": "#fcd34d", "type": "color" },
+        "400": { "value": "#fbbf24", "type": "color" },
+        "500": { "value": "#f59e0b", "type": "color" },
+        "600": { "value": "#d97706", "type": "color" },
+        "700": { "value": "#b45309", "type": "color" },
+        "800": { "value": "#92400e", "type": "color" },
+        "900": { "value": "#78350f", "type": "color" }
+      },
+      "danger": {
+        "50": { "value": "#fef2f2", "type": "color" },
+        "100": { "value": "#fee2e2", "type": "color" },
+        "200": { "value": "#fecaca", "type": "color" },
+        "300": { "value": "#fca5a5", "type": "color" },
+        "400": { "value": "#f87171", "type": "color" },
+        "500": { "value": "#ef4444", "type": "color" },
+        "600": { "value": "#dc2626", "type": "color" },
+        "700": { "value": "#b91c1c", "type": "color" },
+        "800": { "value": "#991b1b", "type": "color" },
+        "900": { "value": "#7f1d1d", "type": "color" }
+      }
+    }
+  },
+  "space": {
+    "0": { "value": "0px", "type": "spacing" },
+    "1": { "value": "2px", "type": "spacing" },
+    "2": { "value": "4px", "type": "spacing" },
+    "3": { "value": "8px", "type": "spacing" },
+    "4": { "value": "12px", "type": "spacing" },
+    "5": { "value": "16px", "type": "spacing" },
+    "6": { "value": "20px", "type": "spacing" },
+    "7": { "value": "24px", "type": "spacing" },
+    "8": { "value": "32px", "type": "spacing" },
+    "9": { "value": "40px", "type": "spacing" },
+    "10": { "value": "48px", "type": "spacing" }
+  },
+  "radius": {
+    "none": { "value": "0px", "type": "borderRadius" },
+    "sm": { "value": "8px", "type": "borderRadius" },
+    "md": { "value": "12px", "type": "borderRadius" },
+    "lg": { "value": "16px", "type": "borderRadius" },
+    "xl": { "value": "20px", "type": "borderRadius" },
+    "full": { "value": "9999px", "type": "borderRadius" }
+  },
+  "elevation": {
+    "0": { "value": "none", "type": "boxShadow" },
+    "1": { "value": "0 2px 8px rgba(0, 0, 0, 0.12)", "type": "boxShadow" },
+    "2": { "value": "0 6px 16px rgba(0, 0, 0, 0.14)", "type": "boxShadow" },
+    "3": { "value": "0 12px 32px rgba(0, 0, 0, 0.18)", "type": "boxShadow" }
+  },
+  "font": {
+    "family": {
+      "sans": { "value": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif", "type": "fontFamily" },
+      "mono": { "value": "JetBrains Mono, SF Mono, Monaco, Consolas, Liberation Mono, Courier New, monospace", "type": "fontFamily" }
+    },
+    "size": {
+      "xs": { "value": "12px", "type": "fontSize" },
+      "sm": { "value": "14px", "type": "fontSize" },
+      "md": { "value": "16px", "type": "fontSize" },
+      "lg": { "value": "18px", "type": "fontSize" },
+      "xl": { "value": "20px", "type": "fontSize" },
+      "2xl": { "value": "24px", "type": "fontSize" },
+      "3xl": { "value": "30px", "type": "fontSize" }
+    },
+    "weight": {
+      "regular": { "value": "400", "type": "fontWeight" },
+      "medium": { "value": "500", "type": "fontWeight" },
+      "semibold": { "value": "600", "type": "fontWeight" },
+      "bold": { "value": "700", "type": "fontWeight" }
+    }
+  }
+}

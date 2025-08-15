@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "ES2022"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@ras-ui/tokens": ["./packages/tokens/src"],
+      "@ras-ui/react": ["./packages/react/src"]
+    }
+  },
+  "include": [
+    "packages/*/src/**/*",
+    "packages/*/stories/**/*",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist/**",
+    "**/node_modules/**"
+  ],
+  "references": [
+    {
+      "path": "./packages/tokens"
+    },
+    {
+      "path": "./packages/react"
+    },
+    {
+      "path": "./packages/docs"
+    }
+  ]
+}

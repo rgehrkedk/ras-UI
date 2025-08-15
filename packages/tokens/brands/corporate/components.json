@@ -1,0 +1,136 @@
+{
+  "color": {
+    "components": {
+      "button": {
+        "primary": {
+          "background": {
+            "light": { "value": "{color.base.brand.700}", "type": "color", "description": "Corporate primary button - stronger presence" },
+            "dark": { "value": "{color.base.brand.600}", "type": "color", "description": "Corporate primary button - dark theme" },
+            "hc-light": { "value": "{color.base.brand.800}", "type": "color", "description": "Corporate primary button - high contrast light" },
+            "hc-dark": { "value": "{color.base.brand.300}", "type": "color", "description": "Corporate primary button - high contrast dark" }
+          },
+          "background-hover": {
+            "light": { "value": "{color.base.brand.800}", "type": "color", "description": "Corporate primary button hover" },
+            "dark": { "value": "{color.base.brand.700}", "type": "color", "description": "Corporate primary button hover - dark" },
+            "hc-light": { "value": "{color.base.brand.900}", "type": "color", "description": "Corporate primary button hover - hc light" },
+            "hc-dark": { "value": "{color.base.brand.200}", "type": "color", "description": "Corporate primary button hover - hc dark" }
+          },
+          "background-active": {
+            "light": { "value": "{color.base.brand.900}", "type": "color", "description": "Corporate primary button active" },
+            "dark": { "value": "{color.base.brand.800}", "type": "color", "description": "Corporate primary button active - dark" },
+            "hc-light": { "value": "{color.base.secondary.900}", "type": "color", "description": "Corporate primary button active - hc light" },
+            "hc-dark": { "value": "{color.base.brand.100}", "type": "color", "description": "Corporate primary button active - hc dark" }
+          },
+          "text": {
+            "light": { "value": "{color.base.white}", "type": "color" },
+            "dark": { "value": "{color.base.white}", "type": "color" },
+            "hc-light": { "value": "{color.base.white}", "type": "color" },
+            "hc-dark": { "value": "{color.base.black}", "type": "color" }
+          },
+          "border": {
+            "light": { "value": "{color.base.brand.700}", "type": "color" },
+            "dark": { "value": "{color.base.brand.600}", "type": "color" },
+            "hc-light": { "value": "{color.base.brand.800}", "type": "color" },
+            "hc-dark": { "value": "{color.base.brand.300}", "type": "color" }
+          }
+        },
+        "secondary": {
+          "background": {
+            "light": { "value": "{color.base.white}", "type": "color" },
+            "dark": { "value": "{color.base.secondary.800}", "type": "color", "description": "Corporate secondary uses slate colors" },
+            "hc-light": { "value": "{color.base.white}", "type": "color" },
+            "hc-dark": { "value": "{color.base.secondary.900}", "type": "color" }
+          },
+          "background-hover": {
+            "light": { "value": "{color.base.secondary.50}", "type": "color", "description": "Corporate secondary hover with slate" },
+            "dark": { "value": "{color.base.secondary.700}", "type": "color" },
+            "hc-light": { "value": "{color.base.secondary.100}", "type": "color" },
+            "hc-dark": { "value": "{color.base.secondary.700}", "type": "color" }
+          },
+          "background-active": {
+            "light": { "value": "{color.base.secondary.100}", "type": "color" },
+            "dark": { "value": "{color.base.secondary.600}", "type": "color" },
+            "hc-light": { "value": "{color.base.secondary.200}", "type": "color" },
+            "hc-dark": { "value": "{color.base.secondary.600}", "type": "color" }
+          },
+          "text": {
+            "light": { "value": "{color.base.secondary.700}", "type": "color", "description": "Corporate secondary text with slate" },
+            "dark": { "value": "{color.base.secondary.200}", "type": "color" },
+            "hc-light": { "value": "{color.base.secondary.800}", "type": "color" },
+            "hc-dark": { "value": "{color.base.secondary.100}", "type": "color" }
+          },
+          "border": {
+            "light": { "value": "{color.base.secondary.300}", "type": "color", "description": "Corporate secondary border with slate" },
+            "dark": { "value": "{color.base.secondary.600}", "type": "color" },
+            "hc-light": { "value": "{color.base.secondary.600}", "type": "color" },
+            "hc-dark": { "value": "{color.base.secondary.400}", "type": "color" }
+          }
+        },
+        "ghost": {
+          "background": {
+            "light": { "value": "transparent", "type": "color" },
+            "dark": { "value": "transparent", "type": "color" },
+            "hc-light": { "value": "transparent", "type": "color" },
+            "hc-dark": { "value": "transparent", "type": "color" }
+          },
+          "background-hover": {
+            "light": { "value": "{color.base.brand.50}", "type": "color", "description": "Corporate ghost hover with brand tint" },
+            "dark": { "value": "{color.base.secondary.800}", "type": "color" },
+            "hc-light": { "value": "{color.base.brand.100}", "type": "color" },
+            "hc-dark": { "value": "{color.base.secondary.800}", "type": "color" }
+          },
+          "background-active": {
+            "light": { "value": "{color.base.brand.100}", "type": "color" },
+            "dark": { "value": "{color.base.secondary.700}", "type": "color" },
+            "hc-light": { "value": "{color.base.brand.200}", "type": "color" },
+            "hc-dark": { "value": "{color.base.secondary.600}", "type": "color" }
+          },
+          "text": {
+            "light": { "value": "{color.base.brand.700}", "type": "color", "description": "Corporate ghost text with brand color" },
+            "dark": { "value": "{color.base.brand.300}", "type": "color" },
+            "hc-light": { "value": "{color.base.brand.800}", "type": "color" },
+            "hc-dark": { "value": "{color.base.brand.200}", "type": "color" }
+          },
+          "border": {
+            "light": { "value": "transparent", "type": "color" },
+            "dark": { "value": "transparent", "type": "color" },
+            "hc-light": { "value": "transparent", "type": "color" },
+            "hc-dark": { "value": "transparent", "type": "color" }
+          }
+        },
+        "danger": {
+          "background": {
+            "light": { "value": "{color.base.danger.700}", "type": "color", "description": "Corporate danger - stronger presence" },
+            "dark": { "value": "{color.base.danger.600}", "type": "color" },
+            "hc-light": { "value": "{color.base.danger.800}", "type": "color" },
+            "hc-dark": { "value": "{color.base.danger.300}", "type": "color" }
+          },
+          "background-hover": {
+            "light": { "value": "{color.base.danger.800}", "type": "color" },
+            "dark": { "value": "{color.base.danger.700}", "type": "color" },
+            "hc-light": { "value": "{color.base.danger.900}", "type": "color" },
+            "hc-dark": { "value": "{color.base.danger.400}", "type": "color" }
+          },
+          "background-active": {
+            "light": { "value": "{color.base.danger.900}", "type": "color" },
+            "dark": { "value": "{color.base.danger.800}", "type": "color" },
+            "hc-light": { "value": "{color.base.danger.900}", "type": "color" },
+            "hc-dark": { "value": "{color.base.danger.500}", "type": "color" }
+          },
+          "text": {
+            "light": { "value": "{color.base.white}", "type": "color" },
+            "dark": { "value": "{color.base.white}", "type": "color" },
+            "hc-light": { "value": "{color.base.white}", "type": "color" },
+            "hc-dark": { "value": "{color.base.black}", "type": "color" }
+          },
+          "border": {
+            "light": { "value": "{color.base.danger.700}", "type": "color" },
+            "dark": { "value": "{color.base.danger.600}", "type": "color" },
+            "hc-light": { "value": "{color.base.danger.800}", "type": "color" },
+            "hc-dark": { "value": "{color.base.danger.300}", "type": "color" }
+          }
+        }
+      }
+    }
+  }
+}

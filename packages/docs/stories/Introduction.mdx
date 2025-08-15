@@ -1,0 +1,158 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# ras-UI Design System
+
+Welcome to ras-UI, an accessible and performant design system built with **React Aria Components** and **vanilla-extract**.
+
+## Overview
+
+ras-UI provides a comprehensive set of components and design tokens that help you build accessible, consistent, and beautiful user interfaces. Our design system is built on top of industry-leading accessibility libraries and modern CSS-in-JS technologies.
+
+## Key Features
+
+### 🌍 **Accessibility First**
+- Built on React Aria Components for robust accessibility
+- WCAG 2.2 AA compliant
+- Screen reader tested
+- Keyboard navigation support
+- Focus management
+
+### 🎨 **Design Token System**
+- DTCG (Design Tokens Community Group) standard
+- Multi-theme support (light, dark, high contrast)
+- Consistent spacing, colors, and typography
+- CSS variables for runtime theme switching
+
+### ⚡ **Performance Optimized**
+- Zero-runtime CSS-in-JS with vanilla-extract
+- Tree-shakeable components
+- Minimal bundle size
+- TypeScript for better DX
+
+### 🧩 **Component Library**
+- Comprehensive set of UI components
+- Composable and flexible APIs
+- Consistent styling patterns
+- Form components with validation
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install @ras-ui/react @ras-ui/tokens
+# or
+pnpm add @ras-ui/react @ras-ui/tokens
+```
+
+### Basic Usage
+
+```tsx
+import { Button, Input, Dialog } from '@ras-ui/react';
+
+function App() {
+  return (
+    <div>
+      <Button variant="primary">
+        Click me
+      </Button>
+      
+      <Input 
+        label="Email" 
+        type="email" 
+        placeholder="Enter your email"
+      />
+    </div>
+  );
+}
+```
+
+### Theme Setup
+
+```tsx
+import { setTheme } from '@ras-ui/react';
+
+// Set theme programmatically
+setTheme('dark');
+
+// Or use CSS attribute
+document.documentElement.setAttribute('data-theme', 'dark');
+```
+
+## Design Principles
+
+### Floating UI
+Our components follow the **Floating UI** design language:
+
+- **Opaque surfaces**: Clear visual hierarchy with distinct layers
+- **Soft elevation**: Subtle shadows for depth without overwhelming
+- **Clean edges**: Rounded corners for modern, friendly appearance
+- **Purposeful motion**: Smooth transitions that enhance usability
+
+### Accessibility
+Every component is designed with accessibility as a core requirement:
+
+- **Semantic HTML**: Proper element usage and structure
+- **ARIA attributes**: Comprehensive labeling and state management
+- **Keyboard navigation**: Full keyboard support for all interactions
+- **Focus management**: Logical focus flow and visible indicators
+- **Screen readers**: Optimized for assistive technologies
+
+### Performance
+Built for modern web performance:
+
+- **Zero-runtime CSS**: Styles are extracted at build time
+- **Tree shaking**: Only include components you use
+- **Optimized bundles**: Minimal overhead for production
+- **TypeScript**: Enhanced developer experience and fewer bugs
+
+## Component Categories
+
+### Form Components
+- **Button**: Primary actions and interactions
+- **Input**: Text input with validation support
+- **TextField**: Multi-line text input
+- **Select**: Dropdown selection
+- **Checkbox**: Boolean input
+- **Radio**: Single choice from options
+
+### Layout Components
+- **Stack**: Vertical and horizontal layouts
+- **Grid**: Responsive grid system
+- **Container**: Content containers with max-width
+- **Spacer**: Flexible spacing component
+
+### Feedback Components
+- **Dialog**: Modal dialogs and overlays
+- **Alert**: Inline notifications
+- **Toast**: Temporary notifications
+- **Progress**: Loading and progress indicators
+
+### Navigation Components
+- **Tabs**: Tab navigation
+- **Breadcrumb**: Hierarchical navigation
+- **Pagination**: Page navigation
+- **Menu**: Context and dropdown menus
+
+## Browser Support
+
+ras-UI supports all modern browsers:
+
+- **Chrome**: 90+
+- **Firefox**: 88+
+- **Safari**: 14+
+- **Edge**: 90+
+
+## Contributing
+
+We welcome contributions! Please see our [contributing guide](https://github.com/your-org/ras-ui) for details.
+
+## Resources
+
+- [Component Documentation](/docs)
+- [Design Tokens](/docs/tokens)
+- [Accessibility Guide](/docs/accessibility)
+- [Migration Guide](/docs/migration)
+- [GitHub Repository](https://github.com/your-org/ras-ui)
