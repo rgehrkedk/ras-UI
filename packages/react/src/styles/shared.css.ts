@@ -7,19 +7,19 @@ import { theme } from './theme.css';
 // Shared size variants that can be used across components
 export const sizeVariants = {
   sm: {
-    padding: `${theme.space['2']} ${theme.space['3']}`,
+    padding: `${theme.space.xs} ${theme.space.sm}`,
     fontSize: theme.font.size.sm,
     minHeight: '32px',
     borderRadius: theme.radius.sm,
   },
   md: {
-    padding: `${theme.space['3']} ${theme.space['4']}`,
+    padding: `${theme.space.sm} ${theme.space[4]}`,
     fontSize: theme.font.size.md,
     minHeight: '40px',
     borderRadius: theme.radius.md,
   },
   lg: {
-    padding: `${theme.space['4']} ${theme.space['5']}`,
+    padding: `${theme.space[4]} ${theme.space.md}`,
     fontSize: theme.font.size.lg,
     minHeight: '48px',
     borderRadius: theme.radius.lg,
@@ -74,10 +74,10 @@ export const transitionStyles = {
 export const hoverElevation = {
   ':hover': {
     transform: 'translateY(-1px)',
-    boxShadow: theme.elevation['2'],
+    boxShadow: theme.elevation.md,
   },
   ':active': {
     transform: 'translateY(0)',
-    boxShadow: theme.elevation['1'],
+    boxShadow: theme.elevation.sm,
   },
 };

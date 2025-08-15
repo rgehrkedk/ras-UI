@@ -74,19 +74,19 @@ export const inputContainer = recipe({
   variants: {
     size: {
       sm: {
-        padding: `${theme.space['2']} ${theme.space['3']}`,
+        padding: `${theme.space.xs} ${theme.space.sm}`,
         minHeight: '32px',
         fontSize: theme.font.size.sm,
       },
       
       md: {
-        padding: `${theme.space['3']} ${theme.space['4']}`,
+        padding: `${theme.space.sm} ${theme.space[4]}`,
         minHeight: '40px',
         fontSize: theme.font.size.md,
       },
       
       lg: {
-        padding: `${theme.space['4']} ${theme.space['5']}`,
+        padding: `${theme.space[4]} ${theme.space.md}`,
         minHeight: '48px',
         fontSize: theme.font.size.lg,
       },
@@ -187,7 +187,7 @@ export const inputIcon = style({
 export const inputStartIcon = style([
   inputIcon,
   {
-    marginRight: theme.space['2'],
+    marginRight: theme.space.xs,
   },
 ]);
 
@@ -195,7 +195,7 @@ export const inputStartIcon = style([
 export const inputEndIcon = style([
   inputIcon,
   {
-    marginLeft: theme.space['2'],
+    marginLeft: theme.space.xs,
   },
 ]);
 
@@ -206,7 +206,7 @@ export const inputLabel = style({
   fontSize: theme.font.size.sm,
   fontWeight: theme.font.weight.medium,
   color: theme.color.text.primary,
-  marginBottom: theme.space['2'],
+  marginBottom: theme.space.xs,
   lineHeight: 1.5,
 });
 
@@ -216,7 +216,7 @@ export const inputHelperText = style({
   fontFamily: theme.font.family.sans,
   fontSize: theme.font.size.sm,
   color: theme.color.text.secondary,
-  marginTop: theme.space['2'],
+  marginTop: theme.space.xs,
   lineHeight: 1.4,
 });
 
@@ -231,5 +231,5 @@ export const inputErrorText = style([
 // Required indicator
 export const inputRequired = style({
   color: theme.color.danger,
-  marginLeft: theme.space['1'],
+  marginLeft: theme.space[1],
 });

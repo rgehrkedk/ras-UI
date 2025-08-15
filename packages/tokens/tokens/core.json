@@ -112,15 +112,24 @@
   "space": {
     "0": { "value": "0px", "type": "dimension", "description": "No spacing" },
     "1": { "value": "2px", "type": "dimension", "description": "Minimal spacing" },
-    "2": { "value": "4px", "type": "dimension" },
-    "3": { "value": "8px", "type": "dimension" },
-    "4": { "value": "12px", "type": "dimension" },
-    "5": { "value": "16px", "type": "dimension" },
-    "6": { "value": "20px", "type": "dimension" },
-    "7": { "value": "24px", "type": "dimension" },
-    "8": { "value": "32px", "type": "dimension" },
-    "9": { "value": "40px", "type": "dimension" },
-    "10": { "value": "48px", "type": "dimension" }
+    "2": { "value": "4px", "type": "dimension", "description": "Extra small spacing" },
+    "3": { "value": "8px", "type": "dimension", "description": "Small spacing" },
+    "4": { "value": "12px", "type": "dimension", "description": "Medium-small spacing" },
+    "5": { "value": "16px", "type": "dimension", "description": "Medium spacing" },
+    "6": { "value": "20px", "type": "dimension", "description": "Medium-large spacing" },
+    "7": { "value": "24px", "type": "dimension", "description": "Large spacing" },
+    "8": { "value": "32px", "type": "dimension", "description": "Extra large spacing" },
+    "9": { "value": "40px", "type": "dimension", "description": "2X large spacing" },
+    "10": { "value": "48px", "type": "dimension", "description": "3X large spacing" },
+    
+    "none": { "value": "{space.0}", "type": "dimension", "description": "No spacing - semantic alias for space.0" },
+    "xs": { "value": "{space.2}", "type": "dimension", "description": "Extra small spacing - semantic alias for space.2" },
+    "sm": { "value": "{space.3}", "type": "dimension", "description": "Small spacing - semantic alias for space.3" },
+    "md": { "value": "{space.5}", "type": "dimension", "description": "Medium spacing - semantic alias for space.5" },
+    "lg": { "value": "{space.7}", "type": "dimension", "description": "Large spacing - semantic alias for space.7" },
+    "xl": { "value": "{space.8}", "type": "dimension", "description": "Extra large spacing - semantic alias for space.8" },
+    "2xl": { "value": "{space.9}", "type": "dimension", "description": "2X large spacing - semantic alias for space.9" },
+    "3xl": { "value": "{space.10}", "type": "dimension", "description": "3X large spacing - semantic alias for space.10" }
   },
   "radius": {
     "none": { "value": "0px", "type": "dimension", "description": "No border radius" },
@@ -134,7 +143,12 @@
     "0": { "value": "none", "type": "shadow", "description": "No shadow - flat surface" },
     "1": { "value": "0 2px 8px rgba(0, 0, 0, 0.12)", "type": "shadow", "description": "Subtle lift - raised surface" },
     "2": { "value": "0 6px 16px rgba(0, 0, 0, 0.14)", "type": "shadow", "description": "Clear floating - floating surface" },
-    "3": { "value": "0 12px 32px rgba(0, 0, 0, 0.18)", "type": "shadow", "description": "Prominent overlay - modal/dialog surface" }
+    "3": { "value": "0 12px 32px rgba(0, 0, 0, 0.18)", "type": "shadow", "description": "Prominent overlay - modal/dialog surface" },
+    
+    "none": { "value": "{elevation.0}", "type": "shadow", "description": "No shadow - semantic alias for elevation.0" },
+    "sm": { "value": "{elevation.1}", "type": "shadow", "description": "Subtle lift - semantic alias for elevation.1" },
+    "md": { "value": "{elevation.2}", "type": "shadow", "description": "Clear floating - semantic alias for elevation.2" },
+    "lg": { "value": "{elevation.3}", "type": "shadow", "description": "Prominent overlay - semantic alias for elevation.3" }
   },
   "font": {
     "family": {
@@ -163,6 +177,146 @@
       "medium": { "value": "500", "type": "fontWeight" },
       "semibold": { "value": "600", "type": "fontWeight" },
       "bold": { "value": "700", "type": "fontWeight" }
+    }
+  },
+  "animation": {
+    "duration": {
+      "instant": { 
+        "value": "0ms", 
+        "type": "duration", 
+        "description": "No animation duration - instant change" 
+      },
+      "fast": { 
+        "value": "150ms", 
+        "type": "duration", 
+        "description": "Fast transitions for hover states and micro-interactions" 
+      },
+      "normal": { 
+        "value": "250ms", 
+        "type": "duration", 
+        "description": "Standard animation duration for most transitions" 
+      },
+      "slow": { 
+        "value": "300ms", 
+        "type": "duration", 
+        "description": "Slower animations for complex state changes" 
+      },
+      "tooltip": { 
+        "value": "150ms", 
+        "type": "duration", 
+        "description": "Tooltip-specific animation timing" 
+      }
+    },
+    "easing": {
+      "ease-in": { 
+        "value": "ease-in", 
+        "type": "cubicBezier", 
+        "description": "Ease-in timing for exit animations" 
+      },
+      "ease-out": { 
+        "value": "ease-out", 
+        "type": "cubicBezier", 
+        "description": "Ease-out timing for entrance animations" 
+      },
+      "ease-in-out": { 
+        "value": "ease-in-out", 
+        "type": "cubicBezier", 
+        "description": "Ease-in-out timing for smooth state changes" 
+      }
+    }
+  },
+  "icon": {
+    "size": {
+      "xs": { 
+        "value": "12px", 
+        "type": "dimension", 
+        "description": "Extra small icons for minimal UI elements" 
+      },
+      "sm": { 
+        "value": "16px", 
+        "type": "dimension", 
+        "description": "Small icons for compact components" 
+      },
+      "md": { 
+        "value": "20px", 
+        "type": "dimension", 
+        "description": "Medium icons for standard components" 
+      },
+      "lg": { 
+        "value": "24px", 
+        "type": "dimension", 
+        "description": "Large icons for prominent elements" 
+      },
+      "xl": { 
+        "value": "32px", 
+        "type": "dimension", 
+        "description": "Extra large icons for headers and major actions" 
+      }
+    },
+    "close": {
+      "sm": { 
+        "value": "14px", 
+        "type": "dimension", 
+        "description": "Small close button icon size" 
+      },
+      "md": { 
+        "value": "16px", 
+        "type": "dimension", 
+        "description": "Medium close button icon size" 
+      },
+      "lg": { 
+        "value": "18px", 
+        "type": "dimension", 
+        "description": "Large close button icon size" 
+      }
+    }
+  },
+  "opacity": {
+    "disabled": { 
+      "value": "0.6", 
+      "type": "opacity", 
+      "description": "Opacity for disabled interactive elements" 
+    },
+    "muted": { 
+      "value": "0.7", 
+      "type": "opacity", 
+      "description": "Opacity for secondary or muted content" 
+    },
+    "secondary": { 
+      "value": "0.9", 
+      "type": "opacity", 
+      "description": "Opacity for secondary emphasis content" 
+    },
+    "overlay": { 
+      "value": "0.5", 
+      "type": "opacity", 
+      "description": "Opacity for backdrop overlays" 
+    }
+  },
+  "component": {
+    "tooltip": {
+      "max-width": {
+        "sm": { 
+          "value": "150px", 
+          "type": "dimension", 
+          "description": "Small tooltip maximum width" 
+        },
+        "md": { 
+          "value": "200px", 
+          "type": "dimension", 
+          "description": "Medium tooltip maximum width" 
+        },
+        "lg": { 
+          "value": "300px", 
+          "type": "dimension", 
+          "description": "Large tooltip maximum width" 
+        }
+      },
+      "offset": { 
+        "value": "8px", 
+        "type": "dimension", 
+        "description": "Distance between tooltip and trigger element" 
+      }
     }
   }
 }

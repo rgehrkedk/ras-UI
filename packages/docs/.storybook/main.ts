@@ -25,6 +25,25 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     // Add vanilla-extract plugin
     config.plugins?.push(vanillaExtractPlugin());
+    
+    // Production optimizations
+    if (process.env.NODE_ENV === 'production') {
+      config.build = {
+        ...config.build,
+        rollupOptions: {
+          ...config.build?.rollupOptions,
+          output: {
+            ...config.build?.rollupOptions?.output,
+            manualChunks: {
+              vendor: ['react', 'react-dom'],
+              storybook: ['@storybook/react-vite', '@storybook/addon-docs'],
+            },
+          },
+        },
+        chunkSizeWarningLimit: 1000,
+      };
+    }
+    
     return config;
   },
 

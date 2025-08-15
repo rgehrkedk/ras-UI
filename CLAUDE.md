@@ -79,7 +79,7 @@ I'll use the general-purpose agent to search for and understand the Style Dictio
 
 **Testing Commands:**
 ```bash
-# Start Storybook for visual testing
+# Start Storybook for visual testing (includes brand switcher)
 pnpm storybook
 
 # Run all tests
@@ -97,8 +97,10 @@ pnpm lint
 # Build all packages
 pnpm build
 
-# Quick token rebuild (Style Dictionary only)
-pnpm tokens
+# Token build commands
+pnpm tokens              # Build main tokens only
+pnpm tokens:brands       # Build brand-specific tokens only  
+pnpm tokens:all          # Build both main tokens and all brands
 
 # Token development with watch mode
 cd packages/tokens && npm run dev
@@ -146,29 +148,101 @@ pnpm build
 ```
 ras-UI/
 ├── packages/
-│   ├── tokens/           # Style Dictionary design tokens
-│   │   ├── tokens/       # DTCG JSON token definitions
+│   ├── tokens/           # Style Dictionary design tokens with multibrand support
+│   │   ├── tokens/       # DTCG JSON shared semantic tokens
+│   │   │   ├── core.json        # Base tokens (spacing, typography, elevation)
+│   │   │   ├── semantic.json    # Semantic color tokens (theme-aware)
+│   │   │   └── components.json  # Component tokens (shared across brands)
+│   │   ├── brands/       # Brand-specific token definitions
+│   │   │   ├── default/         # Default brand (blue-based)
+│   │   │   │   ├── core.json    # Brand colors and overrides
+│   │   │   │   └── components.json # Brand component tokens
+│   │   │   ├── vibrant/         # Vibrant brand (purple/pink-based)
+│   │   │   │   ├── core.json
+│   │   │   │   └── components.json
+│   │   │   └── corporate/       # Corporate brand (teal/slate-based)
+│   │   │       ├── core.json
+│   │   │       └── components.json
 │   │   ├── dist/         # Generated CSS and TypeScript
-│   │   └── style-dictionary.config.js
+│   │   │   ├── tokens.css       # Main semantic tokens
+│   │   │   ├── tokens.ts        # TypeScript token exports
+│   │   │   ├── brands/          # Brand-specific CSS files
+│   │   │   │   ├── default/tokens.css
+│   │   │   │   ├── vibrant/tokens.css
+│   │   │   │   └── corporate/tokens.css
+│   │   │   └── brands.css       # Combined brands CSS
+│   │   ├── build-brands.js      # Custom brand build script
+│   │   ├── style-dictionary.config.js
+│   │   └── src/index.ts         # Brand switching utilities
 │   ├── react/            # React component library
 │   │   ├── src/
 │   │   │   ├── components/    # Button, Input, Dialog
 │   │   │   ├── styles/        # vanilla-extract theme/recipes
-│   │   │   └── utils/         # Theme utilities
+│   │   │   └── utils/         # Theme & brand utilities
 │   │   └── eslint-report.json # ESLint MCP output
-│   └── docs/             # Storybook documentation
+│   └── docs/             # Storybook documentation with brand switcher
 ├── eslint.config.js      # Root ESLint config (flat config format)
 ├── tsconfig.json         # Root TypeScript config (project references)
 └── turbo.json           # Build orchestration
 ```
+
+## Multibrand System Architecture
+
+### Brands vs Themes - Key Concepts
+
+**Brands** (Visual Identity):
+- **Purpose**: Different visual identities/personalities for the same design system
+- **Available Brands**: `default` (blue), `vibrant` (purple/pink), `corporate` (teal/slate)
+- **Scope**: Changes brand colors, component styling preferences, shadows, border radius
+- **Selector**: `[data-brand="default|vibrant|corporate"]`
+- **Examples**: Primary color, secondary palette, design system personality
+
+**Themes** (Accessibility/Context):
+- **Purpose**: Light/dark modes and high contrast variants for accessibility
+- **Available Themes**: `light`, `dark`, `hc-light`, `hc-dark`
+- **Scope**: Changes semantic color mappings for different lighting/contrast needs
+- **Selector**: `[data-theme="light|dark|hc-light|hc-dark"]`
+- **Examples**: Surface colors, text contrast, focus indicators
+
+**Combined Usage**: `[data-brand="vibrant"][data-theme="dark"]` combines purple brand with dark theme
+
+### Brand Development Workflow
+
+**Adding a New Brand:**
+1. Create new directory in `/packages/tokens/brands/newbrand/`
+2. Add `core.json` with brand-specific base tokens
+3. Add `components.json` with brand-specific component tokens
+4. Run `pnpm tokens:brands` to build
+5. Add brand to TypeScript types in `src/index.ts`
+6. Test in Storybook with brand switcher
+
+**Modifying Existing Brands:**
+1. Edit brand files in `/packages/tokens/brands/{brand}/`
+2. Run `pnpm tokens:all` to rebuild both main tokens and brands
+3. Test all theme combinations for the modified brand
+4. Verify component stories show expected changes
 
 ## Common Issues and Solutions
 
 ### Style Dictionary Not Building
 ```bash
 cd packages/tokens
-npm run build
-# Check that dist/tokens.css and dist/tokens.ts are generated
+npm run build        # Main tokens only
+npm run build:brands # Brands only  
+npm run build:all    # Both main and brands
+# Check that dist/tokens.css, dist/brands.css, and brand CSS files are generated
+```
+
+### Brand-Specific Issues
+```bash
+# Brands not generating
+cd packages/tokens && npm run build:brands
+# Check dist/brands/ directory has all brand CSS files
+
+# Brand switching not working
+# Verify data-brand attribute is set correctly in DOM
+# Check that dist/brands.css is imported in your application
+# Ensure CSS custom properties are resolving correctly
 ```
 
 ### ESLint Errors
@@ -180,11 +254,13 @@ npm run build
 - Run `pnpm type-check` to isolate TypeScript issues
 - Check that all package dependencies are built (`pnpm build`)
 - Verify Style Dictionary output is generated correctly
+- For brand issues, run `pnpm tokens:all` to ensure all brands are built
 
-### Theme Switching Issues
-- Verify CSS custom properties in `tokens.css`
-- Check `[data-theme]` selectors in generated CSS
-- Test with `setTheme()` utility function
+### Brand/Theme Switching Issues
+- Verify CSS custom properties in `tokens.css` and `brands.css`
+- Check `[data-brand]` and `[data-theme]` selectors in generated CSS
+- Test with brand/theme utility functions: `setBrand()`, `setTheme()`
+- Ensure both `tokens.css` and `brands.css` are loaded in your application
 
 ## Process Improvements Based on Feedback
 
@@ -239,8 +315,17 @@ pnpm release
 **For Component Development:**
 - Use React Aria Components as base
 - Follow existing patterns in Button/Input/Dialog
-- Ensure accessibility compliance
+- Ensure accessibility compliance across all brands and themes
 - Add comprehensive tests and Storybook stories
+- Test component behavior with all brand combinations
+- Use brand-aware CSS custom properties (never hardcode brand values)
+
+**For Multibrand Development:**
+- Test changes across all 3 brands (default, vibrant, corporate)
+- Verify both light and dark themes work with each brand
+- Use Storybook brand switcher for visual validation
+- Update brand-specific tokens in appropriate brand directories
+- Always run `pnpm tokens:all` when modifying brand tokens
 
 ---
 

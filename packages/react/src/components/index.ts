@@ -50,3 +50,21 @@ export {
   Spinner,
   type SpinnerProps 
 } from './Spinner';
+
+// Tooltip
+export { 
+  Tooltip,
+  type TooltipProps 
+} from './Tooltip';
+
+// Switch
+export { 
+  Switch,
+  type SwitchProps 
+} from './Switch';
+
+// Alert
+export { 
+  Alert,
+  type AlertProps 
+} from './Alert';

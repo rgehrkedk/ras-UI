@@ -37,20 +37,20 @@ export const surface = recipe({
   variants: {
     elevation: {
       '0': {
-        boxShadow: theme.elevation['0'],
+        boxShadow: theme.elevation.none,
       },
       '1': {
         backgroundColor: theme.color.surface.raised,
-        boxShadow: theme.elevation['1'],
+        boxShadow: theme.elevation.sm,
       },
       '2': {
         backgroundColor: theme.color.surface.float,
-        boxShadow: theme.elevation['2'],
+        boxShadow: theme.elevation.md,
         border: `1px solid ${theme.color.border.default}`,
       },
       '3': {
         backgroundColor: theme.color.surface.float,
-        boxShadow: theme.elevation['3'],
+        boxShadow: theme.elevation.lg,
         border: `1px solid ${theme.color.border.default}`,
       },
     },
@@ -83,7 +83,7 @@ export const surface = recipe({
       },
       style: {
         ':hover': {
-          boxShadow: theme.elevation['1'],
+          boxShadow: theme.elevation.sm,
           backgroundColor: theme.color.surface.raised,
         },
       },
@@ -95,7 +95,7 @@ export const surface = recipe({
       },
       style: {
         ':hover': {
-          boxShadow: theme.elevation['2'],
+          boxShadow: theme.elevation.md,
         },
       },
     },
@@ -106,7 +106,7 @@ export const surface = recipe({
       },
       style: {
         ':hover': {
-          boxShadow: theme.elevation['3'],
+          boxShadow: theme.elevation.lg,
         },
       },
     },
@@ -116,17 +116,17 @@ export const surface = recipe({
 // Component size variants
 export const sizeVariants = {
   sm: {
-    padding: `${theme.space['2']} ${theme.space['3']}`,
+    padding: `${theme.space.xs} ${theme.space.sm}`,
     fontSize: theme.font.size.sm,
     minHeight: '32px',
   },
   md: {
-    padding: `${theme.space['3']} ${theme.space['4']}`,
+    padding: `${theme.space.sm} ${theme.space[4]}`,
     fontSize: theme.font.size.md,
     minHeight: '40px',
   },
   lg: {
-    padding: `${theme.space['4']} ${theme.space['5']}`,
+    padding: `${theme.space[4]} ${theme.space.md}`,
     fontSize: theme.font.size.lg,
     minHeight: '48px',
   },

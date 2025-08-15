@@ -132,5 +132,21 @@
         }
       }
     }
+  },
+  "component": {
+    "button": {
+      "border-radius": {
+        "value": "{radius.md}",
+        "type": "dimension",
+        "description": "Button border radius - default brand"
+      }
+    },
+    "input": {
+      "border-radius": {
+        "value": "{radius.md}",
+        "type": "dimension",
+        "description": "Input field border radius - default brand"
+      }
+    }
   }
 }

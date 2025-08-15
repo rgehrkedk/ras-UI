@@ -137,6 +137,7 @@ export const theme = {
     // Component-specific tokens (brand controllable)
     components: {
       button: {
+        borderRadius: 'var(--component-button-border-radius)',
         primary: {
           background: 'var(--color-components-button-primary-background)',
           backgroundHover: 'var(--color-components-button-primary-background-hover)',
@@ -169,17 +170,28 @@ export const theme = {
     },
   },
   space: {
-    '0': 'var(--space-0)',
-    '1': 'var(--space-1)',
-    '2': 'var(--space-2)',
-    '3': 'var(--space-3)',
-    '4': 'var(--space-4)',
-    '5': 'var(--space-5)',
-    '6': 'var(--space-6)',
-    '7': 'var(--space-7)',
-    '8': 'var(--space-8)',
-    '9': 'var(--space-9)',
-    '10': 'var(--space-10)',
+    // Numeric access (clean)
+    0: 'var(--space-0)',
+    1: 'var(--space-1)', 
+    2: 'var(--space-2)',
+    3: 'var(--space-3)',
+    4: 'var(--space-4)',
+    5: 'var(--space-5)',
+    6: 'var(--space-6)',
+    7: 'var(--space-7)',
+    8: 'var(--space-8)',
+    9: 'var(--space-9)',
+    10: 'var(--space-10)',
+    
+    // Semantic access (developer-friendly)
+    none: 'var(--space-none)',
+    xs: 'var(--space-xs)',
+    sm: 'var(--space-sm)',
+    md: 'var(--space-md)',
+    lg: 'var(--space-lg)',
+    xl: 'var(--space-xl)',
+    '2xl': 'var(--space-2xl)',
+    '3xl': 'var(--space-3xl)',
   },
   radius: {
     none: 'var(--radius-none)',
@@ -190,10 +202,17 @@ export const theme = {
     full: 'var(--radius-full)',
   },
   elevation: {
-    '0': 'var(--elevation-0)',
-    '1': 'var(--elevation-1)',
-    '2': 'var(--elevation-2)',
-    '3': 'var(--elevation-3)',
+    // Numeric access (clean)
+    0: 'var(--elevation-0)',
+    1: 'var(--elevation-1)',
+    2: 'var(--elevation-2)',
+    3: 'var(--elevation-3)',
+    
+    // Semantic access (developer-friendly)
+    none: 'var(--elevation-none)',
+    sm: 'var(--elevation-sm)',
+    md: 'var(--elevation-md)',
+    lg: 'var(--elevation-lg)',
   },
   font: {
     family: {

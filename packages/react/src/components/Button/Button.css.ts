@@ -27,7 +27,7 @@ export const buttonBase = style({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: theme.space['2'],
+  gap: theme.space.xs,
   
   // Interaction
   cursor: 'pointer',
@@ -78,13 +78,13 @@ export const button = recipe({
         ':hover': {
           backgroundColor: theme.color.components.button.primary.backgroundHover,
           transform: 'translateY(-1px)',
-          boxShadow: theme.elevation['2'],
+          boxShadow: theme.elevation.md,
         },
         
         ':active': {
           backgroundColor: theme.color.components.button.primary.backgroundActive,
           transform: 'translateY(0)',
-          boxShadow: theme.elevation['1'],
+          boxShadow: theme.elevation.sm,
         },
       },
       
@@ -96,7 +96,7 @@ export const button = recipe({
         ':hover': {
           backgroundColor: theme.color.components.button.secondary.backgroundHover,
           transform: 'translateY(-1px)',
-          boxShadow: theme.elevation['1'],
+          boxShadow: theme.elevation.sm,
         },
         
         ':active': {
@@ -127,7 +127,7 @@ export const button = recipe({
         ':hover': {
           backgroundColor: theme.color.components.button.danger.backgroundHover,
           transform: 'translateY(-1px)',
-          boxShadow: theme.elevation['2'],
+          boxShadow: theme.elevation.md,
         },
         
         ':active': {
@@ -139,24 +139,24 @@ export const button = recipe({
     
     size: {
       sm: {
-        padding: `${theme.space['2']} ${theme.space['3']}`,
+        padding: `${theme.space.xs} ${theme.space.sm}`,
         fontSize: theme.font.size.sm,
         minHeight: '32px',
-        borderRadius: theme.radius.sm,
+        borderRadius: theme.color.components.button.borderRadius,
       },
       
       md: {
-        padding: `${theme.space['3']} ${theme.space['4']}`,
+        padding: `${theme.space.sm} ${theme.space[4]}`,
         fontSize: theme.font.size.md,
         minHeight: '40px',
-        borderRadius: theme.radius.md,
+        borderRadius: theme.color.components.button.borderRadius,
       },
       
       lg: {
-        padding: `${theme.space['4']} ${theme.space['5']}`,
+        padding: `${theme.space[4]} ${theme.space.md}`,
         fontSize: theme.font.size.lg,
         minHeight: '48px',
-        borderRadius: theme.radius.lg,
+        borderRadius: theme.color.components.button.borderRadius,
       },
     },
     

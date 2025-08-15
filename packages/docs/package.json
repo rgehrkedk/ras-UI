@@ -5,9 +5,11 @@
   "private": true,
   "scripts": {
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build": "storybook build",
-    "preview-storybook": "npx http-server storybook-static"
+    "build-storybook": "NODE_ENV=production storybook build --quiet",
+    "build": "NODE_ENV=production storybook build --quiet",
+    "build:analyze": "NODE_ENV=production storybook build --webpack-stats-json",
+    "preview-storybook": "npx http-server storybook-static",
+    "preview": "npx http-server storybook-static"
   },
   "dependencies": {
     "@ras-ui/react": "workspace:*",

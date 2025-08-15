@@ -132,5 +132,21 @@
         }
       }
     }
+  },
+  "component": {
+    "button": {
+      "border-radius": {
+        "value": "{radius.full}",
+        "type": "dimension",
+        "description": "Button border radius - vibrant brand (fully rounded)"
+      }
+    },
+    "input": {
+      "border-radius": {
+        "value": "{radius.lg}",
+        "type": "dimension",
+        "description": "Input field border radius - vibrant brand (large rounded)"
+      }
+    }
   }
 }

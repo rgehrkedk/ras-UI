@@ -1,0 +1,85 @@
+name: Deploy Storybook to Vercel
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'packages/docs/**'
+      - 'packages/react/src/**'
+      - 'packages/tokens/**'
+      - '.github/workflows/deploy-storybook.yml'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'packages/docs/**'
+      - 'packages/react/src/**'
+      - 'packages/tokens/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build tokens
+        run: pnpm tokens:all
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+        env:
+          NODE_ENV: production
+
+      - name: Deploy to Vercel (Preview)
+        if: github.event_name == 'pull_request'
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Deploy to Vercel (Production)
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Comment PR with preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo, number } = context.issue;
+            const body = `🚀 **Storybook Preview Deployed!**
+            
+            View your changes at: https://ras-ui-storybook-git-${{ github.head_ref }}-yourvercelteam.vercel.app
+            
+            📖 [Full Storybook Documentation](https://ras-ui-storybook.vercel.app)`;
+            
+            github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: number,
+              body
+            });

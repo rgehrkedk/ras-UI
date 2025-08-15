@@ -34,7 +34,7 @@ export const dialogOverlay = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: theme.space['4'],
+  padding: theme.space[4],
   zIndex: 50,
   
   // Animation
@@ -50,7 +50,7 @@ export const dialogContainer = style({
   backgroundColor: theme.color.surface.float,
   border: `1px solid ${theme.color.border.default}`,
   borderRadius: theme.radius.lg,
-  boxShadow: theme.elevation['3'],
+  boxShadow: theme.elevation.lg,
   maxWidth: 'min(calc(100vw - 2rem), 32rem)',
   maxHeight: 'calc(100vh - 2rem)',
   overflow: 'hidden',
@@ -73,7 +73,7 @@ export const dialogHeader = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: `${theme.space['6']} ${theme.space['6']} ${theme.space['4']}`,
+  padding: `${theme.space[6]} ${theme.space[6]} ${theme.space[4]}`,
   borderBottom: `1px solid ${theme.color.border.default}`,
   flexShrink: 0,
 });
@@ -127,7 +127,7 @@ export const dialogCloseButton = style({
 
 // Dialog body/content
 export const dialogBody = style({
-  padding: theme.space['6'],
+  padding: theme.space[6],
   overflow: 'auto',
   flex: 1,
 });
@@ -155,8 +155,8 @@ export const dialogFooter = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
-  gap: theme.space['3'],
-  padding: `${theme.space['4']} ${theme.space['6']} ${theme.space['6']}`,
+  gap: theme.space.sm,
+  padding: `${theme.space[4]} ${theme.space[6]} ${theme.space[6]}`,
   borderTop: `1px solid ${theme.color.border.default}`,
   flexShrink: 0,
 });
@@ -168,7 +168,7 @@ export const dialogDescription = style({
   color: theme.color.text.secondary,
   lineHeight: 1.5,
   margin: 0,
-  marginBottom: theme.space['4'],
+  marginBottom: theme.space[4],
 });
 
 // Alert dialog variant styles
@@ -181,7 +181,7 @@ export const alertDialogContainer = style([
 
 export const alertDialogIcon = style({
   flexShrink: 0,
-  marginRight: theme.space['3'],
+  marginRight: theme.space.sm,
   width: '20px',
   height: '20px',
 });

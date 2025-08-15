@@ -1,0 +1,77 @@
+name: Storybook Quality Checks
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'packages/docs/**'
+      - 'packages/react/src/**'
+      - 'packages/tokens/**'
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build tokens
+        run: pnpm tokens:all
+
+      - name: Type check
+        run: pnpm type-check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+        env:
+          NODE_ENV: production
+
+      - name: Test Storybook build
+        run: |
+          # Check if storybook-static directory exists and contains files
+          if [ ! -d "packages/docs/storybook-static" ]; then
+            echo "❌ Storybook build failed - output directory not found"
+            exit 1
+          fi
+          
+          if [ ! -f "packages/docs/storybook-static/index.html" ]; then
+            echo "❌ Storybook build failed - index.html not found"
+            exit 1
+          fi
+          
+          # Check for essential assets
+          if [ ! -d "packages/docs/storybook-static/assets" ]; then
+            echo "❌ Storybook build failed - assets directory not found"
+            exit 1
+          fi
+          
+          echo "✅ Storybook build verification passed"
+
+      - name: Upload Storybook build artifacts
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: storybook-build-logs
+          path: |
+            packages/docs/storybook-static/
+            packages/docs/storybook.log
+          retention-days: 7
