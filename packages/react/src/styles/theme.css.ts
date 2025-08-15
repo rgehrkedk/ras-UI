@@ -235,6 +235,50 @@ export const theme = {
       bold: 'var(--font-weight-bold)',
     },
   },
+  animation: {
+    duration: {
+      instant: 'var(--animation-duration-instant)',
+      fast: 'var(--animation-duration-fast)',
+      normal: 'var(--animation-duration-normal)',
+      slow: 'var(--animation-duration-slow)',
+      tooltip: 'var(--animation-duration-tooltip)',
+    },
+    easing: {
+      easeIn: 'var(--animation-easing-ease-in)',
+      easeOut: 'var(--animation-easing-ease-out)',
+      easeInOut: 'var(--animation-easing-ease-in-out)',
+    },
+  },
+  icon: {
+    size: {
+      xs: 'var(--icon-size-xs)',
+      sm: 'var(--icon-size-sm)',
+      md: 'var(--icon-size-md)',
+      lg: 'var(--icon-size-lg)',
+      xl: 'var(--icon-size-xl)',
+    },
+    close: {
+      sm: 'var(--icon-close-sm)',
+      md: 'var(--icon-close-md)',
+      lg: 'var(--icon-close-lg)',
+    },
+  },
+  opacity: {
+    disabled: 'var(--opacity-disabled)',
+    muted: 'var(--opacity-muted)',
+    secondary: 'var(--opacity-secondary)',
+    overlay: 'var(--opacity-overlay)',
+  },
+  component: {
+    tooltip: {
+      maxWidth: {
+        sm: 'var(--component-tooltip-max-width-sm)',
+        md: 'var(--component-tooltip-max-width-md)',
+        lg: 'var(--component-tooltip-max-width-lg)',
+      },
+      offset: 'var(--component-tooltip-offset)',
+    },
+  },
 } as const;
 
 // Type for the theme

@@ -5,6 +5,8 @@
 import { style, keyframes } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
+import { theme } from '../../styles/theme.css';
+
 // Spinner animation
 const spin = keyframes({
   '0%': { transform: 'rotate(0deg)' },

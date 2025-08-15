@@ -40,7 +40,7 @@ export const dialogOverlay = style({
   // Animation
   '@media': {
     '(prefers-reduced-motion: no-preference)': {
-      animation: `${fadeIn} 0.2s ease-out`,
+      animation: `${fadeIn} ${theme.animation.duration.normal} ${theme.animation.easing.easeOut}`,
     },
   },
 });
@@ -60,7 +60,7 @@ export const dialogContainer = style({
   // Animation
   '@media': {
     '(prefers-reduced-motion: no-preference)': {
-      animation: `${slideIn} 0.2s ease-out`,
+      animation: `${slideIn} ${theme.animation.duration.normal} ${theme.animation.easing.easeOut}`,
     },
   },
   
@@ -106,7 +106,7 @@ export const dialogCloseButton = style({
   // Transitions
   '@media': {
     '(prefers-reduced-motion: no-preference)': {
-      transition: 'all 0.2s ease-in-out',
+      transition: `all ${theme.animation.duration.normal} ${theme.animation.easing.easeInOut}`,
     },
   },
   

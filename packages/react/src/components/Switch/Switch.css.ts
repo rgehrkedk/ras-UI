@@ -38,7 +38,7 @@ export const switchTrack = recipe({
     // Transitions respecting prefers-reduced-motion
     '@media': {
       '(prefers-reduced-motion: no-preference)': {
-        transition: 'all 200ms ease-in-out',
+        transition: `all ${theme.animation.duration.normal} ${theme.animation.easing.easeInOut}`,
       },
       '(prefers-reduced-motion: reduce)': {
         transition: 'none',
@@ -145,7 +145,7 @@ export const switchThumb = recipe({
     // Smooth transitions
     '@media': {
       '(prefers-reduced-motion: no-preference)': {
-        transition: 'all 200ms ease-in-out',
+        transition: `all ${theme.animation.duration.normal} ${theme.animation.easing.easeInOut}`,
       },
       '(prefers-reduced-motion: reduce)': {
         transition: 'none',

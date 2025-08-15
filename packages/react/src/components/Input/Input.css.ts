@@ -55,7 +55,7 @@ export const inputContainer = recipe({
     // Transitions
     '@media': {
       '(prefers-reduced-motion: no-preference)': {
-        transition: 'all 0.2s ease-in-out',
+        transition: `all ${theme.animation.duration.normal} ${theme.animation.easing.easeInOut}`,
       },
     },
     

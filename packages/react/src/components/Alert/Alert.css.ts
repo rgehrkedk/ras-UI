@@ -55,8 +55,8 @@ export const alert = recipe({
     // Animations respecting prefers-reduced-motion
     '@media': {
       '(prefers-reduced-motion: no-preference)': {
-        animation: `${slideIn} 300ms ease-out`,
-        transition: 'all 200ms ease-in-out',
+        animation: `${slideIn} ${theme.animation.duration.slow} ${theme.animation.easing.easeOut}`,
+        transition: `all ${theme.animation.duration.normal} ${theme.animation.easing.easeInOut}`,
       },
       '(prefers-reduced-motion: reduce)': {
         animation: 'none',
@@ -69,7 +69,7 @@ export const alert = recipe({
       '&[data-exiting="true"]': {
         '@media': {
           '(prefers-reduced-motion: no-preference)': {
-            animation: `${slideOut} 250ms ease-in forwards`,
+            animation: `${slideOut} ${theme.animation.duration.normal} ${theme.animation.easing.easeIn} forwards`,
           },
           '(prefers-reduced-motion: reduce)': {
             opacity: 0,
@@ -270,7 +270,7 @@ export const alertCloseButton = recipe({
     // Transitions
     '@media': {
       '(prefers-reduced-motion: no-preference)': {
-        transition: 'all 150ms ease-in-out',
+        transition: `all ${theme.animation.duration.fast} ${theme.animation.easing.easeInOut}`,
       },
       '(prefers-reduced-motion: reduce)': {
         transition: 'none',
