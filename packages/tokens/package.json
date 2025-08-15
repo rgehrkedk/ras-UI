@@ -11,6 +11,7 @@
     "build": "style-dictionary build --config style-dictionary.config.js && tsc",
     "build:brands": "node build-brands.js",
     "build:all": "npm run build && npm run build:brands",
+    "tokens": "npm run build:all",
     "dev": "style-dictionary build --watch",
     "type-check": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.js",
