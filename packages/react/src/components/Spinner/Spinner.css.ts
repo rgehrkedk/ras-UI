@@ -5,6 +5,8 @@
 import { style, keyframes } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
+import { theme } from '../../styles/theme.css';
+
 // Spinner animation
 const spin = keyframes({
   '0%': { transform: 'rotate(0deg)' },
@@ -16,7 +18,7 @@ const spinnerBase = style({
   border: '2px solid currentColor',
   borderTopColor: 'transparent',
   borderRadius: '50%',
-  animation: `${spin} 1s linear infinite`,
+  animation: `${spin} ${theme.animation.duration.spinner} linear infinite`,
   flexShrink: 0,
 });
 

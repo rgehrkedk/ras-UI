@@ -235,6 +235,21 @@ export const theme = {
       bold: 'var(--font-weight-bold)',
     },
   },
+  animation: {
+    duration: {
+      instant: 'var(--animation-duration-instant)',
+      fast: 'var(--animation-duration-fast)',
+      normal: 'var(--animation-duration-normal)',
+      slow: 'var(--animation-duration-slow)',
+      tooltip: 'var(--animation-duration-tooltip)',
+      spinner: 'var(--animation-duration-spinner)',
+    },
+    easing: {
+      easeIn: 'var(--animation-easing-ease-in)',
+      easeOut: 'var(--animation-easing-ease-out)',
+      easeInOut: 'var(--animation-easing-ease-in-out)',
+    },
+  },
 } as const;
 
 // Type for the theme

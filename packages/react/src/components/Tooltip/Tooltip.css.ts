@@ -36,7 +36,7 @@ export const tooltip = recipe({
     // Smooth transitions instead of animations to prevent flickering
     '@media': {
       '(prefers-reduced-motion: no-preference)': {
-        transition: 'opacity 150ms ease-out',
+        transition: `opacity ${theme.animation.duration.tooltip} ${theme.animation.easing.easeOut}`,
       },
       '(prefers-reduced-motion: reduce)': {
         transition: 'none',

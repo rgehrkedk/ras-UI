@@ -205,6 +205,11 @@
         "value": "150ms", 
         "type": "duration", 
         "description": "Tooltip-specific animation timing" 
+      },
+      "spinner": {
+        "value": "1000ms",
+        "type": "duration",
+        "description": "Duration for continuous spinning animations"
       }
     },
     "easing": {
