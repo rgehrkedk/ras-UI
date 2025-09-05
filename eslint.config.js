@@ -134,4 +134,26 @@ export default [{
     '*.config.js',
     '*.config.ts'
   ]
+},
+// Stories: relax a few rules for examples/docs
+{
+  files: ['**/*.stories.tsx'],
+  rules: {
+    'react/no-unescaped-entities': 'off',
+    'no-undef': 'off',
+    'import/order': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'storybook/no-redundant-story-name': 'warn'
+  }
+},
+// Tests: lighten up constraints for test authors
+{
+  files: ['**/*.test.ts', '**/*.test.tsx'],
+  rules: {
+    'import/order': 'off',
+    'no-undef': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off'
+  }
 }, ...storybook.configs["flat/recommended"]];

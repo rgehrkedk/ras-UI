@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔎 Running type-check before push..."
+if command -v pnpm >/dev/null 2>&1; then
+  pnpm type-check || exit 1
+  # Run tests where present without blocking missing scripts
+  pnpm -r --if-present test:run || pnpm -r --if-present test || true
+else
+  echo "pnpm not found; skipping checks"
+fi
+

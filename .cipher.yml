@@ -1,0 +1,125 @@
+# Cipher Memory Agent Configuration for ras-UI Design System
+# This configuration is optimized for design system development with:
+# - Style Dictionary integration
+# - React Aria Components
+# - vanilla-extract styling
+# - Multibrand system (default, vibrant, corporate)
+
+# Project Information
+project:
+  name: "ras-UI Design System"
+  description: "Modern, accessible design system with multibrand support"
+  workspace_id: "ras-ui-project"
+  
+# Memory Configuration
+memory:
+  # Enable persistent memory across sessions
+  persistent: true
+  
+  # Memory categories specific to design system development
+  categories:
+    - "design-tokens"          # Style Dictionary tokens and brands
+    - "react-aria-components"  # Component implementations and patterns
+    - "vanilla-extract-css"    # CSS-in-JS styling patterns
+    - "multibrand-architecture" # Brand switching and theme systems
+    - "build-automation"       # Turbo, tooling, and error checking
+    - "accessibility-patterns" # WCAG compliance and testing
+    - "storybook-stories"      # Component documentation patterns
+    - "testing-strategies"     # Unit, visual, and integration tests
+  
+  # Semantic search for design system concepts
+  semantic_search: true
+  
+  # Auto-capture memories during development
+  auto_capture:
+    enabled: true
+    # Capture patterns specific to design system work
+    patterns:
+      - "Style Dictionary"
+      - "React Aria"
+      - "vanilla-extract"
+      - "brand switching"
+      - "design tokens"
+      - "component patterns"
+      - "accessibility"
+      - "WCAG"
+      - "theme switching"
+      - "CSS custom properties"
+
+# LLM Provider Configuration
+llm:
+  # Primary provider - using Anthropic since OpenAI has quota issues
+  provider: "anthropic"
+  
+  # Model settings  
+  model: "claude-3-5-sonnet-20241022"  # Latest Claude model
+  temperature: 0.1  # Lower for more consistent technical responses
+  apiKey: $ANTHROPIC_API_KEY
+  
+  # System prompt optimized for design system development
+  system_prompt: |
+    You are a memory assistant for the ras-UI design system project.
+    
+    Key context to remember and retrieve:
+    - This is a monorepo with pnpm workspaces and Turbo build orchestration
+    - Uses Style Dictionary with DTCG-compliant tokens and multibrand support (default, vibrant, corporate)
+    - Components built with React Aria Components for accessibility-first development
+    - Styling with vanilla-extract CSS-in-JS with zero runtime overhead
+    - Complex multibrand system with brand and theme switching capabilities
+    - Comprehensive error checking and automated health monitoring
+    
+    Focus on capturing and retrieving memories about:
+    1. Design token patterns and Style Dictionary workflows
+    2. React Aria component implementation best practices
+    3. Brand architecture and theme switching mechanisms
+    4. Build system optimizations and error handling patterns
+    5. Accessibility patterns and WCAG compliance strategies
+    6. Testing approaches (unit, visual regression, accessibility)
+    7. Component API design and vanilla-extract styling patterns
+
+# MCP Server Settings
+mcp:
+  mode: "aggregator"
+  transport: "stdio"
+  
+# File watching patterns for auto-memory capture
+file_patterns:
+  watch:
+    - "packages/tokens/**/*.json"     # Token definitions
+    - "packages/react/src/**/*.tsx"   # React components
+    - "packages/react/src/**/*.css.ts" # vanilla-extract styles
+    - "*.md"                          # Documentation updates
+    - "package.json"                  # Dependency changes
+    - "turbo.json"                    # Build configuration
+    - "**/tsconfig.json"              # TypeScript configuration
+  
+  ignore:
+    - "node_modules/**"
+    - "dist/**"
+    - ".git/**"
+    - "*.log"
+    - "coverage/**"
+
+# Team collaboration settings
+collaboration:
+  # Enable sharing memories with team members
+  team_sharing: true
+  
+  # Workspace settings for ras-UI team
+  workspace:
+    id: "ras-ui-design-system"
+    name: "ras-UI Design System Team"
+    
+# Advanced memory settings
+advanced:
+  # Context window management
+  max_context_tokens: 4000
+  
+  # Memory retrieval settings
+  retrieval:
+    max_memories: 10
+    relevance_threshold: 0.7
+    
+  # Memory storage optimization
+  compression: true
+  deduplication: true

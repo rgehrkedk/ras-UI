@@ -31,6 +31,11 @@ export const theme = {
     success: 'var(--color-semantic-success)',
     warning: 'var(--color-semantic-warning)',
     overlay: 'var(--color-semantic-overlay)',
+    interaction: {
+      hover: 'var(--color-semantic-interaction-hover)',
+      active: 'var(--color-semantic-interaction-active)',
+      pressed: 'var(--color-semantic-interaction-pressed)',
+    },
     
     // Base colors (for direct use when needed)
     base: {
@@ -134,10 +139,23 @@ export const theme = {
       },
     },
     
+    // Semantic colors - menu and interaction states
+    semantic: {
+      state: {
+        selected: 'var(--color-semantic-state-selected)',
+        indeterminate: 'var(--color-semantic-state-indeterminate)',
+      },
+      menu: {
+        itemHover: 'var(--color-semantic-menu-item-hover)',
+        itemSelected: 'var(--color-semantic-menu-item-selected)',
+        separator: 'var(--color-semantic-menu-separator)',
+      },
+    },
+    
     // Component-specific tokens (brand controllable)
     components: {
       button: {
-        borderRadius: 'var(--component-button-border-radius)',
+        borderRadius: 'var(--color-components-button-border-radius)',
         primary: {
           background: 'var(--color-components-button-primary-background)',
           backgroundHover: 'var(--color-components-button-primary-background-hover)',
@@ -165,6 +183,69 @@ export const theme = {
           backgroundActive: 'var(--color-components-button-danger-background-active)',
           text: 'var(--color-components-button-danger-text)',
           border: 'var(--color-components-button-danger-border)',
+        },
+      },
+      link: {
+        default: {
+          text: 'var(--color-components-link-default-text)',
+          textHover: 'var(--color-components-link-default-text-hover)',
+          textActive: 'var(--color-components-link-default-text-active)',
+          textVisited: 'var(--color-components-link-default-text-visited)',
+        },
+        quiet: {
+          text: 'var(--color-components-link-quiet-text)',
+          textHover: 'var(--color-components-link-quiet-text-hover)',
+          textActive: 'var(--color-components-link-quiet-text-active)',
+        },
+        emphasized: {
+          text: 'var(--color-components-link-emphasized-text)',
+          textHover: 'var(--color-components-link-emphasized-text-hover)',
+          background: 'var(--color-components-link-emphasized-background)',
+          backgroundHover: 'var(--color-components-link-emphasized-background-hover)',
+          backgroundActive: 'var(--color-components-link-emphasized-background-active)',
+          borderRadius: 'var(--color-components-link-emphasized-border-radius)',
+        },
+      },
+      breadcrumbs: {
+        link: {
+          text: 'var(--color-components-breadcrumbs-link-text)',
+          textHover: 'var(--color-components-breadcrumbs-link-text-hover)',
+          textActive: 'var(--color-components-breadcrumbs-link-text-active)',
+          backgroundHover: 'var(--color-components-breadcrumbs-link-background-hover)',
+          backgroundActive: 'var(--color-components-breadcrumbs-link-background-active)',
+          borderRadius: 'var(--color-components-breadcrumbs-link-border-radius)',
+        },
+        current: {
+          text: 'var(--color-components-breadcrumbs-current-text)',
+        },
+        separator: {
+          text: 'var(--color-components-breadcrumbs-separator-text)',
+        },
+        ellipsis: {
+          text: 'var(--color-components-breadcrumbs-ellipsis-text)',
+          textHover: 'var(--color-components-breadcrumbs-ellipsis-text-hover)',
+          backgroundHover: 'var(--color-components-breadcrumbs-ellipsis-background-hover)',
+          borderRadius: 'var(--color-components-breadcrumbs-ellipsis-border-radius)',
+        },
+      },
+      table: {
+        border: 'var(--color-components-table-border)',
+        borderRadius: 'var(--color-components-table-border-radius)',
+        header: {
+          background: 'var(--color-components-table-header-background)',
+          text: 'var(--color-components-table-header-text)',
+          sortIcon: 'var(--color-components-table-header-sort-icon)',
+          sortIconActive: 'var(--color-components-table-header-sort-icon-active)',
+        },
+        row: {
+          background: 'var(--color-components-table-row-background)',
+          backgroundHover: 'var(--color-components-table-row-background-hover)',
+          backgroundSelected: 'var(--color-components-table-row-background-selected)',
+          backgroundStriped: 'var(--color-components-table-row-background-striped)',
+        },
+        cell: {
+          text: 'var(--color-components-table-cell-text)',
+          textSecondary: 'var(--color-components-table-cell-text-secondary)',
         },
       },
     },
@@ -234,6 +315,67 @@ export const theme = {
       semibold: 'var(--font-weight-semibold)',
       bold: 'var(--font-weight-bold)',
     },
+  },
+  animation: {
+    duration: {
+      instant: 'var(--animation-duration-instant)',
+      fast: 'var(--animation-duration-fast)',
+      normal: 'var(--animation-duration-normal)',
+      slow: 'var(--animation-duration-slow)',
+      tooltip: 'var(--animation-duration-tooltip)',
+    },
+    easing: {
+      'ease-in': 'var(--animation-easing-ease-in)',
+      'ease-out': 'var(--animation-easing-ease-out)',
+      'ease-in-out': 'var(--animation-easing-ease-in-out)',
+    },
+  },
+  icon: {
+    size: {
+      xs: 'var(--icon-size-xs)',
+      sm: 'var(--icon-size-sm)',
+      md: 'var(--icon-size-md)',
+      lg: 'var(--icon-size-lg)',
+      xl: 'var(--icon-size-xl)',
+    },
+    close: {
+      sm: 'var(--icon-close-sm)',
+      md: 'var(--icon-close-md)',
+      lg: 'var(--icon-close-lg)',
+    },
+  },
+  size: {
+    control: {
+      checkbox: {
+        sm: 'var(--size-control-checkbox-sm)',
+        md: 'var(--size-control-checkbox-md)',
+        lg: 'var(--size-control-checkbox-lg)',
+      },
+      radio: {
+        sm: 'var(--size-control-radio-sm)',
+        md: 'var(--size-control-radio-md)',
+        lg: 'var(--size-control-radio-lg)',
+      },
+    },
+    height: {
+      select: {
+        sm: 'var(--size-height-select-sm)',
+        md: 'var(--size-height-select-md)',
+        lg: 'var(--size-height-select-lg)',
+      },
+    },
+  },
+  zIndex: {
+    dropdown: 'var(--zIndex-dropdown)',
+    menu: 'var(--zIndex-menu)',
+    popover: 'var(--zIndex-popover)',
+    modal: 'var(--zIndex-modal)',
+  },
+  opacity: {
+    disabled: 'var(--opacity-disabled)',
+    muted: 'var(--opacity-muted)',
+    secondary: 'var(--opacity-secondary)',
+    overlay: 'var(--opacity-overlay)',
   },
 } as const;
 

@@ -16,6 +16,12 @@ import {
 } from 'iconoir-react';
 import React from 'react';
 
+import { 
+  useAutoHide,
+  useAnimationState,
+  useIconSize,
+  useCloseIconSize
+} from '../../hooks';
 import type { 
   ComponentSize, 
   BaseComponentProps, 
@@ -26,12 +32,6 @@ import type {
 import { cn } from '../../utils/cn';
 
 // Using the new centralized hooks
-import { 
-  useAutoHide,
-  useAnimationState,
-  useIconSize,
-  useCloseIconSize
-} from '../../hooks';
 
 import { 
   alert, 

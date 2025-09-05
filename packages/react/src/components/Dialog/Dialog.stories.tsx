@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
 
 import { Button } from '../Button/Button';
+import { Select } from '../Select';
+import { SelectItem } from '../Select/SelectItem';
+import { TextField } from '../TextField';
 
 import { Dialog, DialogTrigger, AlertDialog } from './Dialog';
 
@@ -258,22 +261,30 @@ export const FormDialog: Story = {
             }
           >
             <form id="user-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div>
-                <label htmlFor="name-input">Name</label>
-                <input id="name-input" type="text" required style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }} />
-              </div>
-              <div>
-                <label htmlFor="email-input">Email</label>
-                <input id="email-input" type="email" required style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }} />
-              </div>
-              <div>
-                <label htmlFor="role-select">Role</label>
-                <select id="role-select" style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}>
-                  <option>User</option>
-                  <option>Admin</option>
-                  <option>Manager</option>
-                </select>
-              </div>
+              <TextField
+                label="Name"
+                name="name"
+                isRequired
+                placeholder="Enter full name"
+              />
+              
+              <TextField
+                label="Email"
+                name="email"
+                type="email"
+                isRequired
+                placeholder="Enter email address"
+              />
+              
+              <Select
+                label="Role"
+                name="role"
+                placeholder="Select a role"
+              >
+                <SelectItem id="user">User</SelectItem>
+                <SelectItem id="admin">Admin</SelectItem>
+                <SelectItem id="manager">Manager</SelectItem>
+              </Select>
             </form>
           </Dialog>
         </DialogTrigger>

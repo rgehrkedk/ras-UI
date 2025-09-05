@@ -93,11 +93,57 @@ export interface FormComponentProps extends DisableableComponentProps, Validatio
 }
 
 // Component variant types
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'icon';
+export type LinkVariant = 'default' | 'quiet' | 'emphasized';
 export type AlertType = 'info' | 'warning' | 'error' | 'success';
+
+// Navigation component types
+export interface NavigationComponentProps extends BaseComponentProps {
+  /**
+   * Whether the navigation item is currently active/selected
+   * @default false
+   */
+  active?: boolean;
+  
+  /**
+   * Optional href for navigation links
+   */
+  href?: string;
+  
+  /**
+   * Icon element to display
+   */
+  icon?: ReactNode;
+  
+  /**
+   * Badge element to display
+   */
+  badge?: ReactNode;
+}
+
+export interface CollapsibleComponentProps {
+  /**
+   * Whether the component is currently collapsed
+   * @default false
+   */
+  isCollapsed?: boolean;
+  
+  /**
+   * Whether the component supports collapsing
+   * @default true
+   */
+  collapsible?: boolean;
+  
+  /**
+   * Default collapsed state
+   * @default false
+   */
+  defaultCollapsed?: boolean;
+}
 
 // Event handler types
 export type PressHandler = () => void;
+export type PressEventHandler = (event?: unknown) => void;
 export type ChangeHandler<T = string> = (value: T) => void;
 export type CloseHandler = () => void;
 

@@ -36,119 +36,487 @@
         "900": { "value": "#1e3a8a", "type": "color" }
       },
       "secondary": {
-        "50": { "value": "#f0f9ff", "type": "color", "description": "Secondary brand color - lightest" },
-        "100": { "value": "#e0f2fe", "type": "color", "description": "Secondary brand color" },
-        "200": { "value": "#bae6fd", "type": "color", "description": "Secondary brand color" },
-        "300": { "value": "#7dd3fc", "type": "color", "description": "Secondary brand color" },
-        "400": { "value": "#38bdf8", "type": "color", "description": "Secondary brand color" },
-        "500": { "value": "#0ea5e9", "type": "color", "description": "Secondary brand color - base" },
-        "600": { "value": "#0284c7", "type": "color", "description": "Secondary brand color" },
-        "700": { "value": "#0369a1", "type": "color", "description": "Secondary brand color" },
-        "800": { "value": "#075985", "type": "color", "description": "Secondary brand color" },
-        "900": { "value": "#0c4a6e", "type": "color", "description": "Secondary brand color - darkest" }
+        "50": {
+          "value": "#f0f9ff",
+          "type": "color",
+          "description": "Secondary brand color - lightest"
+        },
+        "100": {
+          "value": "#e0f2fe",
+          "type": "color",
+          "description": "Secondary brand color"
+        },
+        "200": {
+          "value": "#bae6fd",
+          "type": "color",
+          "description": "Secondary brand color"
+        },
+        "300": {
+          "value": "#7dd3fc",
+          "type": "color",
+          "description": "Secondary brand color"
+        },
+        "400": {
+          "value": "#38bdf8",
+          "type": "color",
+          "description": "Secondary brand color"
+        },
+        "500": {
+          "value": "#0ea5e9",
+          "type": "color",
+          "description": "Secondary brand color - base"
+        },
+        "600": {
+          "value": "#0284c7",
+          "type": "color",
+          "description": "Secondary brand color"
+        },
+        "700": {
+          "value": "#0369a1",
+          "type": "color",
+          "description": "Secondary brand color"
+        },
+        "800": {
+          "value": "#075985",
+          "type": "color",
+          "description": "Secondary brand color"
+        },
+        "900": {
+          "value": "#0c4a6e",
+          "type": "color",
+          "description": "Secondary brand color - darkest"
+        }
       },
       "accent": {
-        "50": { "value": "#fff7ed", "type": "color", "description": "Accent color - lightest" },
-        "100": { "value": "#ffedd5", "type": "color", "description": "Accent color" },
-        "200": { "value": "#fed7aa", "type": "color", "description": "Accent color" },
-        "300": { "value": "#fdba74", "type": "color", "description": "Accent color" },
-        "400": { "value": "#fb923c", "type": "color", "description": "Accent color" },
-        "500": { "value": "#f97316", "type": "color", "description": "Accent color - base" },
-        "600": { "value": "#ea580c", "type": "color", "description": "Accent color" },
-        "700": { "value": "#c2410c", "type": "color", "description": "Accent color" },
-        "800": { "value": "#9a3412", "type": "color", "description": "Accent color" },
-        "900": { "value": "#7c2d12", "type": "color", "description": "Accent color - darkest" }
+        "50": {
+          "value": "#fff7ed",
+          "type": "color",
+          "description": "Accent color - lightest"
+        },
+        "100": {
+          "value": "#ffedd5",
+          "type": "color",
+          "description": "Accent color"
+        },
+        "200": {
+          "value": "#fed7aa",
+          "type": "color",
+          "description": "Accent color"
+        },
+        "300": {
+          "value": "#fdba74",
+          "type": "color",
+          "description": "Accent color"
+        },
+        "400": {
+          "value": "#fb923c",
+          "type": "color",
+          "description": "Accent color"
+        },
+        "500": {
+          "value": "#f97316",
+          "type": "color",
+          "description": "Accent color - base"
+        },
+        "600": {
+          "value": "#ea580c",
+          "type": "color",
+          "description": "Accent color"
+        },
+        "700": {
+          "value": "#c2410c",
+          "type": "color",
+          "description": "Accent color"
+        },
+        "800": {
+          "value": "#9a3412",
+          "type": "color",
+          "description": "Accent color"
+        },
+        "900": {
+          "value": "#7c2d12",
+          "type": "color",
+          "description": "Accent color - darkest"
+        }
       },
       "support": {
-        "50": { "value": "#f0fdf4", "type": "color", "description": "Support color - lightest" },
-        "100": { "value": "#dcfce7", "type": "color", "description": "Support color" },
-        "200": { "value": "#bbf7d0", "type": "color", "description": "Support color" },
-        "300": { "value": "#86efac", "type": "color", "description": "Support color" },
-        "400": { "value": "#4ade80", "type": "color", "description": "Support color" },
-        "500": { "value": "#22c55e", "type": "color", "description": "Support color - base" },
-        "600": { "value": "#16a34a", "type": "color", "description": "Support color" },
-        "700": { "value": "#15803d", "type": "color", "description": "Support color" },
-        "800": { "value": "#166534", "type": "color", "description": "Support color" },
-        "900": { "value": "#14532d", "type": "color", "description": "Support color - darkest" }
+        "50": {
+          "value": "#f0fdf4",
+          "type": "color",
+          "description": "Support color - lightest"
+        },
+        "100": {
+          "value": "#dcfce7",
+          "type": "color",
+          "description": "Support color"
+        },
+        "200": {
+          "value": "#bbf7d0",
+          "type": "color",
+          "description": "Support color"
+        },
+        "300": {
+          "value": "#86efac",
+          "type": "color",
+          "description": "Support color"
+        },
+        "400": {
+          "value": "#4ade80",
+          "type": "color",
+          "description": "Support color"
+        },
+        "500": {
+          "value": "#22c55e",
+          "type": "color",
+          "description": "Support color - base"
+        },
+        "600": {
+          "value": "#16a34a",
+          "type": "color",
+          "description": "Support color"
+        },
+        "700": {
+          "value": "#15803d",
+          "type": "color",
+          "description": "Support color"
+        },
+        "800": {
+          "value": "#166534",
+          "type": "color",
+          "description": "Support color"
+        },
+        "900": {
+          "value": "#14532d",
+          "type": "color",
+          "description": "Support color - darkest"
+        }
       },
       "success": {
-        "50": { "value": "#ecfdf5", "type": "color", "description": "Success state color - lightest" },
-        "100": { "value": "#d1fae5", "type": "color", "description": "Success state color" },
-        "200": { "value": "#a7f3d0", "type": "color", "description": "Success state color" },
-        "300": { "value": "#6ee7b7", "type": "color", "description": "Success state color" },
-        "400": { "value": "#34d399", "type": "color", "description": "Success state color" },
-        "500": { "value": "#10b981", "type": "color", "description": "Success state color - base" },
-        "600": { "value": "#059669", "type": "color", "description": "Success state color" },
-        "700": { "value": "#047857", "type": "color", "description": "Success state color" },
-        "800": { "value": "#065f46", "type": "color", "description": "Success state color" },
-        "900": { "value": "#064e3b", "type": "color", "description": "Success state color - darkest" }
+        "50": {
+          "value": "#ecfdf5",
+          "type": "color",
+          "description": "Success state color - lightest"
+        },
+        "100": {
+          "value": "#d1fae5",
+          "type": "color",
+          "description": "Success state color"
+        },
+        "200": {
+          "value": "#a7f3d0",
+          "type": "color",
+          "description": "Success state color"
+        },
+        "300": {
+          "value": "#6ee7b7",
+          "type": "color",
+          "description": "Success state color"
+        },
+        "400": {
+          "value": "#34d399",
+          "type": "color",
+          "description": "Success state color"
+        },
+        "500": {
+          "value": "#10b981",
+          "type": "color",
+          "description": "Success state color - base"
+        },
+        "600": {
+          "value": "#059669",
+          "type": "color",
+          "description": "Success state color"
+        },
+        "700": {
+          "value": "#047857",
+          "type": "color",
+          "description": "Success state color"
+        },
+        "800": {
+          "value": "#065f46",
+          "type": "color",
+          "description": "Success state color"
+        },
+        "900": {
+          "value": "#064e3b",
+          "type": "color",
+          "description": "Success state color - darkest"
+        }
       },
       "warning": {
-        "50": { "value": "#fffbeb", "type": "color", "description": "Warning state color - lightest" },
-        "100": { "value": "#fef3c7", "type": "color", "description": "Warning state color" },
-        "200": { "value": "#fde68a", "type": "color", "description": "Warning state color" },
-        "300": { "value": "#fcd34d", "type": "color", "description": "Warning state color" },
-        "400": { "value": "#fbbf24", "type": "color", "description": "Warning state color" },
-        "500": { "value": "#f59e0b", "type": "color", "description": "Warning state color - base" },
-        "600": { "value": "#d97706", "type": "color", "description": "Warning state color" },
-        "700": { "value": "#b45309", "type": "color", "description": "Warning state color" },
-        "800": { "value": "#92400e", "type": "color", "description": "Warning state color" },
-        "900": { "value": "#78350f", "type": "color", "description": "Warning state color - darkest" }
+        "50": {
+          "value": "#fffbeb",
+          "type": "color",
+          "description": "Warning state color - lightest"
+        },
+        "100": {
+          "value": "#fef3c7",
+          "type": "color",
+          "description": "Warning state color"
+        },
+        "200": {
+          "value": "#fde68a",
+          "type": "color",
+          "description": "Warning state color"
+        },
+        "300": {
+          "value": "#fcd34d",
+          "type": "color",
+          "description": "Warning state color"
+        },
+        "400": {
+          "value": "#fbbf24",
+          "type": "color",
+          "description": "Warning state color"
+        },
+        "500": {
+          "value": "#f59e0b",
+          "type": "color",
+          "description": "Warning state color - base"
+        },
+        "600": {
+          "value": "#d97706",
+          "type": "color",
+          "description": "Warning state color"
+        },
+        "700": {
+          "value": "#b45309",
+          "type": "color",
+          "description": "Warning state color"
+        },
+        "800": {
+          "value": "#92400e",
+          "type": "color",
+          "description": "Warning state color"
+        },
+        "900": {
+          "value": "#78350f",
+          "type": "color",
+          "description": "Warning state color - darkest"
+        }
       },
       "danger": {
-        "50": { "value": "#fef2f2", "type": "color", "description": "Danger/error state color - lightest" },
-        "100": { "value": "#fee2e2", "type": "color", "description": "Danger/error state color" },
-        "200": { "value": "#fecaca", "type": "color", "description": "Danger/error state color" },
-        "300": { "value": "#fca5a5", "type": "color", "description": "Danger/error state color" },
-        "400": { "value": "#f87171", "type": "color", "description": "Danger/error state color" },
-        "500": { "value": "#ef4444", "type": "color", "description": "Danger/error state color - base" },
-        "600": { "value": "#dc2626", "type": "color", "description": "Danger/error state color" },
-        "700": { "value": "#b91c1c", "type": "color", "description": "Danger/error state color" },
-        "800": { "value": "#991b1b", "type": "color", "description": "Danger/error state color" },
-        "900": { "value": "#7f1d1d", "type": "color", "description": "Danger/error state color - darkest" }
+        "50": {
+          "value": "#fef2f2",
+          "type": "color",
+          "description": "Danger/error state color - lightest"
+        },
+        "100": {
+          "value": "#fee2e2",
+          "type": "color",
+          "description": "Danger/error state color"
+        },
+        "200": {
+          "value": "#fecaca",
+          "type": "color",
+          "description": "Danger/error state color"
+        },
+        "300": {
+          "value": "#fca5a5",
+          "type": "color",
+          "description": "Danger/error state color"
+        },
+        "400": {
+          "value": "#f87171",
+          "type": "color",
+          "description": "Danger/error state color"
+        },
+        "500": {
+          "value": "#ef4444",
+          "type": "color",
+          "description": "Danger/error state color - base"
+        },
+        "600": {
+          "value": "#dc2626",
+          "type": "color",
+          "description": "Danger/error state color"
+        },
+        "700": {
+          "value": "#b91c1c",
+          "type": "color",
+          "description": "Danger/error state color"
+        },
+        "800": {
+          "value": "#991b1b",
+          "type": "color",
+          "description": "Danger/error state color"
+        },
+        "900": {
+          "value": "#7f1d1d",
+          "type": "color",
+          "description": "Danger/error state color - darkest"
+        }
       }
     }
   },
   "space": {
     "0": { "value": "0px", "type": "dimension", "description": "No spacing" },
-    "1": { "value": "2px", "type": "dimension", "description": "Minimal spacing" },
-    "2": { "value": "4px", "type": "dimension", "description": "Extra small spacing" },
-    "3": { "value": "8px", "type": "dimension", "description": "Small spacing" },
-    "4": { "value": "12px", "type": "dimension", "description": "Medium-small spacing" },
-    "5": { "value": "16px", "type": "dimension", "description": "Medium spacing" },
-    "6": { "value": "20px", "type": "dimension", "description": "Medium-large spacing" },
-    "7": { "value": "24px", "type": "dimension", "description": "Large spacing" },
-    "8": { "value": "32px", "type": "dimension", "description": "Extra large spacing" },
-    "9": { "value": "40px", "type": "dimension", "description": "2X large spacing" },
-    "10": { "value": "48px", "type": "dimension", "description": "3X large spacing" },
-    
-    "none": { "value": "{space.0}", "type": "dimension", "description": "No spacing - semantic alias for space.0" },
-    "xs": { "value": "{space.2}", "type": "dimension", "description": "Extra small spacing - semantic alias for space.2" },
-    "sm": { "value": "{space.3}", "type": "dimension", "description": "Small spacing - semantic alias for space.3" },
-    "md": { "value": "{space.5}", "type": "dimension", "description": "Medium spacing - semantic alias for space.5" },
-    "lg": { "value": "{space.7}", "type": "dimension", "description": "Large spacing - semantic alias for space.7" },
-    "xl": { "value": "{space.8}", "type": "dimension", "description": "Extra large spacing - semantic alias for space.8" },
-    "2xl": { "value": "{space.9}", "type": "dimension", "description": "2X large spacing - semantic alias for space.9" },
-    "3xl": { "value": "{space.10}", "type": "dimension", "description": "3X large spacing - semantic alias for space.10" }
+    "1": {
+      "value": "2px",
+      "type": "dimension",
+      "description": "Minimal spacing"
+    },
+    "2": {
+      "value": "4px",
+      "type": "dimension",
+      "description": "Extra small spacing"
+    },
+    "3": {
+      "value": "8px",
+      "type": "dimension",
+      "description": "Small spacing"
+    },
+    "4": {
+      "value": "12px",
+      "type": "dimension",
+      "description": "Medium-small spacing"
+    },
+    "5": {
+      "value": "16px",
+      "type": "dimension",
+      "description": "Medium spacing"
+    },
+    "6": {
+      "value": "20px",
+      "type": "dimension",
+      "description": "Medium-large spacing"
+    },
+    "7": {
+      "value": "24px",
+      "type": "dimension",
+      "description": "Large spacing"
+    },
+    "8": {
+      "value": "32px",
+      "type": "dimension",
+      "description": "Extra large spacing"
+    },
+    "9": {
+      "value": "40px",
+      "type": "dimension",
+      "description": "2X large spacing"
+    },
+    "10": {
+      "value": "48px",
+      "type": "dimension",
+      "description": "3X large spacing"
+    },
+
+    "none": {
+      "value": "{space.0}",
+      "type": "dimension",
+      "description": "No spacing - semantic alias for space.0"
+    },
+    "xs": {
+      "value": "{space.2}",
+      "type": "dimension",
+      "description": "Extra small spacing - semantic alias for space.2"
+    },
+    "sm": {
+      "value": "{space.3}",
+      "type": "dimension",
+      "description": "Small spacing - semantic alias for space.3"
+    },
+    "md": {
+      "value": "{space.5}",
+      "type": "dimension",
+      "description": "Medium spacing - semantic alias for space.5"
+    },
+    "lg": {
+      "value": "{space.7}",
+      "type": "dimension",
+      "description": "Large spacing - semantic alias for space.7"
+    },
+    "xl": {
+      "value": "{space.8}",
+      "type": "dimension",
+      "description": "Extra large spacing - semantic alias for space.8"
+    },
+    "2xl": {
+      "value": "{space.9}",
+      "type": "dimension",
+      "description": "2X large spacing - semantic alias for space.9"
+    },
+    "3xl": {
+      "value": "{space.10}",
+      "type": "dimension",
+      "description": "3X large spacing - semantic alias for space.10"
+    }
   },
   "radius": {
-    "none": { "value": "0px", "type": "dimension", "description": "No border radius" },
-    "sm": { "value": "8px", "type": "dimension", "description": "Small border radius" },
-    "md": { "value": "12px", "type": "dimension", "description": "Medium border radius" },
-    "lg": { "value": "16px", "type": "dimension", "description": "Large border radius" },
-    "xl": { "value": "20px", "type": "dimension", "description": "Extra large border radius" },
-    "full": { "value": "9999px", "type": "dimension", "description": "Fully rounded" }
+    "none": {
+      "value": "0px",
+      "type": "dimension",
+      "description": "No border radius"
+    },
+    "sm": {
+      "value": "8px",
+      "type": "dimension",
+      "description": "Small border radius"
+    },
+    "md": {
+      "value": "12px",
+      "type": "dimension",
+      "description": "Medium border radius"
+    },
+    "lg": {
+      "value": "16px",
+      "type": "dimension",
+      "description": "Large border radius"
+    },
+    "xl": {
+      "value": "20px",
+      "type": "dimension",
+      "description": "Extra large border radius"
+    },
+    "full": {
+      "value": "9999px",
+      "type": "dimension",
+      "description": "Fully rounded"
+    }
   },
   "elevation": {
-    "0": { "value": "none", "type": "shadow", "description": "No shadow - flat surface" },
-    "1": { "value": "0 2px 8px rgba(0, 0, 0, 0.12)", "type": "shadow", "description": "Subtle lift - raised surface" },
-    "2": { "value": "0 6px 16px rgba(0, 0, 0, 0.14)", "type": "shadow", "description": "Clear floating - floating surface" },
-    "3": { "value": "0 12px 32px rgba(0, 0, 0, 0.18)", "type": "shadow", "description": "Prominent overlay - modal/dialog surface" },
-    
-    "none": { "value": "{elevation.0}", "type": "shadow", "description": "No shadow - semantic alias for elevation.0" },
-    "sm": { "value": "{elevation.1}", "type": "shadow", "description": "Subtle lift - semantic alias for elevation.1" },
-    "md": { "value": "{elevation.2}", "type": "shadow", "description": "Clear floating - semantic alias for elevation.2" },
-    "lg": { "value": "{elevation.3}", "type": "shadow", "description": "Prominent overlay - semantic alias for elevation.3" }
+    "0": {
+      "value": "none",
+      "type": "shadow",
+      "description": "No shadow - flat surface"
+    },
+    "1": {
+      "value": "0 2px 8px rgba(0, 0, 0, 0.12)",
+      "type": "shadow",
+      "description": "Subtle lift - raised surface"
+    },
+    "2": {
+      "value": "0 6px 16px rgba(0, 0, 0, 0.14)",
+      "type": "shadow",
+      "description": "Clear floating - floating surface"
+    },
+    "3": {
+      "value": "0 12px 32px rgba(0, 0, 0, 0.18)",
+      "type": "shadow",
+      "description": "Prominent overlay - modal/dialog surface"
+    },
+
+    "none": {
+      "value": "{elevation.0}",
+      "type": "shadow",
+      "description": "No shadow - semantic alias for elevation.0"
+    },
+    "sm": {
+      "value": "{elevation.1}",
+      "type": "shadow",
+      "description": "Subtle lift - semantic alias for elevation.1"
+    },
+    "md": {
+      "value": "{elevation.2}",
+      "type": "shadow",
+      "description": "Clear floating - semantic alias for elevation.2"
+    },
+    "lg": {
+      "value": "{elevation.3}",
+      "type": "shadow",
+      "description": "Prominent overlay - semantic alias for elevation.3"
+    }
   },
   "font": {
     "family": {
@@ -181,141 +549,365 @@
   },
   "animation": {
     "duration": {
-      "instant": { 
-        "value": "0ms", 
-        "type": "duration", 
-        "description": "No animation duration - instant change" 
+      "instant": {
+        "value": "0ms",
+        "type": "duration",
+        "description": "No animation duration - instant change"
       },
-      "fast": { 
-        "value": "150ms", 
-        "type": "duration", 
-        "description": "Fast transitions for hover states and micro-interactions" 
+      "fast": {
+        "value": "150ms",
+        "type": "duration",
+        "description": "Fast transitions for hover states and micro-interactions"
       },
-      "normal": { 
-        "value": "250ms", 
-        "type": "duration", 
-        "description": "Standard animation duration for most transitions" 
+      "normal": {
+        "value": "250ms",
+        "type": "duration",
+        "description": "Standard animation duration for most transitions"
       },
-      "slow": { 
-        "value": "300ms", 
-        "type": "duration", 
-        "description": "Slower animations for complex state changes" 
+      "slow": {
+        "value": "300ms",
+        "type": "duration",
+        "description": "Slower animations for complex state changes"
       },
-      "tooltip": { 
-        "value": "150ms", 
-        "type": "duration", 
-        "description": "Tooltip-specific animation timing" 
+      "tooltip": {
+        "value": "150ms",
+        "type": "duration",
+        "description": "Tooltip-specific animation timing"
       }
     },
     "easing": {
-      "ease-in": { 
-        "value": "ease-in", 
-        "type": "cubicBezier", 
-        "description": "Ease-in timing for exit animations" 
+      "ease-in": {
+        "value": "ease-in",
+        "type": "cubicBezier",
+        "description": "Ease-in timing for exit animations"
       },
-      "ease-out": { 
-        "value": "ease-out", 
-        "type": "cubicBezier", 
-        "description": "Ease-out timing for entrance animations" 
+      "ease-out": {
+        "value": "ease-out",
+        "type": "cubicBezier",
+        "description": "Ease-out timing for entrance animations"
       },
-      "ease-in-out": { 
-        "value": "ease-in-out", 
-        "type": "cubicBezier", 
-        "description": "Ease-in-out timing for smooth state changes" 
+      "ease-in-out": {
+        "value": "ease-in-out",
+        "type": "cubicBezier",
+        "description": "Ease-in-out timing for smooth state changes"
       }
     }
   },
   "icon": {
     "size": {
-      "xs": { 
-        "value": "12px", 
-        "type": "dimension", 
-        "description": "Extra small icons for minimal UI elements" 
+      "xs": {
+        "value": "12px",
+        "type": "dimension",
+        "description": "Extra small icons for minimal UI elements"
       },
-      "sm": { 
-        "value": "16px", 
-        "type": "dimension", 
-        "description": "Small icons for compact components" 
+      "sm": {
+        "value": "16px",
+        "type": "dimension",
+        "description": "Small icons for compact components"
       },
-      "md": { 
-        "value": "20px", 
-        "type": "dimension", 
-        "description": "Medium icons for standard components" 
+      "md": {
+        "value": "20px",
+        "type": "dimension",
+        "description": "Medium icons for standard components"
       },
-      "lg": { 
-        "value": "24px", 
-        "type": "dimension", 
-        "description": "Large icons for prominent elements" 
+      "lg": {
+        "value": "24px",
+        "type": "dimension",
+        "description": "Large icons for prominent elements"
       },
-      "xl": { 
-        "value": "32px", 
-        "type": "dimension", 
-        "description": "Extra large icons for headers and major actions" 
+      "xl": {
+        "value": "32px",
+        "type": "dimension",
+        "description": "Extra large icons for headers and major actions"
       }
     },
     "close": {
-      "sm": { 
-        "value": "14px", 
-        "type": "dimension", 
-        "description": "Small close button icon size" 
+      "sm": {
+        "value": "14px",
+        "type": "dimension",
+        "description": "Small close button icon size"
       },
-      "md": { 
-        "value": "16px", 
-        "type": "dimension", 
-        "description": "Medium close button icon size" 
+      "md": {
+        "value": "16px",
+        "type": "dimension",
+        "description": "Medium close button icon size"
       },
-      "lg": { 
-        "value": "18px", 
-        "type": "dimension", 
-        "description": "Large close button icon size" 
+      "lg": {
+        "value": "18px",
+        "type": "dimension",
+        "description": "Large close button icon size"
       }
     }
   },
   "opacity": {
-    "disabled": { 
-      "value": "0.6", 
-      "type": "opacity", 
-      "description": "Opacity for disabled interactive elements" 
+    "disabled": {
+      "value": "0.6",
+      "type": "opacity",
+      "description": "Opacity for disabled interactive elements"
     },
-    "muted": { 
-      "value": "0.7", 
-      "type": "opacity", 
-      "description": "Opacity for secondary or muted content" 
+    "muted": {
+      "value": "0.7",
+      "type": "opacity",
+      "description": "Opacity for secondary or muted content"
     },
-    "secondary": { 
-      "value": "0.9", 
-      "type": "opacity", 
-      "description": "Opacity for secondary emphasis content" 
+    "secondary": {
+      "value": "0.9",
+      "type": "opacity",
+      "description": "Opacity for secondary emphasis content"
     },
-    "overlay": { 
-      "value": "0.5", 
-      "type": "opacity", 
-      "description": "Opacity for backdrop overlays" 
+    "overlay": {
+      "value": "0.5",
+      "type": "opacity",
+      "description": "Opacity for backdrop overlays"
+    }
+  },
+  "size": {
+    "control": {
+      "checkbox": {
+        "sm": {
+          "value": "16px",
+          "type": "dimension",
+          "description": "Small checkbox size"
+        },
+        "md": {
+          "value": "20px",
+          "type": "dimension",
+          "description": "Medium checkbox size"
+        },
+        "lg": {
+          "value": "24px",
+          "type": "dimension",
+          "description": "Large checkbox size"
+        }
+      },
+      "radio": {
+        "sm": {
+          "value": "16px",
+          "type": "dimension",
+          "description": "Small radio size"
+        },
+        "md": {
+          "value": "20px",
+          "type": "dimension",
+          "description": "Medium radio size"
+        },
+        "lg": {
+          "value": "24px",
+          "type": "dimension",
+          "description": "Large radio size"
+        }
+      },
+      "switch": {
+        "track-width": {
+          "sm": {
+            "value": "36px",
+            "type": "dimension",
+            "description": "Small switch track width"
+          },
+          "md": {
+            "value": "44px",
+            "type": "dimension",
+            "description": "Medium switch track width"
+          },
+          "lg": {
+            "value": "52px",
+            "type": "dimension",
+            "description": "Large switch track width"
+          }
+        },
+        "track-height": {
+          "sm": {
+            "value": "20px",
+            "type": "dimension",
+            "description": "Small switch track height"
+          },
+          "md": {
+            "value": "24px",
+            "type": "dimension",
+            "description": "Medium switch track height"
+          },
+          "lg": {
+            "value": "28px",
+            "type": "dimension",
+            "description": "Large switch track height"
+          }
+        },
+        "thumb": {
+          "sm": {
+            "value": "16px",
+            "type": "dimension",
+            "description": "Small switch thumb size"
+          },
+          "md": {
+            "value": "20px",
+            "type": "dimension",
+            "description": "Medium switch thumb size"
+          },
+          "lg": {
+            "value": "24px",
+            "type": "dimension",
+            "description": "Large switch thumb size"
+          }
+        }
+      },
+      "slider": {
+        "track-height": {
+          "value": "4px",
+          "type": "dimension",
+          "description": "Slider track height"
+        },
+        "thumb": {
+          "sm": {
+            "value": "16px",
+            "type": "dimension",
+            "description": "Small slider thumb size"
+          },
+          "md": {
+            "value": "20px",
+            "type": "dimension",
+            "description": "Medium slider thumb size"
+          },
+          "lg": {
+            "value": "24px",
+            "type": "dimension",
+            "description": "Large slider thumb size"
+          }
+        }
+      }
+    },
+    "height": {
+      "input": {
+        "sm": {
+          "value": "32px",
+          "type": "dimension",
+          "description": "Small input height"
+        },
+        "md": {
+          "value": "40px",
+          "type": "dimension",
+          "description": "Medium input height"
+        },
+        "lg": {
+          "value": "48px",
+          "type": "dimension",
+          "description": "Large input height"
+        }
+      },
+      "select": {
+        "sm": {
+          "value": "32px",
+          "type": "dimension",
+          "description": "Small select height"
+        },
+        "md": {
+          "value": "40px",
+          "type": "dimension",
+          "description": "Medium select height"
+        },
+        "lg": {
+          "value": "48px",
+          "type": "dimension",
+          "description": "Large select height"
+        }
+      }
+    }
+  },
+  "border": {
+    "width": {
+      "thin": {
+        "value": "1px",
+        "type": "dimension",
+        "description": "Thin border width"
+      },
+      "medium": {
+        "value": "2px",
+        "type": "dimension",
+        "description": "Medium border width"
+      },
+      "thick": {
+        "value": "3px",
+        "type": "dimension",
+        "description": "Thick border width"
+      },
+      "focus": {
+        "value": "2px",
+        "type": "dimension",
+        "description": "Focus ring width"
+      }
+    }
+  },
+  "zIndex": {
+    "dropdown": {
+      "value": "1000",
+      "type": "number",
+      "description": "Dropdown/Select z-index"
+    },
+    "menu": {
+      "value": "1000",
+      "type": "number",
+      "description": "Menu z-index"
+    },
+    "popover": {
+      "value": "1050",
+      "type": "number",
+      "description": "Popover z-index"
+    },
+    "modal": {
+      "value": "1100",
+      "type": "number",
+      "description": "Modal z-index"
+    },
+    "tooltip": {
+      "value": "1200",
+      "type": "number",
+      "description": "Tooltip z-index"
+    }
+  },
+  "lineHeight": {
+    "tight": {
+      "value": "1.25",
+      "type": "number",
+      "description": "Tight line height"
+    },
+    "normal": {
+      "value": "1.5",
+      "type": "number",
+      "description": "Normal line height"
+    },
+    "relaxed": {
+      "value": "1.75",
+      "type": "number",
+      "description": "Relaxed line height"
+    },
+    "loose": {
+      "value": "2",
+      "type": "number",
+      "description": "Loose line height"
     }
   },
   "component": {
     "tooltip": {
       "max-width": {
-        "sm": { 
-          "value": "150px", 
-          "type": "dimension", 
-          "description": "Small tooltip maximum width" 
+        "sm": {
+          "value": "150px",
+          "type": "dimension",
+          "description": "Small tooltip maximum width"
         },
-        "md": { 
-          "value": "200px", 
-          "type": "dimension", 
-          "description": "Medium tooltip maximum width" 
+        "md": {
+          "value": "200px",
+          "type": "dimension",
+          "description": "Medium tooltip maximum width"
         },
-        "lg": { 
-          "value": "300px", 
-          "type": "dimension", 
-          "description": "Large tooltip maximum width" 
+        "lg": {
+          "value": "300px",
+          "type": "dimension",
+          "description": "Large tooltip maximum width"
         }
       },
-      "offset": { 
-        "value": "8px", 
-        "type": "dimension", 
-        "description": "Distance between tooltip and trigger element" 
+      "offset": {
+        "value": "8px",
+        "type": "dimension",
+        "description": "Distance between tooltip and trigger element"
       }
     }
   }

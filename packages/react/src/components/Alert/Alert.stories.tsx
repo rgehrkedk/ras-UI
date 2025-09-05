@@ -386,55 +386,6 @@ export const Playground: Story = {
   }
 };
 
-// Brand showcase
-export const BrandShowcase: Story = {
-  render: () => (
-    <div style={{ display: 'grid', gap: '2rem' }}>
-      <div>
-        <h3 style={{ marginBottom: '1rem' }}>Default Brand</h3>
-        <div data-brand="default" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Alert variant="info" title="Default Brand" dismissible>
-            Info alert with default brand colors and styling.
-          </Alert>
-          <Alert variant="success" title="Success Message">
-            Success alert adapts to default brand theme.
-          </Alert>
-        </div>
-      </div>
-      
-      <div>
-        <h3 style={{ marginBottom: '1rem' }}>Vibrant Brand</h3>
-        <div data-brand="vibrant" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Alert variant="info" title="Vibrant Brand" dismissible>
-            Info alert with vibrant brand purple colors.
-          </Alert>
-          <Alert variant="warning" title="Warning Message">
-            Warning alert with vibrant brand styling.
-          </Alert>
-        </div>
-      </div>
-      
-      <div>
-        <h3 style={{ marginBottom: '1rem' }}>Corporate Brand</h3>
-        <div data-brand="corporate" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Alert variant="info" title="Corporate Brand" dismissible>
-            Info alert with corporate brand teal colors.
-          </Alert>
-          <Alert variant="error" title="Error Message">
-            Error alert with corporate brand styling.
-          </Alert>
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Alerts adapt their colors across all brand themes while maintaining floating UI elevation and accessibility.'
-      }
-    }
-  }
-};
 
 // Accessibility demonstration
 export const AccessibilityDemo: Story = {

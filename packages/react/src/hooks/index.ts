@@ -11,3 +11,4 @@ export * from './useInteractiveState';
 export * from './useAutoHide';
 export * from './useAnimationState';
 export * from './useIconSize';
+export * from './useSidebarNavigation';

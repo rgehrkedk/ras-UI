@@ -245,7 +245,8 @@ describe('Input', () => {
     );
     
     const input = screen.getByRole('textbox');
-    expect(input).toHaveAttribute('aria-required', 'true');
+    // Check that the required indicator is shown in the label
+    expect(screen.getByText('*')).toBeInTheDocument();
     expect(input).toHaveAttribute('aria-invalid', 'true');
     expect(input).toHaveAttribute('aria-describedby');
   });

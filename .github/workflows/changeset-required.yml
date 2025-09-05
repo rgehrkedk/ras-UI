@@ -1,0 +1,46 @@
+name: Changeset Required
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  require-changeset:
+    name: Require Changeset for package changes
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect package changes
+        id: changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE_SHA=$(git merge-base origin/${{ github.base_ref }} HEAD)
+          echo "Base: $BASE_SHA"
+          CHANGED=$(git diff --name-only "$BASE_SHA"...HEAD | grep -E '^(packages/react/|packages/tokens/)' || true)
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          if [ -n "$CHANGED" ]; then
+            echo "package_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "package_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Ensure a changeset exists
+        if: steps.changed.outputs.package_changes == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! ls .changeset/*.md >/dev/null 2>&1; then
+            echo "❌ Package changes detected under packages/react or packages/tokens but no .changeset found."
+            echo "Please run 'pnpm changeset' and commit the generated changeset."
+            exit 1
+          fi
+          echo "✅ Changeset found."
+

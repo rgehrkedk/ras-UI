@@ -12,8 +12,8 @@
 // import directly from '@ras-ui/tokens/dist/tokens'
 
 // CSS import for global token variables
-import '../dist/tokens.css';
-import '../dist/brands.css';
+import './tokens.css';
+import './brands.css';
 
 /**
  * Theme utilities for runtime theme switching

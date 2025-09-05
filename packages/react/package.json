@@ -3,12 +3,27 @@
   "version": "0.1.0",
   "description": "React components for ras-UI design system",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./style.css": "./dist/index.css"
+  },
+  "sideEffects": [
+    "./dist/index.css",
+    "./src/**/*.css.ts"
+  ],
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && tsc -p tsconfig.build.json",
+    "build:dts": "tsc -p tsconfig.build.json",
     "dev": "tsup --watch",
     "test": "vitest",
     "test:ui": "vitest --ui",
@@ -26,15 +41,16 @@
     "@vanilla-extract/recipes": "^0.5.0",
     "@vanilla-extract/sprinkles": "^1.6.1",
     "iconoir-react": "^7.11.0",
-    "react-aria-components": "^1.0.0"
+    "react-aria": "^3.43.1",
+    "react-aria-components": "^1.12.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@storybook/react": "^9.1.2",
-    "@storybook/react-vite": "^9.1.2",
+    "@storybook/react": "^9.1.4",
+    "@storybook/react-vite": "^9.1.4",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.1.2",
@@ -42,6 +58,7 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "@vanilla-extract/esbuild-plugin": "^2.3.5",
+    "@vanilla-extract/vite-plugin": "^5.1.1",
     "@vitest/ui": "^1.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^23.0.1",

@@ -101,6 +101,9 @@ export const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
     const [isHovered, setIsHovered] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
     
+    // Generate unique IDs for accessibility
+    const descriptionId = React.useId();
+    
     // Compute display text for descriptions/errors
     const displayText = isInvalid && errorMessage 
       ? errorMessage 
@@ -120,6 +123,8 @@ export const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
         onFocusChange={setIsFocused}
         {...props}
         aria-required={isRequired}
+        aria-invalid={isInvalid}
+        aria-describedby={displayText ? descriptionId : undefined}
       >
         {({ isSelected: checked, isDisabled: disabled }) => (
           <>
@@ -148,6 +153,7 @@ export const Switch = React.forwardRef<HTMLLabelElement, SwitchProps>(
                 
                 {displayText && (
                   <div 
+                    id={descriptionId}
                     className={isError ? switchError : switchDescription}
                     data-disabled={disabled}
                   >

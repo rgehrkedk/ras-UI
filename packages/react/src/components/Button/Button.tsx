@@ -48,8 +48,18 @@ export interface ButtonProps
  *   Click me
  * </Button>
  * 
- * <Button variant="secondary" loading startIcon={<Icon />}>
- *   Loading...
+ * <Button variant="secondary" startIcon={<Icon name="save" />}>
+ *   Save Document
+ * </Button>
+ * 
+ * <Button variant="primary" endIcon={<Icon name="arrow-right" />}>
+ *   Continue
+ * </Button>
+ * 
+ * <Button variant="icon" aria-label="Edit" startIcon={<Icon name="edit" />} />
+ * 
+ * <Button variant="secondary" loading startIcon={<Icon name="upload" />}>
+ *   Upload Files
  * </Button>
  * ```
  */
@@ -74,6 +84,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       loading,
     });
 
+    // For icon-only buttons or buttons without children, require aria-label
+    const isIconOnly = variant === 'icon' || (!children && (startIcon || endIcon));
+    if (isIconOnly && !props['aria-label'] && !props['aria-labelledby']) {
+      console.warn(
+        'Button: Icon-only buttons require an aria-label or aria-labelledby prop for accessibility'
+      );
+    }
+
     return (
       <AriaButton
         ref={ref}
@@ -81,7 +99,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           button({
             variant,
             size,
-            fullWidth,
+            fullWidth: variant === 'icon' ? false : fullWidth, // Icon buttons don't support fullWidth
           }),
           className
         )}

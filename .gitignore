@@ -9,6 +9,9 @@ build/
 storybook-static/
 
 # Development
+.env
+.env.*
+!.env.example
 .env*.local
 .vscode/
 .idea/

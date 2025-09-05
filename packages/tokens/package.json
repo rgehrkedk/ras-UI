@@ -3,7 +3,17 @@
   "version": "0.1.0",
   "description": "Design tokens for ras-UI design system",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/tokens.css": "./dist/tokens.css",
+    "./dist/brands.css": "./dist/brands.css"
+  },
   "files": [
     "dist"
   ],

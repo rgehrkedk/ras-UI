@@ -27,7 +27,7 @@ export const buttonBase = style({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: theme.space.xs,
+  gap: theme.space.sm,
   
   // Interaction
   cursor: 'pointer',
@@ -135,6 +135,23 @@ export const button = recipe({
           transform: 'translateY(0)',
         },
       },
+      
+      icon: {
+        backgroundColor: 'transparent',
+        color: theme.color.components.button.ghost.text,
+        border: '1px solid transparent',
+        padding: theme.space.xs, // Square padding for icon buttons
+        
+        ':hover': {
+          backgroundColor: theme.color.components.button.ghost.backgroundHover,
+          borderColor: theme.color.components.button.ghost.border,
+        },
+        
+        ':active': {
+          backgroundColor: theme.color.components.button.ghost.backgroundActive,
+          transform: 'scale(0.95)',
+        },
+      },
     },
     
     size: {
@@ -166,6 +183,34 @@ export const button = recipe({
       },
     },
   },
+  
+  compoundVariants: [
+    // Icon variant size overrides for square buttons
+    {
+      variants: { variant: 'icon', size: 'sm' },
+      style: {
+        padding: theme.space.xs,
+        width: '32px',
+        minWidth: '32px',
+      },
+    },
+    {
+      variants: { variant: 'icon', size: 'md' },
+      style: {
+        padding: theme.space.sm,
+        width: '40px',
+        minWidth: '40px',
+      },
+    },
+    {
+      variants: { variant: 'icon', size: 'lg' },
+      style: {
+        padding: theme.space[4],
+        width: '48px',
+        minWidth: '48px',
+      },
+    },
+  ],
   
   defaultVariants: {
     variant: 'primary',

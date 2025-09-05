@@ -322,43 +322,6 @@ export const Playground: Story = {
   }
 };
 
-// Brand showcase
-export const BrandShowcase: Story = {
-  render: () => (
-    <div style={{ display: 'grid', gap: '2rem' }}>
-      <div>
-        <h3 style={{ marginBottom: '1rem' }}>Default Brand</h3>
-        <div data-brand="default" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Switch defaultSelected>Default brand switch</Switch>
-          <Switch description="Brand-aware colors">With description</Switch>
-        </div>
-      </div>
-      
-      <div>
-        <h3 style={{ marginBottom: '1rem' }}>Vibrant Brand</h3>
-        <div data-brand="vibrant" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Switch defaultSelected>Vibrant brand switch</Switch>
-          <Switch description="Purple primary colors">With description</Switch>
-        </div>
-      </div>
-      
-      <div>
-        <h3 style={{ marginBottom: '1rem' }}>Corporate Brand</h3>
-        <div data-brand="corporate" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <Switch defaultSelected>Corporate brand switch</Switch>
-          <Switch description="Teal primary colors">With description</Switch>
-        </div>
-      </div>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Switches adapt their colors across all brand themes while maintaining floating UI principles.'
-      }
-    }
-  }
-};
 
 // Accessibility demonstration
 export const AccessibilityDemo: Story = {

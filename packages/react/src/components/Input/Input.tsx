@@ -108,7 +108,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       isDisabled ? 'disabled' : 
       'default';
     
-    const { showHelper, displayHelperText } = useValidation({
+    const { hasError, showHelper, displayHelperText, displayErrorMessage } = useValidation({
       isInvalid,
       errorMessage,
       helperText,
@@ -163,7 +163,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </Text>
         )}
         
-        <FieldError className={inputErrorText} />
+        {hasError && (
+          <FieldError className={inputErrorText}>
+            {displayErrorMessage}
+          </FieldError>
+        )}
       </TextField>
     );
   }

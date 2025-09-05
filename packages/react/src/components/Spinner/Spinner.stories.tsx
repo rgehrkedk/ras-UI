@@ -115,9 +115,9 @@ export const InlineSpinner: Story = {
         alignItems: 'center', 
         justifyContent: 'center',
         padding: '3rem',
-        border: '1px solid #e5e5e5',
+        border: '1px solid var(--color-border-default)',
         borderRadius: '8px',
-        backgroundColor: '#fafafa'
+        backgroundColor: 'var(--color-semantic-surface-base)'
       }}>
         <div style={{ 
           display: 'flex', 
@@ -128,7 +128,7 @@ export const InlineSpinner: Story = {
           <Spinner size="lg" aria-label="Loading content" />
           <span style={{ 
             fontSize: '14px',
-            color: '#666'
+            color: 'var(--color-semantic-text-secondary)'
           }}>Loading content...</span>
         </div>
       </div>
@@ -138,9 +138,9 @@ export const InlineSpinner: Story = {
         alignItems: 'center',
         gap: '0.75rem',
         padding: '1rem',
-        border: '1px solid #e5e5e5',
+        border: '1px solid var(--color-border-default)',
         borderRadius: '6px',
-        backgroundColor: '#ffffff'
+        backgroundColor: 'var(--color-semantic-surface-elevated)'
       }}>
         <Spinner size="sm" aria-label="Saving changes" />
         <span style={{ fontSize: '14px' }}>Saving changes...</span>
@@ -165,40 +165,40 @@ export const CustomColor: Story = {
         flexDirection: 'column', 
         alignItems: 'center', 
         gap: '0.5rem',
-        color: '#3b82f6' 
+        color: 'var(--color-semantic-primary)' 
       }}>
         <Spinner size="md" aria-label="Blue spinner" />
-        <span style={{ fontSize: '12px', color: '#3b82f6' }}>Blue</span>
+        <span style={{ fontSize: '12px', color: 'var(--color-semantic-primary)' }}>Primary</span>
       </div>
       <div style={{ 
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
         gap: '0.5rem',
-        color: '#ef4444' 
+        color: 'var(--color-semantic-danger)' 
       }}>
         <Spinner size="md" aria-label="Red spinner" />
-        <span style={{ fontSize: '12px', color: '#ef4444' }}>Red</span>
+        <span style={{ fontSize: '12px', color: 'var(--color-semantic-danger)' }}>Danger</span>
       </div>
       <div style={{ 
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
         gap: '0.5rem',
-        color: '#10b981' 
+        color: 'var(--color-semantic-success)' 
       }}>
         <Spinner size="md" aria-label="Green spinner" />
-        <span style={{ fontSize: '12px', color: '#10b981' }}>Green</span>
+        <span style={{ fontSize: '12px', color: 'var(--color-semantic-success)' }}>Success</span>
       </div>
       <div style={{ 
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
         gap: '0.5rem',
-        color: '#f59e0b' 
+        color: 'var(--color-semantic-warning)' 
       }}>
         <Spinner size="md" aria-label="Orange spinner" />
-        <span style={{ fontSize: '12px', color: '#f59e0b' }}>Orange</span>
+        <span style={{ fontSize: '12px', color: 'var(--color-semantic-warning)' }}>Warning</span>
       </div>
     </div>
   ),

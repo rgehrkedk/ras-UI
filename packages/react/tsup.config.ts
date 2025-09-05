@@ -4,7 +4,7 @@ import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['cjs', 'esm'],
-  dts: false, // Disable for now due to numeric property issues
+  dts: false, // Disable for now, will generate manually
   sourcemap: true,
   clean: true,
   external: ['react', 'react-dom', '@ras-ui/tokens'],

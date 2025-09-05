@@ -4,130 +4,2052 @@
       "button": {
         "primary": {
           "background": {
-            "light": { "value": "{color.base.brand.600}", "type": "color", "description": "Primary button background - light theme" },
-            "dark": { "value": "{color.base.brand.600}", "type": "color", "description": "Primary button background - dark theme" },
-            "hc-light": { "value": "{color.base.brand.800}", "type": "color", "description": "Primary button background - high contrast light" },
-            "hc-dark": { "value": "{color.base.brand.200}", "type": "color", "description": "Primary button background - high contrast dark" }
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary button background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary button background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Primary button background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Primary button background - high contrast dark"
+            }
           },
           "background-hover": {
-            "light": { "value": "{color.base.brand.700}", "type": "color", "description": "Primary button hover background - light theme" },
-            "dark": { "value": "{color.base.brand.700}", "type": "color", "description": "Primary button hover background - dark theme" },
-            "hc-light": { "value": "{color.base.brand.700}", "type": "color", "description": "Primary button hover background - high contrast light" },
-            "hc-dark": { "value": "{color.base.brand.100}", "type": "color", "description": "Primary button hover background - high contrast dark" }
+            "light": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Primary button hover background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Primary button hover background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Primary button hover background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Primary button hover background - high contrast dark"
+            }
           },
           "background-active": {
-            "light": { "value": "{color.base.brand.800}", "type": "color", "description": "Primary button active background - light theme" },
-            "dark": { "value": "{color.base.brand.800}", "type": "color", "description": "Primary button active background - dark theme" },
-            "hc-light": { "value": "{color.base.brand.900}", "type": "color", "description": "Primary button active background - high contrast light" },
-            "hc-dark": { "value": "{color.base.brand.50}", "type": "color", "description": "Primary button active background - high contrast dark" }
+            "light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Primary button active background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Primary button active background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Primary button active background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.50}",
+              "type": "color",
+              "description": "Primary button active background - high contrast dark"
+            }
           },
           "text": {
-            "light": { "value": "{color.base.white}", "type": "color", "description": "Primary button text - light theme" },
-            "dark": { "value": "{color.base.white}", "type": "color", "description": "Primary button text - dark theme" },
-            "hc-light": { "value": "{color.base.white}", "type": "color", "description": "Primary button text - high contrast light" },
-            "hc-dark": { "value": "{color.base.black}", "type": "color", "description": "Primary button text - high contrast dark" }
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary button text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary button text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary button text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Primary button text - high contrast dark"
+            }
           },
           "border": {
-            "light": { "value": "{color.base.brand.600}", "type": "color", "description": "Primary button border - light theme" },
-            "dark": { "value": "{color.base.brand.600}", "type": "color", "description": "Primary button border - dark theme" },
-            "hc-light": { "value": "{color.base.brand.800}", "type": "color", "description": "Primary button border - high contrast light" },
-            "hc-dark": { "value": "{color.base.brand.200}", "type": "color", "description": "Primary button border - high contrast dark" }
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary button border - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary button border - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Primary button border - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Primary button border - high contrast dark"
+            }
           }
         },
         "secondary": {
           "background": {
-            "light": { "value": "{color.base.white}", "type": "color", "description": "Secondary button background - light theme" },
-            "dark": { "value": "{color.base.neutral.800}", "type": "color", "description": "Secondary button background - dark theme" },
-            "hc-light": { "value": "{color.base.white}", "type": "color", "description": "Secondary button background - high contrast light" },
-            "hc-dark": { "value": "{color.base.neutral.900}", "type": "color", "description": "Secondary button background - high contrast dark" }
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Secondary button background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.800}",
+              "type": "color",
+              "description": "Secondary button background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Secondary button background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Secondary button background - high contrast dark"
+            }
           },
           "background-hover": {
-            "light": { "value": "{color.base.neutral.50}", "type": "color", "description": "Secondary button hover background - light theme" },
-            "dark": { "value": "{color.base.neutral.700}", "type": "color", "description": "Secondary button hover background - dark theme" },
-            "hc-light": { "value": "{color.base.neutral.200}", "type": "color", "description": "Secondary button hover background - high contrast light" },
-            "hc-dark": { "value": "{color.base.neutral.700}", "type": "color", "description": "Secondary button hover background - high contrast dark" }
+            "light": {
+              "value": "{color.base.neutral.50}",
+              "type": "color",
+              "description": "Secondary button hover background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Secondary button hover background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.200}",
+              "type": "color",
+              "description": "Secondary button hover background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Secondary button hover background - high contrast dark"
+            }
           },
           "background-active": {
-            "light": { "value": "{color.base.neutral.100}", "type": "color", "description": "Secondary button active background - light theme" },
-            "dark": { "value": "{color.base.neutral.600}", "type": "color", "description": "Secondary button active background - dark theme" },
-            "hc-light": { "value": "{color.base.neutral.300}", "type": "color", "description": "Secondary button active background - high contrast light" },
-            "hc-dark": { "value": "{color.base.neutral.600}", "type": "color", "description": "Secondary button active background - high contrast dark" }
+            "light": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Secondary button active background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Secondary button active background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Secondary button active background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Secondary button active background - high contrast dark"
+            }
           },
           "text": {
-            "light": { "value": "{color.base.neutral.700}", "type": "color", "description": "Secondary button text - light theme" },
-            "dark": { "value": "{color.base.neutral.200}", "type": "color", "description": "Secondary button text - dark theme" },
-            "hc-light": { "value": "{color.base.black}", "type": "color", "description": "Secondary button text - high contrast light" },
-            "hc-dark": { "value": "{color.base.white}", "type": "color", "description": "Secondary button text - high contrast dark" }
+            "light": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Secondary button text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.200}",
+              "type": "color",
+              "description": "Secondary button text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Secondary button text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Secondary button text - high contrast dark"
+            }
           },
           "border": {
-            "light": { "value": "{color.base.neutral.300}", "type": "color", "description": "Secondary button border - light theme" },
-            "dark": { "value": "{color.base.neutral.600}", "type": "color", "description": "Secondary button border - dark theme" },
-            "hc-light": { "value": "{color.base.neutral.600}", "type": "color", "description": "Secondary button border - high contrast light" },
-            "hc-dark": { "value": "{color.base.neutral.400}", "type": "color", "description": "Secondary button border - high contrast dark" }
+            "light": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Secondary button border - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Secondary button border - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Secondary button border - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Secondary button border - high contrast dark"
+            }
           }
         },
         "ghost": {
           "background": {
-            "light": { "value": "transparent", "type": "color", "description": "Ghost button background - light theme" },
-            "dark": { "value": "transparent", "type": "color", "description": "Ghost button background - dark theme" },
-            "hc-light": { "value": "transparent", "type": "color", "description": "Ghost button background - high contrast light" },
-            "hc-dark": { "value": "transparent", "type": "color", "description": "Ghost button background - high contrast dark" }
+            "light": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button background - light theme"
+            },
+            "dark": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button background - dark theme"
+            },
+            "hc-light": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button background - high contrast dark"
+            }
           },
           "background-hover": {
-            "light": { "value": "{color.base.neutral.100}", "type": "color", "description": "Ghost button hover background - light theme" },
-            "dark": { "value": "{color.base.neutral.800}", "type": "color", "description": "Ghost button hover background - dark theme" },
-            "hc-light": { "value": "{color.base.neutral.200}", "type": "color", "description": "Ghost button hover background - high contrast light" },
-            "hc-dark": { "value": "{color.base.neutral.800}", "type": "color", "description": "Ghost button hover background - high contrast dark" }
+            "light": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Ghost button hover background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.800}",
+              "type": "color",
+              "description": "Ghost button hover background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.200}",
+              "type": "color",
+              "description": "Ghost button hover background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.800}",
+              "type": "color",
+              "description": "Ghost button hover background - high contrast dark"
+            }
           },
           "background-active": {
-            "light": { "value": "{color.base.neutral.200}", "type": "color", "description": "Ghost button active background - light theme" },
-            "dark": { "value": "{color.base.neutral.700}", "type": "color", "description": "Ghost button active background - dark theme" },
-            "hc-light": { "value": "{color.base.neutral.400}", "type": "color", "description": "Ghost button active background - high contrast light" },
-            "hc-dark": { "value": "{color.base.neutral.600}", "type": "color", "description": "Ghost button active background - high contrast dark" }
+            "light": {
+              "value": "{color.base.neutral.200}",
+              "type": "color",
+              "description": "Ghost button active background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Ghost button active background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Ghost button active background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Ghost button active background - high contrast dark"
+            }
           },
           "text": {
-            "light": { "value": "{color.base.neutral.900}", "type": "color", "description": "Ghost button text - light theme" },
-            "dark": { "value": "{color.base.neutral.100}", "type": "color", "description": "Ghost button text - dark theme" },
-            "hc-light": { "value": "{color.base.black}", "type": "color", "description": "Ghost button text - high contrast light" },
-            "hc-dark": { "value": "{color.base.white}", "type": "color", "description": "Ghost button text - high contrast dark" }
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Ghost button text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Ghost button text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Ghost button text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Ghost button text - high contrast dark"
+            }
           },
           "border": {
-            "light": { "value": "transparent", "type": "color", "description": "Ghost button border - light theme" },
-            "dark": { "value": "transparent", "type": "color", "description": "Ghost button border - dark theme" },
-            "hc-light": { "value": "transparent", "type": "color", "description": "Ghost button border - high contrast light" },
-            "hc-dark": { "value": "transparent", "type": "color", "description": "Ghost button border - high contrast dark" }
+            "light": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button border - light theme"
+            },
+            "dark": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button border - dark theme"
+            },
+            "hc-light": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button border - high contrast light"
+            },
+            "hc-dark": {
+              "value": "transparent",
+              "type": "color",
+              "description": "Ghost button border - high contrast dark"
+            }
           }
         },
         "danger": {
           "background": {
-            "light": { "value": "{color.base.danger.600}", "type": "color", "description": "Danger button background - light theme" },
-            "dark": { "value": "{color.base.danger.600}", "type": "color", "description": "Danger button background - dark theme" },
-            "hc-light": { "value": "{color.base.danger.700}", "type": "color", "description": "Danger button background - high contrast light" },
-            "hc-dark": { "value": "{color.base.danger.300}", "type": "color", "description": "Danger button background - high contrast dark" }
+            "light": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Danger button background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Danger button background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Danger button background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.300}",
+              "type": "color",
+              "description": "Danger button background - high contrast dark"
+            }
           },
           "background-hover": {
-            "light": { "value": "{color.base.danger.700}", "type": "color", "description": "Danger button hover background - light theme" },
-            "dark": { "value": "{color.base.danger.700}", "type": "color", "description": "Danger button hover background - dark theme" },
-            "hc-light": { "value": "{color.base.danger.800}", "type": "color", "description": "Danger button hover background - high contrast light" },
-            "hc-dark": { "value": "{color.base.danger.400}", "type": "color", "description": "Danger button hover background - high contrast dark" }
+            "light": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Danger button hover background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Danger button hover background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.800}",
+              "type": "color",
+              "description": "Danger button hover background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.400}",
+              "type": "color",
+              "description": "Danger button hover background - high contrast dark"
+            }
           },
           "background-active": {
-            "light": { "value": "{color.base.danger.800}", "type": "color", "description": "Danger button active background - light theme" },
-            "dark": { "value": "{color.base.danger.800}", "type": "color", "description": "Danger button active background - dark theme" },
-            "hc-light": { "value": "{color.base.danger.900}", "type": "color", "description": "Danger button active background - high contrast light" },
-            "hc-dark": { "value": "{color.base.danger.500}", "type": "color", "description": "Danger button active background - high contrast dark" }
+            "light": {
+              "value": "{color.base.danger.800}",
+              "type": "color",
+              "description": "Danger button active background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.800}",
+              "type": "color",
+              "description": "Danger button active background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.900}",
+              "type": "color",
+              "description": "Danger button active background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.500}",
+              "type": "color",
+              "description": "Danger button active background - high contrast dark"
+            }
           },
           "text": {
-            "light": { "value": "{color.base.white}", "type": "color", "description": "Danger button text - light theme" },
-            "dark": { "value": "{color.base.white}", "type": "color", "description": "Danger button text - dark theme" },
-            "hc-light": { "value": "{color.base.white}", "type": "color", "description": "Danger button text - high contrast light" },
-            "hc-dark": { "value": "{color.base.black}", "type": "color", "description": "Danger button text - high contrast dark" }
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Danger button text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Danger button text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Danger button text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Danger button text - high contrast dark"
+            }
           },
           "border": {
-            "light": { "value": "{color.base.danger.600}", "type": "color", "description": "Danger button border - light theme" },
-            "dark": { "value": "{color.base.danger.600}", "type": "color", "description": "Danger button border - dark theme" },
-            "hc-light": { "value": "{color.base.danger.700}", "type": "color", "description": "Danger button border - high contrast light" },
-            "hc-dark": { "value": "{color.base.danger.300}", "type": "color", "description": "Danger button border - high contrast dark" }
+            "light": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Danger button border - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Danger button border - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Danger button border - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.300}",
+              "type": "color",
+              "description": "Danger button border - high contrast dark"
+            }
+          }
+        },
+        "border-radius": {
+          "light": {
+            "value": "{radius.md}",
+            "type": "dimension",
+            "description": "Button border radius - light theme"
+          },
+          "dark": {
+            "value": "{radius.md}",
+            "type": "dimension",
+            "description": "Button border radius - dark theme"
+          },
+          "hc-light": {
+            "value": "{radius.md}",
+            "type": "dimension",
+            "description": "Button border radius - high contrast light"
+          },
+          "hc-dark": {
+            "value": "{radius.md}",
+            "type": "dimension",
+            "description": "Button border radius - high contrast dark"
+          }
+        }
+      },
+      "badge": {
+        "primary": {
+          "background": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary badge background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary badge background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Primary badge background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Primary badge background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary badge text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary badge text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary badge text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Primary badge text - high contrast dark"
+            }
+          }
+        },
+        "secondary": {
+          "background": {
+            "light": {
+              "value": "{color.base.secondary.100}",
+              "type": "color",
+              "description": "Secondary badge background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.secondary.800}",
+              "type": "color",
+              "description": "Secondary badge background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.secondary.200}",
+              "type": "color",
+              "description": "Secondary badge background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.secondary.700}",
+              "type": "color",
+              "description": "Secondary badge background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.secondary.800}",
+              "type": "color",
+              "description": "Secondary badge text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.secondary.200}",
+              "type": "color",
+              "description": "Secondary badge text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Secondary badge text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Secondary badge text - high contrast dark"
+            }
+          }
+        },
+        "accent": {
+          "background": {
+            "light": {
+              "value": "{color.base.accent.100}",
+              "type": "color",
+              "description": "Accent badge background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.accent.800}",
+              "type": "color",
+              "description": "Accent badge background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.accent.200}",
+              "type": "color",
+              "description": "Accent badge background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.accent.700}",
+              "type": "color",
+              "description": "Accent badge background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.accent.800}",
+              "type": "color",
+              "description": "Accent badge text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.accent.200}",
+              "type": "color",
+              "description": "Accent badge text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Accent badge text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Accent badge text - high contrast dark"
+            }
+          }
+        },
+        "support": {
+          "background": {
+            "light": {
+              "value": "{color.base.support.100}",
+              "type": "color",
+              "description": "Support badge background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.support.800}",
+              "type": "color",
+              "description": "Support badge background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.support.200}",
+              "type": "color",
+              "description": "Support badge background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.support.700}",
+              "type": "color",
+              "description": "Support badge background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.support.800}",
+              "type": "color",
+              "description": "Support badge text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.support.200}",
+              "type": "color",
+              "description": "Support badge text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Support badge text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Support badge text - high contrast dark"
+            }
+          }
+        },
+        "premium": {
+          "background": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Premium badge background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.500}",
+              "type": "color",
+              "description": "Premium badge background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Premium badge background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.300}",
+              "type": "color",
+              "description": "Premium badge background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Premium badge text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Premium badge text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Premium badge text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Premium badge text - high contrast dark"
+            }
+          }
+        }
+      },
+      "menu": {
+        "background": {
+          "light": {
+            "value": "{color.base.white}",
+            "type": "color",
+            "description": "Menu background - light theme"
+          },
+          "dark": {
+            "value": "{color.base.neutral.800}",
+            "type": "color",
+            "description": "Menu background - dark theme"
+          },
+          "hc-light": {
+            "value": "{color.base.white}",
+            "type": "color",
+            "description": "Menu background - high contrast light"
+          },
+          "hc-dark": {
+            "value": "{color.base.neutral.900}",
+            "type": "color",
+            "description": "Menu background - high contrast dark"
+          }
+        },
+        "text": {
+          "light": {
+            "value": "{color.base.neutral.900}",
+            "type": "color",
+            "description": "Menu text - light theme"
+          },
+          "dark": {
+            "value": "{color.base.neutral.100}",
+            "type": "color",
+            "description": "Menu text - dark theme"
+          },
+          "hc-light": {
+            "value": "{color.base.black}",
+            "type": "color",
+            "description": "Menu text - high contrast light"
+          },
+          "hc-dark": {
+            "value": "{color.base.white}",
+            "type": "color",
+            "description": "Menu text - high contrast dark"
+          }
+        },
+        "border": {
+          "light": {
+            "value": "{color.base.neutral.200}",
+            "type": "color",
+            "description": "Menu border - light theme"
+          },
+          "dark": {
+            "value": "{color.base.neutral.700}",
+            "type": "color",
+            "description": "Menu border - dark theme"
+          },
+          "hc-light": {
+            "value": "{color.base.neutral.400}",
+            "type": "color",
+            "description": "Menu border - high contrast light"
+          },
+          "hc-dark": {
+            "value": "{color.base.neutral.600}",
+            "type": "color",
+            "description": "Menu border - high contrast dark"
+          }
+        },
+        "border-radius": {
+          "value": "{radius.md}",
+          "type": "borderRadius",
+          "description": "Menu border radius"
+        },
+        "separator": {
+          "light": {
+            "value": "{color.base.neutral.200}",
+            "type": "color",
+            "description": "Menu separator - light theme"
+          },
+          "dark": {
+            "value": "{color.base.neutral.700}",
+            "type": "color",
+            "description": "Menu separator - dark theme"
+          },
+          "hc-light": {
+            "value": "{color.base.neutral.400}",
+            "type": "color",
+            "description": "Menu separator - high contrast light"
+          },
+          "hc-dark": {
+            "value": "{color.base.neutral.600}",
+            "type": "color",
+            "description": "Menu separator - high contrast dark"
+          }
+        },
+        "item": {
+          "text": {
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Menu item text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Menu item text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Menu item text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item text - high contrast dark"
+            }
+          },
+          "text-hover": {
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Menu item text hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Menu item text hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Menu item text hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item text hover - high contrast dark"
+            }
+          },
+          "text-active": {
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Menu item text active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Menu item text active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Menu item text active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item text active - high contrast dark"
+            }
+          },
+          "text-muted": {
+            "light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Menu item muted text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Menu item muted text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Menu item muted text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Menu item muted text - high contrast dark"
+            }
+          },
+          "text-destructive": {
+            "light": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Menu item destructive text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.400}",
+              "type": "color",
+              "description": "Menu item destructive text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.800}",
+              "type": "color",
+              "description": "Menu item destructive text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.300}",
+              "type": "color",
+              "description": "Menu item destructive text - high contrast dark"
+            }
+          },
+          "text-destructive-hover": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text hover - high contrast dark"
+            }
+          },
+          "text-destructive-active": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Menu item destructive text active - high contrast dark"
+            }
+          },
+          "background-hover": {
+            "light": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Menu item background hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Menu item background hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.200}",
+              "type": "color",
+              "description": "Menu item background hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Menu item background hover - high contrast dark"
+            }
+          },
+          "background-active": {
+            "light": {
+              "value": "{color.base.neutral.200}",
+              "type": "color",
+              "description": "Menu item background active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Menu item background active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Menu item background active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Menu item background active - high contrast dark"
+            }
+          },
+          "background-destructive-hover": {
+            "light": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Menu item destructive background hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Menu item destructive background hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Menu item destructive background hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.500}",
+              "type": "color",
+              "description": "Menu item destructive background hover - high contrast dark"
+            }
+          },
+          "background-destructive-active": {
+            "light": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Menu item destructive background active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.700}",
+              "type": "color",
+              "description": "Menu item destructive background active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.800}",
+              "type": "color",
+              "description": "Menu item destructive background active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.400}",
+              "type": "color",
+              "description": "Menu item destructive background active - high contrast dark"
+            }
+          },
+          "border-radius": {
+            "value": "{radius.sm}",
+            "type": "borderRadius",
+            "description": "Menu item border radius"
+          }
+        }
+      },
+      "link": {
+        "default": {
+          "text": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Default link text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.400}",
+              "type": "color",
+              "description": "Default link text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Default link text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Default link text - high contrast dark"
+            }
+          },
+          "text-hover": {
+            "light": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Default link text hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.300}",
+              "type": "color",
+              "description": "Default link text hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Default link text hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Default link text hover - high contrast dark"
+            }
+          },
+          "text-active": {
+            "light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Default link text active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Default link text active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Default link text active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.50}",
+              "type": "color",
+              "description": "Default link text active - high contrast dark"
+            }
+          },
+          "text-visited": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Default link text visited - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.500}",
+              "type": "color",
+              "description": "Default link text visited - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Default link text visited - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.300}",
+              "type": "color",
+              "description": "Default link text visited - high contrast dark"
+            }
+          }
+        },
+        "quiet": {
+          "text": {
+            "light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Quiet link text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Quiet link text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Quiet link text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Quiet link text - high contrast dark"
+            }
+          },
+          "text-hover": {
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Quiet link text hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Quiet link text hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Quiet link text hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Quiet link text hover - high contrast dark"
+            }
+          },
+          "text-active": {
+            "light": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Quiet link text active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.300}",
+              "type": "color",
+              "description": "Quiet link text active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Quiet link text active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Quiet link text active - high contrast dark"
+            }
+          }
+        },
+        "emphasized": {
+          "text": {
+            "light": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Emphasized link text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.300}",
+              "type": "color",
+              "description": "Emphasized link text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Emphasized link text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Emphasized link text - high contrast dark"
+            }
+          },
+          "text-hover": {
+            "light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Emphasized link text hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Emphasized link text hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Emphasized link text hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Emphasized link text hover - high contrast dark"
+            }
+          },
+          "background": {
+            "light": {
+              "value": "{color.base.brand.50}",
+              "type": "color",
+              "description": "Emphasized link background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Emphasized link background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Emphasized link background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Emphasized link background - high contrast dark"
+            }
+          },
+          "background-hover": {
+            "light": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Emphasized link background hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Emphasized link background hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Emphasized link background hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Emphasized link background hover - high contrast dark"
+            }
+          },
+          "background-active": {
+            "light": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Emphasized link background active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Emphasized link background active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.300}",
+              "type": "color",
+              "description": "Emphasized link background active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Emphasized link background active - high contrast dark"
+            }
+          },
+          "border-radius": {
+            "value": "{radius.md}",
+            "type": "borderRadius",
+            "description": "Emphasized link border radius"
+          }
+        }
+      },
+      "breadcrumbs": {
+        "link": {
+          "text": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Breadcrumb link text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.400}",
+              "type": "color",
+              "description": "Breadcrumb link text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Breadcrumb link text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Breadcrumb link text - high contrast dark"
+            }
+          },
+          "text-hover": {
+            "light": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Breadcrumb link text hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.300}",
+              "type": "color",
+              "description": "Breadcrumb link text hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Breadcrumb link text hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Breadcrumb link text hover - high contrast dark"
+            }
+          },
+          "text-active": {
+            "light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Breadcrumb link text active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Breadcrumb link text active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Breadcrumb link text active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.50}",
+              "type": "color",
+              "description": "Breadcrumb link text active - high contrast dark"
+            }
+          },
+          "background-hover": {
+            "light": {
+              "value": "{color.base.brand.50}",
+              "type": "color",
+              "description": "Breadcrumb link background hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Breadcrumb link background hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Breadcrumb link background hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Breadcrumb link background hover - high contrast dark"
+            }
+          },
+          "background-active": {
+            "light": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Breadcrumb link background active - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Breadcrumb link background active - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Breadcrumb link background active - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.700}",
+              "type": "color",
+              "description": "Breadcrumb link background active - high contrast dark"
+            }
+          },
+          "border-radius": {
+            "value": "{radius.sm}",
+            "type": "borderRadius",
+            "description": "Breadcrumb link border radius"
+          }
+        },
+        "current": {
+          "text": {
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Current breadcrumb text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Current breadcrumb text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Current breadcrumb text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Current breadcrumb text - high contrast dark"
+            }
+          }
+        },
+        "separator": {
+          "text": {
+            "light": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Breadcrumb separator - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Breadcrumb separator - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Breadcrumb separator - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Breadcrumb separator - high contrast dark"
+            }
+          }
+        },
+        "ellipsis": {
+          "text": {
+            "light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text - high contrast dark"
+            }
+          },
+          "text-hover": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.400}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis text hover - high contrast dark"
+            }
+          },
+          "background-hover": {
+            "light": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis background hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis background hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.200}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis background hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Breadcrumb ellipsis background hover - high contrast dark"
+            }
+          },
+          "border-radius": {
+            "value": "{radius.sm}",
+            "type": "borderRadius",
+            "description": "Breadcrumb ellipsis border radius"
+          }
+        }
+      },
+      "avatar": {
+        "primary": {
+          "background": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary avatar background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Primary avatar background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Primary avatar background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Primary avatar background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary avatar text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary avatar text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Primary avatar text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Primary avatar text - high contrast dark"
+            }
+          }
+        },
+        "secondary": {
+          "background": {
+            "light": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Secondary avatar background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Secondary avatar background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Secondary avatar background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Secondary avatar background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Secondary avatar text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Secondary avatar text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Secondary avatar text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Secondary avatar text - high contrast dark"
+            }
+          }
+        },
+        "success": {
+          "background": {
+            "light": {
+              "value": "{color.base.success.600}",
+              "type": "color",
+              "description": "Success avatar background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.success.600}",
+              "type": "color",
+              "description": "Success avatar background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.success.800}",
+              "type": "color",
+              "description": "Success avatar background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.success.200}",
+              "type": "color",
+              "description": "Success avatar background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Success avatar text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Success avatar text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Success avatar text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Success avatar text - high contrast dark"
+            }
+          }
+        },
+        "warning": {
+          "background": {
+            "light": {
+              "value": "{color.base.warning.600}",
+              "type": "color",
+              "description": "Warning avatar background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.warning.600}",
+              "type": "color",
+              "description": "Warning avatar background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.warning.800}",
+              "type": "color",
+              "description": "Warning avatar background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.warning.200}",
+              "type": "color",
+              "description": "Warning avatar background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Warning avatar text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Warning avatar text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Warning avatar text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Warning avatar text - high contrast dark"
+            }
+          }
+        },
+        "danger": {
+          "background": {
+            "light": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Danger avatar background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.danger.600}",
+              "type": "color",
+              "description": "Danger avatar background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.danger.800}",
+              "type": "color",
+              "description": "Danger avatar background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.danger.200}",
+              "type": "color",
+              "description": "Danger avatar background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Danger avatar text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Danger avatar text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Danger avatar text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Danger avatar text - high contrast dark"
+            }
+          }
+        }
+      },
+      "table": {
+        "border": {
+          "light": {
+            "value": "{color.base.neutral.200}",
+            "type": "color",
+            "description": "Table border - light theme"
+          },
+          "dark": {
+            "value": "{color.base.neutral.700}",
+            "type": "color",
+            "description": "Table border - dark theme"
+          },
+          "hc-light": {
+            "value": "{color.base.neutral.400}",
+            "type": "color",
+            "description": "Table border - high contrast light"
+          },
+          "hc-dark": {
+            "value": "{color.base.neutral.600}",
+            "type": "color",
+            "description": "Table border - high contrast dark"
+          }
+        },
+        "border-radius": {
+          "value": "{radius.md}",
+          "type": "borderRadius",
+          "description": "Table border radius"
+        },
+        "header": {
+          "background": {
+            "light": {
+              "value": "{color.base.neutral.50}",
+              "type": "color",
+              "description": "Table header background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.800}",
+              "type": "color",
+              "description": "Table header background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Table header background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Table header background - high contrast dark"
+            }
+          },
+          "text": {
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Table header text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Table header text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Table header text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Table header text - high contrast dark"
+            }
+          },
+          "sort-icon": {
+            "light": {
+              "value": "{color.base.neutral.500}",
+              "type": "color",
+              "description": "Table header sort icon - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Table header sort icon - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Table header sort icon - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Table header sort icon - high contrast dark"
+            }
+          },
+          "sort-icon-active": {
+            "light": {
+              "value": "{color.base.brand.600}",
+              "type": "color",
+              "description": "Table header active sort icon - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.400}",
+              "type": "color",
+              "description": "Table header active sort icon - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.800}",
+              "type": "color",
+              "description": "Table header active sort icon - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.200}",
+              "type": "color",
+              "description": "Table header active sort icon - high contrast dark"
+            }
+          }
+        },
+        "row": {
+          "background": {
+            "light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Table row background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Table row background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Table row background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Table row background - high contrast dark"
+            }
+          },
+          "background-hover": {
+            "light": {
+              "value": "{color.base.neutral.50}",
+              "type": "color",
+              "description": "Table row background hover - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.800}",
+              "type": "color",
+              "description": "Table row background hover - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Table row background hover - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Table row background hover - high contrast dark"
+            }
+          },
+          "background-selected": {
+            "light": {
+              "value": "{color.base.brand.50}",
+              "type": "color",
+              "description": "Table row background selected - light theme"
+            },
+            "dark": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Table row background selected - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.brand.100}",
+              "type": "color",
+              "description": "Table row background selected - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.brand.900}",
+              "type": "color",
+              "description": "Table row background selected - high contrast dark"
+            }
+          },
+          "background-striped": {
+            "light": {
+              "value": "{color.base.neutral.50}",
+              "type": "color",
+              "description": "Table row striped background - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.800}",
+              "type": "color",
+              "description": "Table row striped background - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Table row striped background - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Table row striped background - high contrast dark"
+            }
+          }
+        },
+        "cell": {
+          "text": {
+            "light": {
+              "value": "{color.base.neutral.900}",
+              "type": "color",
+              "description": "Table cell text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.100}",
+              "type": "color",
+              "description": "Table cell text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.black}",
+              "type": "color",
+              "description": "Table cell text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.white}",
+              "type": "color",
+              "description": "Table cell text - high contrast dark"
+            }
+          },
+          "text-secondary": {
+            "light": {
+              "value": "{color.base.neutral.600}",
+              "type": "color",
+              "description": "Table cell secondary text - light theme"
+            },
+            "dark": {
+              "value": "{color.base.neutral.400}",
+              "type": "color",
+              "description": "Table cell secondary text - dark theme"
+            },
+            "hc-light": {
+              "value": "{color.base.neutral.700}",
+              "type": "color",
+              "description": "Table cell secondary text - high contrast light"
+            },
+            "hc-dark": {
+              "value": "{color.base.neutral.300}",
+              "type": "color",
+              "description": "Table cell secondary text - high contrast dark"
+            }
           }
         }
       }

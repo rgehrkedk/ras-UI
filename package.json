@@ -5,40 +5,77 @@
   "type": "module",
   "description": "Accessible, performant design system with vanilla-extract and React Aria Components",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint --filter=@ras-ui/react --filter=@ras-ui/tokens --filter=showcase",
+    "lint:fix": "turbo run lint --filter=@ras-ui/react --filter=@ras-ui/tokens --filter=showcase -- --fix",
     "type-check": "turbo run type-check",
     "test": "turbo run test",
     "test:visual": "turbo run test:visual",
     "storybook": "cd packages/docs && npm run storybook",
     "build-storybook": "cd packages/docs && npm run build-storybook",
+    "showcase": "cd apps/showcase && pnpm dev",
+    "reference": "cd packages/sporty-book && npm run dev",
     "deploy-storybook": "./scripts/deploy-storybook.sh",
     "setup-github-secrets": "./scripts/setup-github-secrets.sh",
     "setup-deployment": "./scripts/setup-complete-deployment.sh",
     "tokens": "cd packages/tokens && npx style-dictionary build --config style-dictionary.config.js",
     "tokens:brands": "cd packages/tokens && npm run build:brands",
     "tokens:all": "cd packages/tokens && npm run build:all",
+    "check-errors": "node scripts/check-errors.js",
+    "check-errors:watch": "nodemon --watch 'packages/**/*' --watch 'apps/**/*' --ext ts,tsx,js,jsx,json --exec 'node scripts/check-errors.js'",
+    "monitor-diagnostics": "node scripts/monitor-diagnostics.js",
+    "auto-fix": "node scripts/auto-fix-errors.js",
+    "health-check": "npm run check-errors && npm run monitor-diagnostics",
+    "preflight": "pnpm build && pnpm type-check && pnpm lint && pnpm -C packages/react test",
+    "component-map": "node scripts/component-map.js",
+    "scaffold:component": "node scripts/scaffold-component.js",
+    "codemod:stories": "node scripts/codemods/update-storybook-imports.cjs",
+    "size-check": "node scripts/size-check.js",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "prepare": "husky",
+    "commit": "cz",
+    "format": "prettier --write ."
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@changesets/cli": "^2.27.1",
     "@eslint/js": "^9.33.0",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
+    "commitizen": "^4.3.0",
     "eslint": "^9.33.0",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
     "turbo": "^1.11.2",
     "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,md,css,scss}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "packageManager": "pnpm@8.12.1",
   "engines": {
