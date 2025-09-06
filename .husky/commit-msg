@@ -1,10 +1,6 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Lint commit message with commitlint if available
 if command -v pnpm >/dev/null 2>&1; then
   pnpm exec commitlint --edit "$1" || exit 1
 else
-  npx --no-install commitlint --edit "$1" || true
+  npx --no-install commitlint --edit "$1" || exit 1
 fi
-

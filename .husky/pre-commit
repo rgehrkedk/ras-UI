@@ -1,12 +1,12 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Block committing .env files
 if git diff --cached --name-only | grep -E '^\.env(\..+)?$' | grep -v '^\.env.example$' >/dev/null; then
   echo "❌ Refusing to commit .env files. Use .env.example and GitHub Secrets."
   exit 1
 fi
 
-# Run lint-staged if available
-command -v pnpm >/dev/null 2>&1 && pnpm exec lint-staged || npx --no-install lint-staged || true
-
+# Run lint-staged and block commit on failure
+if command -v pnpm >/dev/null 2>&1; then
+  pnpm exec lint-staged || exit 1
+else
+  npx --no-install lint-staged || exit 1
+fi
