@@ -2,7 +2,7 @@
  * Hook for managing validation state and messages
  */
 
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
 export interface UseValidationProps {
   isInvalid?: boolean;
@@ -15,31 +15,31 @@ export interface UseValidationReturn {
    * Whether there's currently an error to display
    */
   hasError: boolean;
-  
+
   /**
    * Whether helper text should be shown
    */
   showHelper: boolean;
-  
+
   /**
    * Error message to display (undefined if no error)
    */
   displayErrorMessage?: string;
-  
+
   /**
    * Helper text to display (undefined if error is shown)
    */
   displayHelperText?: string;
-  
+
   /**
    * Validation state for styling
    */
-  validationState: 'valid' | 'invalid';
+  validationState: "valid" | "invalid";
 }
 
 /**
  * Hook for managing validation messages and state
- * 
+ *
  * @example
  * ```tsx
  * const { hasError, showHelper, displayErrorMessage, displayHelperText } = useValidation({
@@ -47,7 +47,7 @@ export interface UseValidationReturn {
  *   errorMessage,
  *   helperText
  * });
- * 
+ *
  * return (
  *   <>
  *     <input {...props} />
@@ -62,14 +62,14 @@ export function useValidation({
   errorMessage,
   helperText,
 }: UseValidationProps): UseValidationReturn {
-  const hasError = useMemo(() => 
-    isInvalid && Boolean(errorMessage), 
-    [isInvalid, errorMessage]
+  const hasError = useMemo(
+    () => isInvalid && Boolean(errorMessage),
+    [isInvalid, errorMessage],
   );
-  
-  const showHelper = useMemo(() => 
-    Boolean(helperText) && !hasError, 
-    [helperText, hasError]
+
+  const showHelper = useMemo(
+    () => Boolean(helperText) && !hasError,
+    [helperText, hasError],
   );
 
   return {
@@ -77,6 +77,6 @@ export function useValidation({
     showHelper,
     displayErrorMessage: hasError ? errorMessage : undefined,
     displayHelperText: showHelper ? helperText : undefined,
-    validationState: isInvalid ? 'invalid' : 'valid',
+    validationState: isInvalid ? "invalid" : "valid",
   };
 }

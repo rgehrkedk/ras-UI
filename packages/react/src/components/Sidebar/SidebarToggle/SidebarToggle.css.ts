@@ -1,7 +1,7 @@
-import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
-import { theme } from '../../../styles/theme.css';
+import { theme } from "../../../styles/theme.css";
 
 // Toggle button - isolated and refactored
 export const sidebarToggle = recipe({
@@ -9,67 +9,67 @@ export const sidebarToggle = recipe({
     // Reset button defaults
     margin: 0,
     padding: 0,
-    border: 'none',
-    background: 'none',
-    font: 'inherit',
-    lineHeight: 'normal',
-    textAlign: 'center',
-    textDecoration: 'none',
-    
+    border: "none",
+    background: "none",
+    font: "inherit",
+    lineHeight: "normal",
+    textAlign: "center",
+    textDecoration: "none",
+
     // Positioning and layout
-    position: 'absolute',
+    position: "absolute",
     top: theme.space.md,
-    right: '-12px',
+    right: "-12px",
     zIndex: 21,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '38%',
-    cursor: 'pointer',
-    transition: `all ${theme.animation.duration.fast} ${theme.animation.easing['ease-in-out']}`,
-    
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "38%",
+    cursor: "pointer",
+    transition: `all ${theme.animation.duration.fast} ${theme.animation.easing["ease-in-out"]}`,
+
     // Prevent flex stretching
     flexShrink: 0,
     flexGrow: 0,
-    flexBasis: 'auto',
-    
+    flexBasis: "auto",
+
     // Prevent width/height stretching
-    boxSizing: 'border-box',
-    
-    ':focus': {
-      outline: 'none',
+    boxSizing: "border-box",
+
+    ":focus": {
+      outline: "none",
     },
-    
-    ':disabled': {
-      cursor: 'not-allowed',
+
+    ":disabled": {
+      cursor: "not-allowed",
       opacity: 0.5,
     },
   },
   variants: {
     size: {
       sm: {
-        width: '24px',
-        height: '24px',
-        minWidth: '24px',
-        minHeight: '24px',
-        maxWidth: '24px',
-        maxHeight: '24px',
+        width: "24px",
+        height: "24px",
+        minWidth: "24px",
+        minHeight: "24px",
+        maxWidth: "24px",
+        maxHeight: "24px",
       },
       md: {
-        width: '32px',
-        height: '32px',
-        minWidth: '32px',
-        minHeight: '32px',
-        maxWidth: '32px',
-        maxHeight: '32px',
+        width: "32px",
+        height: "32px",
+        minWidth: "32px",
+        minHeight: "32px",
+        maxWidth: "32px",
+        maxHeight: "32px",
       },
       lg: {
-        width: '40px',
-        height: '40px',
-        minWidth: '40px',
-        minHeight: '40px',
-        maxWidth: '40px',
-        maxHeight: '40px',
+        width: "40px",
+        height: "40px",
+        minWidth: "40px",
+        minHeight: "40px",
+        maxWidth: "40px",
+        maxHeight: "40px",
       },
     },
     variant: {
@@ -78,28 +78,28 @@ export const sidebarToggle = recipe({
         border: `1px solid ${theme.color.border.default}`,
         color: theme.color.text.primary,
         boxShadow: theme.color.overlay,
-        
-        ':hover': {
+
+        ":hover": {
           backgroundColor: theme.color.interaction.hover,
           color: theme.color.text.primary,
-          transform: 'scale(1.05)',
+          transform: "scale(1.05)",
         },
       },
       ghost: {
-        backgroundColor: 'transparent',
+        backgroundColor: "transparent",
         color: theme.color.text.secondary,
-        
-        ':hover': {
+
+        ":hover": {
           backgroundColor: theme.color.interaction.hover,
           color: theme.color.text.primary,
         },
       },
       outline: {
-        backgroundColor: 'transparent',
+        backgroundColor: "transparent",
         border: `2px solid ${theme.color.border.default}`,
         color: theme.color.text.secondary,
-        
-        ':hover': {
+
+        ":hover": {
           backgroundColor: theme.color.interaction.hover,
           borderColor: theme.color.border.focus,
           color: theme.color.text.primary,
@@ -109,20 +109,20 @@ export const sidebarToggle = recipe({
     focusVisible: {
       true: {
         outline: `2px solid ${theme.color.border.focus}`,
-        outlineOffset: '2px',
+        outlineOffset: "2px",
       },
       false: {},
     },
     pressed: {
       true: {
-        transform: 'scale(0.95)',
+        transform: "scale(0.95)",
       },
       false: {},
     },
   },
   defaultVariants: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     focusVisible: false,
     pressed: false,
   },
@@ -130,12 +130,12 @@ export const sidebarToggle = recipe({
 
 // Toggle icon wrapper
 export const sidebarToggleIcon = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '18px',
-  fontWeight: 'bold',
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "18px",
+  fontWeight: "bold",
   lineHeight: 1,
-  userSelect: 'none',
-  pointerEvents: 'none',
+  userSelect: "none",
+  pointerEvents: "none",
 });

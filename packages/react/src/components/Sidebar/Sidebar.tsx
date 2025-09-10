@@ -1,20 +1,22 @@
-import React, { createContext, useContext, useState } from 'react';
-import { FocusScope } from 'react-aria';
+import React, { createContext, useContext, useState } from "react";
+import { FocusScope } from "react-aria";
 
-import { useSidebarFocusManagement } from '../../hooks';
-import type { BaseComponentProps, CollapsibleComponentProps } from '../../types';
-import { cn } from '../../utils/cn';
-
-import * as styles from './Sidebar.css';
+import { useSidebarFocusManagement } from "../../hooks";
+import type {
+  BaseComponentProps,
+  CollapsibleComponentProps,
+} from "../../types";
+import { cn } from "../../utils/cn";
+import * as styles from "./Sidebar.css";
 
 // Import all subcomponents for composition
-import { SidebarContent } from './SidebarContent';
-import { SidebarFooter } from './SidebarFooter';
-import { SidebarGroup } from './SidebarGroup';
-import { SidebarHeader } from './SidebarHeader';
-import { SidebarItem, SidebarButton, SidebarLink } from './SidebarItem';
-import { SidebarSeparator } from './SidebarSeparator';
-import { SidebarToggle } from './SidebarToggle';
+import { SidebarContent } from "./SidebarContent";
+import { SidebarFooter } from "./SidebarFooter";
+import { SidebarGroup } from "./SidebarGroup";
+import { SidebarHeader } from "./SidebarHeader";
+import { SidebarItem, SidebarButton, SidebarLink } from "./SidebarItem";
+import { SidebarSeparator } from "./SidebarSeparator";
+import { SidebarToggle } from "./SidebarToggle";
 
 // Context for sidebar state with enhanced functionality
 interface SidebarContextValue {
@@ -24,51 +26,58 @@ interface SidebarContextValue {
   isFocusWithin: boolean;
 }
 
-const SidebarContext = createContext<SidebarContextValue | undefined>(undefined);
+const SidebarContext = createContext<SidebarContextValue | undefined>(
+  undefined,
+);
 
 export const useSidebarContext = () => {
   const context = useContext(SidebarContext);
   if (!context) {
-    throw new Error('Sidebar components must be used within a Sidebar');
+    throw new Error("Sidebar components must be used within a Sidebar");
   }
   return context;
 };
 
 // Main Sidebar Container
-export interface SidebarProps extends BaseComponentProps, CollapsibleComponentProps {
+export interface SidebarProps
+  extends BaseComponentProps,
+    CollapsibleComponentProps {
   children: React.ReactNode;
-  variant?: 'floating' | 'push';
+  variant?: "floating" | "push";
   onCollapseChange?: (collapsed: boolean) => void;
 }
 
 const SidebarBase = React.forwardRef<HTMLElement, SidebarProps>(
-  ({ 
-    children, 
-    variant = 'floating',
-    defaultCollapsed = false, 
-    collapsible = true,
-    onCollapseChange,
-    className, 
-    ...props 
-  }, ref) => {
+  (
+    {
+      children,
+      variant = "floating",
+      defaultCollapsed = false,
+      collapsible = true,
+      onCollapseChange,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
-    
+
     // Wrapper to call onCollapseChange when state changes
     const handleSetIsCollapsed = (collapsed: boolean) => {
       setIsCollapsed(collapsed);
       onCollapseChange?.(collapsed);
     };
-    
+
     // Enhanced focus management
     const { focusScopeProps, isFocusWithin } = useSidebarFocusManagement({
-      isCollapsed
+      isCollapsed,
     });
 
     const contextValue: SidebarContextValue = {
       isCollapsed,
       setIsCollapsed: handleSetIsCollapsed,
       collapsible,
-      isFocusWithin
+      isFocusWithin,
     };
 
     // Handle click to expand when collapsed
@@ -76,8 +85,10 @@ const SidebarBase = React.forwardRef<HTMLElement, SidebarProps>(
       if (isCollapsed && collapsible) {
         // Only expand if click is not on interactive elements (buttons, links)
         const target = event.target as HTMLElement;
-        const isInteractive = target.closest('button, a, [role="button"], [role="menuitem"]');
-        
+        const isInteractive = target.closest(
+          'button, a, [role="button"], [role="menuitem"]',
+        );
+
         if (!isInteractive) {
           handleSetIsCollapsed(false);
         }
@@ -93,17 +104,29 @@ const SidebarBase = React.forwardRef<HTMLElement, SidebarProps>(
             data-focus-within={isFocusWithin}
             className={cn(
               styles.sidebar({ variant, collapsed: isCollapsed }),
-              className
+              className,
             )}
             onClick={handleSidebarClick}
-            style={{ cursor: isCollapsed && collapsible ? 'pointer' : undefined }}
+            onKeyDown={(e) => {
+              if (!(isCollapsed && collapsible)) return;
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleSetIsCollapsed(false);
+              }
+            }}
+            role={isCollapsed && collapsible ? "button" : undefined}
+            aria-expanded={!isCollapsed}
+            tabIndex={isCollapsed && collapsible ? 0 : undefined}
+            style={{
+              cursor: isCollapsed && collapsible ? "pointer" : undefined,
+            }}
             {...focusScopeProps}
             {...props}
           >
             {React.Children.map(children, (child) => {
               if (React.isValidElement(child)) {
                 const childType = child.type as any;
-                if (childType?.displayName === 'SidebarHeader') {
+                if (childType?.displayName === "SidebarHeader") {
                   return React.cloneElement(child, { isCollapsed });
                 }
               }
@@ -113,10 +136,10 @@ const SidebarBase = React.forwardRef<HTMLElement, SidebarProps>(
         </FocusScope>
       </SidebarContext.Provider>
     );
-  }
+  },
 );
 
-SidebarBase.displayName = 'Sidebar';
+SidebarBase.displayName = "Sidebar";
 
 // Internal composition interface for TypeScript support
 type SidebarCompound = typeof SidebarBase & {
@@ -148,10 +171,14 @@ Sidebar.Separator = SidebarSeparator;
 export { Sidebar };
 
 // Export types
-export type { SidebarHeaderProps } from './SidebarHeader';
-export type { SidebarContentProps } from './SidebarContent';
-export type { SidebarFooterProps } from './SidebarFooter';
-export type { SidebarGroupProps } from './SidebarGroup';
-export type { SidebarItemProps, SidebarButtonProps, SidebarLinkProps } from './SidebarItem';
-export type { SidebarToggleProps } from './SidebarToggle';
-export type { SidebarSeparatorProps } from './SidebarSeparator';
+export type { SidebarHeaderProps } from "./SidebarHeader";
+export type { SidebarContentProps } from "./SidebarContent";
+export type { SidebarFooterProps } from "./SidebarFooter";
+export type { SidebarGroupProps } from "./SidebarGroup";
+export type {
+  SidebarItemProps,
+  SidebarButtonProps,
+  SidebarLinkProps,
+} from "./SidebarItem";
+export type { SidebarToggleProps } from "./SidebarToggle";
+export type { SidebarSeparatorProps } from "./SidebarSeparator";

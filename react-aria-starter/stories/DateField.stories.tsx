@@ -1,13 +1,13 @@
-import {DateField} from '../src/DateField';
+import { DateField } from "../src/DateField";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof DateField> = {
   component: DateField,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -16,5 +16,5 @@ type Story = StoryFn<typeof DateField>;
 export const Example: Story = (args) => <DateField {...args} />;
 
 Example.args = {
-  label: 'Event date'
+  label: "Event date",
 };

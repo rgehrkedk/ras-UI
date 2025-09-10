@@ -1,13 +1,13 @@
-import {Menu, MenuButton, MenuItem, SubmenuTrigger} from '../src/Menu';
+import { Menu, MenuButton, MenuItem, SubmenuTrigger } from "../src/Menu";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof MenuButton> = {
   component: MenuButton,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;

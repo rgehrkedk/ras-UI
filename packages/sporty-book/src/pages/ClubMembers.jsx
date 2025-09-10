@@ -1,11 +1,24 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Users, Search, Plus, Mail, Calendar, Settings, LogIn } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Users,
+  Search,
+  Plus,
+  Mail,
+  Calendar,
+  Settings,
+  LogIn,
+} from "lucide-react";
 import { format, parseISO } from "date-fns";
 
 export default function ClubMembers() {
@@ -25,17 +38,21 @@ export default function ClubMembers() {
       const currentUser = await User.me();
       setUser(currentUser); // Set the user state
 
-      if (!currentUser || !currentUser.club_id) { // Check if user exists and has a club_id
+      if (!currentUser || !currentUser.club_id) {
+        // Check if user exists and has a club_id
         // If no user or no club_id, we can't load member data, but don't throw an error.
         // The component will handle rendering based on `user` state.
         return;
       }
 
       const clubs = await SportClub.list();
-      const userClub = clubs.find(c => c.id === currentUser.club_id);
+      const userClub = clubs.find((c) => c.id === currentUser.club_id);
       setClub(userClub);
 
-      const clubMembers = await ClubMember.filter({ club_id: currentUser.club_id }, "-created_date");
+      const clubMembers = await ClubMember.filter(
+        { club_id: currentUser.club_id },
+        "-created_date",
+      );
       setMembers(clubMembers);
     } catch (error) {
       console.error("Error loading members:", error);
@@ -88,9 +105,12 @@ export default function ClubMembers() {
     }
   };
 
-  const filteredMembers = members.filter(member => {
-    const matchesSearch = member.user_email.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = statusFilter === "all" || member.status === statusFilter;
+  const filteredMembers = members.filter((member) => {
+    const matchesSearch = member.user_email
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesStatus =
+      statusFilter === "all" || member.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
 
@@ -114,11 +134,16 @@ export default function ClubMembers() {
         <Card className="max-w-md w-full border-0 shadow-xl">
           <CardContent className="p-8 text-center">
             <Users className="w-16 h-16 text-teal-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Club Access Required</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              Club Access Required
+            </h2>
             <p className="text-slate-600 mb-6">
               Sign in with your club account to manage members.
             </p>
-            <Button onClick={handleLogin} className="w-full bg-teal-600 hover:bg-teal-700">
+            <Button
+              onClick={handleLogin}
+              className="w-full bg-teal-600 hover:bg-teal-700"
+            >
               <LogIn className="w-4 h-4 mr-2" />
               Sign In
             </Button>
@@ -135,8 +160,12 @@ export default function ClubMembers() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Member Management</h1>
-          <p className="text-slate-600">Manage members for {club?.name || "your club"}</p>
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+            Member Management
+          </h1>
+          <p className="text-slate-600">
+            Manage members for {club?.name || "your club"}
+          </p>
         </div>
 
         {/* Stats Cards */}
@@ -150,7 +179,7 @@ export default function ClubMembers() {
                 <div>
                   <p className="text-sm text-slate-600">Active Members</p>
                   <p className="text-2xl font-bold text-slate-900">
-                    {members.filter(m => m.status === "active").length}
+                    {members.filter((m) => m.status === "active").length}
                   </p>
                 </div>
               </div>
@@ -166,7 +195,10 @@ export default function ClubMembers() {
                 <div>
                   <p className="text-sm text-slate-600">Premium Members</p>
                   <p className="text-2xl font-bold text-slate-900">
-                    {members.filter(m => m.membership_type === "premium").length}
+                    {
+                      members.filter((m) => m.membership_type === "premium")
+                        .length
+                    }
                   </p>
                 </div>
               </div>
@@ -182,7 +214,7 @@ export default function ClubMembers() {
                 <div>
                   <p className="text-sm text-slate-600">VIP Members</p>
                   <p className="text-2xl font-bold text-slate-900">
-                    {members.filter(m => m.membership_type === "vip").length}
+                    {members.filter((m) => m.membership_type === "vip").length}
                   </p>
                 </div>
               </div>
@@ -197,7 +229,9 @@ export default function ClubMembers() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-600">Total Members</p>
-                  <p className="text-2xl font-bold text-slate-900">{members.length}</p>
+                  <p className="text-2xl font-bold text-slate-900">
+                    {members.length}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -217,7 +251,7 @@ export default function ClubMembers() {
                   className="pl-10"
                 />
               </div>
-              
+
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="lg:w-48">
                   <SelectValue placeholder="All Status" />
@@ -242,13 +276,21 @@ export default function ClubMembers() {
             {filteredMembers.length === 0 ? (
               <div className="text-center py-12">
                 <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">No members found</h3>
-                <p className="text-slate-600">No members match your current filters or your club has no members.</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                  No members found
+                </h3>
+                <p className="text-slate-600">
+                  No members match your current filters or your club has no
+                  members.
+                </p>
               </div>
             ) : (
               <div className="space-y-4">
                 {filteredMembers.map((member) => (
-                  <div key={member.id} className="p-4 border rounded-lg hover:bg-slate-50">
+                  <div
+                    key={member.id}
+                    className="p-4 border rounded-lg hover:bg-slate-50"
+                  >
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-2">
@@ -256,9 +298,15 @@ export default function ClubMembers() {
                             {member.user_email.charAt(0).toUpperCase()}
                           </div>
                           <div>
-                            <h4 className="font-semibold text-slate-900">{member.user_email}</h4>
+                            <h4 className="font-semibold text-slate-900">
+                              {member.user_email}
+                            </h4>
                             <div className="flex items-center gap-2">
-                              <Badge className={getMembershipColor(member.membership_type)}>
+                              <Badge
+                                className={getMembershipColor(
+                                  member.membership_type,
+                                )}
+                              >
                                 {member.membership_type} member
                               </Badge>
                               <Badge className={getStatusColor(member.status)}>
@@ -267,16 +315,30 @@ export default function ClubMembers() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="grid grid-cols-2 gap-4 text-sm text-slate-600">
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
-                            <span>Joined {format(parseISO(member.join_date || member.created_date), "MMM d, yyyy")}</span>
+                            <span>
+                              Joined{" "}
+                              {format(
+                                parseISO(
+                                  member.join_date || member.created_date,
+                                ),
+                                "MMM d, yyyy",
+                              )}
+                            </span>
                           </div>
                           {member.expiry_date && (
                             <div className="flex items-center gap-2">
                               <Calendar className="w-4 h-4" />
-                              <span>Expires {format(parseISO(member.expiry_date), "MMM d, yyyy")}</span>
+                              <span>
+                                Expires{" "}
+                                {format(
+                                  parseISO(member.expiry_date),
+                                  "MMM d, yyyy",
+                                )}
+                              </span>
                             </div>
                           )}
                         </div>
@@ -287,13 +349,19 @@ export default function ClubMembers() {
                           <Mail className="w-4 h-4 mr-1" />
                           Contact
                         </Button>
-                        <Select onValueChange={(value) => updateMemberStatus(member.id, value)}>
+                        <Select
+                          onValueChange={(value) =>
+                            updateMemberStatus(member.id, value)
+                          }
+                        >
                           <SelectTrigger className="w-32">
                             <SelectValue placeholder="Actions" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="active">Mark Active</SelectItem>
-                            <SelectItem value="inactive">Mark Inactive</SelectItem>
+                            <SelectItem value="inactive">
+                              Mark Inactive
+                            </SelectItem>
                             <SelectItem value="suspended">Suspend</SelectItem>
                           </SelectContent>
                         </Select>

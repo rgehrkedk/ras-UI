@@ -3,7 +3,7 @@
  * Centralizes repetitive state management across components
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 export interface InteractiveState {
   isHovered: boolean;
@@ -27,13 +27,13 @@ export interface UseInteractiveStateResult {
 
 /**
  * Centralized hook for managing interactive component states
- * 
+ *
  * @example
  * ```tsx
  * const { isHovered, isFocused, interactiveProps } = useInteractiveState();
- * 
+ *
  * return (
- *   <button 
+ *   <button
  *     {...interactiveProps}
  *     data-hovered={isHovered}
  *     data-focused={isFocused}

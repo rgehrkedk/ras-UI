@@ -3,7 +3,7 @@
  * Provides accessible dropdown menu functionality with keyboard navigation
  */
 
-import React from 'react';
+import React from "react";
 import {
   MenuTrigger,
   Menu as AriaMenu,
@@ -17,84 +17,88 @@ import {
   Key,
   SelectionMode,
   Selection,
-} from 'react-aria-components';
+} from "react-aria-components";
 
-import type { 
-  SizedComponentProps, 
+import type {
+  SizedComponentProps,
   BaseComponentProps,
-  ComponentChildren 
-} from '../../types';
-import { cn } from '../../utils/cn';
-import { IconWrapper } from '../Icon';
+  ComponentChildren,
+} from "../../types";
+import { cn } from "../../utils/cn";
+import { IconWrapper } from "../Icon";
 
-import { 
-  menuContainer, 
-  menu, 
-  menuItem, 
-  menuItemIcon, 
-  menuItemText, 
+import {
+  menuContainer,
+  menu,
+  menuItem,
+  menuItemIcon,
+  menuItemText,
   menuItemDescription,
   menuItemKeyboardShortcut,
   menuSeparator,
   menuTriggerButton,
-  menuPopover 
-} from './Menu.css';
+  menuPopover,
+} from "./Menu.css";
 
 // Core Menu Component Types
-export interface MenuProps extends Omit<AriaMenuProps<object>, 'className'>, BaseComponentProps {
+export interface MenuProps
+  extends Omit<AriaMenuProps<object>, "className">,
+    BaseComponentProps {
   /**
    * Menu size variant
    * @default 'md'
    */
-  size?: 'sm' | 'md' | 'lg';
-  
+  size?: "sm" | "md" | "lg";
+
   /**
    * Menu items - can be static or dynamic
    */
   children: ComponentChildren;
 }
 
-export interface MenuTriggerComponentProps 
-  extends Omit<AriaMenuTriggerProps, 'children'>, 
-          BaseComponentProps {
+export interface MenuTriggerComponentProps
+  extends Omit<AriaMenuTriggerProps, "children">,
+    BaseComponentProps {
   /**
    * Menu trigger button content and menu
    */
   children: [React.ReactElement, React.ReactElement];
-  
+
   /**
    * Menu size - passed down to menu and button
    * @default 'md'
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
-export interface MenuItemProps extends Omit<AriaMenuItemProps, 'className'>, BaseComponentProps {
+export interface MenuItemProps
+  extends Omit<AriaMenuItemProps, "className">,
+    BaseComponentProps {
   /**
    * Menu item content
    */
   children?: ComponentChildren;
-  
+
   /**
    * Icon to display at the start of the menu item
    */
   startIcon?: React.ReactNode;
-  
+
   /**
    * Icon to display at the end of the menu item
    */
   endIcon?: React.ReactNode;
-  
+
   /**
    * Description text below the main label
    */
   description?: string;
-  
+
   /**
    * Keyboard shortcut to display
    */
   keyboardShortcut?: string;
-  
+
   /**
    * Whether this menu item is destructive (danger styling)
    * @default false
@@ -107,7 +111,7 @@ export type MenuSeparatorProps = BaseComponentProps;
 /**
  * Menu Trigger Button component that opens the menu
  * Provides a standardized trigger button with proper accessibility
- * 
+ *
  * @example
  * ```tsx
  * <MenuTriggerButton size="md">
@@ -115,9 +119,14 @@ export type MenuSeparatorProps = BaseComponentProps;
  * </MenuTriggerButton>
  * ```
  */
-export const MenuTriggerButton = React.forwardRef<HTMLButtonElement, 
-  SizedComponentProps & { children: ComponentChildren; startIcon?: React.ReactNode; endIcon?: React.ReactNode }
->(({ size = 'md', className, children, startIcon, endIcon, ...props }, ref) => {
+export const MenuTriggerButton = React.forwardRef<
+  HTMLButtonElement,
+  SizedComponentProps & {
+    children: ComponentChildren;
+    startIcon?: React.ReactNode;
+    endIcon?: React.ReactNode;
+  }
+>(({ size = "md", className, children, startIcon, endIcon, ...props }, ref) => {
   return (
     <AriaButton
       ref={ref}
@@ -139,45 +148,46 @@ export const MenuTriggerButton = React.forwardRef<HTMLButtonElement,
   );
 });
 
-MenuTriggerButton.displayName = 'MenuTriggerButton';
+MenuTriggerButton.displayName = "MenuTriggerButton";
 
 /**
  * Menu Separator component for dividing menu sections
- * 
+ *
  * @example
  * ```tsx
  * <MenuSeparator />
  * ```
  */
-export const MenuSeparator = React.forwardRef<HTMLDivElement, MenuSeparatorProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <AriaSeparator
-        ref={ref as any}
-        className={cn(menuSeparator, className)}
-        {...props}
-      />
-    );
-  }
-);
+export const MenuSeparator = React.forwardRef<
+  HTMLDivElement,
+  MenuSeparatorProps
+>(({ className, ...props }, ref) => {
+  return (
+    <AriaSeparator
+      ref={ref as any}
+      className={cn(menuSeparator, className)}
+      {...props}
+    />
+  );
+});
 
-MenuSeparator.displayName = 'MenuSeparator';
+MenuSeparator.displayName = "MenuSeparator";
 
 /**
  * Menu Item component for individual menu options
  * Supports icons, descriptions, and keyboard shortcuts
- * 
+ *
  * @example
  * ```tsx
- * <MenuItem 
+ * <MenuItem
  *   startIcon={<Icon name="save" />}
  *   keyboardShortcut="⌘S"
  *   onAction={() => save()}
  * >
  *   Save Document
  * </MenuItem>
- * 
- * <MenuItem 
+ *
+ * <MenuItem
  *   description="Remove this item permanently"
  *   destructive
  *   onAction={() => delete()}
@@ -187,25 +197,34 @@ MenuSeparator.displayName = 'MenuSeparator';
  * ```
  */
 export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
-  ({ 
-    children, 
-    className, 
-    startIcon, 
-    endIcon, 
-    description, 
-    keyboardShortcut,
-    destructive = false,
-    ...props 
-  }, ref) => {
+  (
+    {
+      children,
+      className,
+      startIcon,
+      endIcon,
+      description,
+      keyboardShortcut,
+      destructive = false,
+      ...props
+    },
+    ref,
+  ) => {
     const childrenArray = React.Children.toArray(children);
-    const shortcutChild = childrenArray.find((child) => 
-      React.isValidElement(child) && (child.type as any)?.displayName === 'KeyboardShortcut'
+    const shortcutChild = childrenArray.find(
+      (child) =>
+        React.isValidElement(child) &&
+        (child.type as any)?.displayName === "KeyboardShortcut",
     ) as React.ReactElement | undefined;
-    const mainChildren = childrenArray.filter((child) => child !== shortcutChild);
+    const mainChildren = childrenArray.filter(
+      (child) => child !== shortcutChild,
+    );
 
     // Validation warnings for better DX
     if (!children && !startIcon && !endIcon) {
-      console.warn('MenuItem: Menu items should have visible content (children, startIcon, or endIcon)');
+      console.warn(
+        "MenuItem: Menu items should have visible content (children, startIcon, or endIcon)",
+      );
     }
 
     return (
@@ -220,24 +239,20 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
               {startIcon}
             </IconWrapper>
           )}
-          
+
           <div className={menuItemText}>
             {mainChildren && <span>{mainChildren}</span>}
             {description && (
-              <span className={menuItemDescription}>
-                {description}
-              </span>
+              <span className={menuItemDescription}>{description}</span>
             )}
           </div>
-          
+
           {shortcutChild}
-          
+
           {!shortcutChild && keyboardShortcut && (
-            <span className={menuItemKeyboardShortcut}>
-              {keyboardShortcut}
-            </span>
+            <span className={menuItemKeyboardShortcut}>{keyboardShortcut}</span>
           )}
-          
+
           {endIcon && (
             <IconWrapper position="end" className={menuItemIcon}>
               {endIcon}
@@ -246,15 +261,15 @@ export const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
         </div>
       </AriaMenuItem>
     );
-  }
+  },
 );
 
-MenuItem.displayName = 'MenuItem';
+MenuItem.displayName = "MenuItem";
 
 /**
  * Main Menu component containing menu items
  * Provides accessible menu with keyboard navigation
- * 
+ *
  * @example
  * ```tsx
  * <Menu size="md">
@@ -268,27 +283,23 @@ MenuItem.displayName = 'MenuItem';
  * ```
  */
 export const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
-  ({ size = 'md', className, children, ...props }, ref) => {
+  ({ size = "md", className, children, ...props }, ref) => {
     return (
-      <AriaMenu
-        ref={ref}
-        className={cn(menu({ size }), className)}
-        {...props}
-      >
+      <AriaMenu ref={ref} className={cn(menu({ size }), className)} {...props}>
         {children}
       </AriaMenu>
     );
-  }
+  },
 );
 
-Menu.displayName = 'Menu';
+Menu.displayName = "Menu";
 
 // removed inline MenuItemShortcut in favor of dedicated component
 
 /**
  * Menu Trigger component that combines trigger button and menu
  * Provides complete dropdown menu functionality
- * 
+ *
  * @example
  * ```tsx
  * <MenuTriggerComponent>
@@ -298,7 +309,7 @@ Menu.displayName = 'Menu';
  *     <MenuItem onAction={() => console.log('Copy')}>Copy</MenuItem>
  *   </Menu>
  * </MenuTriggerComponent>
- * 
+ *
  * // With custom trigger
  * <MenuTriggerComponent>
  *   <Button variant="primary">Custom Trigger</Button>
@@ -308,26 +319,29 @@ Menu.displayName = 'Menu';
  * </MenuTriggerComponent>
  * ```
  */
-export const MenuTriggerComponent = React.forwardRef<HTMLDivElement, MenuTriggerComponentProps>(
-  ({ size = 'md', className, children, ...props }, ref) => {
-    const [triggerButton, menuContent] = children;
+export const MenuTriggerComponent = React.forwardRef<
+  HTMLDivElement,
+  MenuTriggerComponentProps
+>(({ size = "md", className, children, ...props }, _ref) => {
+  const [triggerButton, menuContent] = children;
 
-    if (!triggerButton || !menuContent) {
-      console.warn('MenuTriggerComponent: Must have exactly two children - trigger button and menu');
-    }
-
-    return (
-      <MenuTrigger {...props}>
-        {triggerButton}
-        <Popover className={cn(menuPopover({ size }), className)}>
-          {menuContent}
-        </Popover>
-      </MenuTrigger>
+  if (!triggerButton || !menuContent) {
+    console.warn(
+      "MenuTriggerComponent: Must have exactly two children - trigger button and menu",
     );
   }
-);
 
-MenuTriggerComponent.displayName = 'MenuTriggerComponent';
+  return (
+    <MenuTrigger {...props}>
+      {triggerButton}
+      <Popover className={cn(menuPopover({ size }), className)}>
+        {menuContent}
+      </Popover>
+    </MenuTrigger>
+  );
+});
+
+MenuTriggerComponent.displayName = "MenuTriggerComponent";
 
 // Advanced Menu Types for Dynamic Content
 export interface MenuItemData {
@@ -351,7 +365,7 @@ export interface MenuSectionData {
 /**
  * Dynamic Menu component for programmatically generated menus
  * Supports sections and dynamic item collections
- * 
+ *
  * @example
  * ```tsx
  * const menuItems = [
@@ -359,34 +373,34 @@ export interface MenuSectionData {
  *   { id: 'copy', label: 'Copy', keyboardShortcut: '⌘C' },
  *   { id: 'delete', label: 'Delete', destructive: true }
  * ];
- * 
- * <DynamicMenu 
- *   items={menuItems} 
+ *
+ * <DynamicMenu
+ *   items={menuItems}
  *   onAction={(key) => console.log('Selected:', key)}
  * />
  * ```
  */
-export interface DynamicMenuProps extends Omit<MenuProps, 'children'> {
+export interface DynamicMenuProps extends Omit<MenuProps, "children"> {
   /**
    * Menu items or sections to render
    */
   items: (MenuItemData | MenuSectionData)[];
-  
+
   /**
    * Handler for menu item selection
    */
   onAction?: (key: Key) => void;
-  
+
   /**
    * Selection mode for the menu
    */
   selectionMode?: SelectionMode;
-  
+
   /**
    * Selected keys (for controlled selection)
    */
   selectedKeys?: Selection;
-  
+
   /**
    * Handler for selection changes
    */
@@ -398,7 +412,7 @@ export const DynamicMenu = React.forwardRef<HTMLDivElement, DynamicMenuProps>(
     return (
       <Menu ref={ref} className={className} {...props}>
         {items.map((item) => {
-          if ('items' in item) {
+          if ("items" in item) {
             // Section with items
             return (
               <React.Fragment key={item.id}>
@@ -412,7 +426,9 @@ export const DynamicMenu = React.forwardRef<HTMLDivElement, DynamicMenuProps>(
                     keyboardShortcut={subItem.keyboardShortcut}
                     destructive={subItem.destructive}
                     isDisabled={subItem.disabled}
-                    onAction={subItem.onAction || (() => onAction?.(subItem.id))}
+                    onAction={
+                      subItem.onAction || (() => onAction?.(subItem.id))
+                    }
                   >
                     {subItem.label}
                   </MenuItem>
@@ -439,9 +455,9 @@ export const DynamicMenu = React.forwardRef<HTMLDivElement, DynamicMenuProps>(
         })}
       </Menu>
     );
-  }
+  },
 );
 
-DynamicMenu.displayName = 'DynamicMenu';
+DynamicMenu.displayName = "DynamicMenu";
 
 export default MenuTriggerComponent;

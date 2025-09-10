@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { cn } from '../../utils/cn';
+import { cn } from "../../utils/cn";
 
-import * as styles from './Layout.css';
+import * as styles from "./Layout.css";
 
 // Root Layout Container
 export interface LayoutProps {
@@ -13,18 +13,14 @@ export interface LayoutProps {
 export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   ({ children, className, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={cn(styles.layout, className)}
-        {...props}
-      >
+      <div ref={ref} className={cn(styles.layout, className)} {...props}>
         {children}
       </div>
     );
-  }
+  },
 );
 
-Layout.displayName = 'Layout';
+Layout.displayName = "Layout";
 
 // Layout Header
 export interface LayoutHeaderProps {
@@ -44,10 +40,10 @@ export const LayoutHeader = React.forwardRef<HTMLElement, LayoutHeaderProps>(
         {children}
       </header>
     );
-  }
+  },
 );
 
-LayoutHeader.displayName = 'LayoutHeader';
+LayoutHeader.displayName = "LayoutHeader";
 
 // Layout Body (contains sidebar and main content)
 export interface LayoutBodyProps {
@@ -58,18 +54,14 @@ export interface LayoutBodyProps {
 export const LayoutBody = React.forwardRef<HTMLDivElement, LayoutBodyProps>(
   ({ children, className, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={cn(styles.layoutBody, className)}
-        {...props}
-      >
+      <div ref={ref} className={cn(styles.layoutBody, className)} {...props}>
         {children}
       </div>
     );
-  }
+  },
 );
 
-LayoutBody.displayName = 'LayoutBody';
+LayoutBody.displayName = "LayoutBody";
 
 // Layout Main Content Area
 export interface LayoutMainProps {
@@ -89,33 +81,34 @@ export const LayoutMain = React.forwardRef<HTMLElement, LayoutMainProps>(
         {children}
       </main>
     );
-  }
+  },
 );
 
-LayoutMain.displayName = 'LayoutMain';
+LayoutMain.displayName = "LayoutMain";
 
 // Layout Content Container (for max-width constraint)
 export interface LayoutContentProps {
   children: React.ReactNode;
   className?: string;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "full";
 }
 
-export const LayoutContent = React.forwardRef<HTMLDivElement, LayoutContentProps>(
-  ({ children, className, maxWidth = 'xl', ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(styles.layoutContent({ maxWidth }), className)}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  }
-);
+export const LayoutContent = React.forwardRef<
+  HTMLDivElement,
+  LayoutContentProps
+>(({ children, className, maxWidth = "xl", ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(styles.layoutContent({ maxWidth }), className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+});
 
-LayoutContent.displayName = 'LayoutContent';
+LayoutContent.displayName = "LayoutContent";
 
 // Layout Footer
 export interface LayoutFooterProps {
@@ -134,7 +127,7 @@ export const LayoutFooter = React.forwardRef<HTMLElement, LayoutFooterProps>(
         {children}
       </footer>
     );
-  }
+  },
 );
 
-LayoutFooter.displayName = 'LayoutFooter';
+LayoutFooter.displayName = "LayoutFooter";

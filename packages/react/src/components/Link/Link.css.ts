@@ -2,64 +2,64 @@
  * Link component styles using vanilla-extract
  */
 
-import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
-import { theme } from '../../styles/theme.css';
+import { theme } from "../../styles/theme.css";
 
 // Base link styles following React Aria Components patterns
 export const linkBase = style({
   // Reset browser defaults
   margin: 0,
   padding: 0,
-  background: 'none',
-  
+  background: "none",
+
   // Typography
   fontFamily: theme.font.family.sans,
-  fontSize: 'inherit', // Inherit font size by default
+  fontSize: "inherit", // Inherit font size by default
   fontWeight: theme.font.weight.medium,
-  lineHeight: 'inherit',
-  
+  lineHeight: "inherit",
+
   // Layout
-  display: 'inline-flex',
-  alignItems: 'center',
+  display: "inline-flex",
+  alignItems: "center",
   gap: theme.space.xs,
-  
+
   // Interaction
-  cursor: 'pointer',
-  userSelect: 'none',
-  textDecoration: 'underline',
-  textUnderlineOffset: '0.125em',
-  textDecorationThickness: '1px',
-  
+  cursor: "pointer",
+  userSelect: "none",
+  textDecoration: "underline",
+  textUnderlineOffset: "0.125em",
+  textDecorationThickness: "1px",
+
   // Accessibility
-  outline: 'none',
-  
+  outline: "none",
+
   // Transitions
-  '@media': {
-    '(prefers-reduced-motion: no-preference)': {
-      transition: 'all 0.15s ease-in-out',
+  "@media": {
+    "(prefers-reduced-motion: no-preference)": {
+      transition: "all 0.15s ease-in-out",
     },
   },
-  
+
   // Focus styles
-  ':focus-visible': {
+  ":focus-visible": {
     outline: `2px solid ${theme.color.border.focus}`,
-    outlineOffset: '2px',
-    textDecoration: 'none', // Remove underline when focused for clarity
+    outlineOffset: "2px",
+    textDecoration: "none", // Remove underline when focused for clarity
   },
-  
+
   // Disabled state
   selectors: {
     '&[data-disabled="true"]': {
-      cursor: 'not-allowed',
+      cursor: "not-allowed",
       opacity: 0.5,
-      textDecoration: 'none',
+      textDecoration: "none",
     },
-    
+
     // Pressed state (for React Aria)
     '&[data-pressed="true"]': {
-      transform: 'scale(0.98)',
+      transform: "scale(0.98)",
     },
   },
 });
@@ -67,136 +67,138 @@ export const linkBase = style({
 // Link recipe with variants
 export const link = recipe({
   base: linkBase,
-  
+
   variants: {
     variant: {
       default: {
         color: theme.color.components.link.default.text,
         textDecorationColor: theme.color.components.link.default.text,
-        
-        ':hover': {
+
+        ":hover": {
           color: theme.color.components.link.default.textHover,
           textDecorationColor: theme.color.components.link.default.textHover,
-          textDecorationThickness: '2px',
+          textDecorationThickness: "2px",
         },
-        
-        ':active': {
+
+        ":active": {
           color: theme.color.components.link.default.textActive,
           textDecorationColor: theme.color.components.link.default.textActive,
         },
-        
+
         // Visited state
-        ':visited': {
+        ":visited": {
           color: theme.color.components.link.default.textVisited,
         },
       },
-      
+
       quiet: {
         color: theme.color.components.link.quiet.text,
-        textDecoration: 'none',
-        
-        ':hover': {
+        textDecoration: "none",
+
+        ":hover": {
           color: theme.color.components.link.quiet.textHover,
-          textDecoration: 'underline',
-          textUnderlineOffset: '0.125em',
+          textDecoration: "underline",
+          textUnderlineOffset: "0.125em",
         },
-        
-        ':active': {
+
+        ":active": {
           color: theme.color.components.link.quiet.textActive,
         },
-        
+
         // No visited state for quiet links
-        ':visited': {
+        ":visited": {
           color: theme.color.components.link.quiet.text,
         },
       },
-      
+
       emphasized: {
         color: theme.color.components.link.emphasized.text,
         fontWeight: theme.font.weight.semibold,
-        textDecoration: 'none',
+        textDecoration: "none",
         backgroundColor: theme.color.components.link.emphasized.background,
         padding: `${theme.space.xs} ${theme.space.sm}`,
         borderRadius: theme.color.components.link.emphasized.borderRadius,
-        
-        ':hover': {
-          backgroundColor: theme.color.components.link.emphasized.backgroundHover,
+
+        ":hover": {
+          backgroundColor:
+            theme.color.components.link.emphasized.backgroundHover,
           color: theme.color.components.link.emphasized.textHover,
-          transform: 'translateY(-1px)',
+          transform: "translateY(-1px)",
           boxShadow: theme.elevation.sm,
         },
-        
-        ':active': {
-          backgroundColor: theme.color.components.link.emphasized.backgroundActive,
-          transform: 'translateY(0)',
-          boxShadow: 'none',
+
+        ":active": {
+          backgroundColor:
+            theme.color.components.link.emphasized.backgroundActive,
+          transform: "translateY(0)",
+          boxShadow: "none",
         },
-        
-        ':visited': {
+
+        ":visited": {
           color: theme.color.components.link.emphasized.text,
         },
       },
     },
-    
+
     size: {
       sm: {
         fontSize: theme.font.size.sm,
         gap: theme.space.xs,
       },
-      
+
       md: {
         fontSize: theme.font.size.md,
         gap: theme.space.xs,
       },
-      
+
       lg: {
         fontSize: theme.font.size.lg,
         gap: theme.space.sm,
       },
     },
-    
+
     fullWidth: {
       true: {
-        width: '100%',
-        justifyContent: 'flex-start',
+        width: "100%",
+        justifyContent: "flex-start",
       },
     },
-    
+
     disabled: {
       true: {
         // Disabled styles handled in base selector
       },
     },
   },
-  
+
   compoundVariants: [
     // Emphasized variant size adjustments
     {
-      variants: { variant: 'emphasized', size: 'sm' },
+      variants: { variant: "emphasized", size: "sm" },
       style: {
         padding: `${theme.space.xs} ${theme.space.sm}`,
         fontSize: theme.font.size.sm,
       },
     },
     {
-      variants: { variant: 'emphasized', size: 'md' },
+      variants: { variant: "emphasized", size: "md" },
       style: {
         padding: `${theme.space.xs} ${theme.space.md}`,
         fontSize: theme.font.size.md,
       },
     },
     {
-      variants: { variant: 'emphasized', size: 'lg' },
+      variants: { variant: "emphasized", size: "lg" },
       style: {
         padding: `${theme.space.sm} ${theme.space[4]}`,
         fontSize: theme.font.size.lg,
       },
     },
   ],
-  
+
   defaultVariants: {
-    variant: 'default',
-    size: 'md',
+    variant: "default",
+    size: "md",
     disabled: false,
   },
 });
@@ -204,21 +206,21 @@ export const link = recipe({
 // Icon styles within link
 export const linkIcon = style({
   flexShrink: 0,
-  display: 'inline-flex',
-  
+  display: "inline-flex",
+
   // Size adjustments based on link size
   selectors: {
     [`${link.classNames.variants.size.sm} &`]: {
-      width: '14px',
-      height: '14px',
+      width: "14px",
+      height: "14px",
     },
     [`${link.classNames.variants.size.md} &`]: {
-      width: '16px',
-      height: '16px',
+      width: "16px",
+      height: "16px",
     },
     [`${link.classNames.variants.size.lg} &`]: {
-      width: '18px',
-      height: '18px',
+      width: "18px",
+      height: "18px",
     },
   },
 });
@@ -226,20 +228,20 @@ export const linkIcon = style({
 // External link indicator styles
 export const externalLinkIndicator = style({
   opacity: 0.7,
-  
+
   // Slightly smaller than regular icons
   selectors: {
     [`${link.classNames.variants.size.sm} &`]: {
-      width: '12px',
-      height: '12px',
+      width: "12px",
+      height: "12px",
     },
     [`${link.classNames.variants.size.md} &`]: {
-      width: '14px',
-      height: '14px',
+      width: "14px",
+      height: "14px",
     },
     [`${link.classNames.variants.size.lg} &`]: {
-      width: '16px',
-      height: '16px',
+      width: "16px",
+      height: "16px",
     },
   },
 });

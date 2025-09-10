@@ -1,20 +1,20 @@
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
-import type { StorybookConfig } from '@storybook/react-vite';
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
+import type { StorybookConfig } from "@storybook/react-vite";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: [
-    '../../react/src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    '../stories/**/*.mdx',
+    "../../react/src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../stories/**/*.mdx",
   ],
 
   addons: [
-    getAbsolutePath("@storybook/addon-links"), 
-    getAbsolutePath("@storybook/addon-docs"), 
-    getAbsolutePath("@storybook/addon-a11y")
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-a11y"),
   ],
 
   framework: {
@@ -25,9 +25,9 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     // Add vanilla-extract plugin
     config.plugins?.push(vanillaExtractPlugin());
-    
+
     // Production optimizations
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       config.build = {
         ...config.build,
         rollupOptions: {
@@ -35,25 +35,26 @@ const config: StorybookConfig = {
           output: {
             ...config.build?.rollupOptions?.output,
             manualChunks: {
-              vendor: ['react', 'react-dom'],
-              storybook: ['@storybook/react-vite', '@storybook/addon-docs'],
+              vendor: ["react", "react-dom"],
+              storybook: ["@storybook/react-vite", "@storybook/addon-docs"],
             },
           },
         },
         chunkSizeWarningLimit: 1000,
       };
     }
-    
+
     return config;
   },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
-  }
+  },
 };
 
 export default config;

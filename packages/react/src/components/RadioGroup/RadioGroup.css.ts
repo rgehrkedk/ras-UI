@@ -2,17 +2,17 @@
  * RadioGroup component styles using vanilla-extract
  */
 
-import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
-import { theme } from '../../styles/theme.css';
+import { theme } from "../../styles/theme.css";
 
 // Base radio group container styles
 const radioGroupBase = style({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
   gap: theme.space.xs,
-  
+
   // Typography
   fontFamily: theme.font.family.sans,
   fontSize: theme.font.size.md,
@@ -22,7 +22,7 @@ const radioGroupBase = style({
 // RadioGroup recipe with variants
 export const radioGroup = recipe({
   base: radioGroupBase,
-  
+
   variants: {
     size: {
       sm: {
@@ -40,44 +40,44 @@ export const radioGroup = recipe({
     },
     orientation: {
       horizontal: {
-        flexDirection: 'row',
+        flexDirection: "row",
         gap: theme.space.md,
       },
       vertical: {
-        flexDirection: 'column',
+        flexDirection: "column",
         gap: theme.space.xs,
       },
     },
   },
-  
+
   defaultVariants: {
-    size: 'md',
-    orientation: 'vertical',
+    size: "md",
+    orientation: "vertical",
   },
 });
 
 // Base radio option styles
 const radioBase = style({
-  display: 'inline-flex',
-  alignItems: 'flex-start',
+  display: "inline-flex",
+  alignItems: "flex-start",
   gap: theme.space.xs,
-  cursor: 'pointer',
-  userSelect: 'none',
-  lineHeight: '1.5',
-  
+  cursor: "pointer",
+  userSelect: "none",
+  lineHeight: "1.5",
+
   // Focus styles
-  outline: 'none',
-  
-  ':focus-visible': {
+  outline: "none",
+
+  ":focus-visible": {
     outline: `2px solid ${theme.color.border.focus}`,
-    outlineOffset: '2px',
+    outlineOffset: "2px",
     borderRadius: theme.radius.sm,
   },
-  
+
   // Disabled state
   selectors: {
     '&[data-disabled="true"]': {
-      cursor: 'not-allowed',
+      cursor: "not-allowed",
       opacity: 0.6,
     },
   },
@@ -86,7 +86,7 @@ const radioBase = style({
 // Radio recipe with size variants
 export const radio = recipe({
   base: radioBase,
-  
+
   variants: {
     size: {
       sm: {
@@ -103,41 +103,41 @@ export const radio = recipe({
       },
     },
   },
-  
+
   defaultVariants: {
-    size: 'md',
+    size: "md",
   },
 });
 
 // Base radio indicator (the visual circle)
 const radioIndicatorBase = style({
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   flexShrink: 0,
-  borderRadius: '50%',
-  
+  borderRadius: "50%",
+
   // Basic styling
   backgroundColor: theme.color.surface.base,
   border: `1px solid ${theme.color.border.default}`,
-  
+
   // Transitions
-  '@media': {
-    '(prefers-reduced-motion: no-preference)': {
-      transition: 'all 0.2s ease-in-out',
+  "@media": {
+    "(prefers-reduced-motion: no-preference)": {
+      transition: "all 0.2s ease-in-out",
     },
   },
-  
+
   // SVG styling
   color: theme.color.text.onBrand,
-  
+
   // Hover state
-  ':hover': {
+  ":hover": {
     borderColor: theme.color.border.focus,
     backgroundColor: theme.color.interaction.hover,
   },
-  
+
   // States via data attributes
   selectors: {
     // Selected state
@@ -146,20 +146,20 @@ const radioIndicatorBase = style({
       borderColor: theme.color.brand.primary,
       color: theme.color.text.onBrand,
     },
-    
+
     // Focus state
     '&[data-focus-visible="true"]': {
       outline: `2px solid ${theme.color.border.focus}`,
-      outlineOffset: '2px',
+      outlineOffset: "2px",
     },
-    
+
     // Disabled state
     '&[data-disabled="true"]': {
       backgroundColor: theme.color.base.neutral[100],
       borderColor: theme.color.base.neutral[200],
-      cursor: 'not-allowed',
+      cursor: "not-allowed",
     },
-    
+
     // Disabled + selected
     '&[data-disabled="true"][data-selected="true"]': {
       backgroundColor: theme.color.base.neutral[300],
@@ -173,25 +173,25 @@ const radioIndicatorBase = style({
 // Radio indicator recipe with size variants
 export const radioIndicator = recipe({
   base: radioIndicatorBase,
-  
+
   variants: {
     size: {
       sm: {
-        width: '16px',
-        height: '16px',
+        width: "16px",
+        height: "16px",
       },
       md: {
-        width: '20px',
-        height: '20px',
+        width: "20px",
+        height: "20px",
       },
       lg: {
-        width: '24px',
-        height: '24px',
+        width: "24px",
+        height: "24px",
       },
     },
   },
-  
+
   defaultVariants: {
-    size: 'md',
+    size: "md",
   },
 });

@@ -8,9 +8,9 @@ import {
   usePress,
   useFocusWithin,
   useKeyboard,
-  mergeProps
-} from 'react-aria';
-import type { PressEvent } from 'react-aria';
+  mergeProps,
+} from "react-aria";
+import type { PressEvent } from "react-aria";
 
 export interface SidebarNavigationOptions {
   /** Whether the item is currently selected/active */
@@ -42,21 +42,21 @@ export interface SidebarNavigationResult {
  * Provides navigation behavior for sidebar items with React Aria integration
  */
 export function useSidebarNavigation(
-  options: SidebarNavigationOptions
+  options: SidebarNavigationOptions,
 ): SidebarNavigationResult {
   const {
     isSelected = false,
     isDisabled = false,
     onAction,
     href,
-    preventNavigation = false
+    preventNavigation = false,
   } = options;
 
   // const ref = useRef<HTMLElement>(null); // Future use for focus management
 
   // Focus ring management
   const { focusProps, isFocusVisible } = useFocusRing();
-  
+
   // Press interaction handling
   const { pressProps, isPressed } = usePress({
     isDisabled,
@@ -64,48 +64,43 @@ export function useSidebarNavigation(
       if (onAction) {
         onAction();
       }
-      
+
       // Handle navigation if href is provided and not prevented
       if (href && !preventNavigation) {
         // Allow default navigation behavior for anchor elements
         return;
       }
-    }
+    },
   });
 
   // Keyboard navigation handling
   const { keyboardProps } = useKeyboard({
     onKeyDown: (e) => {
       // Handle Enter and Space for activation
-      if ((e.key === 'Enter' || e.key === ' ') && !isDisabled) {
+      if ((e.key === "Enter" || e.key === " ") && !isDisabled) {
         e.preventDefault();
         if (onAction) {
           onAction();
         }
       }
-    }
+    },
   });
 
   // Merge all props for the navigation element
-  const navigationProps = mergeProps(
-    focusProps,
-    pressProps,
-    keyboardProps,
-    {
-      role: href ? 'menuitem' : 'button',
-      tabIndex: isDisabled ? -1 : 0,
-      'aria-current': isSelected ? 'page' : undefined,
-      'data-selected': isSelected,
-      'data-disabled': isDisabled,
-      'data-pressed': isPressed
-    }
-  );
+  const navigationProps = mergeProps(focusProps, pressProps, keyboardProps, {
+    role: href ? "menuitem" : "button",
+    tabIndex: isDisabled ? -1 : 0,
+    "aria-current": isSelected ? "page" : undefined,
+    "data-selected": isSelected,
+    "data-disabled": isDisabled,
+    "data-pressed": isPressed,
+  });
 
   return {
     navigationProps,
     focusRingProps: focusProps,
     isFocusVisible,
-    isPressed
+    isPressed,
   };
 }
 
@@ -129,26 +124,27 @@ export interface SidebarGroupNavigationResult {
  * Provides navigation group semantics for sidebar sections
  */
 export function useSidebarGroupNavigation(
-  options: SidebarGroupNavigationOptions = {}
+  options: SidebarGroupNavigationOptions = {},
 ): SidebarGroupNavigationResult {
   const { label, id } = options;
-  const groupId = id || `sidebar-group-${Math.random().toString(36).substr(2, 9)}`;
+  const groupId =
+    id || `sidebar-group-${Math.random().toString(36).substr(2, 9)}`;
   const labelId = `${groupId}-label`;
 
   const groupProps = {
-    role: 'group',
+    role: "group",
     id: groupId,
-    'aria-labelledby': label ? labelId : undefined
+    "aria-labelledby": label ? labelId : undefined,
   };
 
   const labelProps = {
     id: labelId,
-    'aria-hidden': false
+    "aria-hidden": false,
   };
 
   return {
     groupProps,
-    labelProps
+    labelProps,
   };
 }
 
@@ -173,10 +169,10 @@ export interface SidebarFocusManagementResult {
  * Manages focus behavior for the entire sidebar component
  */
 export function useSidebarFocusManagement(
-  options: SidebarFocusManagementOptions = {}
+  options: SidebarFocusManagementOptions = {},
 ): SidebarFocusManagementResult {
   const { isCollapsed = false } = options;
-  
+
   // Focus within detection
   const { focusWithinProps } = useFocusWithin({
     onFocusWithinChange: (isFocusWithin: boolean) => {
@@ -184,17 +180,17 @@ export function useSidebarFocusManagement(
       if (!isFocusWithin) {
         // Focus left sidebar - could trigger auto-collapse in the future
       }
-    }
+    },
   });
 
   const focusScopeProps = mergeProps(focusWithinProps, {
-    role: 'navigation',
-    'aria-label': 'Main navigation',
-    'data-collapsed': isCollapsed
+    role: "navigation",
+    "aria-label": "Main navigation",
+    "data-collapsed": isCollapsed,
   });
 
   return {
     focusScopeProps,
-    isFocusWithin: false // We'll manage this separately if needed
+    isFocusWithin: false, // We'll manage this separately if needed
   };
 }

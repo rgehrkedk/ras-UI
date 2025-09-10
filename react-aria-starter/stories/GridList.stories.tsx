@@ -1,13 +1,13 @@
-import {GridList, GridListItem} from '../src/GridList';
+import { GridList, GridListItem } from "../src/GridList";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof GridList> = {
   component: GridList,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -24,5 +24,5 @@ export const Example: Story = (args) => (
 
 Example.args = {
   onAction: undefined,
-  selectionMode: 'multiple'
+  selectionMode: "multiple",
 };

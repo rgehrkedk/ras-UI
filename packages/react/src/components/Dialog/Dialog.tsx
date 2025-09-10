@@ -3,7 +3,7 @@
  * Provides accessible modal dialog functionality with floating UI design
  */
 
-import React from 'react';
+import React from "react";
 import {
   Dialog as AriaDialog,
   DialogTrigger as AriaDialogTrigger,
@@ -11,17 +11,17 @@ import {
   ModalOverlay,
   Heading,
   Button as AriaButton,
-} from 'react-aria-components';
-import type { DialogProps as AriaDialogProps } from 'react-aria-components';
+} from "react-aria-components";
+import type { DialogProps as AriaDialogProps } from "react-aria-components";
 
-import type { 
-  BaseComponentProps, 
+import type {
+  BaseComponentProps,
   ExtendedSize,
   AlertType,
-  CloseHandler
-} from '../../types';
-import { cn } from '../../utils/cn';
-import { DefaultIcons } from '../../utils/icons';
+  CloseHandler,
+} from "../../types";
+import { cn } from "../../utils/cn";
+import { DefaultIcons } from "../../utils/icons";
 
 import {
   dialogOverlay,
@@ -35,43 +35,43 @@ import {
   alertDialogIcon,
   alertDialogContent,
   dialogSizes,
-} from './Dialog.css';
+} from "./Dialog.css";
 
-export interface DialogProps 
-  extends Omit<AriaDialogProps, 'className' | 'children'>,
-          BaseComponentProps {
+export interface DialogProps
+  extends Omit<AriaDialogProps, "className" | "children">,
+    BaseComponentProps {
   /**
    * Dialog title
    */
   title?: string;
-  
+
   /**
    * Dialog description
    */
   description?: string;
-  
+
   /**
    * Dialog size
    * @default 'md'
    */
   size?: ExtendedSize;
-  
+
   /**
    * Whether to show close button
    * @default true
    */
   showCloseButton?: boolean;
-  
+
   /**
    * Footer content (typically buttons)
    */
   footer?: React.ReactNode;
-  
+
   /**
    * Handler for close button click
    */
   onClose?: CloseHandler;
-  
+
   /**
    * Dialog content
    */
@@ -83,17 +83,17 @@ export interface DialogTriggerWrapperProps {
    * Whether dialog is open (controlled)
    */
   isOpen?: boolean;
-  
+
   /**
    * Handler for open state change (controlled)
    */
   onOpenChange?: (isOpen: boolean) => void;
-  
+
   /**
    * Element that triggers the dialog
    */
   trigger?: React.ReactNode;
-  
+
   /**
    * Dialog props
    */
@@ -106,12 +106,12 @@ const CloseIcon = DefaultIcons.close;
 /**
  * Accessible dialog component with floating UI design.
  * Built on React Aria Components for robust accessibility.
- * 
+ *
  * @example
  * ```tsx
  * <DialogTrigger>
  *   <Button>Open Dialog</Button>
- *   <Dialog 
+ *   <Dialog
  *     title="Confirm Action"
  *     description="Are you sure you want to continue?"
  *     footer={
@@ -131,7 +131,7 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(
     {
       title,
       description,
-      size = 'md',
+      size = "md",
       showCloseButton = true,
       className,
       children,
@@ -139,7 +139,7 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(
       onClose,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <AriaDialog
@@ -158,7 +158,7 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(
                     </Heading>
                   )}
                 </div>
-                
+
                 {showCloseButton && (
                   <AriaButton
                     className={dialogCloseButton}
@@ -173,36 +173,32 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(
                 )}
               </div>
             )}
-            
+
             <div className={dialogBody}>
               {description && (
                 <p className={dialogDescription}>{description}</p>
               )}
               {children}
             </div>
-            
-            {footer && (
-              <div className={dialogFooter}>
-                {footer}
-              </div>
-            )}
+
+            {footer && <div className={dialogFooter}>{footer}</div>}
           </>
         )}
       </AriaDialog>
     );
-  }
+  },
 );
 
-Dialog.displayName = 'Dialog';
+Dialog.displayName = "Dialog";
 
 /**
  * Dialog wrapper that provides trigger functionality
  */
-export const DialogTrigger = ({ 
-  isOpen, 
-  onOpenChange, 
-  trigger, 
-  children 
+export const DialogTrigger = ({
+  isOpen,
+  onOpenChange,
+  trigger,
+  children,
 }: DialogTriggerWrapperProps) => {
   if (isOpen !== undefined) {
     // Controlled mode
@@ -213,21 +209,17 @@ export const DialogTrigger = ({
         onOpenChange={onOpenChange}
         isDismissable
       >
-        <Modal>
-          {children}
-        </Modal>
+        <Modal>{children}</Modal>
       </ModalOverlay>
     );
   }
-  
+
   // Uncontrolled mode with trigger
   return (
     <AriaDialogTrigger>
       {trigger}
       <ModalOverlay className={dialogOverlay} isDismissable>
-        <Modal>
-          {children}
-        </Modal>
+        <Modal>{children}</Modal>
       </ModalOverlay>
     </AriaDialogTrigger>
   );
@@ -236,12 +228,12 @@ export const DialogTrigger = ({
 /**
  * Alert dialog component for confirmations and alerts
  */
-export interface AlertDialogProps extends Omit<DialogProps, 'size'> {
+export interface AlertDialogProps extends Omit<DialogProps, "size"> {
   /**
    * Alert type that determines icon and styling
    */
   type?: AlertType;
-  
+
   /**
    * Custom icon to display
    */
@@ -250,26 +242,18 @@ export interface AlertDialogProps extends Omit<DialogProps, 'size'> {
 
 export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
   (
-    {
-      type = 'info',
-      icon,
-      title,
-      description,
-      children,
-      className,
-      ...props
-    },
-    ref
+    { type = "info", icon, title, description, children, className, ...props },
+    ref,
   ) => {
     const defaultIcons = {
-      info: '🛈',
-      warning: '⚠',
-      error: '✕',
-      success: '✓',
+      info: "🛈",
+      warning: "⚠",
+      error: "✕",
+      success: "✓",
     };
-    
+
     const displayIcon = icon || defaultIcons[type];
-    
+
     return (
       <Dialog
         ref={ref}
@@ -284,17 +268,15 @@ export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
             </span>
           )}
           <div>
-            {description && (
-              <p className={dialogDescription}>{description}</p>
-            )}
+            {description && <p className={dialogDescription}>{description}</p>}
             {children}
           </div>
         </div>
       </Dialog>
     );
-  }
+  },
 );
 
-AlertDialog.displayName = 'AlertDialog';
+AlertDialog.displayName = "AlertDialog";
 
 export default Dialog;

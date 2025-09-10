@@ -3,7 +3,7 @@
  * Handles exit animations with proper timing and cleanup
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 export interface UseAnimationStateOptions {
   /** Duration of exit animation in milliseconds */
@@ -23,29 +23,29 @@ export interface UseAnimationStateResult {
   reset: () => void;
   /** Props to spread on animated element */
   animationProps: {
-    'data-exiting': boolean;
+    "data-exiting": boolean;
   };
 }
 
 /**
  * Hook for managing component animations, particularly exit animations
  * Provides coordinated timing between CSS animations and React state
- * 
+ *
  * @param options Configuration for animation timing and completion callback
- * 
+ *
  * @example
  * ```tsx
  * const { isVisible, startExit, animationProps } = useAnimationState({
  *   exitDuration: 250,
  *   onComplete: () => onDismiss?.()
  * });
- * 
+ *
  * const handleDismiss = () => {
  *   startExit();
  * };
- * 
+ *
  * if (!isVisible) return null;
- * 
+ *
  * return (
  *   <div {...animationProps} className={alertClass}>
  *     Alert content
@@ -55,7 +55,7 @@ export interface UseAnimationStateResult {
  */
 export function useAnimationState({
   exitDuration = 250,
-  onComplete
+  onComplete,
 }: UseAnimationStateOptions = {}): UseAnimationStateResult {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -77,7 +77,7 @@ export function useAnimationState({
   }, []);
 
   const animationProps = {
-    'data-exiting': isAnimating,
+    "data-exiting": isAnimating,
   };
 
   return {
@@ -91,16 +91,16 @@ export function useAnimationState({
 
 /**
  * Simplified hook for basic show/hide animations
- * 
+ *
  * @param onHide Callback when component should be hidden
  * @param duration Animation duration in milliseconds
- * 
+ *
  * @example
  * ```tsx
  * const { isVisible, hide } = useShowHide(onDismiss);
- * 
+ *
  * if (!isVisible) return null;
- * 
+ *
  * return (
  *   <div>
  *     <button onClick={hide}>Close</button>
@@ -108,10 +108,7 @@ export function useAnimationState({
  * );
  * ```
  */
-export function useShowHide(
-  onHide?: () => void,
-  duration: number = 250
-) {
+export function useShowHide(onHide?: () => void, duration: number = 250) {
   const { isVisible, startExit } = useAnimationState({
     exitDuration: duration,
     onComplete: onHide,

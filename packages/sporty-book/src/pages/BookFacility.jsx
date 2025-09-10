@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,7 +5,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Calendar, Clock, Users, DollarSign, CheckCircle, XCircle, User as UserIcon, LogIn } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  Users,
+  DollarSign,
+  CheckCircle,
+  XCircle,
+  User as UserIcon,
+  LogIn,
+} from "lucide-react";
 import { format, addDays, isSameDay, parseISO } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
@@ -18,11 +27,13 @@ export default function BookFacility() {
   const [user, setUser] = useState(null); // New state for current user
   const [loading, setLoading] = useState(true);
   const [existingBookings, setExistingBookings] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(format(new Date(), "yyyy-MM-dd"));
+  const [selectedDate, setSelectedDate] = useState(
+    format(new Date(), "yyyy-MM-dd"),
+  );
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [bookingDetails, setBookingDetails] = useState({
     player_count: 2,
-    notes: ""
+    notes: "",
   });
   const [bookingStatus, setBookingStatus] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,8 +43,8 @@ export default function BookFacility() {
   const timeSlots = Array.from({ length: 14 }, (_, i) => {
     const hour = i + 8;
     return {
-      time: `${hour.toString().padStart(2, '0')}:00`,
-      display: `${hour > 12 ? hour - 12 : hour}:00 ${hour >= 12 ? 'PM' : 'AM'}`
+      time: `${hour.toString().padStart(2, "0")}:00`,
+      display: `${hour > 12 ? hour - 12 : hour}:00 ${hour >= 12 ? "PM" : "AM"}`,
     };
   });
 
@@ -52,13 +63,14 @@ export default function BookFacility() {
 
   const loadExistingBookings = useCallback(async () => {
     if (!facility) return;
-    
+
     try {
       const allBookings = await Booking.list();
-      const dayBookings = allBookings.filter(booking => 
-        booking.facility_name === facility.name &&
-        booking.booking_date === selectedDate &&
-        (booking.status === "confirmed" || booking.status === "pending")
+      const dayBookings = allBookings.filter(
+        (booking) =>
+          booking.facility_name === facility.name &&
+          booking.booking_date === selectedDate &&
+          (booking.status === "confirmed" || booking.status === "pending"),
       );
       setExistingBookings(dayBookings);
     } catch (error) {
@@ -76,16 +88,18 @@ export default function BookFacility() {
       await loadUser();
 
       const urlParams = new URLSearchParams(window.location.search);
-      const clubId = urlParams.get('clubId');
-      const facilityName = decodeURIComponent(urlParams.get('facility') || '');
-      
+      const clubId = urlParams.get("clubId");
+      const facilityName = decodeURIComponent(urlParams.get("facility") || "");
+
       if (clubId && facilityName) {
         const clubs = await SportClub.list();
-        const foundClub = clubs.find(c => c.id === clubId);
-        
+        const foundClub = clubs.find((c) => c.id === clubId);
+
         if (foundClub) {
           setClub(foundClub);
-          const foundFacility = foundClub.facilities?.find(f => f.name === facilityName);
+          const foundFacility = foundClub.facilities?.find(
+            (f) => f.name === facilityName,
+          );
           setFacility(foundFacility);
         } else {
           console.error("Club not found with ID:", clubId);
@@ -105,7 +119,7 @@ export default function BookFacility() {
   }, [loadBookingData]); // Add loadBookingData to useEffect dependencies
 
   const isSlotBooked = (timeSlot) => {
-    return existingBookings.some(booking => {
+    return existingBookings.some((booking) => {
       const bookingStart = booking.start_time;
       const bookingEnd = booking.end_time;
       return timeSlot >= bookingStart && timeSlot < bookingEnd;
@@ -118,10 +132,10 @@ export default function BookFacility() {
 
   const toggleSlot = (timeSlot) => {
     if (isSlotBooked(timeSlot)) return; // Can't select booked slots
-    
-    setSelectedSlots(prev => {
+
+    setSelectedSlots((prev) => {
       if (prev.includes(timeSlot)) {
-        return prev.filter(slot => slot !== timeSlot);
+        return prev.filter((slot) => slot !== timeSlot);
       } else {
         return [...prev, timeSlot].sort();
       }
@@ -129,15 +143,17 @@ export default function BookFacility() {
   };
 
   const calculateBookingDetails = () => {
-    if (selectedSlots.length === 0) return { duration: 0, cost: 0, startTime: "", endTime: "" };
-    
+    if (selectedSlots.length === 0)
+      return { duration: 0, cost: 0, startTime: "", endTime: "" };
+
     const sortedSlots = [...selectedSlots].sort();
     const startTime = sortedSlots[0];
-    const endHour = parseInt(sortedSlots[sortedSlots.length - 1].split(':')[0]) + 1;
-    const endTime = `${endHour.toString().padStart(2, '0')}:00`;
+    const endHour =
+      parseInt(sortedSlots[sortedSlots.length - 1].split(":")[0]) + 1;
+    const endTime = `${endHour.toString().padStart(2, "0")}:00`;
     const duration = selectedSlots.length;
     const cost = (facility?.hourly_rate || 50) * duration;
-    
+
     return { duration, cost, startTime, endTime };
   };
 
@@ -151,17 +167,17 @@ export default function BookFacility() {
 
   const handleBooking = async () => {
     if (selectedSlots.length === 0) return;
-    
+
     // Check if user is logged in before proceeding with booking
     if (!user) {
       setShowLoginPrompt(true);
       return;
     }
-    
+
     setIsSubmitting(true);
     try {
       const { startTime, endTime, cost } = calculateBookingDetails();
-      
+
       await Booking.create({
         club_id: club.id,
         facility_name: facility.name,
@@ -173,13 +189,13 @@ export default function BookFacility() {
         total_cost: cost,
         player_count: bookingDetails.player_count,
         notes: bookingDetails.notes,
-        status: "confirmed"
+        status: "confirmed",
       });
-      
+
       setBookingStatus("success");
       setSelectedSlots([]);
       loadExistingBookings(); // Call the memoized function
-      
+
       setTimeout(() => {
         navigate(createPageUrl("MyBookings"));
       }, 2000);
@@ -208,7 +224,9 @@ export default function BookFacility() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-6">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Booking information not found</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            Booking information not found
+          </h2>
           <Link to={createPageUrl("Clubs")}>
             <Button className="bg-teal-600 hover:bg-teal-700">
               Browse Clubs
@@ -230,9 +248,12 @@ export default function BookFacility() {
             <div className="bg-white rounded-2xl p-8 max-w-md w-full">
               <div className="text-center">
                 <UserIcon className="w-16 h-16 text-teal-600 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Sign in to complete booking</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  Sign in to complete booking
+                </h3>
                 <p className="text-slate-600 mb-6">
-                  You need to sign in to book facilities and manage your reservations.
+                  You need to sign in to book facilities and manage your
+                  reservations.
                 </p>
                 <div className="flex gap-3">
                   <Button
@@ -263,8 +284,14 @@ export default function BookFacility() {
             </Button>
           </Link>
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Book {facility.name}</h1>
-            <p className="text-slate-600">{club.name} • {facility.sport?.charAt(0).toUpperCase() + facility.sport?.slice(1).replace('_', ' ')}</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-slate-900">
+              Book {facility.name}
+            </h1>
+            <p className="text-slate-600">
+              {club.name} •{" "}
+              {facility.sport?.charAt(0).toUpperCase() +
+                facility.sport?.slice(1).replace("_", " ")}
+            </p>
           </div>
         </div>
 
@@ -273,16 +300,20 @@ export default function BookFacility() {
           <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
             <div className="flex items-center gap-2 text-green-800">
               <CheckCircle className="w-5 h-5" />
-              <span className="font-medium">Booking confirmed! Redirecting to your bookings...</span>
+              <span className="font-medium">
+                Booking confirmed! Redirecting to your bookings...
+              </span>
             </div>
           </div>
         )}
-        
+
         {bookingStatus === "error" && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
             <div className="flex items-center gap-2 text-red-800">
               <XCircle className="w-5 h-5" />
-              <span className="font-medium">Failed to create booking. Please try again.</span>
+              <span className="font-medium">
+                Failed to create booking. Please try again.
+              </span>
             </div>
           </div>
         )}
@@ -305,7 +336,12 @@ export default function BookFacility() {
               <CardContent className="space-y-6">
                 {/* Date Selector */}
                 <div>
-                  <Label htmlFor="date" className="text-base font-medium mb-3 block">Choose Date</Label>
+                  <Label
+                    htmlFor="date"
+                    className="text-base font-medium mb-3 block"
+                  >
+                    Choose Date
+                  </Label>
                   <Input
                     id="date"
                     type="date"
@@ -320,13 +356,17 @@ export default function BookFacility() {
                 {/* Time Grid */}
                 <div>
                   <Label className="text-base font-medium mb-3 block">
-                    Available Time Slots - {format(parseISO(selectedDate + 'T00:00:00'), "EEEE, MMM d, yyyy")}
+                    Available Time Slots -{" "}
+                    {format(
+                      parseISO(selectedDate + "T00:00:00"),
+                      "EEEE, MMM d, yyyy",
+                    )}
                   </Label>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     {timeSlots.map((slot) => {
                       const isBooked = isSlotBooked(slot.time);
                       const isSelected = isSlotSelected(slot.time);
-                      
+
                       return (
                         <button
                           key={slot.time}
@@ -334,16 +374,18 @@ export default function BookFacility() {
                           disabled={isBooked}
                           className={`p-3 rounded-lg border-2 text-sm font-medium transition-all ${
                             isBooked
-                              ? 'bg-red-50 border-red-200 text-red-500 cursor-not-allowed opacity-60'
+                              ? "bg-red-50 border-red-200 text-red-500 cursor-not-allowed opacity-60"
                               : isSelected
-                              ? 'bg-teal-600 border-teal-600 text-white shadow-lg'
-                              : 'bg-white border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-teal-50'
+                                ? "bg-teal-600 border-teal-600 text-white shadow-lg"
+                                : "bg-white border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-teal-50"
                           }`}
                         >
                           <div className="flex flex-col items-center">
                             <span>{slot.display}</span>
                             {isBooked && (
-                              <span className="text-xs text-red-400 mt-1">Booked</span>
+                              <span className="text-xs text-red-400 mt-1">
+                                Booked
+                              </span>
                             )}
                           </div>
                         </button>
@@ -383,15 +425,24 @@ export default function BookFacility() {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2 text-slate-600">
                         <Clock className="w-4 h-4" />
-                        <span>{bookingInfo.startTime} - {bookingInfo.endTime}</span>
+                        <span>
+                          {bookingInfo.startTime} - {bookingInfo.endTime}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2 text-slate-600">
                         <Calendar className="w-4 h-4" />
-                        <span>{format(parseISO(selectedDate + 'T00:00:00'), "MMM d, yyyy")}</span>
+                        <span>
+                          {format(
+                            parseISO(selectedDate + "T00:00:00"),
+                            "MMM d, yyyy",
+                          )}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2 text-slate-600">
                         <DollarSign className="w-4 h-4" />
-                        <span className="font-semibold">${bookingInfo.cost.toFixed(2)}</span>
+                        <span className="font-semibold">
+                          ${bookingInfo.cost.toFixed(2)}
+                        </span>
                       </div>
                     </div>
 
@@ -404,17 +455,27 @@ export default function BookFacility() {
                           min="1"
                           max={facility.capacity}
                           value={bookingDetails.player_count}
-                          onChange={(e) => setBookingDetails({...bookingDetails, player_count: parseInt(e.target.value)})}
+                          onChange={(e) =>
+                            setBookingDetails({
+                              ...bookingDetails,
+                              player_count: parseInt(e.target.value),
+                            })
+                          }
                           className="mt-1"
                         />
                       </div>
-                      
+
                       <div>
                         <Label htmlFor="notes">Additional Notes</Label>
                         <Textarea
                           id="notes"
                           value={bookingDetails.notes}
-                          onChange={(e) => setBookingDetails({...bookingDetails, notes: e.target.value})}
+                          onChange={(e) =>
+                            setBookingDetails({
+                              ...bookingDetails,
+                              notes: e.target.value,
+                            })
+                          }
                           placeholder="Any special requests..."
                           className="mt-1"
                         />
@@ -425,7 +486,11 @@ export default function BookFacility() {
                         disabled={isSubmitting}
                         className="w-full bg-teal-600 hover:bg-teal-700"
                       >
-                        {isSubmitting ? "Booking..." : user ? `Book for $${bookingInfo.cost.toFixed(2)}` : "Sign in to Book"}
+                        {isSubmitting
+                          ? "Booking..."
+                          : user
+                            ? `Book for $${bookingInfo.cost.toFixed(2)}`
+                            : "Sign in to Book"}
                       </Button>
 
                       {!user && (
@@ -438,7 +503,9 @@ export default function BookFacility() {
                 ) : (
                   <div className="text-center py-8">
                     <Clock className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                    <p className="text-slate-500">Select time slots to see booking details</p>
+                    <p className="text-slate-500">
+                      Select time slots to see booking details
+                    </p>
                   </div>
                 )}
               </CardContent>
@@ -452,7 +519,10 @@ export default function BookFacility() {
               <CardContent className="space-y-3">
                 <div>
                   <p className="font-medium">{facility.name}</p>
-                  <p className="text-sm text-slate-600">{facility.sport?.charAt(0).toUpperCase() + facility.sport?.slice(1).replace('_', ' ')}</p>
+                  <p className="text-sm text-slate-600">
+                    {facility.sport?.charAt(0).toUpperCase() +
+                      facility.sport?.slice(1).replace("_", " ")}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2 text-slate-600">
                   <Users className="w-4 h-4" />

@@ -2,9 +2,9 @@ name: Deploy Storybook to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
     types: [closed]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -34,8 +34,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'pnpm'
+          node-version: "18"
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -55,7 +55,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './packages/docs/storybook-static'
+          path: "./packages/docs/storybook-static"
 
   # Deployment job
   deploy:

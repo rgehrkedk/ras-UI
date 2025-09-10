@@ -9,13 +9,8 @@
     "composite": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["dist", "node_modules"],
   "references": [
     {
       "path": "../tokens"

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   DateField as AriaDateField,
   DateFieldProps as AriaDateFieldProps,
@@ -7,12 +7,12 @@ import {
   DateSegment as AriaDateSegment,
   DateSegmentProps,
   DateValue,
-  ValidationResult
-} from 'react-aria-components';
-import {Label, FieldError} from './Form';
-import {Text} from './Content';
+  ValidationResult,
+} from "react-aria-components";
+import { Label, FieldError } from "./Form";
+import { Text } from "./Content";
 
-import './DateField.css';
+import "./DateField.css";
 
 export interface DateFieldProps<T extends DateValue>
   extends AriaDateFieldProps<T> {
@@ -21,20 +21,19 @@ export interface DateFieldProps<T extends DateValue>
   errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
-export function DateField<T extends DateValue>(
-  { label, description, errorMessage, ...props }: DateFieldProps<T>
-) {
+export function DateField<T extends DateValue>({
+  label,
+  description,
+  errorMessage,
+  ...props
+}: DateFieldProps<T>) {
   return (
-    (
-      <AriaDateField {...props}>
-        <Label>{label}</Label>
-        <DateInput>
-          {(segment) => <DateSegment segment={segment} />}
-        </DateInput>
-        {description && <Text slot="description">{description}</Text>}
-        <FieldError>{errorMessage}</FieldError>
-      </AriaDateField>
-    )
+    <AriaDateField {...props}>
+      <Label>{label}</Label>
+      <DateInput>{(segment) => <DateSegment segment={segment} />}</DateInput>
+      {description && <Text slot="description">{description}</Text>}
+      <FieldError>{errorMessage}</FieldError>
+    </AriaDateField>
   );
 }
 

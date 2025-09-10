@@ -26,12 +26,15 @@ pnpm preview
 ## 🌟 Features
 
 ### Brand & Theme Support
+
 - **Brands**: Default, Vibrant, Corporate with unique styling
 - **Themes**: Light, Dark, High Contrast variants
 - **Live Switching**: Toggle brands and themes in the toolbar
 
 ### Component Stories
+
 All components include:
+
 - Basic usage examples
 - Props documentation
 - Interactive controls
@@ -39,6 +42,7 @@ All components include:
 - Brand comparison views
 
 ### Design Token Documentation
+
 - Color palettes with WCAG contrast ratios
 - Spacing scale visualization
 - Typography specimens
@@ -47,14 +51,18 @@ All components include:
 ## 🔧 Configuration
 
 ### Main Configuration
+
 Located in `.storybook/main.ts`:
+
 - Story glob patterns
 - Addon configuration
 - Vite build optimizations
 - TypeScript setup
 
 ### Preview Configuration
+
 Located in `.storybook/preview.tsx`:
+
 - Global decorators for theme/brand switching
 - Viewport configurations
 - Background options
@@ -87,17 +95,20 @@ docs/
 ## 🛠 Development
 
 ### Adding New Stories
+
 1. Create `*.stories.tsx` files in component directories
 2. Follow existing patterns for consistency
 3. Include accessibility tests
 4. Add brand showcase for themeable components
 
 ### Custom Documentation
+
 - Add MDX files to `stories/` directory
 - Use Storybook's Doc Blocks for rich documentation
 - Include interactive examples
 
 ### Accessibility Testing
+
 - Use the a11y addon for automated testing
 - Test with screen readers
 - Verify keyboard navigation
@@ -106,6 +117,7 @@ docs/
 ## 🔍 Troubleshooting
 
 ### Build Issues
+
 ```bash
 # Clean build
 rm -rf storybook-static node_modules
@@ -114,6 +126,7 @@ pnpm build
 ```
 
 ### Development Server Issues
+
 ```bash
 # Clear cache and restart
 rm -rf node_modules/.cache
@@ -121,6 +134,7 @@ pnpm storybook
 ```
 
 ### Theme/Brand Not Working
+
 - Check that `data-theme` and `data-brand` attributes are applied
 - Verify design tokens are built: `pnpm tokens:all`
 - Check browser console for CSS loading errors

@@ -1,2 +1,2 @@
-export { SidebarFooter } from './SidebarFooter';
-export type { SidebarFooterProps } from './SidebarFooter';
+export { SidebarFooter } from "./SidebarFooter";
+export type { SidebarFooterProps } from "./SidebarFooter";

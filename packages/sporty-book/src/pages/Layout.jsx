@@ -1,10 +1,21 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
-import { Home, Calendar, Search, User as UserIcon, MapPin, Plus, BarChart3, Settings, Users, Edit, LogIn } from "lucide-react";
-import 'leaflet/dist/leaflet.css';
+import {
+  Home,
+  Calendar,
+  Search,
+  User as UserIcon,
+  MapPin,
+  Plus,
+  BarChart3,
+  Settings,
+  Users,
+  Edit,
+  LogIn,
+} from "lucide-react";
+import "leaflet/dist/leaflet.css";
 import {
   Sidebar,
   SidebarContent,
@@ -61,7 +72,7 @@ export default function Layout({ children, currentPageName }) {
       title: "List Your Club",
       url: createPageUrl("ClubPricing"),
       icon: Plus,
-    }
+    },
   ];
 
   const customerNavigation = [
@@ -84,7 +95,7 @@ export default function Layout({ children, currentPageName }) {
       title: "List Your Club",
       url: createPageUrl("ClubPricing"),
       icon: Plus,
-    }
+    },
   ];
 
   const clubNavigation = [
@@ -112,7 +123,7 @@ export default function Layout({ children, currentPageName }) {
       title: "Settings",
       url: createPageUrl("ClubSettings"),
       icon: Settings,
-    }
+    },
   ];
 
   const getNavigationItems = () => {
@@ -148,22 +159,25 @@ export default function Layout({ children, currentPageName }) {
               </div>
             </div>
           </SidebarHeader>
-          
+
           <SidebarContent className="p-4 rounded-b-2xl">
             <SidebarGroup>
               <SidebarGroupContent>
                 <SidebarMenu className="space-y-2">
                   {navigationItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton 
-                        asChild 
+                      <SidebarMenuButton
+                        asChild
                         className={`transition-all duration-300 rounded-xl p-3 ${
-                          location.pathname === item.url 
-                            ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white shadow-lg' 
-                            : 'hover:bg-slate-100 text-slate-600 hover:text-slate-900'
+                          location.pathname === item.url
+                            ? "bg-gradient-to-r from-teal-500 to-teal-600 text-white shadow-lg"
+                            : "hover:bg-slate-100 text-slate-600 hover:text-slate-900"
                         }`}
                       >
-                        <Link to={item.url} className="flex items-center gap-3 font-medium">
+                        <Link
+                          to={item.url}
+                          className="flex items-center gap-3 font-medium"
+                        >
                           <item.icon className="w-5 h-5" />
                           <span>{item.title}</span>
                         </Link>
@@ -183,8 +197,14 @@ export default function Layout({ children, currentPageName }) {
                 <SidebarGroupContent>
                   <SidebarMenu className="space-y-2">
                     <SidebarMenuItem>
-                      <SidebarMenuButton asChild className="transition-all duration-300 rounded-xl p-3 hover:bg-slate-100 text-slate-600 hover:text-slate-900">
-                        <Link to={createPageUrl("Home")} className="flex items-center gap-3 font-medium">
+                      <SidebarMenuButton
+                        asChild
+                        className="transition-all duration-300 rounded-xl p-3 hover:bg-slate-100 text-slate-600 hover:text-slate-900"
+                      >
+                        <Link
+                          to={createPageUrl("Home")}
+                          className="flex items-center gap-3 font-medium"
+                        >
                           <Home className="w-5 h-5" />
                           <span>Browse as Customer</span>
                         </Link>
@@ -204,20 +224,23 @@ export default function Layout({ children, currentPageName }) {
                       <div className="p-3 space-y-3">
                         <div className="flex items-center gap-3 mb-3">
                           <div className="w-8 h-8 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-white font-semibold text-sm">
-                            {user.full_name?.charAt(0) || user.email.charAt(0).toUpperCase()}
+                            {user.full_name?.charAt(0) ||
+                              user.email.charAt(0).toUpperCase()}
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="font-medium text-slate-900 truncate text-sm">
                               {user.full_name || user.email}
                             </p>
                             <p className="text-xs text-slate-500 truncate">
-                              {user.club_role ? `Club ${user.club_role}` : "Customer"}
+                              {user.club_role
+                                ? `Club ${user.club_role}`
+                                : "Customer"}
                             </p>
                           </div>
                         </div>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
+                        <Button
+                          variant="outline"
+                          size="sm"
                           onClick={handleLogout}
                           className="w-full text-xs"
                         >
@@ -225,11 +248,14 @@ export default function Layout({ children, currentPageName }) {
                         </Button>
                       </div>
                     ) : (
-                      <SidebarMenuButton 
-                        asChild 
+                      <SidebarMenuButton
+                        asChild
                         className="transition-all duration-300 rounded-xl p-3 hover:bg-slate-100 text-slate-600 hover:text-slate-900"
                       >
-                        <button onClick={handleLogin} className="flex items-center gap-3 font-medium w-full">
+                        <button
+                          onClick={handleLogin}
+                          className="flex items-center gap-3 font-medium w-full"
+                        >
                           <LogIn className="w-5 h-5" />
                           <span>Sign In</span>
                         </button>
@@ -253,7 +279,11 @@ export default function Layout({ children, currentPageName }) {
               <SidebarTrigger className="hover:bg-slate-100 p-2 rounded-lg transition-colors duration-200" />
               <h1 className="text-xl font-bold text-slate-900">SportBook</h1>
               {!user && (
-                <Button size="sm" onClick={handleLogin} className="ml-auto bg-teal-600 hover:bg-teal-700">
+                <Button
+                  size="sm"
+                  onClick={handleLogin}
+                  className="ml-auto bg-teal-600 hover:bg-teal-700"
+                >
                   <LogIn className="w-4 h-4 mr-2" />
                   Sign In
                 </Button>
@@ -261,9 +291,7 @@ export default function Layout({ children, currentPageName }) {
             </div>
           </header>
 
-          <div className="flex-1 overflow-auto">
-            {children}
-          </div>
+          <div className="flex-1 overflow-auto">{children}</div>
         </main>
       </div>
     </SidebarProvider>

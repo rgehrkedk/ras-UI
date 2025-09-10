@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Introduction" />
 
@@ -13,6 +13,7 @@ ras-UI provides a comprehensive set of components and design tokens that help yo
 ## Key Features
 
 ### 🌍 **Accessibility First**
+
 - Built on React Aria Components for robust accessibility
 - WCAG 2.2 AA compliant
 - Screen reader tested
@@ -20,18 +21,21 @@ ras-UI provides a comprehensive set of components and design tokens that help yo
 - Focus management
 
 ### 🎨 **Design Token System**
+
 - DTCG (Design Tokens Community Group) standard
 - Multi-theme support (light, dark, high contrast)
 - Consistent spacing, colors, and typography
 - CSS variables for runtime theme switching
 
 ### ⚡ **Performance Optimized**
+
 - Zero-runtime CSS-in-JS with vanilla-extract
 - Tree-shakeable components
 - Minimal bundle size
 - TypeScript for better DX
 
 ### 🧩 **Component Library**
+
 - Comprehensive set of UI components
 - Composable and flexible APIs
 - Consistent styling patterns
@@ -50,20 +54,14 @@ pnpm add @ras-ui/react @ras-ui/tokens
 ### Basic Usage
 
 ```tsx
-import { Button, Input, Dialog } from '@ras-ui/react';
+import { Button, Input, Dialog } from "@ras-ui/react";
 
 function App() {
   return (
     <div>
-      <Button variant="primary">
-        Click me
-      </Button>
-      
-      <Input 
-        label="Email" 
-        type="email" 
-        placeholder="Enter your email"
-      />
+      <Button variant="primary">Click me</Button>
+
+      <Input label="Email" type="email" placeholder="Enter your email" />
     </div>
   );
 }
@@ -72,18 +70,19 @@ function App() {
 ### Theme Setup
 
 ```tsx
-import { setTheme } from '@ras-ui/react';
+import { setTheme } from "@ras-ui/react";
 
 // Set theme programmatically
-setTheme('dark');
+setTheme("dark");
 
 // Or use CSS attribute
-document.documentElement.setAttribute('data-theme', 'dark');
+document.documentElement.setAttribute("data-theme", "dark");
 ```
 
 ## Design Principles
 
 ### Floating UI
+
 Our components follow the **Floating UI** design language:
 
 - **Opaque surfaces**: Clear visual hierarchy with distinct layers
@@ -92,6 +91,7 @@ Our components follow the **Floating UI** design language:
 - **Purposeful motion**: Smooth transitions that enhance usability
 
 ### Accessibility
+
 Every component is designed with accessibility as a core requirement:
 
 - **Semantic HTML**: Proper element usage and structure
@@ -101,6 +101,7 @@ Every component is designed with accessibility as a core requirement:
 - **Screen readers**: Optimized for assistive technologies
 
 ### Performance
+
 Built for modern web performance:
 
 - **Zero-runtime CSS**: Styles are extracted at build time
@@ -111,6 +112,7 @@ Built for modern web performance:
 ## Component Categories
 
 ### Form Components
+
 - **Button**: Primary actions and interactions
 - **Input**: Text input with validation support
 - **TextField**: Multi-line text input
@@ -119,18 +121,21 @@ Built for modern web performance:
 - **Radio**: Single choice from options
 
 ### Layout Components
+
 - **Stack**: Vertical and horizontal layouts
 - **Grid**: Responsive grid system
 - **Container**: Content containers with max-width
 - **Spacer**: Flexible spacing component
 
 ### Feedback Components
+
 - **Dialog**: Modal dialogs and overlays
 - **Alert**: Inline notifications
 - **Toast**: Temporary notifications
 - **Progress**: Loading and progress indicators
 
 ### Navigation Components
+
 - **Tabs**: Tab navigation
 - **Breadcrumb**: Hierarchical navigation
 - **Pagination**: Page navigation

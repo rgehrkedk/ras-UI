@@ -2,9 +2,9 @@
  * Sprinkles system for atomic CSS utilities
  */
 
-import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
+import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 
-import { theme } from './theme.css';
+import { theme } from "./theme.css";
 
 // Define atomic properties
 const spaceProperties = defineProperties({
@@ -22,20 +22,20 @@ const spaceProperties = defineProperties({
     gap: theme.space,
   },
   shorthands: {
-    m: ['margin'],
-    mt: ['marginTop'],
-    mb: ['marginBottom'],
-    ml: ['marginLeft'],
-    mr: ['marginRight'],
-    mx: ['marginLeft', 'marginRight'],
-    my: ['marginTop', 'marginBottom'],
-    p: ['padding'],
-    pt: ['paddingTop'],
-    pb: ['paddingBottom'],
-    pl: ['paddingLeft'],
-    pr: ['paddingRight'],
-    px: ['paddingLeft', 'paddingRight'],
-    py: ['paddingTop', 'paddingBottom'],
+    m: ["margin"],
+    mt: ["marginTop"],
+    mb: ["marginBottom"],
+    ml: ["marginLeft"],
+    mr: ["marginRight"],
+    mx: ["marginLeft", "marginRight"],
+    my: ["marginTop", "marginBottom"],
+    p: ["padding"],
+    pt: ["paddingTop"],
+    pb: ["paddingBottom"],
+    pl: ["paddingLeft"],
+    pr: ["paddingRight"],
+    px: ["paddingLeft", "paddingRight"],
+    py: ["paddingTop", "paddingBottom"],
   },
 });
 
@@ -64,31 +64,45 @@ const colorProperties = defineProperties({
 
 const layoutProperties = defineProperties({
   properties: {
-    display: ['none', 'block', 'inline', 'inline-block', 'flex', 'inline-flex', 'grid'],
-    flexDirection: ['row', 'column'],
-    justifyContent: ['flex-start', 'center', 'flex-end', 'space-between', 'space-around'],
-    alignItems: ['flex-start', 'center', 'flex-end', 'stretch'],
+    display: [
+      "none",
+      "block",
+      "inline",
+      "inline-block",
+      "flex",
+      "inline-flex",
+      "grid",
+    ],
+    flexDirection: ["row", "column"],
+    justifyContent: [
+      "flex-start",
+      "center",
+      "flex-end",
+      "space-between",
+      "space-around",
+    ],
+    alignItems: ["flex-start", "center", "flex-end", "stretch"],
     borderRadius: theme.radius,
-    position: ['static', 'relative', 'absolute', 'fixed', 'sticky'],
-    overflow: ['visible', 'hidden', 'scroll', 'auto'],
+    position: ["static", "relative", "absolute", "fixed", "sticky"],
+    overflow: ["visible", "hidden", "scroll", "auto"],
   },
   shorthands: {
-    rounded: ['borderRadius'],
+    rounded: ["borderRadius"],
   },
 });
 
 const responsiveProperties = defineProperties({
   conditions: {
     mobile: {},
-    tablet: { '@container': '(min-width: 480px)' },
-    desktop: { '@container': '(min-width: 800px)' },
+    tablet: { "@container": "(min-width: 480px)" },
+    desktop: { "@container": "(min-width: 800px)" },
   },
-  defaultCondition: 'mobile',
+  defaultCondition: "mobile",
   properties: {
-    display: ['none', 'block', 'flex', 'grid'],
-    flexDirection: ['row', 'column'],
-    justifyContent: ['flex-start', 'center', 'flex-end', 'space-between'],
-    alignItems: ['flex-start', 'center', 'flex-end'],
+    display: ["none", "block", "flex", "grid"],
+    flexDirection: ["row", "column"],
+    justifyContent: ["flex-start", "center", "flex-end", "space-between"],
+    alignItems: ["flex-start", "center", "flex-end"],
     padding: theme.space,
     margin: theme.space,
     fontSize: theme.font.size,
@@ -100,7 +114,7 @@ export const sprinkles = createSprinkles(
   spaceProperties,
   colorProperties,
   layoutProperties,
-  responsiveProperties
+  responsiveProperties,
 );
 
 export type Sprinkles = Parameters<typeof sprinkles>[0];

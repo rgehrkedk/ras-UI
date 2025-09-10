@@ -6,9 +6,9 @@ on:
   pull_request:
     branches: [main, master]
     paths:
-      - 'packages/docs/**'
-      - 'packages/react/src/**'
-      - 'packages/tokens/**'
+      - "packages/docs/**"
+      - "packages/react/src/**"
+      - "packages/tokens/**"
 
 jobs:
   quality-checks:
@@ -20,8 +20,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'pnpm'
+          node-version: "18"
+          cache: "pnpm"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -52,18 +52,18 @@ jobs:
             echo "❌ Storybook build failed - output directory not found"
             exit 1
           fi
-          
+
           if [ ! -f "packages/docs/storybook-static/index.html" ]; then
             echo "❌ Storybook build failed - index.html not found"
             exit 1
           fi
-          
+
           # Check for essential assets
           if [ ! -d "packages/docs/storybook-static/assets" ]; then
             echo "❌ Storybook build failed - assets directory not found"
             exit 1
           fi
-          
+
           echo "✅ Storybook build verification passed"
 
       - name: Upload Storybook build artifacts

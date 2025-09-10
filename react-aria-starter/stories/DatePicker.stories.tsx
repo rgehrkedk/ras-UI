@@ -1,13 +1,13 @@
-import {DatePicker} from '../src/DatePicker';
+import { DatePicker } from "../src/DatePicker";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof DatePicker> = {
   component: DatePicker,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -16,5 +16,5 @@ type Story = StoryFn<typeof DatePicker>;
 export const Example: Story = (args) => <DatePicker {...args} />;
 
 Example.args = {
-  label: 'Event date'
+  label: "Event date",
 };

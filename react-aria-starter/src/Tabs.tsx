@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   Tabs as RACTabs,
   TabList as RACTabList,
@@ -7,8 +7,9 @@ import {
   Tab as RACTab,
   TabsProps,
   TabPanelProps,
-  TabPanel as RACTabPanel} from 'react-aria-components';
-import './Tabs.css';
+  TabPanel as RACTabPanel,
+} from "react-aria-components";
+import "./Tabs.css";
 
 export function Tabs(props: TabsProps) {
   return <RACTabs {...props} />;

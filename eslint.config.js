@@ -37,6 +37,7 @@ export default [
         document: "readonly",
         window: "readonly",
         navigator: "readonly",
+        localStorage: "readonly",
         HTMLElement: "readonly",
         HTMLButtonElement: "readonly",
         HTMLInputElement: "readonly",

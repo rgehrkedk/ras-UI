@@ -1,2 +1,2 @@
-export { SidebarGroup } from './SidebarGroup';
-export type { SidebarGroupProps } from './SidebarGroup';
+export { SidebarGroup } from "./SidebarGroup";
+export type { SidebarGroupProps } from "./SidebarGroup";

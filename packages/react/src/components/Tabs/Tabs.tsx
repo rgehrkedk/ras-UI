@@ -3,52 +3,58 @@
  * Provides accessible tabbed interface functionality with multiple variants
  */
 
-import React from 'react';
-import { 
-  Tabs as AriaTabs, 
-  TabList as AriaTabList, 
-  Tab as AriaTab, 
+import React from "react";
+import {
+  Tabs as AriaTabs,
+  TabList as AriaTabList,
+  Tab as AriaTab,
   TabPanel as AriaTabPanel,
   TabsProps as AriaTabsProps,
   TabListProps as AriaTabListProps,
   TabProps as AriaTabProps,
-  TabPanelProps as AriaTabPanelProps
-} from 'react-aria-components';
+  TabPanelProps as AriaTabPanelProps,
+} from "react-aria-components";
 
-import type { SizedComponentProps, BaseComponentProps } from '../../types';
-import { cn } from '../../utils/cn';
+import type { BaseComponentProps } from "../../types";
+import { cn } from "../../utils/cn";
 
-import { tabs, tabList, tab, tabPanel } from './Tabs.css';
+import { tabs, tabList, tab, tabPanel } from "./Tabs.css";
 
 // Base interfaces extending React Aria props
-export interface TabsProps extends Omit<AriaTabsProps, 'className'>, BaseComponentProps {
+export interface TabsProps
+  extends Omit<AriaTabsProps, "className">,
+    BaseComponentProps {
   /**
    * Tab orientation
    * @default 'horizontal'
    */
-  orientation?: 'horizontal' | 'vertical';
-  
+  orientation?: "horizontal" | "vertical";
+
   /**
    * Keyboard activation mode
    * @default 'automatic'
    */
-  keyboardActivation?: 'automatic' | 'manual';
-  
+  keyboardActivation?: "automatic" | "manual";
+
   /**
    * Size variant for all tabs
    * @default 'md'
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
-export interface TabListProps extends Omit<AriaTabListProps<any>, 'className'>, BaseComponentProps {
+export interface TabListProps
+  extends Omit<AriaTabListProps<any>, "className">,
+    BaseComponentProps {
   /**
    * Accessible label for the tab list
    */
-  'aria-label': string;
+  "aria-label": string;
 }
 
-export interface TabProps extends Omit<AriaTabProps, 'className'>, BaseComponentProps {
+export interface TabProps
+  extends Omit<AriaTabProps, "className">,
+    BaseComponentProps {
   /**
    * Whether this tab is disabled
    * @default false
@@ -56,7 +62,9 @@ export interface TabProps extends Omit<AriaTabProps, 'className'>, BaseComponent
   isDisabled?: boolean;
 }
 
-export interface TabPanelProps extends Omit<AriaTabPanelProps, 'className'>, BaseComponentProps {
+export interface TabPanelProps
+  extends Omit<AriaTabPanelProps, "className">,
+    BaseComponentProps {
   /**
    * Whether to keep the panel mounted when not active (lazy loading control)
    * @default false
@@ -67,7 +75,7 @@ export interface TabPanelProps extends Omit<AriaTabPanelProps, 'className'>, Bas
 /**
  * Root tabs container component that manages tab selection state.
  * Built on React Aria Components for robust accessibility.
- * 
+ *
  * @example
  * ```tsx
  * <Tabs defaultSelectedKey="settings" size="md">
@@ -94,14 +102,14 @@ export interface TabPanelProps extends Omit<AriaTabPanelProps, 'className'>, Bas
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   (
     {
-      orientation = 'horizontal',
-      keyboardActivation = 'automatic',
-      size = 'md',
+      orientation = "horizontal",
+      keyboardActivation = "automatic",
+      size = "md",
       className,
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <AriaTabs
@@ -111,7 +119,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
             orientation,
             size,
           }),
-          className
+          className,
         )}
         orientation={orientation}
         keyboardActivation={keyboardActivation}
@@ -120,12 +128,12 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         {children}
       </AriaTabs>
     );
-  }
+  },
 );
 
 /**
  * Container for tab buttons. Must contain Tab components.
- * 
+ *
  * @example
  * ```tsx
  * <TabList aria-label="Navigation tabs">
@@ -136,36 +144,25 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
  * ```
  */
 export const TabList = React.forwardRef<HTMLDivElement, TabListProps>(
-  (
-    {
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, children, ...props }, ref) => {
     // Accessibility check for aria-label
-    if (!props['aria-label']) {
+    if (!props["aria-label"]) {
       console.warn(
-        'TabList: aria-label prop is required for accessibility. Provide a descriptive label for the tab list.'
+        "TabList: aria-label prop is required for accessibility. Provide a descriptive label for the tab list.",
       );
     }
 
     return (
-      <AriaTabList
-        ref={ref}
-        className={cn(tabList, className)}
-        {...props}
-      >
+      <AriaTabList ref={ref} className={cn(tabList, className)} {...props}>
         {children}
       </AriaTabList>
     );
-  }
+  },
 );
 
 /**
  * Individual tab button component.
- * 
+ *
  * @example
  * ```tsx
  * <Tab id="settings">Settings</Tab>
@@ -173,15 +170,7 @@ export const TabList = React.forwardRef<HTMLDivElement, TabListProps>(
  * ```
  */
 export const Tab = React.forwardRef<HTMLDivElement, TabProps>(
-  (
-    {
-      isDisabled = false,
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
+  ({ isDisabled = false, className, children, ...props }, ref) => {
     return (
       <AriaTab
         ref={ref}
@@ -192,19 +181,19 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>(
         {children}
       </AriaTab>
     );
-  }
+  },
 );
 
 /**
  * Content panel associated with a tab.
- * 
+ *
  * @example
  * ```tsx
  * <TabPanel id="settings">
  *   <h3>Settings</h3>
  *   <p>Settings content goes here...</p>
  * </TabPanel>
- * 
+ *
  * // Lazy loading disabled (always mounted)
  * <TabPanel id="data" shouldForceMount>
  *   <ExpensiveDataComponent />
@@ -212,15 +201,7 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>(
  * ```
  */
 export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
-  (
-    {
-      shouldForceMount = false,
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
+  ({ shouldForceMount = false, className, children, ...props }, ref) => {
     return (
       <AriaTabPanel
         ref={ref}
@@ -231,13 +212,13 @@ export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
         {children}
       </AriaTabPanel>
     );
-  }
+  },
 );
 
 // Display names for debugging
-Tabs.displayName = 'Tabs';
-TabList.displayName = 'TabList';
-Tab.displayName = 'Tab';
-TabPanel.displayName = 'TabPanel';
+Tabs.displayName = "Tabs";
+TabList.displayName = "TabList";
+Tab.displayName = "Tab";
+TabPanel.displayName = "TabPanel";
 
 export default Tabs;

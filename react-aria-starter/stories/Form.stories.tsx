@@ -1,15 +1,15 @@
-import {Form} from '../src/Form';
-import {Button} from '../src/Button';
-import {TextField} from '../src/TextField';
+import { Form } from "../src/Form";
+import { Button } from "../src/Button";
+import { TextField } from "../src/TextField";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Form> = {
   component: Form,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;

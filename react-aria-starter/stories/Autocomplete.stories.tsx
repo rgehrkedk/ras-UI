@@ -1,14 +1,14 @@
-import {Autocomplete} from '../src/Autocomplete';
-import {MenuItem} from '../src/Menu';
+import { Autocomplete } from "../src/Autocomplete";
+import { MenuItem } from "../src/Menu";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Autocomplete> = {
   component: Autocomplete,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -28,6 +28,6 @@ export const Example: Story = (args) => (
 );
 
 Example.args = {
-  label: 'Commands',
-  placeholder: 'Search commands...'
+  label: "Commands",
+  placeholder: "Search commands...",
 };

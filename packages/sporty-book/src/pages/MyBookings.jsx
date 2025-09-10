@@ -1,9 +1,17 @@
-
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, MapPin, Users, DollarSign, CheckCircle, XCircle, LogIn } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  DollarSign,
+  CheckCircle,
+  XCircle,
+  LogIn,
+} from "lucide-react";
 import { format, parseISO } from "date-fns";
 
 export default function MyBookings() {
@@ -23,15 +31,18 @@ export default function MyBookings() {
       setUser(currentUser);
 
       if (currentUser) {
-        const userBookings = await Booking.filter({ created_by: currentUser.email }, "-created_date");
+        const userBookings = await Booking.filter(
+          { created_by: currentUser.email },
+          "-created_date",
+        );
         setBookings(userBookings);
 
         // Load club details
-        const clubIds = [...new Set(userBookings.map(b => b.club_id))];
+        const clubIds = [...new Set(userBookings.map((b) => b.club_id))];
         const allClubs = await SportClub.list();
         const clubsMap = {};
-        clubIds.forEach(id => {
-          const club = allClubs.find(c => c.id === id);
+        clubIds.forEach((id) => {
+          const club = allClubs.find((c) => c.id === id);
           if (club) clubsMap[id] = club;
         });
         setClubs(clubsMap);
@@ -76,7 +87,7 @@ export default function MyBookings() {
     }
   };
 
-  const filteredBookings = bookings.filter(booking => {
+  const filteredBookings = bookings.filter((booking) => {
     if (filter === "all") return true;
     return booking.status === filter;
   });
@@ -88,11 +99,16 @@ export default function MyBookings() {
         <Card className="max-w-md w-full border-0 shadow-xl">
           <CardContent className="p-8 text-center">
             <LogIn className="w-16 h-16 text-teal-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Sign in to view bookings</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              Sign in to view bookings
+            </h2>
             <p className="text-slate-600 mb-6">
               You need to sign in to view and manage your bookings.
             </p>
-            <Button onClick={handleLogin} className="w-full bg-teal-600 hover:bg-teal-700">
+            <Button
+              onClick={handleLogin}
+              className="w-full bg-teal-600 hover:bg-teal-700"
+            >
               <LogIn className="w-4 h-4 mr-2" />
               Sign In
             </Button>
@@ -125,13 +141,20 @@ export default function MyBookings() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 w-full overflow-x-hidden">
       <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 w-full min-w-0">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">My Bookings</h1>
-          <p className="text-slate-600">Manage your sport facility reservations</p>
+          <h1 className="text-3xl font-bold text-slate-900 mb-4">
+            My Bookings
+          </h1>
+          <p className="text-slate-600">
+            Manage your sport facility reservations
+          </p>
         </div>
 
         {/* Filter Tabs - Responsive */}
         <div className="mb-8 w-full min-w-0">
-          <div className="w-full overflow-x-auto" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+          <div
+            className="w-full overflow-x-auto"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
             <style jsx>{`
               div::-webkit-scrollbar {
                 display: none;
@@ -150,21 +173,24 @@ export default function MyBookings() {
                 onClick={() => setFilter("confirmed")}
                 className={`whitespace-nowrap ${filter === "confirmed" ? "bg-teal-600 hover:bg-teal-700" : ""}`}
               >
-                Confirmed ({bookings.filter(b => b.status === "confirmed").length})
+                Confirmed (
+                {bookings.filter((b) => b.status === "confirmed").length})
               </Button>
               <Button
                 variant={filter === "pending" ? "default" : "outline"}
                 onClick={() => setFilter("pending")}
                 className={`whitespace-nowrap ${filter === "pending" ? "bg-teal-600 hover:bg-teal-700" : ""}`}
               >
-                Pending ({bookings.filter(b => b.status === "pending").length})
+                Pending ({bookings.filter((b) => b.status === "pending").length}
+                )
               </Button>
               <Button
                 variant={filter === "cancelled" ? "default" : "outline"}
                 onClick={() => setFilter("cancelled")}
                 className={`whitespace-nowrap ${filter === "cancelled" ? "bg-teal-600 hover:bg-teal-700" : ""}`}
               >
-                Cancelled ({bookings.filter(b => b.status === "cancelled").length})
+                Cancelled (
+                {bookings.filter((b) => b.status === "cancelled").length})
               </Button>
             </div>
           </div>
@@ -176,12 +202,13 @@ export default function MyBookings() {
             <Card className="border-0 shadow-lg">
               <CardContent className="p-12 text-center">
                 <Calendar className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">No bookings found</h3>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                  No bookings found
+                </h3>
                 <p className="text-slate-600">
                   {filter === "all"
                     ? "You haven't made any bookings yet. Start by browsing our clubs!"
-                    : `No ${filter} bookings found.`
-                  }
+                    : `No ${filter} bookings found.`}
                 </p>
               </CardContent>
             </Card>
@@ -189,7 +216,10 @@ export default function MyBookings() {
             filteredBookings.map((booking) => {
               const club = clubs[booking.club_id];
               return (
-                <Card key={booking.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow w-full min-w-0">
+                <Card
+                  key={booking.id}
+                  className="border-0 shadow-lg hover:shadow-xl transition-shadow w-full min-w-0"
+                >
                   <CardContent className="p-6">
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                       <div className="flex-1 min-w-0">
@@ -201,26 +231,43 @@ export default function MyBookings() {
                             <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-slate-600 mb-2">
                               <div className="flex items-center gap-2 min-w-0">
                                 <MapPin className="w-4 h-4 flex-shrink-0" />
-                                <span className="font-medium truncate">{club?.name || "Loading..."}</span>
+                                <span className="font-medium truncate">
+                                  {club?.name || "Loading..."}
+                                </span>
                               </div>
-                              <span className="text-slate-400 hidden sm:inline">•</span>
-                              <span className="text-sm truncate">{club?.location?.address || "Loading location..."}</span>
+                              <span className="text-slate-400 hidden sm:inline">
+                                •
+                              </span>
+                              <span className="text-sm truncate">
+                                {club?.location?.address ||
+                                  "Loading location..."}
+                              </span>
                             </div>
                           </div>
-                          <Badge className={`${getStatusColor(booking.status)} border-0 flex items-center gap-1 flex-shrink-0`}>
+                          <Badge
+                            className={`${getStatusColor(booking.status)} border-0 flex items-center gap-1 flex-shrink-0`}
+                          >
                             {getStatusIcon(booking.status)}
-                            {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                            {booking.status.charAt(0).toUpperCase() +
+                              booking.status.slice(1)}
                           </Badge>
                         </div>
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
                           <div className="flex items-center gap-2 text-slate-600">
                             <Calendar className="w-4 h-4 flex-shrink-0" />
-                            <span className="truncate">{format(parseISO(booking.booking_date), "MMM d, yyyy")}</span>
+                            <span className="truncate">
+                              {format(
+                                parseISO(booking.booking_date),
+                                "MMM d, yyyy",
+                              )}
+                            </span>
                           </div>
                           <div className="flex items-center gap-2 text-slate-600">
                             <Clock className="w-4 h-4 flex-shrink-0" />
-                            <span className="truncate">{booking.start_time} - {booking.end_time}</span>
+                            <span className="truncate">
+                              {booking.start_time} - {booking.end_time}
+                            </span>
                           </div>
                           <div className="flex items-center gap-2 text-slate-600">
                             <Users className="w-4 h-4 flex-shrink-0" />
@@ -228,7 +275,9 @@ export default function MyBookings() {
                           </div>
                           <div className="flex items-center gap-2 text-slate-600">
                             <DollarSign className="w-4 h-4 flex-shrink-0" />
-                            <span className="font-semibold">${booking.total_cost?.toFixed(2)}</span>
+                            <span className="font-semibold">
+                              ${booking.total_cost?.toFixed(2)}
+                            </span>
                           </div>
                         </div>
 

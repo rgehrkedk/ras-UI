@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { useSidebarGroupNavigation } from '../../../hooks';
-import type { BaseComponentProps } from '../../../types';
-import { cn } from '../../../utils/cn';
-import { useSidebarContext } from '../Sidebar';
+import { useSidebarGroupNavigation } from "../../../hooks";
+import type { BaseComponentProps } from "../../../types";
+import { cn } from "../../../utils/cn";
+import { useSidebarContext } from "../Sidebar";
 
-import * as styles from './SidebarGroup.css';
+import * as styles from "./SidebarGroup.css";
 
 export interface SidebarGroupProps extends BaseComponentProps {
   children: React.ReactNode;
@@ -15,14 +15,14 @@ export interface SidebarGroupProps extends BaseComponentProps {
 
 export const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(
   ({ children, label, id, className, ...props }, ref) => {
-    const { isCollapsed } = useSidebarContext();
-    
+    useSidebarContext();
+
     // Enhanced group navigation with React Aria
     const { groupProps, labelProps } = useSidebarGroupNavigation({
       label,
-      id
+      id,
     });
-    
+
     return (
       <div
         ref={ref}
@@ -38,7 +38,7 @@ export const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(
         <ul role="menu">{children}</ul>
       </div>
     );
-  }
+  },
 );
 
-SidebarGroup.displayName = 'SidebarGroup';
+SidebarGroup.displayName = "SidebarGroup";

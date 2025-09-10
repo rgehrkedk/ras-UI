@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import React from "react";
 
-import { Icon } from '../Icon';
+import { Icon } from "../Icon";
 
-import { Link } from './Link';
+import { Link } from "./Link";
 
 const meta = {
-  title: 'Components/Link',
+  title: "Components/Link",
   component: Link,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -35,28 +35,28 @@ Link provides accessible navigation with automatic external link detection and m
 - Keyboard accessible with Enter key activation
 - Focus indicators meet WCAG contrast requirements
 - Disabled states are properly announced
-        `
+        `,
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'quiet', 'emphasized'],
+      control: "select",
+      options: ["default", "quiet", "emphasized"],
     },
     size: {
-      control: 'select', 
-      options: ['sm', 'md', 'lg'],
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
     showExternalIndicator: {
-      control: 'boolean',
+      control: "boolean",
     },
     fullWidth: {
-      control: 'boolean',
+      control: "boolean",
     },
     isDisabled: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 } satisfies Meta<typeof Link>;
@@ -67,10 +67,17 @@ type Story = StoryObj<typeof meta>;
 // Basic usage example
 export const BasicUsage: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        alignItems: "flex-start",
+      }}
+    >
       <Link href="/internal-page">Internal Link</Link>
       <Link href="https://example.com">External Link (auto-detects)</Link>
-      <Link onPress={() => alert('Router navigation!')}>Router Link</Link>
+      <Link onPress={() => alert("Router navigation!")}>Router Link</Link>
     </div>
   ),
 };
@@ -78,10 +85,23 @@ export const BasicUsage: Story = {
 // Variants example
 export const Variants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
-      <Link href="/page" variant="default">Default Link</Link>
-      <Link href="/page" variant="quiet">Quiet Link</Link>
-      <Link href="/page" variant="emphasized">Emphasized Link</Link>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        alignItems: "flex-start",
+      }}
+    >
+      <Link href="/page" variant="default">
+        Default Link
+      </Link>
+      <Link href="/page" variant="quiet">
+        Quiet Link
+      </Link>
+      <Link href="/page" variant="emphasized">
+        Emphasized Link
+      </Link>
     </div>
   ),
 };

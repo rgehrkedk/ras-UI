@@ -29,7 +29,5 @@
       "cache": false
     }
   },
-  "globalDependencies": [
-    "**/.env.*local"
-  ]
+  "globalDependencies": ["**/.env.*local"]
 }

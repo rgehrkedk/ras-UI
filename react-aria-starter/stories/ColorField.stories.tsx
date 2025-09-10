@@ -1,13 +1,13 @@
-import {ColorField} from '../src/ColorField';
+import { ColorField } from "../src/ColorField";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof ColorField> = {
   component: ColorField,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -16,5 +16,5 @@ type Story = StoryFn<typeof ColorField>;
 export const Example: Story = (args) => <ColorField {...args} />;
 
 Example.args = {
-  label: 'Color'
+  label: "Color",
 };

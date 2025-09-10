@@ -1,18 +1,18 @@
-import { defineConfig } from 'tsup';
-import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
+import { defineConfig } from "tsup";
+import { vanillaExtractPlugin } from "@vanilla-extract/esbuild-plugin";
 
 export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['cjs', 'esm'],
+  entry: ["src/index.ts"],
+  format: ["cjs", "esm"],
   dts: false, // Disable for now, will generate manually
   sourcemap: true,
   clean: true,
-  external: ['react', 'react-dom', '@ras-ui/tokens'],
+  external: ["react", "react-dom", "@ras-ui/tokens"],
   esbuildPlugins: [vanillaExtractPlugin()],
   esbuildOptions(options) {
-    options.chunkNames = '[name]-[hash]';
+    options.chunkNames = "[name]-[hash]";
   },
   onSuccess: async () => {
-    console.log('✅ Build completed successfully');
-  }
+    console.log("✅ Build completed successfully");
+  },
 });

@@ -1,2 +1,2 @@
-export { SidebarContent } from './SidebarContent';
-export type { SidebarContentProps } from './SidebarContent';
+export { SidebarContent } from "./SidebarContent";
+export type { SidebarContentProps } from "./SidebarContent";

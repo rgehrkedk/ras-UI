@@ -1,13 +1,13 @@
-import {Button} from '../src/Button';
+import { Button } from "../src/Button";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -16,5 +16,5 @@ type Story = StoryFn<typeof Button>;
 export const Example: Story = (args) => <Button {...args}>Press me</Button>;
 
 Example.args = {
-  onPress: () => alert('Hello world!')
+  onPress: () => alert("Hello world!"),
 };

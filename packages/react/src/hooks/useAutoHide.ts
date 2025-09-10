@@ -3,7 +3,7 @@
  * Centralizes auto-dismiss logic used in Alert, Toast, and similar components
  */
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from "react";
 
 export interface UseAutoHideOptions {
   /** Duration in milliseconds before auto-hide triggers */
@@ -17,13 +17,13 @@ export interface UseAutoHideOptions {
 /**
  * Hook that automatically triggers a callback after a specified duration
  * Commonly used for auto-dismissing alerts, toasts, and notifications
- * 
+ *
  * @param options Configuration object with duration, enabled state, and callback
- * 
+ *
  * @example
  * ```tsx
  * const [isVisible, setIsVisible] = useState(true);
- * 
+ *
  * useAutoHide({
  *   duration: 5000, // 5 seconds
  *   enabled: isVisible && autoHideDuration > 0,
@@ -31,10 +31,10 @@ export interface UseAutoHideOptions {
  * });
  * ```
  */
-export function useAutoHide({ 
-  duration, 
-  enabled = true, 
-  onAutoHide 
+export function useAutoHide({
+  duration,
+  enabled = true,
+  onAutoHide,
 }: UseAutoHideOptions): void {
   const handleAutoHide = useCallback(() => {
     onAutoHide();
@@ -57,11 +57,11 @@ export function useAutoHide({
 
 /**
  * Simplified version for common use cases
- * 
+ *
  * @param callback Function to call after duration
  * @param duration Milliseconds to wait before calling callback
  * @param enabled Whether the auto-hide is active
- * 
+ *
  * @example
  * ```tsx
  * useAutoHideSimple(
@@ -74,7 +74,7 @@ export function useAutoHide({
 export function useAutoHideSimple(
   callback: () => void,
   duration?: number,
-  enabled: boolean = true
+  enabled: boolean = true,
 ): void {
   useAutoHide({
     duration,

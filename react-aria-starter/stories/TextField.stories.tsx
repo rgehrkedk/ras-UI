@@ -1,13 +1,13 @@
-import {TextField} from '../src/TextField';
+import { TextField } from "../src/TextField";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof TextField> = {
   component: TextField,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -17,5 +17,5 @@ type Story = StoryFn<typeof TextField>;
 export const Example: Story = (args) => <TextField {...args} />;
 
 Example.args = {
-  label: 'Name'
+  label: "Name",
 };

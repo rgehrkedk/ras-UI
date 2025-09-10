@@ -9,18 +9,20 @@ _This file is prepared for the upcoming code review session._
 This code review covers all deliverables from Sprint 1 of the ras-UI design system implementation.
 
 ### Components Under Review
-- [ ] Task Group 1: Monorepo Infrastructure  
-- [ ] Task Group 2: Design Token System  
-- [ ] Task Group 3: Styling System (vanilla-extract)  
-- [ ] Task Group 4: Core Components (Button, Input, Dialog)  
-- [ ] Task Group 5: Testing Infrastructure  
-- [ ] Task Group 6: Storybook Documentation  
+
+- [ ] Task Group 1: Monorepo Infrastructure
+- [ ] Task Group 2: Design Token System
+- [ ] Task Group 3: Styling System (vanilla-extract)
+- [ ] Task Group 4: Core Components (Button, Input, Dialog)
+- [ ] Task Group 5: Testing Infrastructure
+- [ ] Task Group 6: Storybook Documentation
 
 ---
 
 ## Review Checklist
 
 ### Code Quality
+
 - [ ] Code follows project conventions
 - [ ] TypeScript types are properly defined
 - [ ] No ESLint errors or warnings
@@ -28,12 +30,14 @@ This code review covers all deliverables from Sprint 1 of the ras-UI design syst
 - [ ] Proper error handling
 
 ### Architecture
+
 - [ ] Component API design is intuitive
 - [ ] Proper separation of concerns
 - [ ] Scalable file structure
 - [ ] Appropriate abstraction levels
 
 ### Accessibility
+
 - [ ] WCAG 2.2 AA compliance
 - [ ] Proper ARIA attributes
 - [ ] Keyboard navigation support
@@ -41,18 +45,21 @@ This code review covers all deliverables from Sprint 1 of the ras-UI design syst
 - [ ] Focus management
 
 ### Performance
+
 - [ ] Bundle size optimization
 - [ ] Tree-shaking compatibility
 - [ ] CSS extraction working properly
 - [ ] No unnecessary re-renders
 
 ### Testing
+
 - [ ] Test coverage is adequate
 - [ ] Tests are meaningful and reliable
 - [ ] Testing utilities are properly configured
 - [ ] Edge cases are covered
 
 ### Documentation
+
 - [ ] Storybook stories are comprehensive
 - [ ] API documentation is clear
 - [ ] Examples demonstrate real usage

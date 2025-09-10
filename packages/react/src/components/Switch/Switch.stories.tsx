@@ -2,16 +2,16 @@
  * Switch component stories for Storybook
  */
 
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import React from "react";
 
-import { Switch } from './Switch';
+import { Switch } from "./Switch";
 
 const meta: Meta<typeof Switch> = {
-  title: 'Components/Switch',
+  title: "Components/Switch",
   component: Switch,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -30,62 +30,62 @@ Built with React Aria Components and features elevation.1 surface treatment with
 - Provide clear labels that describe what the switch controls
 - Use description text for additional context when needed
 - Test with keyboard navigation and screen readers
-        `
-      }
-    }
+        `,
+      },
+    },
   },
   argTypes: {
     children: {
-      control: 'text',
-      description: 'Switch label text'
+      control: "text",
+      description: "Switch label text",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Switch size variant'
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Switch size variant",
     },
     isSelected: {
-      control: 'boolean',
-      description: 'Whether the switch is checked (controlled)'
+      control: "boolean",
+      description: "Whether the switch is checked (controlled)",
     },
     defaultSelected: {
-      control: 'boolean',
-      description: 'Default checked state (uncontrolled)'
+      control: "boolean",
+      description: "Default checked state (uncontrolled)",
     },
     isDisabled: {
-      control: 'boolean',
-      description: 'Whether the switch is disabled'
+      control: "boolean",
+      description: "Whether the switch is disabled",
     },
     isRequired: {
-      control: 'boolean',
-      description: 'Whether the switch is required'
+      control: "boolean",
+      description: "Whether the switch is required",
     },
     isInvalid: {
-      control: 'boolean',
-      description: 'Whether the switch has validation errors'
+      control: "boolean",
+      description: "Whether the switch has validation errors",
     },
     description: {
-      control: 'text',
-      description: 'Description text below the label'
+      control: "text",
+      description: "Description text below the label",
     },
     helperText: {
-      control: 'text',
-      description: 'Helper text to display'
+      control: "text",
+      description: "Helper text to display",
     },
     errorMessage: {
-      control: 'text',
-      description: 'Error message when invalid'
+      control: "text",
+      description: "Error message when invalid",
     },
     onChange: {
-      action: 'changed',
-      description: 'Callback when switch state changes'
+      action: "changed",
+      description: "Callback when switch state changes",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS class names'
-    }
+      control: "text",
+      description: "Additional CSS class names",
+    },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -94,62 +94,79 @@ type Story = StoryObj<typeof meta>;
 // Default story
 export const Default: Story = {
   args: {
-    children: 'Enable notifications',
+    children: "Enable notifications",
   },
 };
 
 // Size variants
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      <Switch size="sm" defaultSelected>Small switch</Switch>
-      <Switch size="md" defaultSelected>Medium switch</Switch>
-      <Switch size="lg" defaultSelected>Large switch</Switch>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <Switch size="sm" defaultSelected>
+        Small switch
+      </Switch>
+      <Switch size="md" defaultSelected>
+        Medium switch
+      </Switch>
+      <Switch size="lg" defaultSelected>
+        Large switch
+      </Switch>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Switches support three sizes to match different interface contexts.'
-      }
-    }
-  }
+        story:
+          "Switches support three sizes to match different interface contexts.",
+      },
+    },
+  },
 };
 
 // States
 export const States: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <Switch>Unchecked switch</Switch>
       <Switch defaultSelected>Checked switch</Switch>
       <Switch isDisabled>Disabled unchecked</Switch>
-      <Switch isDisabled defaultSelected>Disabled checked</Switch>
+      <Switch isDisabled defaultSelected>
+        Disabled checked
+      </Switch>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Switches have clear visual states for different interaction modes.'
-      }
-    }
-  }
+        story:
+          "Switches have clear visual states for different interaction modes.",
+      },
+    },
+  },
 };
 
 // With descriptions
 export const WithDescriptions: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '400px' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        maxWidth: "400px",
+      }}
+    >
       <Switch description="Get notified about important updates and messages">
         Push notifications
       </Switch>
-      
-      <Switch 
+
+      <Switch
         defaultSelected
         description="Automatically save your work every few minutes"
       >
         Auto-save
       </Switch>
-      
+
       <Switch description="Use system settings to determine the theme">
         Follow system theme
       </Switch>
@@ -158,27 +175,38 @@ export const WithDescriptions: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Switches can include description text to provide additional context.'
-      }
-    }
-  }
+        story:
+          "Switches can include description text to provide additional context.",
+      },
+    },
+  },
 };
 
 // Form integration
 export const FormIntegration: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '400px' }}>
-      <Switch isRequired helperText="This setting is required for account setup">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+        maxWidth: "400px",
+      }}
+    >
+      <Switch
+        isRequired
+        helperText="This setting is required for account setup"
+      >
         Accept terms and conditions
       </Switch>
-      
-      <Switch 
-        isInvalid 
+
+      <Switch
+        isInvalid
         errorMessage="You must enable notifications to receive updates"
       >
         Enable notifications
       </Switch>
-      
+
       <Switch helperText="You can change this later in settings">
         Email marketing
       </Switch>
@@ -187,45 +215,54 @@ export const FormIntegration: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Switches integrate well with forms and support validation states.'
-      }
-    }
-  }
+        story:
+          "Switches integrate well with forms and support validation states.",
+      },
+    },
+  },
 };
 
 // Settings panel example
 export const SettingsPanel: Story = {
   render: () => (
-    <div style={{ 
-      padding: '1.5rem', 
-      border: '1px solid var(--color-border-default)', 
-      borderRadius: '8px',
-      maxWidth: '500px',
-      backgroundColor: 'var(--color-surface-base)'
-    }}>
-      <h3 style={{ margin: '0 0 1.5rem 0', fontSize: '1.125rem', fontWeight: 600 }}>
+    <div
+      style={{
+        padding: "1.5rem",
+        border: "1px solid var(--color-border-default)",
+        borderRadius: "8px",
+        maxWidth: "500px",
+        backgroundColor: "var(--color-surface-base)",
+      }}
+    >
+      <h3
+        style={{
+          margin: "0 0 1.5rem 0",
+          fontSize: "1.125rem",
+          fontWeight: 600,
+        }}
+      >
         Privacy Settings
       </h3>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-        <Switch 
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        <Switch
           defaultSelected
           description="Allow others to see when you're online"
         >
           Show online status
         </Switch>
-        
+
         <Switch description="Let others find you using your email address">
           Discoverable by email
         </Switch>
-        
-        <Switch 
+
+        <Switch
           defaultSelected
           description="Receive notifications for mentions and direct messages"
         >
           Push notifications
         </Switch>
-        
+
         <Switch description="Include your activity in our analytics">
           Analytics tracking
         </Switch>
@@ -235,29 +272,31 @@ export const SettingsPanel: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Example of switches used in a settings panel interface.'
-      }
-    }
-  }
+        story: "Example of switches used in a settings panel interface.",
+      },
+    },
+  },
 };
 
 // Controlled vs Uncontrolled
 export const ControlledExample: Story = {
   render: () => {
     const [isEnabled, setIsEnabled] = React.useState(false);
-    
+
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <Switch 
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <Switch
           isSelected={isEnabled}
           onChange={setIsEnabled}
           description="This is a controlled switch"
         >
           Controlled switch
         </Switch>
-        
-        <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
-          Current state: {isEnabled ? 'Enabled' : 'Disabled'}
+
+        <p
+          style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)" }}
+        >
+          Current state: {isEnabled ? "Enabled" : "Disabled"}
         </p>
       </div>
     );
@@ -265,28 +304,29 @@ export const ControlledExample: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Example of a controlled switch that manages its state externally.'
-      }
-    }
-  }
+        story:
+          "Example of a controlled switch that manages its state externally.",
+      },
+    },
+  },
 };
 
 // Without labels (icon switches)
 export const WithoutLabels: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <span style={{ fontSize: '1.25rem' }}>🔊</span>
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <span style={{ fontSize: "1.25rem" }}>🔊</span>
         <Switch aria-label="Toggle sound" />
       </div>
-      
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <span style={{ fontSize: '1.25rem' }}>🌙</span>
+
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <span style={{ fontSize: "1.25rem" }}>🌙</span>
         <Switch aria-label="Toggle dark mode" defaultSelected />
       </div>
-      
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <span style={{ fontSize: '1.25rem' }}>📱</span>
+
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <span style={{ fontSize: "1.25rem" }}>📱</span>
         <Switch aria-label="Toggle mobile mode" />
       </div>
     </div>
@@ -294,73 +334,83 @@ export const WithoutLabels: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Switches can be used without labels when context is clear from surrounding elements.'
-      }
-    }
-  }
+        story:
+          "Switches can be used without labels when context is clear from surrounding elements.",
+      },
+    },
+  },
 };
 
 // Interactive playground
 export const Playground: Story = {
   args: {
-    children: 'Toggle setting',
-    size: 'md',
+    children: "Toggle setting",
+    size: "md",
     isSelected: false,
     isDisabled: false,
     isRequired: false,
     isInvalid: false,
-    description: '',
-    helperText: '',
-    errorMessage: '',
+    description: "",
+    helperText: "",
+    errorMessage: "",
   },
   parameters: {
     docs: {
       description: {
-        story: 'Interactive playground to experiment with all switch options.'
-      }
-    }
-  }
+        story: "Interactive playground to experiment with all switch options.",
+      },
+    },
+  },
 };
-
 
 // Accessibility demonstration
 export const AccessibilityDemo: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '500px' }}>
-      <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
-        Try using keyboard navigation (Tab, Space, Enter) to interact with these switches:
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        maxWidth: "500px",
+      }}
+    >
+      <p style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)" }}>
+        Try using keyboard navigation (Tab, Space, Enter) to interact with these
+        switches:
       </p>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
         <Switch description="Fully accessible with keyboard navigation">
           Keyboard accessible
         </Switch>
-        
-        <Switch 
+
+        <Switch
           isRequired
           description="Screen readers will announce this as required"
         >
           Required setting
         </Switch>
-        
-        <Switch 
+
+        <Switch
           aria-label="Hidden label for screen readers"
           description="Uses aria-label for accessibility"
         >
           Has hidden label
         </Switch>
       </div>
-      
-      <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
-        Each switch includes proper ARIA attributes and keyboard support for accessibility.
+
+      <p style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)" }}>
+        Each switch includes proper ARIA attributes and keyboard support for
+        accessibility.
       </p>
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: 'Switches are fully accessible with keyboard navigation and screen reader support.'
-      }
-    }
-  }
+        story:
+          "Switches are fully accessible with keyboard navigation and screen reader support.",
+      },
+    },
+  },
 };

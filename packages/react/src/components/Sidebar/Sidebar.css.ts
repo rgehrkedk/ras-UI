@@ -1,30 +1,30 @@
-import { style, globalStyle } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+// import styles are intentionally limited to recipe only; style/globalStyle not used here
+import { recipe } from "@vanilla-extract/recipes";
 
-import { theme } from '../../styles/theme.css';
+import { theme } from "../../styles/theme.css";
 
 // Sidebar container with layout variants
 export const sidebar = recipe({
   base: {
-    display: 'flex',
-    flexDirection: 'column',
-    transition: `width ${theme.animation.duration.normal} ${theme.animation.easing['ease-in-out']}`,
-    overflow: 'visible', // Allow toggle button to overflow
+    display: "flex",
+    flexDirection: "column",
+    transition: `width ${theme.animation.duration.normal} ${theme.animation.easing["ease-in-out"]}`,
+    overflow: "visible", // Allow toggle button to overflow
   },
   variants: {
     variant: {
       floating: {
-        position: 'relative',
+        position: "relative",
         flexShrink: 0,
         height: `calc(100vh - ${theme.space.md} * 2)`,
-        margin: theme.space.md,
+
         backgroundColor: theme.color.surface.float,
         borderRadius: theme.radius.lg,
         boxShadow: theme.elevation.lg,
         border: `1px solid ${theme.color.border.default}`,
       },
       push: {
-        position: 'relative',
+        position: "relative",
         flexShrink: 0,
         height: `calc(100vh - ${theme.space.md} * 2)`,
         margin: `${theme.space.md} 0`,
@@ -34,15 +34,15 @@ export const sidebar = recipe({
     },
     collapsed: {
       false: {
-        width: '200px',
+        width: "200px",
       },
       true: {
-        width: '64px',
+        width: "64px",
       },
     },
   },
   defaultVariants: {
-    variant: 'floating',
+    variant: "floating",
     collapsed: false,
   },
 });

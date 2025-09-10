@@ -2,19 +2,19 @@
  * Simple working Menu story using design-system wrappers
  */
 
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button } from '../Button';
-import { Icon } from '../Icon';
-import { KeyboardShortcut } from '../KeyboardShortcut';
+import { Button } from "../Button";
+import { Icon } from "../Icon";
+import { KeyboardShortcut } from "../KeyboardShortcut";
 
-import { MenuTriggerComponent, Menu, MenuItem, MenuSeparator } from './Menu';
+import { MenuTriggerComponent, Menu, MenuItem, MenuSeparator } from "./Menu";
 
 const meta: Meta<typeof MenuTriggerComponent> = {
-  title: 'Components/Menu',
+  title: "Components/Menu",
   component: MenuTriggerComponent,
-  parameters: { layout: 'padded' },
-  tags: ['autodocs'],
+  parameters: { layout: "padded" },
+  tags: ["autodocs"],
 };
 
 export default meta;

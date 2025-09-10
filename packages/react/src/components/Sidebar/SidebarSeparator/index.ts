@@ -1,2 +1,2 @@
-export { SidebarSeparator } from './SidebarSeparator';
-export type { SidebarSeparatorProps } from './SidebarSeparator';
+export { SidebarSeparator } from "./SidebarSeparator";
+export type { SidebarSeparatorProps } from "./SidebarSeparator";

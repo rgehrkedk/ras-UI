@@ -2,454 +2,469 @@
  * Select component tests
  */
 
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, it, expect, vi } from "vitest";
 
-import { UserIcon, SettingsIcon } from '../Icon';
+import { UserIcon, SettingsIcon } from "../Icon";
 
-import { Select } from './Select';
-import { SelectItem } from './SelectItem';
+import { Select } from "./Select";
+import { SelectItem } from "./SelectItem";
 
 // Mock icons to avoid issues with SVG imports in tests
-vi.mock('../Icon', () => ({
+vi.mock("../Icon", () => ({
   ChevronDownIcon: ({ className }: { className?: string }) => (
-    <div className={className} data-testid="chevron-down-icon">↓</div>
+    <div className={className} data-testid="chevron-down-icon">
+      ↓
+    </div>
   ),
   CheckIcon: ({ className }: { className?: string }) => (
-    <div className={className} data-testid="check-icon">✓</div>
+    <div className={className} data-testid="check-icon">
+      ✓
+    </div>
   ),
   UserIcon: ({ className }: { className?: string }) => (
-    <div className={className} data-testid="user-icon">👤</div>
+    <div className={className} data-testid="user-icon">
+      👤
+    </div>
   ),
   SettingsIcon: ({ className }: { className?: string }) => (
-    <div className={className} data-testid="settings-icon">⚙️</div>
+    <div className={className} data-testid="settings-icon">
+      ⚙️
+    </div>
   ),
 }));
 
-describe('Select', () => {
+describe("Select", () => {
   const defaultProps = {
-    label: 'Test Select',
-    placeholder: 'Choose an option',
+    label: "Test Select",
+    placeholder: "Choose an option",
     children: [
-      <SelectItem key="1" id="option1">Option 1</SelectItem>,
-      <SelectItem key="2" id="option2">Option 2</SelectItem>,
-      <SelectItem key="3" id="option3">Option 3</SelectItem>,
+      <SelectItem key="1" id="option1">
+        Option 1
+      </SelectItem>,
+      <SelectItem key="2" id="option2">
+        Option 2
+      </SelectItem>,
+      <SelectItem key="3" id="option3">
+        Option 3
+      </SelectItem>,
     ],
   };
 
-  describe('Rendering', () => {
-    it('renders with basic props', () => {
+  describe("Rendering", () => {
+    it("renders with basic props", () => {
       render(<Select {...defaultProps} />);
-      
-      expect(screen.getByText('Test Select')).toBeInTheDocument();
-      expect(screen.getByText('Choose an option')).toBeInTheDocument();
-      expect(screen.getByRole('button')).toBeInTheDocument();
+
+      expect(screen.getByText("Test Select")).toBeInTheDocument();
+      expect(screen.getByText("Choose an option")).toBeInTheDocument();
+      expect(screen.getByRole("button")).toBeInTheDocument();
     });
 
-    it('renders without label when not provided', () => {
+    it("renders without label when not provided", () => {
       render(
         <Select placeholder="Choose an option">
           <SelectItem id="1">Option 1</SelectItem>
-        </Select>
+        </Select>,
       );
-      
-      expect(screen.queryByText('Test Select')).not.toBeInTheDocument();
-      expect(screen.getByText('Choose an option')).toBeInTheDocument();
+
+      expect(screen.queryByText("Test Select")).not.toBeInTheDocument();
+      expect(screen.getByText("Choose an option")).toBeInTheDocument();
     });
 
-    it('renders required indicator when isRequired is true', () => {
+    it("renders required indicator when isRequired is true", () => {
       render(<Select {...defaultProps} isRequired />);
-      
-      expect(screen.getByText('*')).toBeInTheDocument();
+
+      expect(screen.getByText("*")).toBeInTheDocument();
     });
 
-    it('renders helper text when provided', () => {
+    it("renders helper text when provided", () => {
       render(<Select {...defaultProps} helperText="This is helper text" />);
-      
-      expect(screen.getByText('This is helper text')).toBeInTheDocument();
+
+      expect(screen.getByText("This is helper text")).toBeInTheDocument();
     });
 
-    it('renders description when provided', () => {
+    it("renders description when provided", () => {
       render(<Select {...defaultProps} description="This is a description" />);
-      
-      expect(screen.getByText('This is a description')).toBeInTheDocument();
+
+      expect(screen.getByText("This is a description")).toBeInTheDocument();
     });
 
-    it('renders chevron icon', () => {
+    it("renders chevron icon", () => {
       render(<Select {...defaultProps} />);
-      
-      expect(screen.getByTestId('chevron-down-icon')).toBeInTheDocument();
+
+      expect(screen.getByTestId("chevron-down-icon")).toBeInTheDocument();
     });
   });
 
-  describe('Size Variants', () => {
-    it('applies small size class', () => {
+  describe("Size Variants", () => {
+    it("applies small size class", () => {
       render(<Select {...defaultProps} size="sm" />);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass(expect.stringContaining('sm'));
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass(expect.stringContaining("sm"));
     });
 
-    it('applies medium size class (default)', () => {
+    it("applies medium size class (default)", () => {
       render(<Select {...defaultProps} size="md" />);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass(expect.stringContaining('md'));
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass(expect.stringContaining("md"));
     });
 
-    it('applies large size class', () => {
+    it("applies large size class", () => {
       render(<Select {...defaultProps} size="lg" />);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass(expect.stringContaining('lg'));
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass(expect.stringContaining("lg"));
     });
   });
 
-  describe('Layout', () => {
-    it('applies fullWidth class when fullWidth is true', () => {
+  describe("Layout", () => {
+    it("applies fullWidth class when fullWidth is true", () => {
       render(<Select {...defaultProps} fullWidth />);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass(expect.stringContaining('true'));
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass(expect.stringContaining("true"));
     });
 
-    it('applies custom className', () => {
+    it("applies custom className", () => {
       render(<Select {...defaultProps} className="custom-class" />);
-      
-      const select = screen.getByRole('group');
-      expect(select).toHaveClass('custom-class');
+
+      const select = screen.getByRole("group");
+      expect(select).toHaveClass("custom-class");
     });
   });
 
-  describe('States', () => {
-    it('applies disabled state', () => {
+  describe("States", () => {
+    it("applies disabled state", () => {
       render(<Select {...defaultProps} isDisabled />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       expect(button).toBeDisabled();
-      expect(button).toHaveAttribute('aria-disabled', 'true');
+      expect(button).toHaveAttribute("aria-disabled", "true");
     });
 
-    it('shows error message when invalid', () => {
+    it("shows error message when invalid", () => {
       render(
-        <Select 
-          {...defaultProps} 
-          isInvalid 
-          errorMessage="This field is required" 
-        />
+        <Select
+          {...defaultProps}
+          isInvalid
+          errorMessage="This field is required"
+        />,
       );
-      
-      expect(screen.getByText('This field is required')).toBeInTheDocument();
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-invalid', 'true');
+
+      expect(screen.getByText("This field is required")).toBeInTheDocument();
+      const button = screen.getByRole("button");
+      expect(button).toHaveAttribute("aria-invalid", "true");
     });
 
-    it('shows required state', () => {
+    it("shows required state", () => {
       render(<Select {...defaultProps} isRequired />);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-required', 'true');
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveAttribute("aria-required", "true");
     });
   });
 
-  describe('Interaction', () => {
-    it('opens dropdown when clicked', async () => {
+  describe("Interaction", () => {
+    it("opens dropdown when clicked", async () => {
       const user = userEvent.setup();
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        expect(screen.getByRole('listbox')).toBeInTheDocument();
-        expect(screen.getByText('Option 1')).toBeInTheDocument();
-        expect(screen.getByText('Option 2')).toBeInTheDocument();
-        expect(screen.getByText('Option 3')).toBeInTheDocument();
+        expect(screen.getByRole("listbox")).toBeInTheDocument();
+        expect(screen.getByText("Option 1")).toBeInTheDocument();
+        expect(screen.getByText("Option 2")).toBeInTheDocument();
+        expect(screen.getByText("Option 3")).toBeInTheDocument();
       });
     });
 
-    it('opens dropdown with Enter key', async () => {
+    it("opens dropdown with Enter key", async () => {
       const user = userEvent.setup();
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       button.focus();
-      await user.keyboard('{Enter}');
-      
+      await user.keyboard("{Enter}");
+
       await waitFor(() => {
-        expect(screen.getByRole('listbox')).toBeInTheDocument();
+        expect(screen.getByRole("listbox")).toBeInTheDocument();
       });
     });
 
-    it('opens dropdown with Space key', async () => {
+    it("opens dropdown with Space key", async () => {
       const user = userEvent.setup();
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       button.focus();
-      await user.keyboard(' ');
-      
+      await user.keyboard(" ");
+
       await waitFor(() => {
-        expect(screen.getByRole('listbox')).toBeInTheDocument();
+        expect(screen.getByRole("listbox")).toBeInTheDocument();
       });
     });
 
-    it('selects option when clicked', async () => {
+    it("selects option when clicked", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
-      
+
       render(
         <Select {...defaultProps} onSelectionChange={handleChange}>
           <SelectItem id="1">Option 1</SelectItem>
           <SelectItem id="2">Option 2</SelectItem>
-        </Select>
+        </Select>,
       );
-      
+
       // Open dropdown
-      const button = screen.getByRole('button');
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       // Click option
       await waitFor(() => {
-        const option1 = screen.getByText('Option 1');
+        const option1 = screen.getByText("Option 1");
         return user.click(option1);
       });
-      
-      expect(handleChange).toHaveBeenCalledWith('1');
+
+      expect(handleChange).toHaveBeenCalledWith("1");
     });
 
-    it('closes dropdown when clicking outside', async () => {
+    it("closes dropdown when clicking outside", async () => {
       const user = userEvent.setup();
       render(
         <div>
           <Select {...defaultProps} />
           <button>Outside button</button>
-        </div>
+        </div>,
       );
-      
+
       // Open dropdown
-      const selectButton = screen.getByRole('button', { name: /test select/i });
+      const selectButton = screen.getByRole("button", { name: /test select/i });
       await user.click(selectButton);
-      
+
       await waitFor(() => {
-        expect(screen.getByRole('listbox')).toBeInTheDocument();
+        expect(screen.getByRole("listbox")).toBeInTheDocument();
       });
-      
+
       // Click outside
-      const outsideButton = screen.getByRole('button', { name: 'Outside button' });
+      const outsideButton = screen.getByRole("button", {
+        name: "Outside button",
+      });
       await user.click(outsideButton);
-      
+
       await waitFor(() => {
-        expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+        expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
       });
     });
 
-    it('navigates options with arrow keys', async () => {
+    it("navigates options with arrow keys", async () => {
       const user = userEvent.setup();
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        expect(screen.getByRole('listbox')).toBeInTheDocument();
+        expect(screen.getByRole("listbox")).toBeInTheDocument();
       });
-      
+
       // Navigate with arrow keys
-      await user.keyboard('{ArrowDown}');
-      await user.keyboard('{ArrowDown}');
-      await user.keyboard('{ArrowUp}');
-      
+      await user.keyboard("{ArrowDown}");
+      await user.keyboard("{ArrowDown}");
+      await user.keyboard("{ArrowUp}");
+
       // The navigation should work (exact assertion would depend on React Aria's implementation)
-      expect(screen.getByRole('listbox')).toBeInTheDocument();
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
     });
 
-    it('does not open when disabled', async () => {
+    it("does not open when disabled", async () => {
       const user = userEvent.setup();
       render(<Select {...defaultProps} isDisabled />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       // Should not open dropdown
-      expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+      expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
     });
   });
 
-  describe('SelectItem', () => {
-    it('renders item content', async () => {
+  describe("SelectItem", () => {
+    it("renders item content", async () => {
       const user = userEvent.setup();
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        expect(screen.getByText('Option 1')).toBeInTheDocument();
+        expect(screen.getByText("Option 1")).toBeInTheDocument();
       });
     });
 
-    it('renders item with icon', async () => {
+    it("renders item with icon", async () => {
       const user = userEvent.setup();
       render(
         <Select label="Test" placeholder="Choose">
-          <SelectItem id="1" icon={<UserIcon />}>With Icon</SelectItem>
-        </Select>
+          <SelectItem id="1" icon={<UserIcon />}>
+            With Icon
+          </SelectItem>
+        </Select>,
       );
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        expect(screen.getByTestId('user-icon')).toBeInTheDocument();
-        expect(screen.getByText('With Icon')).toBeInTheDocument();
+        expect(screen.getByTestId("user-icon")).toBeInTheDocument();
+        expect(screen.getByText("With Icon")).toBeInTheDocument();
       });
     });
 
-    it('shows disabled state', async () => {
+    it("shows disabled state", async () => {
       const user = userEvent.setup();
       render(
         <Select label="Test" placeholder="Choose">
           <SelectItem id="1">Enabled</SelectItem>
-          <SelectItem id="2" isDisabled>Disabled</SelectItem>
-        </Select>
+          <SelectItem id="2" isDisabled>
+            Disabled
+          </SelectItem>
+        </Select>,
       );
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        const disabledItem = screen.getByText('Disabled');
+        const disabledItem = screen.getByText("Disabled");
         expect(disabledItem).toBeInTheDocument();
         // React Aria should handle the disabled state
       });
     });
 
-    it('shows check icon when selected', async () => {
+    it("shows check icon when selected", async () => {
       const user = userEvent.setup();
       render(
         <Select label="Test" placeholder="Choose" defaultSelectedKey="1">
           <SelectItem id="1">Selected</SelectItem>
           <SelectItem id="2">Not Selected</SelectItem>
-        </Select>
+        </Select>,
       );
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        expect(screen.getByTestId('check-icon')).toBeInTheDocument();
+        expect(screen.getByTestId("check-icon")).toBeInTheDocument();
       });
     });
   });
 
-  describe('Dynamic Data', () => {
+  describe("Dynamic Data", () => {
     const items = [
-      { id: '1', name: 'Item 1' },
-      { id: '2', name: 'Item 2' },
-      { id: '3', name: 'Item 3' },
+      { id: "1", name: "Item 1" },
+      { id: "2", name: "Item 2" },
+      { id: "3", name: "Item 3" },
     ];
 
-    it('renders with items prop', async () => {
+    it("renders with items prop", async () => {
       const user = userEvent.setup();
       render(
         <Select label="Test" placeholder="Choose" items={items}>
           {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
-        </Select>
+        </Select>,
       );
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        expect(screen.getByText('Item 1')).toBeInTheDocument();
-        expect(screen.getByText('Item 2')).toBeInTheDocument();
-        expect(screen.getByText('Item 3')).toBeInTheDocument();
+        expect(screen.getByText("Item 1")).toBeInTheDocument();
+        expect(screen.getByText("Item 2")).toBeInTheDocument();
+        expect(screen.getByText("Item 3")).toBeInTheDocument();
       });
     });
   });
 
-  describe('Controlled vs Uncontrolled', () => {
-    it('works as controlled component', async () => {
+  describe("Controlled vs Uncontrolled", () => {
+    it("works as controlled component", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
-      
+
       render(
-        <Select 
+        <Select
           {...defaultProps}
           selectedKey="option1"
           onSelectionChange={handleChange}
-        />
+        />,
       );
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        const option2 = screen.getByText('Option 2');
+        const option2 = screen.getByText("Option 2");
         return user.click(option2);
       });
-      
-      expect(handleChange).toHaveBeenCalledWith('option2');
+
+      expect(handleChange).toHaveBeenCalledWith("option2");
     });
 
-    it('works as uncontrolled component', async () => {
+    it("works as uncontrolled component", async () => {
       const user = userEvent.setup();
-      
-      render(
-        <Select 
-          {...defaultProps}
-          defaultSelectedKey="option1"
-        />
-      );
-      
+
+      render(<Select {...defaultProps} defaultSelectedKey="option1" />);
+
       // Should show the default selected value
       expect(screen.getByDisplayValue).toBeDefined();
     });
   });
 
-  describe('Accessibility', () => {
-    it('has proper ARIA attributes', () => {
+  describe("Accessibility", () => {
+    it("has proper ARIA attributes", () => {
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-haspopup', 'listbox');
-      expect(button).toHaveAttribute('aria-expanded', 'false');
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveAttribute("aria-haspopup", "listbox");
+      expect(button).toHaveAttribute("aria-expanded", "false");
     });
 
-    it('has proper ARIA attributes when expanded', async () => {
+    it("has proper ARIA attributes when expanded", async () => {
       const user = userEvent.setup();
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
+
+      const button = screen.getByRole("button");
       await user.click(button);
-      
+
       await waitFor(() => {
-        expect(button).toHaveAttribute('aria-expanded', 'true');
-        expect(screen.getByRole('listbox')).toBeInTheDocument();
+        expect(button).toHaveAttribute("aria-expanded", "true");
+        expect(screen.getByRole("listbox")).toBeInTheDocument();
       });
     });
 
-    it('has proper labelling', () => {
+    it("has proper labelling", () => {
       render(<Select {...defaultProps} />);
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveAccessibleName('Test Select');
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveAccessibleName("Test Select");
     });
 
-    it('has proper error announcement', () => {
+    it("has proper error announcement", () => {
       render(
-        <Select 
-          {...defaultProps} 
-          isInvalid 
-          errorMessage="This field is required" 
-        />
+        <Select
+          {...defaultProps}
+          isInvalid
+          errorMessage="This field is required"
+        />,
       );
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-invalid', 'true');
-      expect(screen.getByText('This field is required')).toBeInTheDocument();
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("This field is required")).toBeInTheDocument();
     });
 
     // Accessibility tests would go here - requires jest-axe setup
@@ -460,40 +475,36 @@ describe('Select', () => {
     // });
   });
 
-  describe('Form Integration', () => {
-    it('integrates with form validation', () => {
+  describe("Form Integration", () => {
+    it("integrates with form validation", () => {
       render(
         <form>
-          <Select 
+          <Select
             {...defaultProps}
             name="testSelect"
             isRequired
             isInvalid
             errorMessage="Required field"
           />
-        </form>
+        </form>,
       );
-      
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-required', 'true');
-      expect(button).toHaveAttribute('aria-invalid', 'true');
-      expect(screen.getByText('Required field')).toBeInTheDocument();
+
+      const button = screen.getByRole("button");
+      expect(button).toHaveAttribute("aria-required", "true");
+      expect(button).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Required field")).toBeInTheDocument();
     });
   });
 
-  describe('Error Handling', () => {
-    it('handles error message as function', () => {
-      const errorMessageFn = vi.fn(() => 'Dynamic error message');
-      
+  describe("Error Handling", () => {
+    it("handles error message as function", () => {
+      const errorMessageFn = vi.fn(() => "Dynamic error message");
+
       render(
-        <Select 
-          {...defaultProps}
-          isInvalid
-          errorMessage={errorMessageFn}
-        />
+        <Select {...defaultProps} isInvalid errorMessage={errorMessageFn} />,
       );
-      
-      expect(screen.getByText('Dynamic error message')).toBeInTheDocument();
+
+      expect(screen.getByText("Dynamic error message")).toBeInTheDocument();
     });
   });
 });

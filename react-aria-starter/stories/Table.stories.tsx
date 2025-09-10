@@ -1,13 +1,13 @@
-import {Column, Row, Table, TableHeader, TableBody, Cell} from '../src/Table';
+import { Column, Row, Table, TableHeader, TableBody, Cell } from "../src/Table";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Table> = {
   component: Table,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -43,5 +43,5 @@ export const Example: Story = (args) => (
 
 Example.args = {
   onRowAction: undefined,
-  selectionMode: 'multiple'
+  selectionMode: "multiple",
 };

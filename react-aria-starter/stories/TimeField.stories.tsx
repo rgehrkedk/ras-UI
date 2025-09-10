@@ -1,13 +1,13 @@
-import {TimeField} from '../src/TimeField';
+import { TimeField } from "../src/TimeField";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof TimeField> = {
   component: TimeField,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -17,5 +17,5 @@ type Story = StoryFn<typeof TimeField>;
 export const Example: Story = (args) => <TimeField {...args} />;
 
 Example.args = {
-  label: 'Event time'
+  label: "Event time",
 };

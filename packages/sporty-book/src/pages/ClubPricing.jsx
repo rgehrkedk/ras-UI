@@ -22,13 +22,13 @@ export default function ClubPricing() {
         "Up to 2 facilities",
         "Community support",
         "Basic analytics",
-        "Mobile responsive page"
+        "Mobile responsive page",
       ],
       limitations: [
         "Limited customization",
         "SportBook branding",
-        "Basic support only"
-      ]
+        "Basic support only",
+      ],
     },
     pro: {
       name: "Pro",
@@ -47,8 +47,8 @@ export default function ClubPricing() {
         "Priority support",
         "Social media integration",
         "Photo gallery",
-        "Customer reviews"
-      ]
+        "Customer reviews",
+      ],
     },
     enterprise: {
       name: "Enterprise",
@@ -66,14 +66,15 @@ export default function ClubPricing() {
         "White-label solution",
         "Advanced reporting",
         "24/7 phone support",
-        "Custom development"
-      ]
-    }
+        "Custom development",
+      ],
+    },
   };
 
   const getPrice = (plan) => {
     if (plan.name === "Freemium") return "Free";
-    const price = billingCycle === "monthly" ? plan.monthlyPrice : plan.yearlyPrice;
+    const price =
+      billingCycle === "monthly" ? plan.monthlyPrice : plan.yearlyPrice;
     const period = billingCycle === "monthly" ? "/month" : "/year";
     return `$${price}${period}`;
   };
@@ -96,8 +97,8 @@ export default function ClubPricing() {
             Join SportBook Today
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Grow your sport club with our comprehensive booking platform. 
-            Choose the perfect plan for your business needs.
+            Grow your sport club with our comprehensive booking platform. Choose
+            the perfect plan for your business needs.
           </p>
         </div>
 
@@ -108,17 +109,27 @@ export default function ClubPricing() {
               <Button
                 variant={billingCycle === "monthly" ? "default" : "ghost"}
                 onClick={() => setBillingCycle("monthly")}
-                className={billingCycle === "monthly" ? "bg-teal-600 hover:bg-teal-700" : ""}
+                className={
+                  billingCycle === "monthly"
+                    ? "bg-teal-600 hover:bg-teal-700"
+                    : ""
+                }
               >
                 Monthly
               </Button>
               <Button
                 variant={billingCycle === "yearly" ? "default" : "ghost"}
                 onClick={() => setBillingCycle("yearly")}
-                className={billingCycle === "yearly" ? "bg-teal-600 hover:bg-teal-700" : ""}
+                className={
+                  billingCycle === "yearly"
+                    ? "bg-teal-600 hover:bg-teal-700"
+                    : ""
+                }
               >
                 Yearly
-                <Badge className="ml-2 bg-orange-100 text-orange-800">Save up to 17%</Badge>
+                <Badge className="ml-2 bg-orange-100 text-orange-800">
+                  Save up to 17%
+                </Badge>
               </Button>
             </div>
           </div>
@@ -127,7 +138,10 @@ export default function ClubPricing() {
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {Object.entries(plans).map(([key, plan]) => (
-            <Card key={key} className={`relative border-0 shadow-xl ${plan.popular ? 'ring-2 ring-teal-500 transform scale-105' : ''}`}>
+            <Card
+              key={key}
+              className={`relative border-0 shadow-xl ${plan.popular ? "ring-2 ring-teal-500 transform scale-105" : ""}`}
+            >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 font-semibold">
@@ -135,14 +149,18 @@ export default function ClubPricing() {
                   </Badge>
                 </div>
               )}
-              
+
               <CardHeader className="text-center pb-8 pt-8">
-                <div className={`w-16 h-16 bg-gradient-to-r ${plan.color} rounded-2xl mx-auto mb-4 flex items-center justify-center text-white`}>
+                <div
+                  className={`w-16 h-16 bg-gradient-to-r ${plan.color} rounded-2xl mx-auto mb-4 flex items-center justify-center text-white`}
+                >
                   {plan.icon}
                 </div>
-                <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
+                <CardTitle className="text-2xl font-bold text-slate-900">
+                  {plan.name}
+                </CardTitle>
                 <p className="text-slate-600">{plan.tagline}</p>
-                
+
                 <div className="mt-6">
                   <div className="text-4xl font-bold text-slate-900">
                     {getPrice(plan)}
@@ -167,7 +185,9 @@ export default function ClubPricing() {
 
                 {plan.limitations && (
                   <div className="mb-6 p-4 bg-slate-50 rounded-lg">
-                    <p className="text-sm font-medium text-slate-700 mb-2">Limitations:</p>
+                    <p className="text-sm font-medium text-slate-700 mb-2">
+                      Limitations:
+                    </p>
                     <ul className="text-sm text-slate-600 space-y-1">
                       {plan.limitations.map((limitation, index) => (
                         <li key={index}>• {limitation}</li>
@@ -176,17 +196,23 @@ export default function ClubPricing() {
                   </div>
                 )}
 
-                <Link to={createPageUrl(`ClubOnboarding?plan=${key}&billing=${billingCycle}`)}>
-                  <Button 
+                <Link
+                  to={createPageUrl(
+                    `ClubOnboarding?plan=${key}&billing=${billingCycle}`,
+                  )}
+                >
+                  <Button
                     className={`w-full py-3 font-semibold ${
-                      plan.popular 
-                        ? 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700' 
-                        : plan.name === 'Enterprise'
-                        ? 'bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700'
-                        : 'bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700'
+                      plan.popular
+                        ? "bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700"
+                        : plan.name === "Enterprise"
+                          ? "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+                          : "bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700"
                     }`}
                   >
-                    {plan.name === "Freemium" ? "Get Started Free" : `Start ${plan.name} Plan`}
+                    {plan.name === "Freemium"
+                      ? "Get Started Free"
+                      : `Start ${plan.name} Plan`}
                   </Button>
                 </Link>
               </CardContent>
@@ -196,23 +222,45 @@ export default function ClubPricing() {
 
         {/* FAQ Section */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+            Frequently Asked Questions
+          </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">Can I upgrade my plan later?</h3>
-              <p className="text-slate-600">Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">
+                Can I upgrade my plan later?
+              </h3>
+              <p className="text-slate-600">
+                Yes, you can upgrade or downgrade your plan at any time. Changes
+                take effect immediately.
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">Is there a setup fee?</h3>
-              <p className="text-slate-600">No setup fees. We help you get started for free with our onboarding process.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">
+                Is there a setup fee?
+              </h3>
+              <p className="text-slate-600">
+                No setup fees. We help you get started for free with our
+                onboarding process.
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">What payment methods do you accept?</h3>
-              <p className="text-slate-600">We accept all major credit cards and bank transfers for enterprise plans.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">
+                What payment methods do you accept?
+              </h3>
+              <p className="text-slate-600">
+                We accept all major credit cards and bank transfers for
+                enterprise plans.
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">Can I cancel anytime?</h3>
-              <p className="text-slate-600">Yes, cancel anytime. No long-term contracts or cancellation fees.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">
+                Can I cancel anytime?
+              </h3>
+              <p className="text-slate-600">
+                Yes, cancel anytime. No long-term contracts or cancellation
+                fees.
+              </p>
             </div>
           </div>
         </div>

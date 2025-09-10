@@ -1,15 +1,15 @@
-import {Tooltip, TooltipTrigger} from '../src/Tooltip';
-import {Button} from '../src/Button';
-import {Save} from 'lucide-react';
+import { Tooltip, TooltipTrigger } from "../src/Tooltip";
+import { Button } from "../src/Button";
+import { Save } from "lucide-react";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Tooltip> = {
   component: Tooltip,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -18,7 +18,9 @@ type Story = StoryFn<typeof Tooltip>;
 
 export const Example: Story = (args) => (
   <TooltipTrigger>
-    <Button><Save size={18} /></Button>
+    <Button>
+      <Save size={18} />
+    </Button>
     <Tooltip {...args}>Save</Tooltip>
   </TooltipTrigger>
 );

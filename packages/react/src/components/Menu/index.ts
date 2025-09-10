@@ -6,7 +6,7 @@
 export {
   MenuTriggerComponent, // composite trigger + popover + menu
   MenuTriggerButton,
-  Menu,                 // raw Aria Menu content
+  Menu, // raw Aria Menu content
   MenuItem,
   MenuSeparator,
   DynamicMenu,
@@ -17,7 +17,7 @@ export {
   type MenuItemData,
   type MenuSectionData,
   type DynamicMenuProps,
-} from './Menu';
+} from "./Menu";
 
 // Backwards-compatible default export remains the composite trigger
-export { MenuTriggerComponent as default } from './Menu';
+export { MenuTriggerComponent as default } from "./Menu";

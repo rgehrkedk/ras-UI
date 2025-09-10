@@ -3,9 +3,9 @@
  * Centralizes icon sizing logic and provides consistent scaling
  */
 
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
-import type { ComponentSize } from '../types';
+import type { ComponentSize } from "../types";
 
 export interface UseIconSizeOptions {
   /** Size variant to get icon size for */
@@ -43,22 +43,19 @@ const LARGE_ICON_SIZES: IconSizeMap = {
 
 /**
  * Hook that returns appropriate icon size for a given component size
- * 
+ *
  * @param size Component size variant
  * @param customSizes Optional custom size mapping
  * @returns Icon size in pixels
- * 
+ *
  * @example
  * ```tsx
  * const iconSize = useIconSize({ size: 'md' });
- * 
+ *
  * return <InfoIcon width={iconSize} height={iconSize} />;
  * ```
  */
-export function useIconSize({ 
-  size, 
-  customSizes 
-}: UseIconSizeOptions): number {
+export function useIconSize({ size, customSizes }: UseIconSizeOptions): number {
   return useMemo(() => {
     const sizeMap = { ...DEFAULT_ICON_SIZES, ...customSizes };
     return sizeMap[size] || DEFAULT_ICON_SIZES.md;
@@ -67,7 +64,7 @@ export function useIconSize({
 
 /**
  * Simplified hook for default icon sizes
- * 
+ *
  * @param size Component size variant
  * @returns Icon size in pixels
  */
@@ -77,7 +74,7 @@ export function useIconSizeSimple(size: ComponentSize): number {
 
 /**
  * Hook for close/dismiss button icon sizes (smaller than default)
- * 
+ *
  * @param size Component size variant
  * @returns Smaller icon size appropriate for close buttons
  */
@@ -87,7 +84,7 @@ export function useCloseIconSize(size: ComponentSize): number {
 
 /**
  * Hook for large decorative icon sizes
- * 
+ *
  * @param size Component size variant
  * @returns Larger icon size for decorative purposes
  */
@@ -98,15 +95,16 @@ export function useLargeIconSize(size: ComponentSize): number {
 /**
  * Get all icon size variants for a component
  * Useful for responsive icons or size variants
- * 
+ *
  * @param customSizes Optional custom size mapping
  * @returns Object with all size variants
  */
-export function useIconSizes(
-  customSizes?: Partial<IconSizeMap>
-): IconSizeMap {
-  return useMemo(() => ({
-    ...DEFAULT_ICON_SIZES,
-    ...customSizes,
-  }), [customSizes]);
+export function useIconSizes(customSizes?: Partial<IconSizeMap>): IconSizeMap {
+  return useMemo(
+    () => ({
+      ...DEFAULT_ICON_SIZES,
+      ...customSizes,
+    }),
+    [customSizes],
+  );
 }

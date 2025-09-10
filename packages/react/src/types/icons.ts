@@ -2,10 +2,10 @@
  * Icon-related type definitions
  */
 
-import React from 'react';
+import React from "react";
 
 // Icon position types
-export type IconPosition = 'start' | 'end';
+export type IconPosition = "start" | "end";
 
 // Props for components that support start icons
 export interface WithStartIcon {
@@ -39,66 +39,66 @@ export interface IconWrapperProps {
   children: React.ReactNode;
   position: IconPosition;
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 // Default icon names for consistent usage (using Iconoir)
-export type DefaultIconName = 
-  | 'close' 
-  | 'chevron-down' 
-  | 'chevron-right'
-  | 'check' 
-  | 'alert-circle' 
-  | 'info' 
-  | 'x-circle'
-  | 'search'
-  | 'heart'
-  | 'user'
-  | 'users'
-  | 'home'
-  | 'settings'
-  | 'mail'
-  | 'phone'
-  | 'calendar'
-  | 'clock'
-  | 'download'
-  | 'upload'
-  | 'edit'
-  | 'trash'
-  | 'plus'
-  | 'minus'
-  | 'save'
-  | 'chart'
-  | 'document'
-  | 'help'
-  | 'menu'
-  | 'arrow-left'
-  | 'arrow-right'
-  | 'dashboard'
-  | 'folder'
-  | 'bookmark'
-  | 'bell'
-  | 'message'
-  | 'star'
-  | 'layout'
-  | 'grid'
-  | 'list'
-  | 'eye'
-  | 'lock'
-  | 'unlock'
-  | 'code'
-  | 'terminal'
-  | 'copy'
-  | 'logout'
-  | 'external-link'
-  | 'crown'
-  | 'tag'
-  | 'outline';
+export type DefaultIconName =
+  | "close"
+  | "chevron-down"
+  | "chevron-right"
+  | "check"
+  | "alert-circle"
+  | "info"
+  | "x-circle"
+  | "search"
+  | "heart"
+  | "user"
+  | "users"
+  | "home"
+  | "settings"
+  | "mail"
+  | "phone"
+  | "calendar"
+  | "clock"
+  | "download"
+  | "upload"
+  | "edit"
+  | "trash"
+  | "plus"
+  | "minus"
+  | "save"
+  | "chart"
+  | "document"
+  | "help"
+  | "menu"
+  | "arrow-left"
+  | "arrow-right"
+  | "dashboard"
+  | "folder"
+  | "bookmark"
+  | "bell"
+  | "message"
+  | "star"
+  | "layout"
+  | "grid"
+  | "list"
+  | "eye"
+  | "lock"
+  | "unlock"
+  | "code"
+  | "terminal"
+  | "copy"
+  | "logout"
+  | "external-link"
+  | "crown"
+  | "tag"
+  | "outline";
 
 // Icon component props
 export interface IconProps {
   name?: DefaultIconName;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   className?: string;
-  'aria-hidden'?: boolean;
+  "aria-hidden"?: boolean;
 }

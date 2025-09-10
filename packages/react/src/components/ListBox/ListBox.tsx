@@ -3,9 +3,9 @@
  * Provides accessible list selection functionality with single/multiple selection modes
  */
 
-import React from 'react';
-import { 
-  ListBox as AriaListBox, 
+import React from "react";
+import {
+  ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
   Section,
   Header,
@@ -13,24 +13,32 @@ import {
   type ListBoxProps as AriaListBoxProps,
   type ListBoxItemProps as AriaListBoxItemProps,
   type Selection,
-  type Key
-} from 'react-aria-components';
+  type Key,
+} from "react-aria-components";
 
-import type { 
-  SizedComponentProps, 
-  LoadingComponentProps, 
+import type {
+  SizedComponentProps,
+  LoadingComponentProps,
   DisableableComponentProps,
   WithIcons,
-  ComponentChildren
-} from '../../types';
-import { cn } from '../../utils/cn';
-import { IconWrapper } from '../Icon';
-import { Spinner } from '../Spinner';
+  ComponentChildren,
+} from "../../types";
+import { cn } from "../../utils/cn";
+import { IconWrapper } from "../Icon";
+import { Spinner } from "../Spinner";
 
-import { listBox, listBoxItem, listBoxSection, listBoxHeader, listBoxEmpty, listBoxLoading, listBoxItemContentGlobal } from './ListBox.css';
+import {
+  listBox,
+  listBoxItem,
+  listBoxSection,
+  listBoxHeader,
+  listBoxEmpty,
+  listBoxLoading,
+  listBoxItemContentGlobal,
+} from "./ListBox.css";
 
 // Selection types
-export type ListBoxSelectionMode = 'single' | 'multiple' | 'none';
+export type ListBoxSelectionMode = "single" | "multiple" | "none";
 
 // Item data interface for dynamic collections
 export interface ListBoxItemData extends WithIcons {
@@ -49,54 +57,54 @@ export interface ListBoxSectionData {
 
 // Base ListBox props extending React Aria
 export interface ListBoxProps<T extends object = ListBoxItemData>
-  extends Omit<AriaListBoxProps<T>, 'className' | 'children'>,
-          SizedComponentProps,
-          LoadingComponentProps,
-          DisableableComponentProps {
+  extends Omit<AriaListBoxProps<T>, "className" | "children">,
+    SizedComponentProps,
+    LoadingComponentProps,
+    DisableableComponentProps {
   /**
    * Selection mode
    * @default 'none'
    */
   selectionMode?: ListBoxSelectionMode;
-  
+
   /**
    * Items for dynamic collections
    */
   items?: T[];
-  
+
   /**
    * Sections for grouped collections
    */
   sections?: ListBoxSectionData[];
-  
+
   /**
    * Static children (ListBoxItem elements)
    */
   children?: ComponentChildren | ((item: T) => React.ReactNode);
-  
+
   /**
    * Empty state message
    * @default 'No items available'
    */
   emptyMessage?: string;
-  
+
   /**
    * Loading state message
    * @default 'Loading...'
    */
   loadingMessage?: string;
-  
+
   /**
    * Show empty state when no items
    * @default true
    */
   showEmptyState?: boolean;
-  
+
   /**
    * Callback when selection changes
    */
   onSelectionChange?: (keys: Selection) => void;
-  
+
   /**
    * Callback when an item is selected/activated
    */
@@ -104,14 +112,14 @@ export interface ListBoxProps<T extends object = ListBoxItemData>
 }
 
 // ListBoxItem props extending React Aria
-export interface ListBoxItemProps 
-  extends Omit<AriaListBoxItemProps, 'children'>,
-          WithIcons {
+export interface ListBoxItemProps
+  extends Omit<AriaListBoxItemProps, "children">,
+    WithIcons {
   /**
    * Item content
    */
   children?: ComponentChildren;
-  
+
   /**
    * Item description (secondary text)
    */
@@ -122,33 +130,37 @@ export interface ListBoxItemProps
  * Individual list item component
  */
 export const ListBoxItem = React.forwardRef<HTMLDivElement, ListBoxItemProps>(
-  (
-    {
-      children,
-      description,
-      startIcon,
-      endIcon,
-      className,
-      ...props
-    },
-    ref
-  ) => {
+  ({ children, description, startIcon, endIcon, className, ...props }, ref) => {
+    const computedTextValue =
+      typeof children === "string" ? children : undefined;
     return (
       <AriaListBoxItem
         ref={ref}
-        className={cn(listBoxItem, listBoxItemContentGlobal, 
-          typeof className === 'function' ? undefined : className
+        className={cn(
+          listBoxItem,
+          listBoxItemContentGlobal,
+          typeof className === "function" ? undefined : className,
         )}
+        textValue={computedTextValue}
         {...props}
       >
-        {({ isSelected, isPressed: _isPressed, isHovered: _isHovered, isFocused: _isFocused }) => (
+        {({
+          isSelected,
+          isPressed: _isPressed,
+          isHovered: _isHovered,
+          isFocused: _isFocused,
+        }) => (
           <>
             {startIcon && (
-              <IconWrapper position="start" size="md" className="listbox-item-start-icon">
+              <IconWrapper
+                position="start"
+                size="md"
+                className="listbox-item-start-icon"
+              >
                 {startIcon}
               </IconWrapper>
             )}
-            
+
             <div className="listbox-item-content">
               <Text slot="label" className="listbox-item-label">
                 {children}
@@ -159,13 +171,17 @@ export const ListBoxItem = React.forwardRef<HTMLDivElement, ListBoxItemProps>(
                 </Text>
               )}
             </div>
-            
+
             {endIcon && (
-              <IconWrapper position="end" size="md" className="listbox-item-end-icon">
+              <IconWrapper
+                position="end"
+                size="md"
+                className="listbox-item-end-icon"
+              >
                 {endIcon}
               </IconWrapper>
             )}
-            
+
             {/* Selection indicator for multiple selection */}
             <div className="listbox-item-indicator" data-selected={isSelected}>
               {/* Visual selection indicator */}
@@ -174,15 +190,15 @@ export const ListBoxItem = React.forwardRef<HTMLDivElement, ListBoxItemProps>(
         )}
       </AriaListBoxItem>
     );
-  }
+  },
 );
 
-ListBoxItem.displayName = 'ListBoxItem';
+ListBoxItem.displayName = "ListBoxItem";
 
 /**
  * Accessible ListBox component with single/multiple selection modes.
  * Built on React Aria Components for robust accessibility.
- * 
+ *
  * @example
  * ```tsx
  * // Static items
@@ -190,15 +206,15 @@ ListBoxItem.displayName = 'ListBoxItem';
  *   <ListBoxItem id="item1">Item 1</ListBoxItem>
  *   <ListBoxItem id="item2">Item 2</ListBoxItem>
  * </ListBox>
- * 
+ *
  * // Dynamic items
- * <ListBox 
- *   items={items} 
+ * <ListBox
+ *   items={items}
  *   selectionMode="multiple"
  *   onSelectionChange={(keys) => setSelected(keys)}
  * >
  *   {(item) => (
- *     <ListBoxItem 
+ *     <ListBoxItem
  *       id={item.id}
  *       startIcon={item.startIcon}
  *       description={item.description}
@@ -207,7 +223,7 @@ ListBoxItem.displayName = 'ListBoxItem';
  *     </ListBoxItem>
  *   )}
  * </ListBox>
- * 
+ *
  * // With sections
  * <ListBox sections={sections} selectionMode="single">
  *   {(section) => (
@@ -224,26 +240,26 @@ ListBoxItem.displayName = 'ListBoxItem';
 export const ListBox = React.forwardRef<HTMLDivElement, ListBoxProps>(
   (
     {
-      size = 'md',
+      size = "md",
       loading = false,
-      selectionMode = 'none',
+      selectionMode = "none",
       items,
       sections,
       children,
-      emptyMessage = 'No items available',
-      loadingMessage = 'Loading...',
+      emptyMessage = "No items available",
+      loadingMessage = "Loading...",
       showEmptyState = true,
       className,
       onSelectionChange,
       onAction,
       ...props
     },
-    ref
+    ref,
   ) => {
     // Loading state
     if (loading) {
       return (
-        <div 
+        <div
           className={cn(listBox({ size }), listBoxLoading, className)}
           role="listbox"
           aria-busy="true"
@@ -265,14 +281,12 @@ export const ListBox = React.forwardRef<HTMLDivElement, ListBoxProps>(
 
     if (isEmpty && showEmptyState) {
       return (
-        <div 
+        <div
           className={cn(listBox({ size }), listBoxEmpty, className)}
           role="listbox"
           aria-label="Empty list"
         >
-          <Text className="listbox-empty-message">
-            {emptyMessage}
-          </Text>
+          <Text className="listbox-empty-message">{emptyMessage}</Text>
         </div>
       );
     }
@@ -322,9 +336,9 @@ export const ListBox = React.forwardRef<HTMLDivElement, ListBoxProps>(
         {children}
       </AriaListBox>
     );
-  }
+  },
 );
 
-ListBox.displayName = 'ListBox';
+ListBox.displayName = "ListBox";
 
 export default ListBox;

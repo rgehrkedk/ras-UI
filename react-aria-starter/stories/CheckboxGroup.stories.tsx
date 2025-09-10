@@ -1,14 +1,14 @@
-import {Checkbox} from '../src/Checkbox';
-import {CheckboxGroup} from '../src/CheckboxGroup';
+import { Checkbox } from "../src/Checkbox";
+import { CheckboxGroup } from "../src/CheckboxGroup";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof CheckboxGroup> = {
   component: CheckboxGroup,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -23,5 +23,5 @@ export const Example: Story = (args) => (
 );
 
 Example.args = {
-  label: 'Favorite sports'
+  label: "Favorite sports",
 };

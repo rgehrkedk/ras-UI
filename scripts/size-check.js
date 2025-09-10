@@ -2,14 +2,11 @@
 /* Lightweight bundle size check without external deps.
  * Checks built artifact sizes for @ras-ui/react after CI build.
  */
-const fs = require('fs');
-const path = require('path');
-const zlib = require('zlib');
+const fs = require("fs");
+const path = require("path");
+const zlib = require("zlib");
 
-const files = [
-  'packages/react/dist/index.mjs',
-  'packages/react/dist/index.js',
-];
+const files = ["packages/react/dist/index.mjs", "packages/react/dist/index.js"];
 
 // Reasonable initial thresholds (in bytes)
 const THRESHOLDS = {
@@ -36,20 +33,25 @@ for (const file of files) {
   const gzipSize = gzip.length;
 
   // eslint-disable-next-line no-console
-  console.log(`Size check for ${file}: raw=${pretty(rawSize)}, gzip=${pretty(gzipSize)}`);
+  console.log(
+    `Size check for ${file}: raw=${pretty(rawSize)}, gzip=${pretty(gzipSize)}`,
+  );
 
   if (rawSize > THRESHOLDS.raw || gzipSize > THRESHOLDS.gzip) {
     // eslint-disable-next-line no-console
-    console.error(`❌ Size limit exceeded: raw>${pretty(THRESHOLDS.raw)} or gzip>${pretty(THRESHOLDS.gzip)}`);
+    console.error(
+      `❌ Size limit exceeded: raw>${pretty(THRESHOLDS.raw)} or gzip>${pretty(THRESHOLDS.gzip)}`,
+    );
     failed = true;
   }
 }
 
 if (!found) {
   // eslint-disable-next-line no-console
-  console.log('ℹ️ No built artifacts found to size-check. Ensure build ran first.');
+  console.log(
+    "ℹ️ No built artifacts found to size-check. Ensure build ran first.",
+  );
   process.exit(0);
 }
 
 process.exit(failed ? 1 : 0);
-

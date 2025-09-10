@@ -1,11 +1,25 @@
-
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Calendar, Users, DollarSign, TrendingUp, Clock, MapPin, UserIcon, LogIn } from "lucide-react";
-import { format, parseISO, startOfWeek, endOfWeek, isWithinInterval } from "date-fns";
+import {
+  Calendar,
+  Users,
+  DollarSign,
+  TrendingUp,
+  Clock,
+  MapPin,
+  UserIcon,
+  LogIn,
+} from "lucide-react";
+import {
+  format,
+  parseISO,
+  startOfWeek,
+  endOfWeek,
+  isWithinInterval,
+} from "date-fns";
 
 // Dummy createPageUrl for compilation. In a real app, this would be a routing utility.
 const createPageUrl = (pageName) => {
@@ -25,7 +39,7 @@ export default function ClubDashboard() {
     weeklyBookings: 0,
     totalRevenue: 0,
     weeklyRevenue: 0,
-    activeMembers: 0
+    activeMembers: 0,
   });
   const [loading, setLoading] = useState(true);
 
@@ -49,7 +63,7 @@ export default function ClubDashboard() {
       // Load club data
       const clubs = await SportClub.list();
       console.log("All clubs:", clubs); // Debug log
-      const userClub = clubs.find(c => c.id === currentUser.club_id);
+      const userClub = clubs.find((c) => c.id === currentUser.club_id);
       console.log("Found user club:", userClub); // Debug log
       setClub(userClub);
 
@@ -62,34 +76,46 @@ export default function ClubDashboard() {
 
       // Load bookings
       const allBookings = await Booking.list();
-      const clubBookings = allBookings.filter(b => b.club_id === currentUser.club_id);
+      const clubBookings = allBookings.filter(
+        (b) => b.club_id === currentUser.club_id,
+      );
       setBookings(clubBookings);
 
       // Load members
-      const allMembers = await ClubMember.filter({ club_id: currentUser.club_id });
+      const allMembers = await ClubMember.filter({
+        club_id: currentUser.club_id,
+      });
       setMembers(allMembers);
 
       // Calculate stats
       const now = new Date();
       const weekStart = startOfWeek(now);
       const weekEnd = endOfWeek(now);
-      
-      const weeklyBookings = clubBookings.filter(booking => {
+
+      const weeklyBookings = clubBookings.filter((booking) => {
         const bookingDate = parseISO(booking.booking_date);
-        return isWithinInterval(bookingDate, { start: weekStart, end: weekEnd });
+        return isWithinInterval(bookingDate, {
+          start: weekStart,
+          end: weekEnd,
+        });
       });
 
-      const totalRevenue = clubBookings.reduce((sum, booking) => sum + (booking.total_cost || 0), 0);
-      const weeklyRevenue = weeklyBookings.reduce((sum, booking) => sum + (booking.total_cost || 0), 0);
+      const totalRevenue = clubBookings.reduce(
+        (sum, booking) => sum + (booking.total_cost || 0),
+        0,
+      );
+      const weeklyRevenue = weeklyBookings.reduce(
+        (sum, booking) => sum + (booking.total_cost || 0),
+        0,
+      );
 
       setStats({
         totalBookings: clubBookings.length,
         weeklyBookings: weeklyBookings.length,
         totalRevenue,
         weeklyRevenue,
-        activeMembers: allMembers.filter(m => m.status === "active").length
+        activeMembers: allMembers.filter((m) => m.status === "active").length,
       });
-
     } catch (error) {
       console.error("Error loading dashboard:", error);
       setUser(null);
@@ -132,11 +158,16 @@ export default function ClubDashboard() {
         <Card className="max-w-md w-full border-0 shadow-xl">
           <CardContent className="p-8 text-center">
             <UserIcon className="w-16 h-16 text-teal-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Club Access Required</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              Club Access Required
+            </h2>
             <p className="text-slate-600 mb-6">
               Sign in to access your club dashboard and management tools.
             </p>
-            <Button onClick={handleLogin} className="w-full bg-teal-600 hover:bg-teal-700">
+            <Button
+              onClick={handleLogin}
+              className="w-full bg-teal-600 hover:bg-teal-700"
+            >
               <LogIn className="w-4 h-4 mr-2" />
               Sign In
             </Button>
@@ -153,9 +184,12 @@ export default function ClubDashboard() {
         <Card className="max-w-md w-full border-0 shadow-xl">
           <CardContent className="p-8 text-center">
             <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">No Club Association</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              No Club Association
+            </h2>
             <p className="text-slate-600 mb-6">
-              You are not associated with any club. Contact support or register your club to get access.
+              You are not associated with any club. Contact support or register
+              your club to get access.
             </p>
             <Link to={createPageUrl("ClubPricing")}>
               <Button className="w-full bg-teal-600 hover:bg-teal-700">
@@ -173,8 +207,12 @@ export default function ClubDashboard() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-6">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Club Not Found</h2>
-          <p className="text-slate-600">Your associated club could not be found. Please contact support.</p>
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            Club Not Found
+          </h2>
+          <p className="text-slate-600">
+            Your associated club could not be found. Please contact support.
+          </p>
         </div>
       </div>
     );
@@ -201,7 +239,9 @@ export default function ClubDashboard() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-600">Total Bookings</p>
-                  <p className="text-2xl font-bold text-slate-900">{stats.totalBookings}</p>
+                  <p className="text-2xl font-bold text-slate-900">
+                    {stats.totalBookings}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -215,7 +255,9 @@ export default function ClubDashboard() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-600">This Week</p>
-                  <p className="text-2xl font-bold text-slate-900">{stats.weeklyBookings}</p>
+                  <p className="text-2xl font-bold text-slate-900">
+                    {stats.weeklyBookings}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -229,7 +271,9 @@ export default function ClubDashboard() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-600">Total Revenue</p>
-                  <p className="text-2xl font-bold text-slate-900">${stats.totalRevenue.toFixed(2)}</p>
+                  <p className="text-2xl font-bold text-slate-900">
+                    ${stats.totalRevenue.toFixed(2)}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -243,7 +287,9 @@ export default function ClubDashboard() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-600">Active Members</p>
-                  <p className="text-2xl font-bold text-slate-900">{stats.activeMembers}</p>
+                  <p className="text-2xl font-bold text-slate-900">
+                    {stats.activeMembers}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -266,18 +312,32 @@ export default function ClubDashboard() {
                 ) : (
                   <div className="space-y-4">
                     {recentBookings.map((booking) => (
-                      <div key={booking.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-slate-50">
+                      <div
+                        key={booking.id}
+                        className="flex items-center justify-between p-4 border rounded-lg hover:bg-slate-50"
+                      >
                         <div>
-                          <h4 className="font-semibold text-slate-900">{booking.facility_name}</h4>
+                          <h4 className="font-semibold text-slate-900">
+                            {booking.facility_name}
+                          </h4>
                           <p className="text-sm text-slate-600">
-                            {format(parseISO(booking.booking_date), "MMM d")} • {booking.start_time} - {booking.end_time}
+                            {format(parseISO(booking.booking_date), "MMM d")} •{" "}
+                            {booking.start_time} - {booking.end_time}
                           </p>
                         </div>
                         <div className="text-right">
-                          <Badge className={booking.status === "confirmed" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}>
+                          <Badge
+                            className={
+                              booking.status === "confirmed"
+                                ? "bg-green-100 text-green-800"
+                                : "bg-yellow-100 text-yellow-800"
+                            }
+                          >
                             {booking.status}
                           </Badge>
-                          <p className="text-sm font-semibold text-slate-900">${booking.total_cost}</p>
+                          <p className="text-sm font-semibold text-slate-900">
+                            ${booking.total_cost}
+                          </p>
                         </div>
                       </div>
                     ))}
@@ -296,16 +356,28 @@ export default function ClubDashboard() {
               <CardContent className="space-y-4">
                 <div className="grid gap-3">
                   <button className="p-4 border-2 border-dashed border-slate-200 rounded-lg hover:border-teal-300 hover:bg-teal-50 transition-colors text-left">
-                    <h4 className="font-semibold text-slate-900">Update Club Info</h4>
-                    <p className="text-sm text-slate-600">Edit facilities, hours, amenities</p>
+                    <h4 className="font-semibold text-slate-900">
+                      Update Club Info
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      Edit facilities, hours, amenities
+                    </p>
                   </button>
                   <button className="p-4 border-2 border-dashed border-slate-200 rounded-lg hover:border-teal-300 hover:bg-teal-50 transition-colors text-left">
-                    <h4 className="font-semibold text-slate-900">Manage Bookings</h4>
-                    <p className="text-sm text-slate-600">View and update reservations</p>
+                    <h4 className="font-semibold text-slate-900">
+                      Manage Bookings
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      View and update reservations
+                    </p>
                   </button>
                   <button className="p-4 border-2 border-dashed border-slate-200 rounded-lg hover:border-teal-300 hover:bg-teal-50 transition-colors text-left">
-                    <h4 className="font-semibold text-slate-900">Member Management</h4>
-                    <p className="text-sm text-slate-600">Add and manage members</p>
+                    <h4 className="font-semibold text-slate-900">
+                      Member Management
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      Add and manage members
+                    </p>
                   </button>
                 </div>
               </CardContent>

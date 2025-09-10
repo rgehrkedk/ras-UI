@@ -11,6 +11,6 @@ export {
   type LayoutMainProps,
   type LayoutContentProps,
   type LayoutFooterProps,
-} from './Layout';
+} from "./Layout";
 
-export { Layout as default } from './Layout';
+export { Layout as default } from "./Layout";

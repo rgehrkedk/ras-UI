@@ -3,24 +3,20 @@
  * Provides accessible select option functionality
  */
 
-import React from 'react';
-import { ListBoxItem, ListBoxItemProps } from 'react-aria-components';
+import React from "react";
+import { ListBoxItem, ListBoxItemProps } from "react-aria-components";
 
-import { cn } from '../../utils/cn';
-import { CheckIcon } from '../Icon';
+import { cn } from "../../utils/cn";
+import { CheckIcon } from "../Icon";
 
-import { 
-  selectItem,
-  selectCheckIcon,
-  selectItemText,
-} from './Select.css';
+import { selectItem, selectCheckIcon, selectItemText } from "./Select.css";
 
 export interface SelectItemProps extends ListBoxItemProps {
   /**
    * Optional icon to display with the item
    */
   icon?: React.ReactNode;
-  
+
   /**
    * Item content
    */
@@ -30,7 +26,7 @@ export interface SelectItemProps extends ListBoxItemProps {
 /**
  * SelectItem component for use within Select.
  * Provides accessible select option with selection indicator.
- * 
+ *
  * @example
  * ```tsx
  * <Select label="Status">
@@ -38,7 +34,7 @@ export interface SelectItemProps extends ListBoxItemProps {
  *   <SelectItem id="published">Published</SelectItem>
  *   <SelectItem id="archived" isDisabled>Archived</SelectItem>
  * </Select>
- * 
+ *
  * // With icons
  * <Select label="Action">
  *   <SelectItem id="edit" icon={<EditIcon />}>Edit</SelectItem>
@@ -48,27 +44,35 @@ export interface SelectItemProps extends ListBoxItemProps {
  */
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   ({ icon, className, children, ...props }, ref) => {
+    const textValue = typeof children === "string" ? children : undefined;
     return (
       <ListBoxItem
         ref={ref}
         className={(renderProps) =>
           cn(
             selectItem,
-            typeof className === 'function' 
+            typeof className === "function"
               ? className({ ...renderProps, defaultClassName: selectItem })
-              : className
+              : className,
           )
         }
+        textValue={textValue}
         {...props}
       >
-        <CheckIcon className={selectCheckIcon} />
-        {icon && <span className="select-item-icon">{icon}</span>}
-        <span className={selectItemText}>{children}</span>
+        {(renderProps) => (
+          <>
+            {renderProps.isSelected && (
+              <CheckIcon className={selectCheckIcon} data-testid="check-icon" />
+            )}
+            {icon && <span className="select-item-icon">{icon}</span>}
+            <span className={selectItemText}>{children}</span>
+          </>
+        )}
       </ListBoxItem>
     );
-  }
+  },
 );
 
-SelectItem.displayName = 'SelectItem';
+SelectItem.displayName = "SelectItem";
 
 export default SelectItem;

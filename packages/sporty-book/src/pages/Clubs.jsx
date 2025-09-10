@@ -1,10 +1,15 @@
-
 import React, { useState, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Search, MapPin, Star, Filter, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
@@ -17,7 +22,18 @@ export default function Clubs() {
   const [selectedSport, setSelectedSport] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
 
-  const sports = ["tennis", "basketball", "football", "volleyball", "badminton", "squash", "table_tennis", "swimming", "gym", "yoga"];
+  const sports = [
+    "tennis",
+    "basketball",
+    "football",
+    "volleyball",
+    "badminton",
+    "squash",
+    "table_tennis",
+    "swimming",
+    "gym",
+    "yoga",
+  ];
 
   useEffect(() => {
     loadClubs();
@@ -27,15 +43,18 @@ export default function Clubs() {
     let filtered = clubs;
 
     if (searchTerm) {
-      filtered = filtered.filter(club =>
-        club.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        club.location.address.toLowerCase().includes(searchTerm.toLowerCase())
+      filtered = filtered.filter(
+        (club) =>
+          club.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          club.location.address
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()),
       );
     }
 
     if (selectedSport !== "all") {
-      filtered = filtered.filter(club =>
-        club.sports?.includes(selectedSport)
+      filtered = filtered.filter((club) =>
+        club.sports?.includes(selectedSport),
       );
     }
 
@@ -68,7 +87,7 @@ export default function Clubs() {
       swimming: "bg-cyan-100 text-cyan-800",
       gym: "bg-gray-100 text-gray-800",
       yoga: "bg-pink-100 text-pink-800",
-      table_tennis: "bg-indigo-100 text-indigo-800" // Added color for table_tennis
+      table_tennis: "bg-indigo-100 text-indigo-800", // Added color for table_tennis
     };
     return colors[sport] || "bg-slate-100 text-slate-800";
   };
@@ -77,8 +96,12 @@ export default function Clubs() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Browse Sport Clubs</h1>
-          <p className="text-slate-600 text-lg">Discover premium sport facilities near you</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            Browse Sport Clubs
+          </h1>
+          <p className="text-slate-600 text-lg">
+            Discover premium sport facilities near you
+          </p>
         </div>
 
         {/* Search and Filters */}
@@ -100,9 +123,10 @@ export default function Clubs() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Sports</SelectItem>
-                {sports.map(sport => (
+                {sports.map((sport) => (
                   <SelectItem key={sport} value={sport}>
-                    {sport.charAt(0).toUpperCase() + sport.slice(1).replace('_', ' ')}
+                    {sport.charAt(0).toUpperCase() +
+                      sport.slice(1).replace("_", " ")}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -122,7 +146,9 @@ export default function Clubs() {
         {/* Results */}
         <div className="mb-4">
           <p className="text-slate-600">
-            {loading ? "Loading..." : `${filteredClubs.length} club${filteredClubs.length !== 1 ? 's' : ''} found`}
+            {loading
+              ? "Loading..."
+              : `${filteredClubs.length} club${filteredClubs.length !== 1 ? "s" : ""} found`}
           </p>
         </div>
 
@@ -142,10 +168,16 @@ export default function Clubs() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredClubs.map((club) => (
-              <Card key={club.id} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-white">
+              <Card
+                key={club.id}
+                className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-white"
+              >
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={club.image_url || `https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop`}
+                    src={
+                      club.image_url ||
+                      `https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop`
+                    }
                     alt={club.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -158,7 +190,9 @@ export default function Clubs() {
                 </div>
 
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{club.name}</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {club.name}
+                  </h3>
                   <div className="flex items-center text-slate-600 mb-4">
                     <MapPin className="w-4 h-4 mr-2" />
                     <span className="text-sm">{club.location.address}</span>
@@ -166,8 +200,13 @@ export default function Clubs() {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {club.sports?.slice(0, 3).map((sport) => (
-                      <Badge key={sport} variant="secondary" className={`${getSportColor(sport)} border-0`}>
-                        {sport.charAt(0).toUpperCase() + sport.slice(1).replace('_', ' ')}
+                      <Badge
+                        key={sport}
+                        variant="secondary"
+                        className={`${getSportColor(sport)} border-0`}
+                      >
+                        {sport.charAt(0).toUpperCase() +
+                          sport.slice(1).replace("_", " ")}
                       </Badge>
                     ))}
                     {club.sports?.length > 3 && (
@@ -194,8 +233,12 @@ export default function Clubs() {
             <div className="w-16 h-16 bg-slate-200 rounded-full mx-auto mb-4 flex items-center justify-center">
               <Search className="w-8 h-8 text-slate-400" />
             </div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">No clubs found</h3>
-            <p className="text-slate-600">Try adjusting your search criteria or browse all clubs.</p>
+            <h3 className="text-xl font-semibold text-slate-900 mb-2">
+              No clubs found
+            </h3>
+            <p className="text-slate-600">
+              Try adjusting your search criteria or browse all clubs.
+            </p>
           </div>
         )}
       </div>

@@ -3,31 +3,29 @@
  * Provides accessible radio group functionality with multiple orientations
  */
 
-import React from 'react';
-import { 
-  RadioGroup as AriaRadioGroup, 
+import React from "react";
+import {
+  RadioGroup as AriaRadioGroup,
   RadioGroupProps as AriaRadioGroupProps,
   Radio as AriaRadio,
-  RadioProps
-} from 'react-aria-components';
+  RadioProps,
+} from "react-aria-components";
 
-import { cn } from '../../utils/cn';
-
-import { radioGroup, radio, radioIndicator } from './RadioGroup.css';
+import { radioGroup, radio, radioIndicator } from "./RadioGroup.css";
 
 export interface RadioGroupProps extends AriaRadioGroupProps {
   /**
    * Size variant
    * @default 'md'
    */
-  size?: 'sm' | 'md' | 'lg';
-  
+  size?: "sm" | "md" | "lg";
+
   /**
    * Orientation of radio group
    * @default 'vertical'
    */
-  orientation?: 'horizontal' | 'vertical';
-  
+  orientation?: "horizontal" | "vertical";
+
   /**
    * Radio group children
    */
@@ -39,8 +37,8 @@ export interface RadioOptionProps extends RadioProps {
    * Size variant
    * @default 'md'
    */
-  size?: 'sm' | 'md' | 'lg';
-  
+  size?: "sm" | "md" | "lg";
+
   /**
    * Radio option label/content
    */
@@ -51,13 +49,9 @@ export interface RadioOptionProps extends RadioProps {
  * Radio option component for use within RadioGroup
  */
 export const RadioOption = React.forwardRef<HTMLLabelElement, RadioOptionProps>(
-  ({ size = 'md', children, className, ...props }, ref) => {
+  ({ size = "md", children, className: _className, ...props }, ref) => {
     return (
-      <AriaRadio
-        ref={ref}
-        className={radio({ size })}
-        {...props}
-      >
+      <AriaRadio ref={ref} className={radio({ size })} {...props}>
         {({ isSelected }) => (
           <>
             <div className={radioIndicator({ size })}>
@@ -78,13 +72,13 @@ export const RadioOption = React.forwardRef<HTMLLabelElement, RadioOptionProps>(
         )}
       </AriaRadio>
     );
-  }
+  },
 );
 
 /**
  * Accessible radio group component with support for horizontal and vertical orientation.
  * Built on React Aria Components for robust accessibility and keyboard navigation.
- * 
+ *
  * @example
  * ```tsx
  * <RadioGroup label="Select size" defaultValue="md">
@@ -96,14 +90,8 @@ export const RadioOption = React.forwardRef<HTMLLabelElement, RadioOptionProps>(
  */
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   (
-    {
-      size = 'md',
-      orientation = 'vertical',
-      children,
-      className,
-      ...props
-    },
-    ref
+    { size = "md", orientation = "vertical", children, className: _className, ...props },
+    ref,
   ) => {
     return (
       <AriaRadioGroup
@@ -117,10 +105,10 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
         {children}
       </AriaRadioGroup>
     );
-  }
+  },
 );
 
-RadioGroup.displayName = 'RadioGroup';
-RadioOption.displayName = 'RadioOption';
+RadioGroup.displayName = "RadioGroup";
+RadioOption.displayName = "RadioOption";
 
 export default RadioGroup;

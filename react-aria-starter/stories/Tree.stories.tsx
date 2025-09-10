@@ -1,13 +1,13 @@
-import {Tree, TreeItem} from '../src/Tree';
+import { Tree, TreeItem } from "../src/Tree";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Tree> = {
   component: Tree,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -29,6 +29,6 @@ export const Example: Story = (args) => (
 );
 
 Example.args = {
-  style: { height: '300px' },
-  defaultExpandedKeys: ['documents', 'photos', 'project']
+  style: { height: "300px" },
+  defaultExpandedKeys: ["documents", "photos", "project"],
 };

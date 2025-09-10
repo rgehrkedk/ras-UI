@@ -1,13 +1,13 @@
-import {ListBox, ListBoxItem} from '../src/ListBox';
+import { ListBox, ListBoxItem } from "../src/ListBox";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof ListBox> = {
   component: ListBox,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -24,5 +24,5 @@ export const Example: Story = (args) => (
 
 Example.args = {
   onAction: undefined,
-  selectionMode: 'single'
+  selectionMode: "single",
 };

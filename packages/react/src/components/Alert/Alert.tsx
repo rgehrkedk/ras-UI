@@ -3,33 +3,33 @@
  * Provides accessible feedback with floating UI design principles
  */
 
-import { 
-  InfoCircle, 
-  CheckCircle, 
-  WarningTriangle, 
+import {
+  InfoCircle,
+  CheckCircle,
+  WarningTriangle,
   XmarkCircle,
-  Xmark 
-} from 'iconoir-react';
-import React, { useState, useEffect, useCallback } from 'react';
+  Xmark,
+} from "iconoir-react";
+import React, { useState, useEffect, useCallback } from "react";
 
-import type { 
-  ComponentSize, 
-  BaseComponentProps, 
-  ComponentChildren, 
+import type {
+  ComponentSize,
+  BaseComponentProps,
+  ComponentChildren,
   CloseHandler,
-  AlertType 
-} from '../../types';
-import { cn } from '../../utils/cn';
+  AlertType,
+} from "../../types";
+import { cn } from "../../utils/cn";
 
-import { 
-  alert, 
-  alertIcon, 
-  alertContent, 
+import {
+  alert,
+  alertIcon,
+  alertContent,
   alertTitle,
   alertDescription,
   alertCloseButton,
-  alertActions 
-} from './Alert.css';
+  alertActions,
+} from "./Alert.css";
 
 export interface AlertProps extends BaseComponentProps {
   /**
@@ -37,56 +37,56 @@ export interface AlertProps extends BaseComponentProps {
    * @default 'info'
    */
   variant?: AlertType;
-  
+
   /**
    * Alert size
    * @default 'md'
    */
   size?: ComponentSize;
-  
+
   /**
    * Alert title
    */
   title?: ComponentChildren;
-  
+
   /**
    * Alert description/content
    */
   children?: ComponentChildren;
-  
+
   /**
    * Whether the alert can be dismissed
    * @default false
    */
   dismissible?: boolean;
-  
+
   /**
    * Callback fired when alert is dismissed
    */
   onDismiss?: CloseHandler;
-  
+
   /**
    * Custom icon to display instead of default
    */
   icon?: React.ReactNode;
-  
+
   /**
    * Whether to hide the icon completely
    * @default false
    */
   hideIcon?: boolean;
-  
+
   /**
    * Action buttons or elements to display
    */
   actions?: ComponentChildren;
-  
+
   /**
    * ARIA role for the alert
    * @default 'alert'
    */
-  role?: 'alert' | 'alertdialog' | 'status';
-  
+  role?: "alert" | "alertdialog" | "status";
+
   /**
    * Auto-dismiss timeout in milliseconds
    */
@@ -104,15 +104,15 @@ const defaultIcons = {
 /**
  * Accessible alert component with floating UI design principles.
  * Used for status messages, feedback, and notifications.
- * 
+ *
  * @example
  * ```tsx
  * <Alert variant="success" title="Success!">
  *   Your changes have been saved.
  * </Alert>
- * 
- * <Alert 
- *   variant="error" 
+ *
+ * <Alert
+ *   variant="error"
  *   dismissible
  *   onDismiss={() => setShowAlert(false)}
  * >
@@ -123,8 +123,8 @@ const defaultIcons = {
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
   (
     {
-      variant = 'info',
-      size = 'md',
+      variant = "info",
+      size = "md",
       title,
       children,
       dismissible = false,
@@ -132,21 +132,21 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       icon,
       hideIcon = false,
       actions,
-      role = 'alert',
+      role = "alert",
       autoHideDuration,
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isExiting, setIsExiting] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
 
     const handleDismiss = useCallback(() => {
       if (!dismissible) return;
-      
+
       setIsExiting(true);
-      
+
       // Wait for animation to complete before hiding
       setTimeout(() => {
         setIsVisible(false);
@@ -167,7 +167,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
 
     // Handle keyboard dismissal
     const handleKeyDown = (event: React.KeyboardEvent) => {
-      if (dismissible && event.key === 'Escape') {
+      if (dismissible && event.key === "Escape") {
         handleDismiss();
       }
     };
@@ -178,7 +178,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
 
     // Determine which icon to show
     const IconComponent = icon ? null : defaultIcons[variant];
-    const iconSize = size === 'sm' ? 16 : size === 'md' ? 20 : 24;
+    const iconSize = size === "sm" ? 16 : size === "md" ? 20 : 24;
 
     return (
       <div
@@ -191,30 +191,23 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       >
         {!hideIcon && (
           <div className={alertIcon({ variant, size })}>
-            {icon || (IconComponent && <IconComponent width={iconSize} height={iconSize} />)}
+            {icon ||
+              (IconComponent && (
+                <IconComponent width={iconSize} height={iconSize} />
+              ))}
           </div>
         )}
-        
+
         <div className={alertContent}>
-          {title && (
-            <div className={alertTitle({ size })}>
-              {title}
-            </div>
-          )}
-          
+          {title && <div className={alertTitle({ size })}>{title}</div>}
+
           {children && (
-            <div className={alertDescription({ size })}>
-              {children}
-            </div>
+            <div className={alertDescription({ size })}>{children}</div>
           )}
-          
-          {actions && (
-            <div className={alertActions}>
-              {actions}
-            </div>
-          )}
+
+          {actions && <div className={alertActions}>{actions}</div>}
         </div>
-        
+
         {dismissible && (
           <button
             type="button"
@@ -222,14 +215,17 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
             onClick={handleDismiss}
             aria-label="Dismiss alert"
           >
-            <Xmark width={size === 'sm' ? 14 : 16} height={size === 'sm' ? 14 : 16} />
+            <Xmark
+              width={size === "sm" ? 14 : 16}
+              height={size === "sm" ? 14 : 16}
+            />
           </button>
         )}
       </div>
     );
-  }
+  },
 );
 
-Alert.displayName = 'Alert';
+Alert.displayName = "Alert";
 
 export default Alert;

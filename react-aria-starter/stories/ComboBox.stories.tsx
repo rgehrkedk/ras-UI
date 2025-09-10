@@ -1,13 +1,13 @@
-import {ComboBox, ComboBoxItem} from '../src/ComboBox';
+import { ComboBox, ComboBoxItem } from "../src/ComboBox";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof ComboBox> = {
   component: ComboBox,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -23,5 +23,5 @@ export const Example: Story = (args) => (
 );
 
 Example.args = {
-  label: 'Ice cream flavor'
+  label: "Ice cream flavor",
 };

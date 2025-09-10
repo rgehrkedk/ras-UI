@@ -28,11 +28,7 @@
     "packages/*/stories/**/*",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "**/dist/**",
-    "**/node_modules/**"
-  ],
+  "exclude": ["node_modules", "**/dist/**", "**/node_modules/**"],
   "references": [
     {
       "path": "./packages/tokens"

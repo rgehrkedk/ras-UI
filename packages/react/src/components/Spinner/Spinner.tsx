@@ -2,43 +2,43 @@
  * Reusable loading spinner component
  */
 
-import React from 'react';
+import React from "react";
 
-import { cn } from '../../utils/cn';
+import { cn } from "../../utils/cn";
 
-import { spinnerRecipe } from './Spinner.css';
+import { spinnerRecipe } from "./Spinner.css";
 
 export interface SpinnerProps {
   /**
    * Spinner size
    * @default 'md'
    */
-  size?: 'sm' | 'md' | 'lg';
-  
+  size?: "sm" | "md" | "lg";
+
   /**
    * Additional CSS class names
    */
   className?: string;
-  
+
   /**
    * Accessible label for screen readers
    * @default 'Loading'
    */
-  'aria-label'?: string;
+  "aria-label"?: string;
 }
 
 /**
  * Loading spinner component with consistent styling
- * 
+ *
  * @example
  * ```tsx
  * <Spinner size="md" aria-label="Loading content" />
  * ```
  */
 export const Spinner: React.FC<SpinnerProps> = ({
-  size = 'md',
+  size = "md",
   className,
-  'aria-label': ariaLabel = 'Loading',
+  "aria-label": ariaLabel = "Loading",
 }) => {
   return (
     <span

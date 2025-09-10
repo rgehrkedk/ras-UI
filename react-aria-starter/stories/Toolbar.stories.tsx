@@ -1,20 +1,17 @@
-import {Toolbar} from '../src/Toolbar';
-import {
-  Group,
-  Separator
-} from 'react-aria-components';
-import {Button} from '../src/Button';
-import {ToggleButton} from '../src/ToggleButton';
-import {Checkbox} from '../src/Checkbox';
+import { Toolbar } from "../src/Toolbar";
+import { Group, Separator } from "react-aria-components";
+import { Button } from "../src/Button";
+import { ToggleButton } from "../src/ToggleButton";
+import { Checkbox } from "../src/Checkbox";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Toolbar> = {
   component: Toolbar,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -41,8 +38,6 @@ export const Example: Story = (args) => (
       <Button>Cut</Button>
     </Group>
     <Separator orientation="vertical" />
-    <Checkbox>
-      Night Mode
-    </Checkbox>
+    <Checkbox>Night Mode</Checkbox>
   </Toolbar>
 );

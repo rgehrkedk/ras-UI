@@ -1,13 +1,13 @@
-import {ColorSlider} from '../src/ColorSlider';
+import { ColorSlider } from "../src/ColorSlider";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof ColorSlider> = {
   component: ColorSlider,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -16,7 +16,7 @@ type Story = StoryFn<typeof ColorSlider>;
 export const Example: Story = (args) => <ColorSlider {...args} />;
 
 Example.args = {
-  label: 'Red Opacity',
-  defaultValue: '#f00',
-  channel: 'alpha'
+  label: "Red Opacity",
+  defaultValue: "#f00",
+  channel: "alpha",
 };

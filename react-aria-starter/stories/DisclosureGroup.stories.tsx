@@ -1,21 +1,21 @@
-import {DisclosureGroup} from '../src/DisclosureGroup';
-import {Disclosure} from '../src/Disclosure';
+import { DisclosureGroup } from "../src/DisclosureGroup";
+import { Disclosure } from "../src/Disclosure";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof DisclosureGroup> = {
   component: DisclosureGroup,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryFn<typeof DisclosureGroup>;
 
 export const Example: Story = (args) => (
-  <DisclosureGroup {...args} style={{width: '400px'}}>
+  <DisclosureGroup {...args} style={{ width: "400px" }}>
     <Disclosure id="personal" title="Personal Information">
       <p>Personal information form here.</p>
     </Disclosure>
@@ -26,5 +26,5 @@ export const Example: Story = (args) => (
 );
 
 Example.args = {
-  defaultExpandedKeys: ['personal']
+  defaultExpandedKeys: ["personal"],
 };

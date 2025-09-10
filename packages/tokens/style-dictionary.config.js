@@ -1,211 +1,225 @@
-const StyleDictionary = require('style-dictionary');
+const StyleDictionary = require("style-dictionary");
 
 // Custom transforms for vanilla-extract
 StyleDictionary.registerTransform({
-  name: 'vanilla-extract/css-variable',
-  type: 'name',
-  transformer: function(token) {
-    return `--${token.path.join('-')}`;
-  }
+  name: "vanilla-extract/css-variable",
+  type: "name",
+  transformer: function (token) {
+    return `--${token.path.join("-")}`;
+  },
 });
 
 StyleDictionary.registerTransform({
-  name: 'vanilla-extract/shadow',
-  type: 'value',
-  matcher: function(token) {
-    return token.type === 'shadow' && typeof token.value === 'object';
+  name: "vanilla-extract/shadow",
+  type: "value",
+  matcher: function (token) {
+    return token.type === "shadow" && typeof token.value === "object";
   },
-  transformer: function(token) {
-    if (token.value === 'none') return 'none';
+  transformer: function (token) {
+    if (token.value === "none") return "none";
     const { offsetX, offsetY, blur, spread, color } = token.value;
     return `${offsetX} ${offsetY} ${blur} ${spread} ${color}`;
-  }
+  },
 });
 
 StyleDictionary.registerTransform({
-  name: 'vanilla-extract/font-family',
-  type: 'value',
-  matcher: function(token) {
-    return token.type === 'fontFamily';
+  name: "vanilla-extract/font-family",
+  type: "value",
+  matcher: function (token) {
+    return token.type === "fontFamily";
   },
-  transformer: function(token) {
-    return Array.isArray(token.value) ? token.value.map(font => 
-      font.includes(' ') ? `"${font}"` : font
-    ).join(', ') : token.value;
-  }
+  transformer: function (token) {
+    return Array.isArray(token.value)
+      ? token.value
+          .map((font) => (font.includes(" ") ? `"${font}"` : font))
+          .join(", ")
+      : token.value;
+  },
 });
 
 // Transform group for vanilla-extract
 StyleDictionary.registerTransformGroup({
-  name: 'vanilla-extract/css',
+  name: "vanilla-extract/css",
   transforms: [
-    'attribute/cti',
-    'name/cti/kebab',
-    'vanilla-extract/css-variable',
-    'vanilla-extract/shadow',
-    'vanilla-extract/font-family',
-    'size/px'
+    "attribute/cti",
+    "name/cti/kebab",
+    "vanilla-extract/css-variable",
+    "vanilla-extract/shadow",
+    "vanilla-extract/font-family",
+    "size/px",
     // Removed 'color/hex' to preserve RGBA values
-  ]
+  ],
 });
 
 // Custom format for CSS variables
 StyleDictionary.registerFormat({
-  name: 'vanilla-extract/css-variables',
-  formatter: function(dictionary) {
-    let output = ':root {\n';
-    
+  name: "vanilla-extract/css-variables",
+  formatter: function (dictionary) {
+    let output = ":root {\n";
+
     // Add core tokens (no theme variants)
-    dictionary.allTokens.forEach(token => {
-      if (!token.path.includes('light') && !token.path.includes('dark') && !token.path.includes('hc-light') && !token.path.includes('hc-dark')) {
-        const cssVar = `--${token.path.join('-')}`;
+    dictionary.allTokens.forEach((token) => {
+      if (
+        !token.path.includes("light") &&
+        !token.path.includes("dark") &&
+        !token.path.includes("hc-light") &&
+        !token.path.includes("hc-dark")
+      ) {
+        const cssVar = `--${token.path.join("-")}`;
         output += `  ${cssVar}: ${token.value};\n`;
       }
     });
-    
+
     // Add light theme semantic tokens as defaults
-    dictionary.allTokens.forEach(token => {
-      if (token.path.includes('light') && !token.path.includes('hc-light')) {
-        const tokenPath = token.path.slice(0, -1).join('-');
+    dictionary.allTokens.forEach((token) => {
+      if (token.path.includes("light") && !token.path.includes("hc-light")) {
+        const tokenPath = token.path.slice(0, -1).join("-");
         const cssVar = `--${tokenPath}`;
         output += `  ${cssVar}: ${token.value};\n`;
       }
     });
-    
-    output += '}\n\n';
-    
+
+    output += "}\n\n";
+
     // Dark theme overrides
     output += '[data-theme="dark"] {\n';
-    dictionary.allTokens.forEach(token => {
-      if (token.path.includes('dark') && !token.path.includes('hc-dark')) {
-        const tokenPath = token.path.slice(0, -1).join('-');
+    dictionary.allTokens.forEach((token) => {
+      if (token.path.includes("dark") && !token.path.includes("hc-dark")) {
+        const tokenPath = token.path.slice(0, -1).join("-");
         const cssVar = `--${tokenPath}`;
         output += `  ${cssVar}: ${token.value};\n`;
       }
     });
-    output += '}\n\n';
-    
+    output += "}\n\n";
+
     // High contrast light theme
     output += '[data-theme="hc-light"] {\n';
-    dictionary.allTokens.forEach(token => {
-      if (token.path.includes('hc-light')) {
-        const tokenPath = token.path.slice(0, -1).join('-');
+    dictionary.allTokens.forEach((token) => {
+      if (token.path.includes("hc-light")) {
+        const tokenPath = token.path.slice(0, -1).join("-");
         const cssVar = `--${tokenPath}`;
         output += `  ${cssVar}: ${token.value};\n`;
       }
     });
-    output += '}\n\n';
-    
+    output += "}\n\n";
+
     // High contrast dark theme
     output += '[data-theme="hc-dark"] {\n';
-    dictionary.allTokens.forEach(token => {
-      if (token.path.includes('hc-dark')) {
-        const tokenPath = token.path.slice(0, -1).join('-');
+    dictionary.allTokens.forEach((token) => {
+      if (token.path.includes("hc-dark")) {
+        const tokenPath = token.path.slice(0, -1).join("-");
         const cssVar = `--${tokenPath}`;
         output += `  ${cssVar}: ${token.value};\n`;
       }
     });
-    output += '}\n';
-    
+    output += "}\n";
+
     return output;
-  }
+  },
 });
 
 // Custom format for TypeScript
 StyleDictionary.registerFormat({
-  name: 'vanilla-extract/typescript',
-  formatter: function(dictionary) {
-    let output = '/**\n * Design tokens generated by Style Dictionary\n * Do not edit manually\n */\n\n';
-    
-    output += 'export const tokens = {\n';
-    
+  name: "vanilla-extract/typescript",
+  formatter: function (dictionary) {
+    let output =
+      "/**\n * Design tokens generated by Style Dictionary\n * Do not edit manually\n */\n\n";
+
+    output += "export const tokens = {\n";
+
     const tokenGroups = {};
-    
+
     // Add base tokens (no theme variants)
-    dictionary.allTokens.forEach(token => {
-      if (!token.path.includes('light') && !token.path.includes('dark') && !token.path.includes('hc-light') && !token.path.includes('hc-dark')) {
+    dictionary.allTokens.forEach((token) => {
+      if (
+        !token.path.includes("light") &&
+        !token.path.includes("dark") &&
+        !token.path.includes("hc-light") &&
+        !token.path.includes("hc-dark")
+      ) {
         const category = token.path[0];
         if (!tokenGroups[category]) tokenGroups[category] = {};
-        
+
         let current = tokenGroups[category];
         for (let i = 1; i < token.path.length - 1; i++) {
           if (!current[token.path[i]]) current[token.path[i]] = {};
           current = current[token.path[i]];
         }
-        current[token.path[token.path.length - 1]] = `var(--${token.path.join('-')})`;
+        current[token.path[token.path.length - 1]] =
+          `var(--${token.path.join("-")})`;
       }
     });
-    
+
     // Add semantic tokens (using theme-aware CSS variables)
-    dictionary.allTokens.forEach(token => {
-      if (token.path.includes('light') && !token.path.includes('hc-light')) {
+    dictionary.allTokens.forEach((token) => {
+      if (token.path.includes("light") && !token.path.includes("hc-light")) {
         const category = token.path[0];
         if (!tokenGroups[category]) tokenGroups[category] = {};
-        
+
         let current = tokenGroups[category];
         const pathWithoutTheme = token.path.slice(0, -1); // Remove 'light' from path
-        
+
         for (let i = 1; i < pathWithoutTheme.length - 1; i++) {
           if (!current[pathWithoutTheme[i]]) current[pathWithoutTheme[i]] = {};
           current = current[pathWithoutTheme[i]];
         }
-        
+
         const tokenName = pathWithoutTheme[pathWithoutTheme.length - 1];
-        const cssVar = `--${pathWithoutTheme.join('-')}`;
+        const cssVar = `--${pathWithoutTheme.join("-")}`;
         current[tokenName] = `var(${cssVar})`;
       }
     });
-    
+
     function stringifyTokens(obj, indent = 1) {
-      const spaces = '  '.repeat(indent);
-      let result = '{\n';
+      const spaces = "  ".repeat(indent);
+      let result = "{\n";
       Object.keys(obj).forEach((key, index, array) => {
         const value = obj[key];
         // Quote keys that start with numbers or contain special characters
         const needsQuotes = /^[0-9]/.test(key) || /[^a-zA-Z0-9_$]/.test(key);
         const keyName = needsQuotes ? `'${key}'` : key;
-        
-        if (typeof value === 'object' && value !== null) {
+
+        if (typeof value === "object" && value !== null) {
           result += `${spaces}${keyName}: ${stringifyTokens(value, indent + 1)}`;
         } else {
           result += `${spaces}${keyName}: '${value}'`;
         }
-        if (index < array.length - 1) result += ',';
-        result += '\n';
+        if (index < array.length - 1) result += ",";
+        result += "\n";
       });
-      result += '  '.repeat(indent - 1) + '}';
+      result += "  ".repeat(indent - 1) + "}";
       return result;
     }
-    
+
     Object.keys(tokenGroups).forEach((category, index, array) => {
       output += `  ${category}: ${stringifyTokens(tokenGroups[category], 2)}`;
-      if (index < array.length - 1) output += ',';
-      output += '\n';
+      if (index < array.length - 1) output += ",";
+      output += "\n";
     });
-    
-    output += '} as const;\n\n';
-    output += 'export type Tokens = typeof tokens;\n';
-    
+
+    output += "} as const;\n\n";
+    output += "export type Tokens = typeof tokens;\n";
+
     return output;
-  }
+  },
 });
 
 module.exports = {
-  source: ['tokens/**/*.json'],
+  source: ["tokens/**/*.json"],
   platforms: {
-    'vanilla-extract': {
-      transformGroup: 'vanilla-extract/css',
-      buildPath: 'dist/',
+    "vanilla-extract": {
+      transformGroup: "vanilla-extract/css",
+      buildPath: "dist/",
       files: [
         {
-          destination: 'tokens.css',
-          format: 'vanilla-extract/css-variables'
+          destination: "tokens.css",
+          format: "vanilla-extract/css-variables",
         },
         {
-          destination: 'tokens.ts',
-          format: 'vanilla-extract/typescript'
-        }
-      ]
-    }
-  }
+          destination: "tokens.ts",
+          format: "vanilla-extract/typescript",
+        },
+      ],
+    },
+  },
 };

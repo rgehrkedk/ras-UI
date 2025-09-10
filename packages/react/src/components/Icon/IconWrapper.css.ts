@@ -2,16 +2,16 @@
  * IconWrapper component styles using vanilla-extract
  */
 
-import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
 // Icon wrapper base styles
 const iconWrapperBase = style({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
   flexShrink: 0,
-  color: 'currentColor',
+  color: "currentColor",
 });
 
 export const iconWrapperRecipe = recipe({
@@ -19,16 +19,16 @@ export const iconWrapperRecipe = recipe({
   variants: {
     size: {
       sm: {
-        width: '14px',
-        height: '14px',
+        width: "14px",
+        height: "14px",
       },
       md: {
-        width: '18px',
-        height: '18px',
+        width: "18px",
+        height: "18px",
       },
       lg: {
-        width: '22px',
-        height: '22px',
+        width: "22px",
+        height: "22px",
       },
     },
     position: {
@@ -37,7 +37,7 @@ export const iconWrapperRecipe = recipe({
     },
   },
   defaultVariants: {
-    size: 'md',
-    position: 'start',
+    size: "md",
+    position: "start",
   },
 });

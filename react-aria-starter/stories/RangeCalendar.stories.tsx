@@ -1,13 +1,13 @@
-import {RangeCalendar} from '../src/RangeCalendar';
+import { RangeCalendar } from "../src/RangeCalendar";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof RangeCalendar> = {
   component: RangeCalendar,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;

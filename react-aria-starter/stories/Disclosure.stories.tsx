@@ -1,22 +1,24 @@
-import {Disclosure} from '../src/Disclosure';
+import { Disclosure } from "../src/Disclosure";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Disclosure> = {
   component: Disclosure,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryFn<typeof Disclosure>;
 
 export const Example: Story = (args) => (
-  <Disclosure {...args} style={{width: '400px'}}>Details on managing your account</Disclosure>
+  <Disclosure {...args} style={{ width: "400px" }}>
+    Details on managing your account
+  </Disclosure>
 );
 
 Example.args = {
-  title: 'Manage your account'
+  title: "Manage your account",
 };

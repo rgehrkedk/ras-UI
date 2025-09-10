@@ -1,17 +1,17 @@
-'use client';
+"use client";
 import {
   Autocomplete as AriaAutocomplete,
   AutocompleteProps as AriaAutocompleteProps,
   Key,
-  useFilter
-} from 'react-aria-components';
-import {Menu} from './Menu';
-import {SearchField} from './SearchField';
+  useFilter,
+} from "react-aria-components";
+import { Menu } from "./Menu";
+import { SearchField } from "./SearchField";
 
-import './Autocomplete.css';
+import "./Autocomplete.css";
 
 export interface AutocompleteProps<T extends object>
-  extends Omit<AriaAutocompleteProps, 'children'> {
+  extends Omit<AriaAutocompleteProps, "children"> {
   label?: string;
   placeholder?: string;
   items?: Iterable<T>;
@@ -19,21 +19,23 @@ export interface AutocompleteProps<T extends object>
   onAction?: (id: Key) => void;
 }
 
-export function Autocomplete<T extends object>(
-  { label, placeholder, items, children, onAction, ...props }:
-    AutocompleteProps<T>
-) {
-  let { contains } = useFilter({ sensitivity: 'base' });
+export function Autocomplete<T extends object>({
+  label,
+  placeholder,
+  items,
+  children,
+  onAction,
+  ...props
+}: AutocompleteProps<T>) {
+  let { contains } = useFilter({ sensitivity: "base" });
   return (
-    (
-      <div className="my-autocomplete">
-        <AriaAutocomplete filter={contains} {...props}>
-          <SearchField label={label} placeholder={placeholder} />
-          <Menu items={items} onAction={onAction}>
-            {children}
-          </Menu>
-        </AriaAutocomplete>
-      </div>
-    )
+    <div className="my-autocomplete">
+      <AriaAutocomplete filter={contains} {...props}>
+        <SearchField label={label} placeholder={placeholder} />
+        <Menu items={items} onAction={onAction}>
+          {children}
+        </Menu>
+      </AriaAutocomplete>
+    </div>
   );
 }

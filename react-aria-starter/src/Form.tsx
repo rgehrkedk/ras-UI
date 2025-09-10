@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   Form as RACForm,
   FormProps,
@@ -7,9 +7,9 @@ import {
   FieldErrorProps,
   FieldError as RACFieldError,
   ButtonProps,
-  Button
-} from 'react-aria-components';
-import './Form.css';
+  Button,
+} from "react-aria-components";
+import "./Form.css";
 
 export function Form(props: FormProps) {
   return <RACForm {...props} />;

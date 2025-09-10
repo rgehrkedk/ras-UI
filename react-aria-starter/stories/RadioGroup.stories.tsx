@@ -1,13 +1,13 @@
-import {RadioGroup, Radio} from '../src/RadioGroup';
+import { RadioGroup, Radio } from "../src/RadioGroup";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof RadioGroup> = {
   component: RadioGroup,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -23,5 +23,5 @@ export const Example: Story = (args) => (
 );
 
 Example.args = {
-  label: 'Favorite sport'
+  label: "Favorite sport",
 };

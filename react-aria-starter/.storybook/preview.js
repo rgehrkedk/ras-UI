@@ -1,5 +1,5 @@
 import { themes } from "@storybook/theming";
-import './preview.css';
+import "./preview.css";
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -11,8 +11,10 @@ const preview = {
       },
     },
     docs: {
-      theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? themes.dark : themes.light
-    }
+      theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? themes.dark
+        : themes.light,
+    },
   },
 };
 

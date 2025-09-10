@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { useSidebarNavigation } from '../../../hooks';
-import type { BaseComponentProps, NavigationComponentProps, PressHandler } from '../../../types';
-import type { DefaultIconName } from '../../../types/icons';
-import { cn } from '../../../utils/cn';
-import { Badge } from '../../Badge';
-import { Icon } from '../../Icon';
-import { Tooltip } from '../../Tooltip';
-import { useSidebarContext } from '../Sidebar';
+import { useSidebarNavigation } from "../../../hooks";
+import type {
+  BaseComponentProps,
+  NavigationComponentProps,
+  PressHandler,
+} from "../../../types";
+import type { DefaultIconName } from "../../../types/icons";
+import { cn } from "../../../utils/cn";
+import { Badge } from "../../Badge";
+import { Icon } from "../../Icon";
+import { Tooltip } from "../../Tooltip";
+import { useSidebarContext } from "../Sidebar";
 
-import * as styles from './SidebarItem.css';
+import * as styles from "./SidebarItem.css";
 
 // Active state management hook
 const useActiveState = (initialActive = false) => {
   const [isActive, setIsActive] = useState(initialActive);
-  
-  const toggleActive = () => setIsActive(prev => !prev);
-  
+
+  const toggleActive = () => setIsActive((prev) => !prev);
+
   return { isActive, toggleActive };
 };
 
@@ -25,14 +29,12 @@ interface SidebarItemContentProps {
   icon?: React.ReactNode;
   badge?: React.ReactNode;
   children: React.ReactNode;
-  isCollapsed: boolean;
 }
 
-const SidebarItemContent: React.FC<SidebarItemContentProps> = ({ 
-  icon, 
-  badge, 
-  children, 
-  isCollapsed 
+const SidebarItemContent: React.FC<SidebarItemContentProps> = ({
+  icon,
+  badge,
+  children,
 }) => (
   <>
     {icon && <span className={styles.sidebarItemIcon}>{icon}</span>}
@@ -42,7 +44,9 @@ const SidebarItemContent: React.FC<SidebarItemContentProps> = ({
 );
 
 // Sidebar Button Component (for interactive items)
-export interface SidebarButtonProps extends BaseComponentProps, NavigationComponentProps {
+export interface SidebarButtonProps
+  extends BaseComponentProps,
+    NavigationComponentProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   badge?: React.ReactNode;
@@ -51,35 +55,43 @@ export interface SidebarButtonProps extends BaseComponentProps, NavigationCompon
   onPress?: PressHandler;
 }
 
-export const SidebarButton = React.forwardRef<HTMLButtonElement, SidebarButtonProps>(
-  ({ 
-    children, 
-    icon, 
-    badge, 
-    active = false, 
-    isDisabled = false, 
-    onPress, 
-    className, 
-    ...props 
-  }, ref) => {
+export const SidebarButton = React.forwardRef<
+  HTMLButtonElement,
+  SidebarButtonProps
+>(
+  (
+    {
+      children,
+      icon,
+      badge,
+      active = false,
+      isDisabled = false,
+      onPress,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     const { isCollapsed } = useSidebarContext();
-    
+
     // Enhanced navigation with React Aria
-    const { navigationProps, isFocusVisible, isPressed } = useSidebarNavigation({
-      isDisabled,
-      onAction: onPress
-    });
+    const { navigationProps, isFocusVisible, isPressed } = useSidebarNavigation(
+      {
+        isDisabled,
+        onAction: onPress,
+      },
+    );
 
     const buttonElement = (
       <button
         ref={ref}
         className={cn(
-          styles.sidebarItem({ 
-            active, 
+          styles.sidebarItem({
+            active,
             focusVisible: isFocusVisible,
-            pressed: isPressed 
+            pressed: isPressed,
           }),
-          className
+          className,
         )}
         data-active={active}
         data-focus-visible={isFocusVisible}
@@ -88,11 +100,7 @@ export const SidebarButton = React.forwardRef<HTMLButtonElement, SidebarButtonPr
         {...navigationProps}
         {...props}
       >
-        <SidebarItemContent
-          icon={icon}
-          badge={badge}
-          isCollapsed={isCollapsed}
-        >
+        <SidebarItemContent icon={icon} badge={badge}>
           {children}
         </SidebarItemContent>
       </button>
@@ -101,24 +109,22 @@ export const SidebarButton = React.forwardRef<HTMLButtonElement, SidebarButtonPr
     // Wrap with tooltip when collapsed
     if (isCollapsed) {
       return (
-        <Tooltip 
-          trigger={buttonElement}
-          placement="right" 
-          delay={100}
-        >
+        <Tooltip trigger={buttonElement} placement="right" delay={100}>
           {children}
         </Tooltip>
       );
     }
 
     return buttonElement;
-  }
+  },
 );
 
-SidebarButton.displayName = 'SidebarButton';
+SidebarButton.displayName = "SidebarButton";
 
 // Sidebar Link Component (for navigation links)
-export interface SidebarLinkProps extends BaseComponentProps, NavigationComponentProps {
+export interface SidebarLinkProps
+  extends BaseComponentProps,
+    NavigationComponentProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   badge?: React.ReactNode;
@@ -128,24 +134,32 @@ export interface SidebarLinkProps extends BaseComponentProps, NavigationComponen
   onPress?: PressHandler;
 }
 
-export const SidebarLink = React.forwardRef<HTMLAnchorElement, SidebarLinkProps>(
-  ({ 
-    children, 
-    icon, 
-    badge, 
-    active = false, 
-    href, 
-    target, 
-    onPress, 
-    className, 
-    ...props 
-  }, ref) => {
+export const SidebarLink = React.forwardRef<
+  HTMLAnchorElement,
+  SidebarLinkProps
+>(
+  (
+    {
+      children,
+      icon,
+      badge,
+      active = false,
+      href,
+      target,
+      onPress,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     const { isCollapsed } = useSidebarContext();
-    
+
     // Enhanced navigation with React Aria
-    const { navigationProps, isFocusVisible, isPressed } = useSidebarNavigation({
-      onAction: onPress
-    });
+    const { navigationProps, isFocusVisible, isPressed } = useSidebarNavigation(
+      {
+        onAction: onPress,
+      },
+    );
 
     const linkElement = (
       <a
@@ -153,12 +167,12 @@ export const SidebarLink = React.forwardRef<HTMLAnchorElement, SidebarLinkProps>
         href={href}
         target={target}
         className={cn(
-          styles.sidebarItem({ 
-            active, 
+          styles.sidebarItem({
+            active,
             focusVisible: isFocusVisible,
-            pressed: isPressed 
+            pressed: isPressed,
           }),
-          className
+          className,
         )}
         data-active={active}
         data-focus-visible={isFocusVisible}
@@ -166,11 +180,7 @@ export const SidebarLink = React.forwardRef<HTMLAnchorElement, SidebarLinkProps>
         {...navigationProps}
         {...props}
       >
-        <SidebarItemContent
-          icon={icon}
-          badge={badge}
-          isCollapsed={isCollapsed}
-        >
+        <SidebarItemContent icon={icon} badge={badge}>
           {children}
         </SidebarItemContent>
       </a>
@@ -179,21 +189,17 @@ export const SidebarLink = React.forwardRef<HTMLAnchorElement, SidebarLinkProps>
     // Wrap with tooltip when collapsed
     if (isCollapsed) {
       return (
-        <Tooltip 
-          trigger={linkElement}
-          placement="right" 
-          delay={100}
-        >
+        <Tooltip trigger={linkElement} placement="right" delay={100}>
           {children}
         </Tooltip>
       );
     }
 
     return linkElement;
-  }
+  },
 );
 
-SidebarLink.displayName = 'SidebarLink';
+SidebarLink.displayName = "SidebarLink";
 
 // Backwards Compatible SidebarItem Component
 export interface SidebarItemProps extends BaseComponentProps {
@@ -202,7 +208,7 @@ export interface SidebarItemProps extends BaseComponentProps {
   icon?: React.ReactNode | string;
   badge?: React.ReactNode;
   badgeText?: string;
-  badgeVariant?: 'primary' | 'success' | 'warning' | 'danger' | 'outline';
+  badgeVariant?: "primary" | "success" | "warning" | "danger" | "outline";
   active?: boolean;
   onClick?: () => void;
   href?: string;
@@ -210,37 +216,48 @@ export interface SidebarItemProps extends BaseComponentProps {
   isDisabled?: boolean;
 }
 
-export const SidebarItem = React.forwardRef<HTMLAnchorElement | HTMLButtonElement, SidebarItemProps>(
-  ({ 
-    children, 
-    label,
-    icon, 
-    badge, 
-    badgeText,
-    badgeVariant = 'primary',
-    active, 
-    onClick, 
-    href, 
-    target, 
-    isDisabled = false, 
-    className, 
-    ...props 
-  }, ref) => {
+export const SidebarItem = React.forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  SidebarItemProps
+>(
+  (
+    {
+      children,
+      label,
+      icon,
+      badge,
+      badgeText,
+      badgeVariant = "primary",
+      active,
+      onClick,
+      href,
+      target,
+      isDisabled = false,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     // Use internal active state if not controlled
     const { isActive, toggleActive } = useActiveState(active);
     const finalActive = active !== undefined ? active : isActive;
-    
+
     // Determine the final text content
     const finalText = label || children;
-    
+
     // Handle icon - if string, convert to Icon component
-    const finalIcon = typeof icon === 'string' ? <Icon name={icon as DefaultIconName} /> : icon;
-    
+    const finalIcon =
+      typeof icon === "string" ? <Icon name={icon as DefaultIconName} /> : icon;
+
     // Create badge from badgeText if provided
-    const finalBadge = badge || (badgeText ? 
-      <Badge variant={badgeVariant} size="sm">{badgeText}</Badge> : undefined
-    );
-    
+    const finalBadge =
+      badge ||
+      (badgeText ? (
+        <Badge variant={badgeVariant} size="sm">
+          {badgeText}
+        </Badge>
+      ) : undefined);
+
     // Handle click with active state toggle
     const handleClick = () => {
       if (active === undefined) {
@@ -248,7 +265,7 @@ export const SidebarItem = React.forwardRef<HTMLAnchorElement | HTMLButtonElemen
       }
       onClick?.();
     };
-    
+
     // If href is provided, render as link
     if (href) {
       return (
@@ -283,7 +300,7 @@ export const SidebarItem = React.forwardRef<HTMLAnchorElement | HTMLButtonElemen
         {finalText}
       </SidebarButton>
     );
-  }
+  },
 );
 
-SidebarItem.displayName = 'SidebarItem';
+SidebarItem.displayName = "SidebarItem";

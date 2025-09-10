@@ -1,34 +1,35 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import React from "react";
 
-import { Sidebar } from './Sidebar';
-
+import { Sidebar } from "./Sidebar";
 
 const meta = {
-  title: 'Components/Sidebar',
+  title: "Components/Sidebar",
   component: Sidebar,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       description: {
-        component: 'Accessible sidebar navigation component with collapsible state management. Features push layout that adjusts content width when collapsed/expanded, with smooth transitions, nested navigation groups, icons, badges, and brand theming.',
+        component:
+          "Accessible sidebar navigation component with collapsible state management. Features push layout that adjusts content width when collapsed/expanded, with smooth transitions, nested navigation groups, icons, badges, and brand theming.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['floating', 'push'],
-      description: 'Layout variant - floating overlays content, push moves content aside',
+      control: { type: "select" },
+      options: ["floating", "push"],
+      description:
+        "Layout variant - floating overlays content, push moves content aside",
     },
     defaultCollapsed: {
-      control: { type: 'boolean' },
-      description: 'Whether the sidebar starts in collapsed state',
+      control: { type: "boolean" },
+      description: "Whether the sidebar starts in collapsed state",
     },
     collapsible: {
-      control: { type: 'boolean' },
-      description: 'Whether the sidebar can be collapsed/expanded',
+      control: { type: "boolean" },
+      description: "Whether the sidebar can be collapsed/expanded",
     },
   },
 } satisfies Meta<typeof Sidebar>;
@@ -37,46 +38,63 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Layout container for demo purposes with push behavior
-const DemoLayout: React.FC<{ children: React.ReactNode; showContent?: boolean }> = ({ 
-  children, 
-  showContent = true 
-}) => {
+const DemoLayout: React.FC<{
+  children: React.ReactNode;
+  showContent?: boolean;
+}> = ({ children, showContent = true }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
-  
+
   return (
-    <div style={{ 
-      display: 'flex',
-      height: '100vh', 
-      backgroundColor: '#f8fafc',
-    }}>
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        backgroundColor: "#f8fafc",
+      }}
+    >
       {React.cloneElement(children as React.ReactElement, {
-        onCollapseChange: setIsCollapsed
+        onCollapseChange: setIsCollapsed,
       })}
       {showContent && (
-        <div style={{
-          flex: 1,
-          padding: '2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          gap: '1rem',
-          color: '#64748b',
-          transition: 'all 200ms ease-out',
-        }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 600, margin: 0 }}>Main Content Area</h1>
-          <p style={{ fontSize: '1.1rem', textAlign: 'center', maxWidth: '600px', margin: 0 }}>
-            This represents the main application content. The sidebar pushes this content 
-            aside when expanded and gives it more space when collapsed.
+        <div
+          style={{
+            flex: 1,
+            padding: "2rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "1rem",
+            color: "#64748b",
+            transition: "all 200ms ease-out",
+          }}
+        >
+          <h1 style={{ fontSize: "2rem", fontWeight: 600, margin: 0 }}>
+            Main Content Area
+          </h1>
+          <p
+            style={{
+              fontSize: "1.1rem",
+              textAlign: "center",
+              maxWidth: "600px",
+              margin: 0,
+            }}
+          >
+            This represents the main application content. The sidebar pushes
+            this content aside when expanded and gives it more space when
+            collapsed.
           </p>
-          <div style={{ 
-            marginTop: '1rem', 
-            padding: '1rem', 
-            backgroundColor: 'rgba(59, 130, 246, 0.1)', 
-            borderRadius: '8px',
-            fontSize: '14px'
-          }}>
-            Sidebar is currently: <strong>{isCollapsed ? 'Collapsed' : 'Expanded'}</strong>
+          <div
+            style={{
+              marginTop: "1rem",
+              padding: "1rem",
+              backgroundColor: "rgba(59, 130, 246, 0.1)",
+              borderRadius: "8px",
+              fontSize: "14px",
+            }}
+          >
+            Sidebar is currently:{" "}
+            <strong>{isCollapsed ? "Collapsed" : "Expanded"}</strong>
           </div>
         </div>
       )}
@@ -99,22 +117,42 @@ export const Default: Story = {
           <Sidebar.Group label="Main">
             <Sidebar.Item icon="home" label="Dashboard" />
             <Sidebar.Item icon="search" label="Search" />
-            <Sidebar.Item icon="chart" label="Analytics" badgeText="New" badgeVariant="success" />
+            <Sidebar.Item
+              icon="chart"
+              label="Analytics"
+              badgeText="New"
+              badgeVariant="success"
+            />
           </Sidebar.Group>
 
           <Sidebar.Separator />
 
           <Sidebar.Group label="Projects">
             <Sidebar.Item icon="folder" label="All Projects" />
-            <Sidebar.Item icon="star" label="Favorites" badgeText="5" badgeVariant="outline" />
+            <Sidebar.Item
+              icon="star"
+              label="Favorites"
+              badgeText="5"
+              badgeVariant="outline"
+            />
             <Sidebar.Item icon="calendar" label="Recent" />
           </Sidebar.Group>
 
           <Sidebar.Separator />
 
           <Sidebar.Group label="Communication">
-            <Sidebar.Item icon="message" label="Messages" badgeText="12" badgeVariant="danger" />
-            <Sidebar.Item icon="bell" label="Notifications" badgeText="3" badgeVariant="warning" />
+            <Sidebar.Item
+              icon="message"
+              label="Messages"
+              badgeText="12"
+              badgeVariant="danger"
+            />
+            <Sidebar.Item
+              icon="bell"
+              label="Notifications"
+              badgeText="3"
+              badgeVariant="warning"
+            />
           </Sidebar.Group>
         </Sidebar.Content>
 
@@ -125,7 +163,8 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Default floating sidebar with elegant shadow and border-radius. Pushes content aside while maintaining a floating visual appearance. Features smooth transitions, groups, badges, and user info.',
+        story:
+          "Default floating sidebar with elegant shadow and border-radius. Pushes content aside while maintaining a floating visual appearance. Features smooth transitions, groups, badges, and user info.",
       },
     },
   },
@@ -146,22 +185,42 @@ export const Push: Story = {
           <Sidebar.Group label="Main">
             <Sidebar.Item icon="home" label="Dashboard" />
             <Sidebar.Item icon="search" label="Search" />
-            <Sidebar.Item icon="chart" label="Analytics" badgeText="New" badgeVariant="success" />
+            <Sidebar.Item
+              icon="chart"
+              label="Analytics"
+              badgeText="New"
+              badgeVariant="success"
+            />
           </Sidebar.Group>
 
           <Sidebar.Separator />
 
           <Sidebar.Group label="Projects">
             <Sidebar.Item icon="folder" label="All Projects" />
-            <Sidebar.Item icon="star" label="Favorites" badgeText="5" badgeVariant="outline" />
+            <Sidebar.Item
+              icon="star"
+              label="Favorites"
+              badgeText="5"
+              badgeVariant="outline"
+            />
             <Sidebar.Item icon="calendar" label="Recent" />
           </Sidebar.Group>
 
           <Sidebar.Separator />
 
           <Sidebar.Group label="Communication">
-            <Sidebar.Item icon="message" label="Messages" badgeText="12" badgeVariant="danger" />
-            <Sidebar.Item icon="bell" label="Notifications" badgeText="3" badgeVariant="warning" />
+            <Sidebar.Item
+              icon="message"
+              label="Messages"
+              badgeText="12"
+              badgeVariant="danger"
+            />
+            <Sidebar.Item
+              icon="bell"
+              label="Notifications"
+              badgeText="3"
+              badgeVariant="warning"
+            />
           </Sidebar.Group>
         </Sidebar.Content>
 
@@ -172,7 +231,8 @@ export const Push: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Push sidebar with flat design integrated seamlessly with the layout. Clean appearance without shadows or border-radius, perfect for dashboard layouts.',
+        story:
+          "Push sidebar with flat design integrated seamlessly with the layout. Clean appearance without shadows or border-radius, perfect for dashboard layouts.",
       },
     },
   },

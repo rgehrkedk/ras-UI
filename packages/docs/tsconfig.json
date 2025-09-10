@@ -5,13 +5,6 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": [
-    "src/**/*",
-    "stories/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "storybook-static"
-  ]
+  "include": ["src/**/*", "stories/**/*"],
+  "exclude": ["node_modules", "dist", "storybook-static"]
 }

@@ -2,11 +2,11 @@
  * Shared type definitions for component props and common patterns
  */
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 // Size variants used across components
-export type ComponentSize = 'sm' | 'md' | 'lg';
-export type ExtendedSize = ComponentSize | 'xl';
+export type ComponentSize = "sm" | "md" | "lg";
+export type ExtendedSize = ComponentSize | "xl";
 
 // Base props that most components share
 export interface BaseComponentProps {
@@ -62,7 +62,12 @@ export interface DisableableComponentProps {
 }
 
 // Common state types
-export type ComponentState = 'default' | 'disabled' | 'loading' | 'error' | 'success';
+export type ComponentState =
+  | "default"
+  | "disabled"
+  | "loading"
+  | "error"
+  | "success";
 
 // Validation state props
 export interface ValidationProps {
@@ -71,7 +76,7 @@ export interface ValidationProps {
    * @default false
    */
   isInvalid?: boolean;
-  
+
   /**
    * Whether the component is required
    * @default false
@@ -80,12 +85,14 @@ export interface ValidationProps {
 }
 
 // Form component props that combine validation and disabling
-export interface FormComponentProps extends DisableableComponentProps, ValidationProps {
+export interface FormComponentProps
+  extends DisableableComponentProps,
+    ValidationProps {
   /**
    * Error message to display when component is invalid
    */
   errorMessage?: string;
-  
+
   /**
    * Helper text to display
    */
@@ -93,9 +100,14 @@ export interface FormComponentProps extends DisableableComponentProps, Validatio
 }
 
 // Component variant types
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'icon';
-export type LinkVariant = 'default' | 'quiet' | 'emphasized';
-export type AlertType = 'info' | 'warning' | 'error' | 'success';
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "danger"
+  | "icon";
+export type LinkVariant = "default" | "quiet" | "emphasized";
+export type AlertType = "info" | "warning" | "error" | "success";
 
 // Navigation component types
 export interface NavigationComponentProps extends BaseComponentProps {
@@ -104,17 +116,17 @@ export interface NavigationComponentProps extends BaseComponentProps {
    * @default false
    */
   active?: boolean;
-  
+
   /**
    * Optional href for navigation links
    */
   href?: string;
-  
+
   /**
    * Icon element to display
    */
   icon?: ReactNode;
-  
+
   /**
    * Badge element to display
    */
@@ -127,13 +139,13 @@ export interface CollapsibleComponentProps {
    * @default false
    */
   isCollapsed?: boolean;
-  
+
   /**
    * Whether the component supports collapsing
    * @default true
    */
   collapsible?: boolean;
-  
+
   /**
    * Default collapsed state
    * @default false

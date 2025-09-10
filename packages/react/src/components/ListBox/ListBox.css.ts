@@ -3,29 +3,29 @@
  * Minimal implementation to debug the build issue
  */
 
-import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
-import { theme } from '../../styles/theme.css';
+import { theme } from "../../styles/theme.css";
 
 // Base ListBox styles
 export const listBoxBase = style({
   // Reset browser defaults
   margin: 0,
   padding: theme.space.sm,
-  background: 'none',
-  
+  background: "none",
+
   // Typography
   fontFamily: theme.font.family.sans,
   fontSize: theme.font.size.md,
-  
+
   // Layout
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  maxHeight: '300px',
-  overflowY: 'auto',
-  
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  maxHeight: "300px",
+  overflowY: "auto",
+
   // Visual styling
   backgroundColor: theme.color.surface.base,
   border: `1px solid ${theme.color.border.default}`,
@@ -44,27 +44,27 @@ export const listBox = recipe({
     },
   },
   defaultVariants: {
-    size: 'md',
+    size: "md",
   },
 });
 
 // Individual list item styles
 export const listBoxItem = style({
-  display: 'flex',
-  alignItems: 'center',
+  display: "flex",
+  alignItems: "center",
   padding: theme.space.sm,
-  cursor: 'pointer',
+  cursor: "pointer",
   borderRadius: theme.radius.sm,
-  
-  ':hover': {
+
+  ":hover": {
     backgroundColor: theme.color.interaction.hover,
   },
 });
 
 // Section styles
 export const listBoxSection = style({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
 });
 
 export const listBoxHeader = style({
@@ -78,9 +78,9 @@ export const listBoxHeader = style({
 export const listBoxEmpty = style([
   listBoxBase,
   {
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '120px',
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "120px",
     color: theme.color.text.secondary,
   },
 ]);
@@ -88,9 +88,9 @@ export const listBoxEmpty = style([
 export const listBoxLoading = style([
   listBoxBase,
   {
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '120px',
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "120px",
   },
 ]);
 

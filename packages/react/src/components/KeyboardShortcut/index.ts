@@ -1,3 +1,2 @@
-export { KeyboardShortcut } from './KeyboardShortcut';
-export type { KeyboardShortcutProps } from './KeyboardShortcut';
-
+export { KeyboardShortcut } from "./KeyboardShortcut";
+export type { KeyboardShortcutProps } from "./KeyboardShortcut";

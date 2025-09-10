@@ -1,13 +1,13 @@
-import {Meter} from '../src/Meter';
+import { Meter } from "../src/Meter";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Meter> = {
   component: Meter,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -16,6 +16,6 @@ type Story = StoryFn<typeof Meter>;
 export const Example: Story = (args) => <Meter {...args} />;
 
 Example.args = {
-  label: 'Storage space',
-  value: 80
+  label: "Storage space",
+  value: 80,
 };

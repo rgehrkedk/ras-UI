@@ -1,14 +1,14 @@
-import {ToggleButtonGroup} from '../src/ToggleButtonGroup';
-import {ToggleButton} from 'react-aria-components';
+import { ToggleButtonGroup } from "../src/ToggleButtonGroup";
+import { ToggleButton } from "react-aria-components";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof ToggleButtonGroup> = {
   component: ToggleButtonGroup,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;

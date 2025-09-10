@@ -1,17 +1,17 @@
-import {Dialog, DialogTrigger} from '../src/Dialog';
-import {Button} from '../src/Button';
-import {Modal} from '../src/Modal';
-import {TextField} from '../src/TextField';
-import {Heading} from '../src/Content';
+import { Dialog, DialogTrigger } from "../src/Dialog";
+import { Button } from "../src/Button";
+import { Modal } from "../src/Modal";
+import { TextField } from "../src/TextField";
+import { Heading } from "../src/Content";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Dialog> = {
   component: Dialog,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -24,8 +24,8 @@ export const Example: Story = (args) => (
       <Dialog {...args}>
         <form>
           <Heading slot="title">Sign up</Heading>
-          <TextField autoFocus label='First Name' />
-          <TextField label='Last Name' />
+          <TextField autoFocus label="First Name" />
+          <TextField label="Last Name" />
           <Button slot="close" style={{ marginTop: 8 }}>
             Submit
           </Button>

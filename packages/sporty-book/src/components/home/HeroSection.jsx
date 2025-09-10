@@ -13,13 +13,16 @@ export default function HeroSection() {
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Book Premium
-            <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent"> Sport Clubs</span>
+            <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+              {" "}
+              Sport Clubs
+            </span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-200 mb-12 leading-relaxed">
-            Discover and book the finest sport facilities in your area. 
-            From tennis courts to swimming pools, find your perfect match.
+            Discover and book the finest sport facilities in your area. From
+            tennis courts to swimming pools, find your perfect match.
           </p>
-          
+
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 max-w-2xl mx-auto">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1 relative">

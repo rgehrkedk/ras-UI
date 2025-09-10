@@ -1,13 +1,13 @@
-import {Select, SelectItem} from '../src/Select';
+import { Select, SelectItem } from "../src/Select";
 
-import type {Meta, StoryFn} from '@storybook/react-vite';
+import type { Meta, StoryFn } from "@storybook/react-vite";
 
 const meta: Meta<typeof Select> = {
   component: Select,
   parameters: {
-    layout: 'centered'
+    layout: "centered",
   },
-  tags: ['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -24,5 +24,5 @@ export const Example: Story = (args) => (
 );
 
 Example.args = {
-  label: 'Ice cream flavor'
+  label: "Ice cream flavor",
 };

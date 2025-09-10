@@ -1,11 +1,27 @@
-
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Clock, Users, DollarSign, Search, Filter, CheckCircle, XCircle, Edit, LogIn } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Calendar,
+  Clock,
+  Users,
+  DollarSign,
+  Search,
+  Filter,
+  CheckCircle,
+  XCircle,
+  Edit,
+  LogIn,
+} from "lucide-react";
 import { format, parseISO } from "date-fns";
 
 export default function BookingAdmin() {
@@ -26,17 +42,20 @@ export default function BookingAdmin() {
       const currentUser = await User.me(); // Fetch current user
       setUser(currentUser); // Set user state
 
-      if (!currentUser || !currentUser.club_id) { // If no user or no club_id, stop loading booking data
+      if (!currentUser || !currentUser.club_id) {
+        // If no user or no club_id, stop loading booking data
         // No console error here, as the UI will handle showing appropriate message
         return;
       }
 
       const clubs = await SportClub.list();
-      const userClub = clubs.find(c => c.id === currentUser.club_id);
+      const userClub = clubs.find((c) => c.id === currentUser.club_id);
       setClub(userClub);
 
       const allBookings = await Booking.list("-created_date");
-      const clubBookings = allBookings.filter(b => b.club_id === currentUser.club_id);
+      const clubBookings = allBookings.filter(
+        (b) => b.club_id === currentUser.club_id,
+      );
       setBookings(clubBookings);
     } catch (error) {
       console.error("Error loading booking data:", error);
@@ -76,18 +95,20 @@ export default function BookingAdmin() {
     }
   };
 
-  const filteredBookings = bookings.filter(booking => {
-    const matchesSearch = booking.facility_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         booking.created_by.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = statusFilter === "all" || booking.status === statusFilter;
-    
+  const filteredBookings = bookings.filter((booking) => {
+    const matchesSearch =
+      booking.facility_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      booking.created_by.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesStatus =
+      statusFilter === "all" || booking.status === statusFilter;
+
     let matchesDate = true;
     if (dateFilter === "today") {
       matchesDate = booking.booking_date === format(new Date(), "yyyy-MM-dd");
     } else if (dateFilter === "upcoming") {
       matchesDate = new Date(booking.booking_date) >= new Date();
     }
-    
+
     return matchesSearch && matchesStatus && matchesDate;
   });
 
@@ -111,11 +132,16 @@ export default function BookingAdmin() {
         <Card className="max-w-md w-full border-0 shadow-xl">
           <CardContent className="p-8 text-center">
             <Calendar className="w-16 h-16 text-teal-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Club Access Required</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              Club Access Required
+            </h2>
             <p className="text-slate-600 mb-6">
               Sign in with your club account to manage bookings.
             </p>
-            <Button onClick={handleLogin} className="w-full bg-teal-600 hover:bg-teal-700">
+            <Button
+              onClick={handleLogin}
+              className="w-full bg-teal-600 hover:bg-teal-700"
+            >
               <LogIn className="w-4 h-4 mr-2" />
               Sign In
             </Button>
@@ -132,9 +158,12 @@ export default function BookingAdmin() {
         <Card className="max-w-md w-full border-0 shadow-xl">
           <CardContent className="p-8 text-center">
             <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">No Club Association</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              No Club Association
+            </h2>
             <p className="text-slate-600 mb-6">
-              You are authenticated, but not associated with any club. Please contact support to get access or check your account details.
+              You are authenticated, but not associated with any club. Please
+              contact support to get access or check your account details.
             </p>
           </CardContent>
         </Card>
@@ -146,8 +175,12 @@ export default function BookingAdmin() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Booking Administration</h1>
-          <p className="text-slate-600">Manage all facility bookings for {club?.name}</p>
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+            Booking Administration
+          </h1>
+          <p className="text-slate-600">
+            Manage all facility bookings for {club?.name}
+          </p>
         </div>
 
         {/* Filters */}
@@ -163,7 +196,7 @@ export default function BookingAdmin() {
                   className="pl-10"
                 />
               </div>
-              
+
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="lg:w-48">
                   <SelectValue placeholder="All Status" />
@@ -193,38 +226,52 @@ export default function BookingAdmin() {
         {/* Bookings Table */}
         <Card className="border-0 shadow-lg">
           <CardHeader>
-            <CardTitle>
-              Bookings ({filteredBookings.length})
-            </CardTitle>
+            <CardTitle>Bookings ({filteredBookings.length})</CardTitle>
           </CardHeader>
           <CardContent>
             {filteredBookings.length === 0 ? (
               <div className="text-center py-12">
                 <Calendar className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">No bookings found</h3>
-                <p className="text-slate-600">No bookings match your current filters.</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                  No bookings found
+                </h3>
+                <p className="text-slate-600">
+                  No bookings match your current filters.
+                </p>
               </div>
             ) : (
               <div className="space-y-4">
                 {filteredBookings.map((booking) => (
-                  <div key={booking.id} className="p-4 border rounded-lg hover:bg-slate-50">
+                  <div
+                    key={booking.id}
+                    className="p-4 border rounded-lg hover:bg-slate-50"
+                  >
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-2">
-                          <h4 className="font-semibold text-slate-900">{booking.facility_name}</h4>
+                          <h4 className="font-semibold text-slate-900">
+                            {booking.facility_name}
+                          </h4>
                           <Badge className={getStatusColor(booking.status)}>
                             {booking.status}
                           </Badge>
                         </div>
-                        
+
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-slate-600">
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
-                            <span>{format(parseISO(booking.booking_date), "MMM d, yyyy")}</span>
+                            <span>
+                              {format(
+                                parseISO(booking.booking_date),
+                                "MMM d, yyyy",
+                              )}
+                            </span>
                           </div>
                           <div className="flex items-center gap-2">
                             <Clock className="w-4 h-4" />
-                            <span>{booking.start_time} - {booking.end_time}</span>
+                            <span>
+                              {booking.start_time} - {booking.end_time}
+                            </span>
                           </div>
                           <div className="flex items-center gap-2">
                             <Users className="w-4 h-4" />
@@ -232,10 +279,12 @@ export default function BookingAdmin() {
                           </div>
                           <div className="flex items-center gap-2">
                             <DollarSign className="w-4 h-4" />
-                            <span className="font-semibold">${booking.total_cost?.toFixed(2)}</span>
+                            <span className="font-semibold">
+                              ${booking.total_cost?.toFixed(2)}
+                            </span>
                           </div>
                         </div>
-                        
+
                         <p className="text-sm text-slate-500 mt-2">
                           Booked by: {booking.created_by}
                         </p>
@@ -246,7 +295,9 @@ export default function BookingAdmin() {
                           <>
                             <Button
                               size="sm"
-                              onClick={() => updateBookingStatus(booking.id, "confirmed")}
+                              onClick={() =>
+                                updateBookingStatus(booking.id, "confirmed")
+                              }
                               className="bg-green-600 hover:bg-green-700"
                             >
                               <CheckCircle className="w-4 h-4 mr-1" />
@@ -255,7 +306,9 @@ export default function BookingAdmin() {
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => updateBookingStatus(booking.id, "cancelled")}
+                              onClick={() =>
+                                updateBookingStatus(booking.id, "cancelled")
+                              }
                               className="border-red-300 text-red-600 hover:bg-red-50"
                             >
                               <XCircle className="w-4 h-4 mr-1" />
@@ -267,7 +320,9 @@ export default function BookingAdmin() {
                           <Button
                             size="sm"
                             variant="outline"
-                            onClick={() => updateBookingStatus(booking.id, "cancelled")}
+                            onClick={() =>
+                              updateBookingStatus(booking.id, "cancelled")
+                            }
                             className="border-red-300 text-red-600 hover:bg-red-50"
                           >
                             <XCircle className="w-4 h-4 mr-1" />
