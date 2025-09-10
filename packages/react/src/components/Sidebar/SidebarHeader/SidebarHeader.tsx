@@ -15,7 +15,7 @@ export interface SidebarHeaderProps extends BaseComponentProps {
 }
 
 export const SidebarHeader = React.forwardRef<HTMLElement, SidebarHeaderProps>(
-  ({ children, logo, title, isCollapsed, className, ...props }, ref) => {
+  ({ children, logo, title, isCollapsed: _isCollapsed, className, ...props }, ref) => {
     useSidebarContext();
 
     // Default logo if none provided

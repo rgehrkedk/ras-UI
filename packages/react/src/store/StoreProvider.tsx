@@ -30,15 +30,16 @@ const StoreProvider: React.FC<StoreProviderProps> = ({
       let brand = initialBrand;
       let preferences = {};
 
-      // Load from localStorage if persistence is enabled
+      // Load from localStorage if persistence is enabled and no initial values provided
       if (persistentStorage && typeof window !== 'undefined') {
         try {
           const savedTheme = localStorage.getItem('ras-ui-theme') as Theme;
           const savedBrand = localStorage.getItem('ras-ui-brand') as Brand;
           const savedPreferences = localStorage.getItem('ras-ui-preferences');
 
-          if (savedTheme) theme = savedTheme;
-          if (savedBrand) brand = savedBrand;
+          // Only use saved values if no initial values were provided
+          if (savedTheme && !initialTheme) theme = savedTheme;
+          if (savedBrand && !initialBrand) brand = savedBrand;
           if (savedPreferences) {
             preferences = JSON.parse(savedPreferences);
           }

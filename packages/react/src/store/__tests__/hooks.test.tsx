@@ -7,25 +7,20 @@ import { useTheme, useSidebar, useAccessibility, useNotifications, useDesignSyst
 import themeReducer from '../slices/themeSlice';
 import userPreferencesReducer from '../slices/userPreferencesSlice';
 
-// Mock document and window for theme slice
-const mockDocument = {
-  documentElement: {
-    setAttribute: vi.fn(),
-    style: { setProperty: vi.fn() },
-    classList: { add: vi.fn(), remove: vi.fn() },
-  },
-};
-
-const mockWindow = {
-  matchMedia: vi.fn(() => ({
+// Mock specific methods that theme slice might use while keeping real DOM
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation(query => ({
     matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   })),
-};
-
-vi.stubGlobal('document', mockDocument);
-vi.stubGlobal('window', mockWindow);
+});
 
 // Create test store
 function createTestStore(initialState = {}) {
@@ -40,9 +35,11 @@ function createTestStore(initialState = {}) {
 
 // Wrapper component for testing hooks
 function createWrapper(store: ReturnType<typeof createTestStore>) {
-  return ({ children }: { children: React.ReactNode }) => (
+  const TestWrapper = ({ children }: { children: React.ReactNode }) => (
     <Provider store={store}>{children}</Provider>
   );
+  TestWrapper.displayName = 'TestWrapper';
+  return TestWrapper;
 }
 
 describe('Redux Hooks', () => {

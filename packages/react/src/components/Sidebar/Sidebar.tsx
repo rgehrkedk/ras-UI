@@ -7,9 +7,8 @@ import type {
   CollapsibleComponentProps,
 } from "../../types";
 import { cn } from "../../utils/cn";
-import * as styles from "./Sidebar.css";
 
-// Import all subcomponents for composition
+import * as styles from "./Sidebar.css";
 import { SidebarContent } from "./SidebarContent";
 import { SidebarFooter } from "./SidebarFooter";
 import { SidebarGroup } from "./SidebarGroup";
@@ -106,26 +105,34 @@ const SidebarBase = React.forwardRef<HTMLElement, SidebarProps>(
               styles.sidebar({ variant, collapsed: isCollapsed }),
               className,
             )}
-            onClick={handleSidebarClick}
-            onKeyDown={(e) => {
-              if (!(isCollapsed && collapsible)) return;
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                handleSetIsCollapsed(false);
-              }
-            }}
-            role={isCollapsed && collapsible ? "button" : undefined}
-            aria-expanded={!isCollapsed}
-            tabIndex={isCollapsed && collapsible ? 0 : undefined}
-            style={{
-              cursor: isCollapsed && collapsible ? "pointer" : undefined,
-            }}
             {...focusScopeProps}
             {...props}
           >
+            {isCollapsed && collapsible && (
+              <div
+                onClick={handleSidebarClick}
+                onKeyDown={(e) => {
+                  if (!(isCollapsed && collapsible)) return;
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleSetIsCollapsed(false);
+                  }
+                }}
+                role="button"
+                aria-expanded={!isCollapsed}
+                tabIndex={0}
+                style={{
+                  cursor: "pointer",
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 1,
+                }}
+                aria-label="Expand sidebar"
+              />
+            )}
             {React.Children.map(children, (child) => {
               if (React.isValidElement(child)) {
-                const childType = child.type as any;
+                const childType = child.type as React.ComponentType<any>;
                 if (childType?.displayName === "SidebarHeader") {
                   return React.cloneElement(child, { isCollapsed });
                 }

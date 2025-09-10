@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import StoreProvider from '../StoreProvider';
@@ -12,26 +12,26 @@ const localStorageMock = {
   clear: vi.fn(),
 };
 
-// Mock document and window
-const mockDocument = {
-  documentElement: {
-    setAttribute: vi.fn(),
-    style: { setProperty: vi.fn() },
-    classList: { add: vi.fn(), remove: vi.fn() },
-  },
-};
+// Mock localStorage but keep real DOM environment
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock,
+  writable: true,
+});
 
-const mockWindow = {
-  matchMedia: vi.fn(() => ({
+// Mock matchMedia if needed
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation(query => ({
     matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   })),
-};
-
-vi.stubGlobal('localStorage', localStorageMock);
-vi.stubGlobal('document', mockDocument);
-vi.stubGlobal('window', mockWindow);
+});
 
 // Test component that uses the store
 function TestComponent() {
@@ -47,6 +47,16 @@ function TestComponent() {
 describe('StoreProvider', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Reset localStorage mock to default state
+    localStorageMock.getItem.mockReturnValue(null);
+    localStorageMock.setItem.mockClear();
+    localStorageMock.removeItem.mockClear();
+    localStorageMock.clear.mockClear();
+  });
+
+  afterEach(() => {
+    // Clean up DOM after each test
+    document.body.innerHTML = '';
   });
 
   it('should render children correctly', () => {
@@ -187,7 +197,7 @@ describe('StoreProvider', () => {
       removeEventListener: vi.fn(),
     };
 
-    mockWindow.matchMedia.mockReturnValue(mockMediaQuery);
+    window.matchMedia = vi.fn().mockReturnValue(mockMediaQuery);
 
     render(
       <StoreProvider>
@@ -195,7 +205,7 @@ describe('StoreProvider', () => {
       </StoreProvider>
     );
 
-    expect(mockWindow.matchMedia).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
+    expect(window.matchMedia).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
     expect(mockMediaQuery.addEventListener).toHaveBeenCalledWith(
       'change',
       expect.any(Function)
@@ -203,16 +213,23 @@ describe('StoreProvider', () => {
   });
 
   it('should handle environments without matchMedia', () => {
-    vi.stubGlobal('window', undefined);
+    // Temporarily remove matchMedia
+    const originalMatchMedia = window.matchMedia;
+    (window as any).matchMedia = undefined;
 
-    expect(() => {
-      render(
-        <StoreProvider>
-          <TestComponent />
-        </StoreProvider>
-      );
-    }).not.toThrow();
+    try {
+      expect(() => {
+        render(
+          <StoreProvider>
+            <TestComponent />
+          </StoreProvider>
+        );
+      }).not.toThrow();
 
-    expect(screen.getByTestId('theme')).toHaveTextContent('light');
+      expect(screen.getByTestId('theme')).toHaveTextContent('light');
+    } finally {
+      // Always restore
+      window.matchMedia = originalMatchMedia;
+    }
   });
 });

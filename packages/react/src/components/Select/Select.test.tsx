@@ -81,13 +81,13 @@ describe("Select", () => {
     it("renders helper text when provided", () => {
       render(<Select {...defaultProps} helperText="This is helper text" />);
 
-      expect(screen.getByText("This is helper text")).toBeInTheDocument();
+      expect(screen.getAllByText("This is helper text")[0]).toBeInTheDocument();
     });
 
     it("renders description when provided", () => {
       render(<Select {...defaultProps} description="This is a description" />);
 
-      expect(screen.getByText("This is a description")).toBeInTheDocument();
+      expect(screen.getAllByText("This is a description")[0]).toBeInTheDocument();
     });
 
     it("renders chevron icon", () => {
@@ -177,9 +177,9 @@ describe("Select", () => {
 
       await waitFor(() => {
         expect(screen.getByRole("listbox")).toBeInTheDocument();
-        expect(screen.getByText("Option 1")).toBeInTheDocument();
-        expect(screen.getByText("Option 2")).toBeInTheDocument();
-        expect(screen.getByText("Option 3")).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "Option 1" })).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "Option 2" })).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "Option 3" })).toBeInTheDocument();
       });
     });
 
@@ -226,7 +226,7 @@ describe("Select", () => {
 
       // Click option
       await waitFor(() => {
-        const option1 = screen.getByText("Option 1");
+        const option1 = screen.getByRole("option", { name: "Option 1" });
         return user.click(option1);
       });
 
@@ -302,7 +302,7 @@ describe("Select", () => {
       await user.click(button);
 
       await waitFor(() => {
-        expect(screen.getByText("Option 1")).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "Option 1" })).toBeInTheDocument();
       });
     });
 
@@ -321,7 +321,7 @@ describe("Select", () => {
 
       await waitFor(() => {
         expect(screen.getByTestId("user-icon")).toBeInTheDocument();
-        expect(screen.getByText("With Icon")).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "With Icon" })).toBeInTheDocument();
       });
     });
 
@@ -340,7 +340,7 @@ describe("Select", () => {
       await user.click(button);
 
       await waitFor(() => {
-        const disabledItem = screen.getByText("Disabled");
+        const disabledItem = screen.getByRole("option", { name: "Disabled" });
         expect(disabledItem).toBeInTheDocument();
         // React Aria should handle the disabled state
       });
@@ -383,9 +383,9 @@ describe("Select", () => {
       await user.click(button);
 
       await waitFor(() => {
-        expect(screen.getByText("Item 1")).toBeInTheDocument();
-        expect(screen.getByText("Item 2")).toBeInTheDocument();
-        expect(screen.getByText("Item 3")).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "Item 1" })).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "Item 2" })).toBeInTheDocument();
+        expect(screen.getByRole("option", { name: "Item 3" })).toBeInTheDocument();
       });
     });
   });
@@ -407,7 +407,7 @@ describe("Select", () => {
       await user.click(button);
 
       await waitFor(() => {
-        const option2 = screen.getByText("Option 2");
+        const option2 = screen.getByRole("option", { name: "Option 2" });
         return user.click(option2);
       });
 
